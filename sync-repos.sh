@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Script to sync microsoftgraph repos to local folders
-# This creates a mapping of repos to folders within this org-msg repository
+# This creates a monorepo structure by cloning repos and removing .git directories
+# to avoid submodules
 
 set -e
 
@@ -32,18 +33,21 @@ for repo in $REPOS; do
     repo_url="https://github.com/$SOURCE_ORG/$repo.git"
     
     if [ -d "$repo_path" ]; then
-        echo "  - Updating existing repository..."
-        cd "$repo_path"
-        git fetch --all
-        git pull origin main || git pull origin master || echo "  - Could not pull, branch might not exist"
-        cd - > /dev/null
+        echo "  - Repository already exists, skipping..."
     else
         echo "  - Cloning repository..."
-        git clone "$repo_url" "$repo_path" || echo "  - Failed to clone $repo"
+        if git clone "$repo_url" "$repo_path" 2>/dev/null; then
+            echo "  - Removing .git directory to create monorepo structure..."
+            rm -rf "$repo_path/.git"
+            echo "  - Successfully integrated into monorepo"
+        else
+            echo "  - Failed to clone $repo (repository may not exist or be inaccessible)"
+        fi
     fi
 done
 
 echo ""
 echo "=================================================="
 echo "Sync complete!"
-echo "Repositories are mapped to folders in: $REPOS_DIR/"
+echo "Repositories are integrated into monorepo at: $REPOS_DIR/"
+echo "All .git directories have been removed to avoid submodules"

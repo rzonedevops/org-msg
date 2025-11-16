@@ -11,7 +11,7 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write  # Need write permission to commit changes
     
     steps:
       - name: Checkout repository
@@ -27,7 +27,22 @@ jobs:
           chmod +x sync-repos.sh
           ./sync-repos.sh
       
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add repos/
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: sync repositories from microsoftgraph ($(date +'%Y-%m-%d'))"
+            git push
+          fi
+      
       - name: Display sync summary
         run: |
           echo "Synced repositories:"
           ls -la repos/ || echo "No repos directory found"
+          echo ""
+          echo "Total repositories:"
+          ls -1 repos/ | wc -l
