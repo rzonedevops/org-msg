@@ -3,24 +3,944 @@
   "target_org": "rzonedevops/org-msg",
   "repos": [
     {
-      "name": "msgraph-sdk-dotnet",
-      "description": "Microsoft Graph .NET SDK"
+      "name": "microsoft-graph-devx-content",
+      "description": "Content used by the DevX API to enhance clients and tooling."
     },
     {
-      "name": "msgraph-sdk-javascript",
-      "description": "Microsoft Graph JavaScript SDK"
+      "name": "msgraph-sdk-typescript-core",
+      "description": "Core functionalities for the Microsoft Graph JavaScript SDKs fluent APIs"
     },
     {
-      "name": "msgraph-sdk-python",
-      "description": "Microsoft Graph Python SDK"
+      "name": "msgraph-sample-eventgrid-notifications-typescript",
+      "description": "This TypeScript/Node.js sample listens for change notifications from Microsoft Graph delivered to Azure Event Grid."
     },
     {
-      "name": "msgraph-sdk-java",
-      "description": "Microsoft Graph Java SDK"
+      "name": "msgraph-sample-github-connector-typescript",
+      "description": "This Node.js application shows how to create a Microsoft Graph connector for GitHub repos and issues."
+    },
+    {
+      "name": "eslint-config-msgraph",
+      "description": "Shared eslint and prettier configs for the microsoftgraph org"
+    },
+    {
+      "name": "msgraph-snippets-typescript",
+      "description": "Repository of snippets in Microsoft Graph TypeScript SDK documentation."
+    },
+    {
+      "name": "msgraph-training-javascript",
+      "description": "About Completed project for Build JavaScript apps with Microsoft Graph"
+    },
+    {
+      "name": "msgraph-training-typescript",
+      "description": "Completed project for Build TypeScript apps with Microsoft Graph"
+    },
+    {
+      "name": "microsoft-graph-docs-contrib",
+      "description": "Documentation for the Microsoft Graph REST API"
+    },
+    {
+      "name": "msgraph-metadata",
+      "description": "Microsoft Graph metadata captured and used for generating client library code files."
     },
     {
       "name": "msgraph-sdk-php",
-      "description": "Microsoft Graph PHP SDK"
+      "description": "Microsoft Graph Library for PHP."
+    },
+    {
+      "name": "msgraph-beta-sdk-php",
+      "description": "Microsoft Graph beta model library for PHP (preview)."
+    },
+    {
+      "name": "msgraph-sdk-powershell",
+      "description": "Powershell SDK for Microsoft Graph"
+    },
+    {
+      "name": "MSGraph-SDK-Code-Generator",
+      "description": "MSGraph SDK Code Generator"
+    },
+    {
+      "name": "nodejs-webhooks-sample",
+      "description": "Create Microsoft Graph webhook subscriptions for a Node.js app, so that it can receive notifications of changes in a user’s Microsoft account data."
+    },
+    {
+      "name": "msgraph-beta-sdk-java",
+      "description": "Microsoft Graph Beta Java SDK"
+    },
+    {
+      "name": "entra-powershell",
+      "description": "Microsoft Entra PowerShell"
+    },
+    {
+      "name": "msgraph-typescript-typings",
+      "description": "Microsoft Graph TypeScript Type Definitions"
+    },
+    {
+      "name": "msgraph-sdk-dotnet-core",
+      "description": "The core Microsoft Graph client library for .Net. (Microsoft.Graph.Core)"
+    },
+    {
+      "name": "msgraph-sdk-dotnet",
+      "description": "Microsoft Graph Client Library for .NET!"
+    },
+    {
+      "name": "kibali",
+      "description": "Tooling for managing Microsoft Graph Permissions"
+    },
+    {
+      "name": "msgraph-beta-typescript-typings",
+      "description": "Microsoft Graph Beta TypeScript Type Definitions"
+    },
+    {
+      "name": "msgraph-sdk-java-core",
+      "description": "Microsoft Graph SDK for Java - Core Library"
+    },
+    {
+      "name": "msgraph-sdk-java",
+      "description": "Microsoft Graph SDK for Java"
+    },
+    {
+      "name": "msgraph-training-python",
+      "description": "Completed project for Build Python apps with Microsoft Graph"
+    },
+    {
+      "name": "msgraph-snippets-dotnet",
+      "description": "Repository of snippets in Microsoft Graph .NET SDK documentation."
+    },
+    {
+      "name": "msgraph-snippets-go",
+      "description": "Repository of snippets in Microsoft Graph Go SDK documentation."
+    },
+    {
+      "name": "msgraph-snippets-python",
+      "description": "Repository of snippets in Microsoft Graph Python SDK documentation."
+    },
+    {
+      "name": "msgraph-training-dotnet",
+      "description": "Microsoft Graph Training Module - Build .NET apps with Microsoft Graph"
+    },
+    {
+      "name": "msgraph-training-java",
+      "description": "Microsoft Graph Training Module - Build Java apps with Microsoft Graph"
+    },
+    {
+      "name": "msgraph-sample-eventgrid-notifications-dotnet",
+      "description": "This C# sample listens for change notifications from Microsoft Graph delivered to Azure Event Grid."
+    },
+    {
+      "name": "msgraph-sdk-typescript",
+      "description": ""
+    },
+    {
+      "name": "msgraph-cloud-support",
+      "description": ""
+    },
+    {
+      "name": "msgraph-sample-eventgrid-notifications-java",
+      "description": "This Java Spring sample listens for change notifications from Microsoft Graph delivered to Azure Event Grid."
+    },
+    {
+      "name": "msgraph-sample-pythondjangoapp",
+      "description": "This sample demonstrates how to use the Microsoft Graph .NET SDK to access data in Office 365 from Python web apps."
+    },
+    {
+      "name": "msgraph-snippets-java",
+      "description": "About Repository of snippets in Microsoft Graph Java SDK documentation."
+    },
+    {
+      "name": "msgraph-training-go",
+      "description": "Completed project for Build Go apps with Microsoft Graph"
+    },
+    {
+      "name": "msgraph-beta-sdk-typescript",
+      "description": ""
+    },
+    {
+      "name": "github-issue-manager",
+      "description": "This sample combines a Microsoft Graph connector, declarative agent, and API plugin to create an issue management agent for Microsoft 365 Copilot"
+    },
+    {
+      "name": "msgraph-beta-sdk-dotnet",
+      "description": "The Microsoft Graph Client Beta Library for .NET supports the Microsoft Graph /beta endpoint. (preview)"
+    },
+    {
+      "name": "msgraph-sample-github-connector-dotnet",
+      "description": "This .NET application shows how to create a Microsoft Graph connector for GitHub repos and issues."
+    },
+    {
+      "name": "msgraph-docs-validation",
+      "description": ""
+    },
+    {
+      "name": "msgraph-beta-sdk-go",
+      "description": "Microsoft Graph Beta Go SDK"
+    },
+    {
+      "name": "msgraph-sdk-go-core",
+      "description": "Microsoft Graph SDK for Go - Core Library"
+    },
+    {
+      "name": "msgraph-sdk-go",
+      "description": "Microsoft Graph SDK for Go"
+    },
+    {
+      "name": "msgraph-sdk-python",
+      "description": ""
+    },
+    {
+      "name": "msgraph-beta-sdk-python",
+      "description": ""
+    },
+    {
+      "name": "java-spring-webhooks-sample",
+      "description": "Receive change notifications with data with the Microsoft Graph"
+    },
+    {
+      "name": "microsoft-graph-explorer-v4",
+      "description": "React/Redux version of Graph Explorer used to learn the Microsoft Graph Api"
+    },
+    {
+      "name": "msgraph-sample-rubyrailsapp",
+      "description": "This sample demonstrates how to use the Microsoft Graph REST API to access data in Office 365 from Ruby on Rails apps."
+    },
+    {
+      "name": "msgraph-bicep-types",
+      "description": "Repo contains Microsoft Graph resource types to integrate with bicep templates."
+    },
+    {
+      "name": "msgraph-snippets-php",
+      "description": "Repository of snippets in Microsoft Graph PHP SDK documentation."
+    },
+    {
+      "name": "msgraph-sample-blazor-clientside",
+      "description": "This sample demonstrates how to use the Microsoft Graph .NET SDK to access data in Office 365 from Blazor WebAssembly apps."
+    },
+    {
+      "name": "msgraph-sample-aspnet-core",
+      "description": "This sample demonstrates how to use the Microsoft Graph .NET SDK to access data in Office 365 from ASP.NET Core apps."
+    },
+    {
+      "name": "msgraph-sample-copilot-plugin",
+      "description": "Budget Tracker sample API used for API plugin"
+    },
+    {
+      "name": "msgraph-sdk-javascript",
+      "description": "Microsoft Graph client library for JavaScript"
+    },
+    {
+      "name": "get-app-token",
+      "description": "This GitHub Action retrieves a GitHub App installation token for use in workflows"
+    },
+    {
+      "name": "microsoft-graph-toolkit",
+      "description": "Authentication Providers and UI components for Microsoft Graph 🦒"
+    },
+    {
+      "name": "assign-to-author",
+      "description": "This GitHub action assigns issues in the microsoft-graph-docs repository to the author of the referenced page"
+    },
+    {
+      "name": "msgraph-sample-azurefunction-csharp",
+      "description": "This sample demonstrates how to use the Microsoft Graph .NET SDK to access data in Office 365 from Azure Functions."
+    },
+    {
+      "name": "msgraph-sample-deltaquery",
+      "description": "This console application demonstrates how to make Delta Query calls to the Graph API, allowing applications to request only changed data from Microsoft Graph tenants."
+    },
+    {
+      "name": "msgraph-toc-gen",
+      "description": ""
+    },
+    {
+      "name": "msgraph-sdk-python-core",
+      "description": "Microsoft Graph client library for Python"
+    },
+    {
+      "name": "msgraph-training-php",
+      "description": "Completed project for Build PHP apps with Microsoft Graph"
+    },
+    {
+      "name": "kiota-dom-export-diff-tool",
+      "description": "diff tool for kiota dom exports which validates public API changes during generation"
+    },
+    {
+      "name": "aspnetcore-webhooks-sample",
+      "description": "This sample shows how to subscribe for Microsoft Graph webhooks using application (app-only) permissions and the Azure AD endpoint."
+    },
+    {
+      "name": "copilot-realtime-activity-subscription-samples",
+      "description": ""
+    },
+    {
+      "name": "msgraph-sdk-php-core",
+      "description": ""
+    },
+    {
+      "name": "group-membership-management",
+      "description": "Group Membership Management (GMM) is a service that dynamically manages the membership of AAD Groups. Groups managed by GMM can have their membership defined using existing AAD Groups and/or custom membership sources."
+    },
+    {
+      "name": "dotnet-aad-query-sample",
+      "description": "This sample demonstrates a .NET 5.0 Desktop (WPF) application showcasing advanced Microsoft Graph Query Capabilities for Directory Objects with .NET Graph SDK."
+    },
+    {
+      "name": "msgraph-cli",
+      "description": "CLI tool for Microsoft Graph based on .NET"
+    },
+    {
+      "name": "msgraph-dotnet-interactive-extension",
+      "description": "An extension for .NET Interactive Notebooks that provides authenticated Microsoft Graph clients."
+    },
+    {
+      "name": ".github",
+      "description": "MicrosoftGraph GitHub organization configuration"
+    },
+    {
+      "name": "msgraph-people-connector-sample-dotnet",
+      "description": "This .NET application shows how to use the Microsoft Graph APIs to create a Microsoft 365 Copilot connector for people data"
+    },
+    {
+      "name": "dataconnect-solutions",
+      "description": "Microsoft Graph Data Connect enables scaled access to Microsoft 365 data with fine grained consent model, integrated with compliance and governance, to enable analytics and big data applications on the largest productivity platform."
+    },
+    {
+      "name": "msgraph-sdk-ruby",
+      "description": "Microsoft Graph Ruby client library for v1 APIs"
+    },
+    {
+      "name": "msgraph-beta-cli",
+      "description": ""
+    },
+    {
+      "name": "msgraph-connector-agent-sample",
+      "description": "This .NET application shows how to use the Microsoft Graph connector agent to create a connection to the Microsoft Search service and index custom items."
+    },
+    {
+      "name": "microsoft-graph-comms-samples",
+      "description": "Microsoft Graph Communications Samples"
+    },
+    {
+      "name": "eol-blocker",
+      "description": "This GitHub action blocks pull requests that contain improper line-endings"
+    },
+    {
+      "name": "msgraph-sample-office-addin",
+      "description": "This sample demonstrates how to use the Microsoft Graph JavaScript SDK to access data in Office 365 from Office Add-ins."
+    },
+    {
+      "name": "msgraph-cli-core",
+      "description": ""
+    },
+    {
+      "name": "msgraph-sample-reactspa",
+      "description": "This sample demonstrates how to use the Microsoft Graph JavaScript SDK to access data in Office 365 from React browser apps."
+    },
+    {
+      "name": "msgraph-sdk-design",
+      "description": "Requirements and design documents for Microsoft Graph SDKs"
+    },
+    {
+      "name": "msgraph-beta-sdk-ruby",
+      "description": "Microsoft Graph Beta Ruby SDK"
+    },
+    {
+      "name": "group-membership-management-tenant",
+      "description": ""
+    },
+    {
+      "name": "msgraph-sample-github-connector-python",
+      "description": "This Python application shows how to create a Microsoft Graph connector for GitHub repos and issues."
+    },
+    {
+      "name": "autorest.powershell",
+      "description": "AutoRest PowerShell Generator"
+    },
+    {
+      "name": "msgraph-sample-phpapp",
+      "description": "This sample demonstrates how to use the Microsoft Graph .NET SDK to access data in Office 365 from PHP web apps."
+    },
+    {
+      "name": "msgraph-sdk-ruby-core",
+      "description": "Microsoft Graph SDK for Ruby - Core Library"
+    },
+    {
+      "name": "msgraph-sample-maui",
+      "description": "This sample demonstrates how to use the Microsoft Graph .NET SDK to access data in Office 365 from .NET MAUI apps."
+    },
+    {
+      "name": "msgraph-github-content-utility",
+      "description": ""
+    },
+    {
+      "name": "changelog-link-check",
+      "description": "This GitHub action blocks pull requests that include invalid links in changelog files"
+    },
+    {
+      "name": "msgraph-sample-nodeexpressapp",
+      "description": "This sample demonstrates how to use the Microsoft Graph JavaScript SDK to access data in Office 365 from Node.js Express apps."
+    },
+    {
+      "name": "msgraph-permissions-scraper",
+      "description": ""
+    },
+    {
+      "name": "msgraph-tools-migration",
+      "description": ""
+    },
+    {
+      "name": "csdl-diagrams",
+      "description": "Libraries and tools to process OData CSDL files and visualize them as diagrams."
+    },
+    {
+      "name": "msgraph-sample-teamsapp-dotnet",
+      "description": "This sample demonstrates how to use the Microsoft Graph .NET SDK to access data in Office 365 from Microsoft Teams apps."
+    },
+    {
+      "name": "powershell-intune-samples",
+      "description": "This repository of PowerShell sample scripts show how to access Intune service resources. They demonstrate this by making HTTPS RESTful API requests to the Microsoft Graph API from PowerShell."
+    },
+    {
+      "name": "msgraph-training-powershell",
+      "description": "Completed project for Build PowerShell apps with Microsoft Graph"
+    },
+    {
+      "name": "windowsupdates-webapplication-sample",
+      "description": ""
+    },
+    {
+      "name": "msgraph-search-connector-sample",
+      "description": "This .NET Core application shows how to use the Microsoft Graph indexing API to create a connection to the Microsoft Search service and index custom items."
+    },
+    {
+      "name": "msgraph-training-aspnetmvcapp",
+      "description": "Microsoft Graph Training Module - Build MVC apps with Microsoft Graph"
+    },
+    {
+      "name": "msgraph-sample-botframework",
+      "description": "This sample demonstrates how to use the Microsoft Graph .NET SDK to access data in Office 365 from Microsoft Bot Framework bots."
+    },
+    {
+      "name": "msgraph-connectors-sdk",
+      "description": ""
+    },
+    {
+      "name": "msgraph-sample-spfx",
+      "description": "This sample demonstrates how to use the Microsoft Graph JavaScript SDK to access data in Office 365 from SharePoint Framework (SPFX) applications."
+    },
+    {
+      "name": "msgraph-training-optimize-network-traffic",
+      "description": ""
+    },
+    {
+      "name": "msgraph-training-optimize-data-usage",
+      "description": ""
+    },
+    {
+      "name": "msgraph-access-files-data",
+      "description": ""
+    },
+    {
+      "name": "msgraph-training-changenotifications",
+      "description": ""
+    },
+    {
+      "name": "dotnetcore-console-sample",
+      "description": ".Net Core console application for calling Microsoft Graph. Sample built from scratch."
+    },
+    {
+      "name": "msgraph-sdk-dotnet-contrib",
+      "description": "Community contributed extensions to the Microsoft Graph .NET SDK service library, to support APIs that have not yet made it into Microsoft Graph"
+    },
+    {
+      "name": "msgraph-ifttt-sample",
+      "description": "This sample is a demonstration of what a Microsoft Graph service on IFTTT could look like. The purpose is to spark exploration by third parties to integrate their products with the Microsoft Graph and leverage the IFTTT platform to utilize the rich set of data (ie. Teams, OneNote, Calendar, User data, analytics, etc…) available in typical M365 o…"
+    },
+    {
+      "name": "universalprint-samples",
+      "description": "This repo contains code samples that demonstrate how to build applications that integrate with and extend Universal Print."
+    },
+    {
+      "name": "meeting-moderator-sample",
+      "description": ""
+    },
+    {
+      "name": "mgtLap-TryItOut",
+      "description": ""
+    },
+    {
+      "name": "botframework-csharp-approvalbot-sample",
+      "description": "A sample Bot that uses adaptive cards and the .NET Graph SDK to send actionable messages requesting approval to release files on OneDrive."
+    },
+    {
+      "name": "msgraph-training-dataconnect",
+      "description": ""
+    },
+    {
+      "name": "aspnet-snippets-sample",
+      "description": "A repository of code snippets that use Microsoft Graph to perform common tasks such as sending email, managing groups, and other activities from an ASP.NET Core MVC app. This sample uses the Microsoft Graph .NET Client Library to work with data, and the Microsoft Identity Web Library for authentication on the Microsoft identity platform v2.0 end…"
+    },
+    {
+      "name": "msgraph-access-user-data",
+      "description": ""
+    },
+    {
+      "name": "powershell-aad-samples",
+      "description": ""
+    },
+    {
+      "name": "g-raph",
+      "description": "Artwork for our g-raph (giraffe)"
+    },
+    {
+      "name": "msgraph-sample-react-native",
+      "description": "This sample demonstrates how to use the Microsoft Graph JavaScript SDK to access data in Office 365 from React Native mobile apps."
+    },
+    {
+      "name": "msgraph-sample-android",
+      "description": "This sample demonstrates how to use the Microsoft Graph Java SDK to access data in Office 365 from native mobile Android applications."
+    },
+    {
+      "name": "msgraph-sample-ios-swift",
+      "description": "This sample demonstrates how to use the Microsoft Graph Objective-C SDK with Swift to access data in Office 365 from native mobile iOS applications."
+    },
+    {
+      "name": "msgraph-sample-angularspa",
+      "description": "This sample demonstrates how to use the Microsoft Graph JavaScript SDK to access data in Office 365 from Angular single-page applications."
+    },
+    {
+      "name": "msgraph-sample-uwp",
+      "description": "This sample demonstrates how to use the Microsoft Graph .NET SDK to access data in Office 365 from UWP apps."
+    },
+    {
+      "name": "msgraph-sample-javascriptspa",
+      "description": "This sample demonstrates how to use the Microsoft Graph JavaScript SDK to access data in Office 365 from JavaScript browser apps."
+    },
+    {
+      "name": "msgraph-sample-ios-objectivec",
+      "description": "This sample demonstrates how to use the Microsoft Graph Objective-C SDK to access data in Office 365 from native mobile iOS applications."
+    },
+    {
+      "name": "msgraph-training-powerautomate",
+      "description": "Microsoft Graph Training Module - Create a Microsoft Graph JSON Batch Custom Connector for Microsoft Power Automate & Azure Logic Apps"
+    },
+    {
+      "name": "mgt-react-codetour",
+      "description": "Interactive tour to help you build your first React app using Microsoft Graph Toolkit"
+    },
+    {
+      "name": "aspnetcore-search-sample",
+      "description": ""
+    },
+    {
+      "name": "msgraph-access-group-data",
+      "description": ""
+    },
+    {
+      "name": "microsoft-graph-docs.pt-BR",
+      "description": "Documentation for the Microsoft Graph REST API for Portuguese"
+    },
+    {
+      "name": "microsoft-graph-docs.zh-CN",
+      "description": "Documentation for the Microsoft Graph REST API for Chinese(Simplified)"
+    },
+    {
+      "name": "microsoft-graph-docs.ru-RU",
+      "description": "Documentation for the Microsoft Graph REST API for Russian"
+    },
+    {
+      "name": "autorest",
+      "description": "OpenAPI (f.k.a Swagger) Specification code generator. Supports C#, PowerShell, Go, Java, Node.js, TypeScript, Python"
+    },
+    {
+      "name": "msgraph-samples-dashboard",
+      "description": "Dashboard for msgraph samples"
+    },
+    {
+      "name": "aspnetcore-connect-sample",
+      "description": "[ARCHIVED] This ASP.NET Core MVC sample shows how to connect to Microsoft Graph using delegated permissions and the Azure AD v2.0 (MSAL) endpoint."
+    },
+    {
+      "name": "contoso-foods",
+      "description": "A sample grocery shopping experience powered by the Microsoft Graph Toolkit"
+    },
+    {
+      "name": "meetings-capture-sample",
+      "description": "A Microsoft Teams solution that helps teams capture meeting minute notes inside individual channels"
+    },
+    {
+      "name": "Intune-PowerShell-SDK-Code-Generator",
+      "description": "Custom ODCM Writer built atop Vipr to auto-generate PowerShell cmdlets corresponding to CRUD operations for Microsoft Intune Graph Api."
+    },
+    {
+      "name": "botframework-csharp-graph-explorer",
+      "description": "The Microsoft Graph Bot is a bot built with the Microsoft Bot Framework that allows interactive exploration of the Microsoft Graph."
+    },
+    {
+      "name": "msgraph-sdk-objc-auth",
+      "description": "MSAL Authentication Provider for Objective C"
+    },
+    {
+      "name": "msgraph-sdk-objc",
+      "description": "Microsoft Graph SDK for Objective-C"
+    },
+    {
+      "name": "msgraph-sdk-objc-models",
+      "description": "Generated Models for Objective C SDK"
+    },
+    {
+      "name": "aspnet-assettracking-sample",
+      "description": ""
+    },
+    {
+      "name": "contoso-airlines-teams-sample",
+      "description": ""
+    },
+    {
+      "name": "msgraph-cli-archived",
+      "description": "The Microsoft Graph CLI repository has moved. This repository is now an archive."
+    },
+    {
+      "name": "apidoctor",
+      "description": "Application for validating API documentation and generating test cases"
+    },
+    {
+      "name": "msgraph-sdk-dotnet-auth",
+      "description": "Archived - use the TokenCredential classes provided by Azure.Identity."
+    },
+    {
+      "name": "windowsupdates-teamsbot-sample",
+      "description": ""
+    },
+    {
+      "name": "microsoftgraph-postman-collections",
+      "description": ""
+    },
+    {
+      "name": "msgraph-training-smartui-components",
+      "description": "[ARCHIVED]"
+    },
+    {
+      "name": "contoso-airlines-spfx-sample",
+      "description": "[ARCHIVED]"
+    },
+    {
+      "name": "contoso-airlines-ios-swift-sample",
+      "description": "[ARCHIVED]"
+    },
+    {
+      "name": "contoso-airlines-azure-functions-sample",
+      "description": "[ARCHIVED]"
+    },
+    {
+      "name": "contoso-airlines-aspnet-core-sample",
+      "description": "[ARCHIVED]"
+    },
+    {
+      "name": "msgraph-sdk-android-auth",
+      "description": "MSAL Authentication Provider for Android"
+    },
+    {
+      "name": "msgraph-sdk-java-auth",
+      "description": "Authentication Providers for Microsoft Graph Java SDK"
+    },
+    {
+      "name": "OpenAPI.NET.OData",
+      "description": "Generates OpenAPI document from OData CSDL"
+    },
+    {
+      "name": "msgraph-sdk-serviceissues",
+      "description": "Tracks service issues for follow up."
+    },
+    {
+      "name": "msgraph-sdk-android-msa-auth-for-android-adapter",
+      "description": "MSGraph SDK Android MSA Auth for Android Adapter"
+    },
+    {
+      "name": "msgraph-sdk-android",
+      "description": "Microsoft Graph SDK for Android!"
+    },
+    {
+      "name": "msgraph-training-restapi",
+      "description": "[ARCHIVED] Microsoft Graph Training Module - REST API calls"
+    },
+    {
+      "name": "msgraph-training-building-apps",
+      "description": "[ARCHIVED] Microsoft Graph Training Module - Building Apps"
+    },
+    {
+      "name": "csharp-teams-sample-graph",
+      "description": "[ARCHIVED] Sample apps (C# and node) for accessing Microsoft Teams data via the Microsoft Graph"
+    },
+    {
+      "name": "microsoft-graph-explorer",
+      "description": "We've moved! You can contribute to our new repository here"
+    },
+    {
+      "name": "uwp-csharp-meetingbot-sample",
+      "description": "[ARCHIVED] This sample demonstrates how to integrate Microsoft Graph capabilities into a UWP app that uses Cortana voice commands."
+    },
+    {
+      "name": "msgraph-cds-workrides-sample",
+      "description": ""
+    },
+    {
+      "name": "uwp-csharp-controls-sample",
+      "description": ""
+    },
+    {
+      "name": "botframework-csharp-excelbot-rest-sample",
+      "description": "[ARCHIVED] Excel Bot is a bot built with the Microsoft Bot Framework that demonstrates how to use Excel with the Microsoft Graph API"
+    },
+    {
+      "name": "xamarin-csharp-propertymanager-sample",
+      "description": "[ARCHIVED] Demonstrates how to use the Microsoft Graph as the only back-end component for a complete property management solution."
+    },
+    {
+      "name": "javascript-officeuifabric-peoplepicker-sample",
+      "description": "[ARCHIVED] This sample demonstrates how to populate an Office UI Fabric JS PeoplePicker component with data retrieved from Microsoft Graph."
+    },
+    {
+      "name": "react-officeuifabric-sample",
+      "description": "[ARCHIVED] This sample demonstrates how to populate Office UI Fabric React components with data retrieved from Microsoft Graph."
+    },
+    {
+      "name": "console-csharp-connect-sample",
+      "description": "[ARCHIVED] This sample shows how to connect a Windows console application to a Microsoft work or school (Azure Active Directory) or personal (Microsoft) account using the Microsoft Graph API to send an email."
+    },
+    {
+      "name": "uwp-csharp-excel-snippets-rest-sample",
+      "description": "[ARCHIVED] A Universal Windows Platform application that demonstrates how to use Microsoft Graph and the Excel REST API."
+    },
+    {
+      "name": "xamarin-csharp-photosender-sample",
+      "description": "[ARCHIVED] A sample Xamarin Forms app that uses the Microsoft Graph"
+    },
+    {
+      "name": "aspnet-excelstarter-sample",
+      "description": "[ARCHIVED] This sample shows how to connect an ASP.NET web app to a Microsoft work or school (Azure Active Directory) using the Microsoft Graph API to get a user's name and address and upload that information to an Excel file stored in OneDrive."
+    },
+    {
+      "name": "angular-excelstarter-sample",
+      "description": "[ARCHIVED] This sample shows how to connect an Angular 4.0 app to a Microsoft work or school (Azure Active Directory) using the Microsoft Graph API to get a user's name and address and upload that information to an Excel file stored in OneDrive."
+    },
+    {
+      "name": "react-excelstarter-sample",
+      "description": "[ARCHIVED] This sample shows how to connect a React app to a Microsoft work or school (Azure Active Directory) using the Microsoft Graph API to get a user's name and address and upload that information to an Excel file stored in OneDrive."
+    },
+    {
+      "name": "nodejs-sentiment-bot-sample",
+      "description": "[ARCHIVED] Use Microsoft Graph, Microsoft Cognitive Services, and the Microsoft Bot Framework to do sentiment analysis in a NodeJS web application."
+    },
+    {
+      "name": "console-csharp-snippets-sample",
+      "description": "[ARCHIVED] This Windows console app demonstrates how to perform various operations using the Microsoft Graph client library with both delegated and application permissions. This sample uses the Microsoft Authentication Library (MSAL) for authentication on the Azure AD v2.0 endpoint."
+    },
+    {
+      "name": "webjobs-webhooks-sample",
+      "description": "Create Microsoft Graph webhook subscriptions from a background application using Azure WebJobs, so that it can receive notifications of changes in a user’s organization data."
+    },
+    {
+      "name": "aspnet-webhooks-rest-sample",
+      "description": "Webhooks in Microsoft Graph notify your web application about changes in user data. You can create a webhook subscription to get notified about changes in user's data. This sample uses the Azure AD endpoint to obtain an access token for work or school accounts."
+    },
+    {
+      "name": "python-sample-console-app",
+      "description": "Please see  for a Python sample."
+    },
+    {
+      "name": "python-sample-auth",
+      "description": "Please see  for a Python sample."
+    },
+    {
+      "name": "console-java-connect-sample",
+      "description": "Please see  for a Java sample."
+    },
+    {
+      "name": "ios-objectivec-connect-rest-sample",
+      "description": "Please see  for an Objective-C sample."
+    },
+    {
+      "name": "ios-objectivec-connect-sample",
+      "description": "Please see  for an Objective-C sample."
+    },
+    {
+      "name": "ios-swift-faceapi-sample",
+      "description": "Please see  for a Swift sample."
+    },
+    {
+      "name": "ios-swift-connect-rest-sample",
+      "description": "Please see  for a Swift sample."
+    },
+    {
+      "name": "ios-swift-connect-sample",
+      "description": "Please see  for a Swift sample."
+    },
+    {
+      "name": "ios-swift-snippets-sample",
+      "description": "Please see  for a Swift sample."
+    },
+    {
+      "name": "aspnet-donations-rest-sample",
+      "description": "This sample shows how to read and write into an Excel document stored in your OneDrive for Business account by using the Excel REST APIs."
+    },
+    {
+      "name": "aspnet-todo-rest-sample",
+      "description": "This sample shows how to read and write into an Excel document stored in your OneDrive for Business account by using the Excel REST APIs."
+    },
+    {
+      "name": "onedrive-explorer-android",
+      "description": "OneDrive Explorer for Phone and Tablets!"
+    },
+    {
+      "name": "android-java-meetingfeedback-rest-sample",
+      "description": "This showcase sample accesses Microsoft calendar and email data so users can send anonymous feedback on the meetings they attend."
+    },
+    {
+      "name": "android-java-connect-rest-sample",
+      "description": "Use Microsoft Graph to access a user’s Microsoft account data from within an Android app. This sample uses the Microsoft Graph REST endpoint to work with the data, and uses the Azure AD v2.0 endpoint for authentication of users of personal or work or school accounts."
+    },
+    {
+      "name": "android-java-snippets-rest-sample",
+      "description": "Code snippets that use the Microsoft Graph to perform common tasks, such as sending email or managing groups, from within an Android app. This sample uses REST calls directly to the Microsoft Graph endpoint, and the Active Directory Authentication Library (ADAL) for authentication of users' work or school Office 365 accounts."
+    },
+    {
+      "name": "android-java-snippets-sample",
+      "description": "Code snippets that use the Microsoft Graph to perform common tasks, such as sending email or managing groups, from within an Android app. This sample uses the Microsoft Graph Client Library to work with the data, and the Microsoft Authentication Library (MSAL) for authentication of users' work or school Office 365 accounts and personal accounts."
+    },
+    {
+      "name": "android-java-connect-sample",
+      "description": "Use Microsoft Graph to access a user’s Microsoft account data from within an Android app. This sample uses the Microsoft Graph Client Library to work with the data, and uses the Azure AD v2.0 endpoint for authentication of users of personal or work or school accounts."
+    },
+    {
+      "name": "graphql-demo",
+      "description": "[ARCHIVED] GraphQL for Microsoft Graph"
+    },
+    {
+      "name": "30DaysMSGraph-TryItOut",
+      "description": "This repo contains the Try It Out samples from the 30 Days of Microsoft Graph blog series ()."
+    },
+    {
+      "name": "console-calendar-sample",
+      "description": ""
+    },
+    {
+      "name": "xamarin-csharp-snippets-sample",
+      "description": "[ARCHIVED] Provides a repository of code snippets that use the Microsoft Graph to perform common tasks such as sending email, managing groups, and other activities from within a Xamarin.Forms app. This sample uses the Microsoft Graph .NET Client Library to work with data, and the Microsoft Authentication Library (MSAL) for authentication."
+    },
+    {
+      "name": "xamarin-csharp-connect-sample",
+      "description": "[ARCHIVED] This sample shows how to connect a Xamarin Forms app to a Microsoft work or school (Azure Active Directory) or personal (Microsoft) account using the Microsoft Graph API to send an email."
+    },
+    {
+      "name": "ios-objectivec-snippets-rest-sample",
+      "description": "This sample shows how to use Microsoft Graph to send email, manage groups, and perform other activities with Office 365 data."
+    },
+    {
+      "name": "ios-objectivec-apple-watch-sample",
+      "description": "[ARCHIVED] This Apple Watch sample uses Microsoft Graph to find out more about a colleague in a meeting."
+    },
+    {
+      "name": "ios-objectiveC-snippets-sample",
+      "description": "[ARCHIVED] This sample shows how to use the Microsoft Graph SDK to send email, manage groups, and perform other activities with Office 365 data."
+    },
+    {
+      "name": "nodejs-apponlytoken-rest-sample",
+      "description": "[ARCHIVED] This sample shows how to connect a service or daemon app (written in Node.js) to the Microsoft Graph API."
+    },
+    {
+      "name": "ios-objectivec-profile-picture-sample",
+      "description": "iOS Objective-C SDK sample for working with profile pictures in Microsoft Graph, a unified endpoint for accessing data, relationships and insights that come from the Microsoft Cloud."
+    },
+    {
+      "name": "ios-objectivec-imagediscovery-rest-sample",
+      "description": "The Microsoft Graph Image Discovery sample allows you to take or search for an image and save it to OneDrive, or mail it to a recipient."
+    },
+    {
+      "name": "python-sample-open-extensions",
+      "description": "[ARCHIVED] How to work with Graph open extensions in Python"
+    },
+    {
+      "name": "python-sample-pagination",
+      "description": "[ARCHIVED] Samples demonstrating how to work with Graph's paginated APIs in Python web apps"
+    },
+    {
+      "name": "uwp-csharp-snippets-rest-sample",
+      "description": "[ARCHIVED] This sample shows how to use Microsoft Graph to send email, manage groups, and perform other activites with Office 365 data in a Windows 10 universal app.."
+    },
+    {
+      "name": "uwp-csharp-snippets-sample",
+      "description": "[ARCHIVED] This sample shows how to use the Microsoft Graph SDK to send email, manage groups, and perform other activities with Office 365 data."
+    },
+    {
+      "name": "uwp-csharp-connect-sample",
+      "description": "[ARCHIVED] This sample shows how to connect your Windows 10 Universal app to Office 365 using the Microsoft Graph .NET client library to send an email."
+    },
+    {
+      "name": "uwp-csharp-connect-rest-sample",
+      "description": "[ARCHIVED] This sample shows how to connect your Windows 10 universal app to Office 365 using Microsoft Graph to send an email."
+    },
+    {
+      "name": "angular-snippets-rest-sample",
+      "description": "[ARCHIVED] Provides a repository of code snippets that use Microsoft Graph to perform common tasks such as sending email, managing groups, and other activities from within an AngularJS app. This sample makes REST calls directly to the Microsoft Graph API, and uses the Azure AD v2.0 endpoint to authenticate personal accounts and work or school ac…"
+    },
+    {
+      "name": "angular-connect-sample",
+      "description": "[ARCHIVED] This sample shows how to connect an AngularJS app to a Microsoft work or school (Azure Active Directory) or personal (Microsoft) account using the Microsoft Graph API with the Microsoft Graph JavaScript SDK to send an email. In addition, the sample uses the Office Fabric UI for styling and formatting the user experience."
+    },
+    {
+      "name": "angular-connect-rest-sample",
+      "description": "[ARCHIVED] Use Microsoft Graph to access a user’s Microsoft account data from within an AngularJS web application. This sample uses REST calls directly to the Microsoft Graph endpoint and authenticates users with Microsoft Accounts or work or school Office 365 accounts."
+    },
+    {
+      "name": "angular4-connect-sample",
+      "description": "[ARCHIVED] This sample shows how to connect and Angular 4 app to a Microsoft work of school account (Azure Active Directory) or personal (Microsoft) account using the Microsoft Graph API with the Microsoft Graph SDK to send an email. In addition, the sample uses the Office Fabric UI for styling and formatting the user experience."
+    },
+    {
+      "name": "php-connect-sample",
+      "description": "[ARCHIVED] Use Microsoft Graph to access a user’s Microsoft account data from within a PHP web application. This sample gets OAuth tokens from the Azure AD v2.0 endpoint and connects it to the Microsoft Graph SDK for PHP."
+    },
+    {
+      "name": "php-connect-rest-sample",
+      "description": "[ARCHIVED] Use Microsoft Graph to access a user’s Microsoft account data from within a php web application. This sample gets OAuth tokens from the Azure AD v2.0 endpoint and uses REST calls directly to Microsoft Graph."
+    },
+    {
+      "name": "angular2-connect-rest-sample",
+      "description": "[ARCHIVED] To see a current sample that demonstrates the concepts explained here, visit"
+    },
+    {
+      "name": "python-sample-send-mail",
+      "description": "[ARCHIVED] send email from Python via Microsoft Graph"
+    },
+    {
+      "name": "python3-connect-rest-sample",
+      "description": "[ARCHIVED] This sample shows how to connect your Python web app to Office 365 using Microsoft Graph to send an email."
+    },
+    {
+      "name": "ruby-connect-rest-sample",
+      "description": "[ARCHIVED] Use Microsoft Graph to access a user’s Microsoft account resources from within a Ruby on Rails web application. This sample uses REST calls directly to Microsoft Graph, and uses the Azure AD v2.0 endpoint for authentication of users' work or school Office 365 accounts."
+    },
+    {
+      "name": "nodejs-connect-sample",
+      "description": "[ARCHIVED] This sample shows how to connect a Node.js app to a Microsoft work or school (Azure Active Directory) or personal (Microsoft) account using the Microsoft Graph API and the Graph JavaScript SDK to send an email. In addition, the sample uses the Office Fabric UI for styling and formatting the user experience."
+    },
+    {
+      "name": "nodejs-connect-rest-sample",
+      "description": "[ARCHIVED] Use Microsoft Graph to access a user’s Microsoft account data from within a Node.js web application. This sample sends REST calls directly to the Microsoft Graph endpoint, and authenticates with the Azure AD v2.0 endpoint to support Microsoft Accounts and work or school accounts."
+    },
+    {
+      "name": "aspnet-connect-sample",
+      "description": "[ARCHIVED] This walkthrough shows you how to use the Office 365 Connected Services in Visual Studio 2017."
+    },
+    {
+      "name": "aspnet-connect-rest-sample",
+      "description": "[ARCHIVED] This ASP.NET MVC sample shows how to connect to Microsoft Graph and use the API to send an email."
+    },
+    {
+      "name": "msgraph-sdk-ios",
+      "description": "[ARCHIVED] Microsoft Graph SDK for iOS"
+    },
+    {
+      "name": "msgraph-sdk-ios-nxoauth2-adapter",
+      "description": "NXOAuth2 MSAuthenticationProvider implementation for MSGraph SDK"
     }
   ]
 }
