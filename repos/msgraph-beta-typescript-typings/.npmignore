@@ -1,0 +1,8 @@
+spec/
+.vscode/
+.azure-pipelines/
+.github/
+node_modules/
+scripts/**
+typings-demo.gif
+.git/

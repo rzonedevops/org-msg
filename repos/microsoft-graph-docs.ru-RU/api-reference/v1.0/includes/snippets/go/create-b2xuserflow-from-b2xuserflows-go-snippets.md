@@ -1,0 +1,25 @@
+---
+description: Автоматически созданный файл. НЕ ИЗМЕНЯТЬ
+ms.openlocfilehash: d17472b5f2f27aad4175f545d263eb70f7637de9
+ms.sourcegitcommit: 30d1f0d898b6e4488d1938251fba143370119241
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 05/11/2022
+ms.locfileid: "65340784"
+---
+```go
+
+//THE GO SDK IS IN PREVIEW. NON-PRODUCTION USE ONLY
+graphClient := msgraphsdk.NewGraphServiceClient(requestAdapter)
+
+requestBody := msgraphsdk.NewB2xIdentityUserFlow()
+id := "Partner"
+requestBody.SetId(&id)
+userFlowType := "signUpOrSignIn"
+requestBody.SetUserFlowType(&userFlowType)
+userFlowTypeVersion := float32(1)
+requestBody.SetUserFlowTypeVersion(&userFlowTypeVersion)
+result, err := graphClient.Identity().B2xUserFlows().Post(requestBody)
+
+
+```

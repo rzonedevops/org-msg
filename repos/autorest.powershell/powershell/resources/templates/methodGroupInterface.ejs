@@ -1,0 +1,18 @@
+<%- project.commentHeader %>
+<% var key = project.helper.ConvertToValidMethodGroupKey(methodGroup.$key)-%>
+
+namespace <%- project.namespace %>
+{
+<% project.model.usings.forEach(function(using){ -%>
+    using <%- using %>;
+<% }); -%>
+
+<% var typeName = project.helper.PascalCase(key) + 'Operations' -%>
+    /// <summary>
+    /// <%- typeName %> operations.
+    /// </summary>
+    public partial interface I<%- typeName%>
+    {
+<%- include('methodGroupInterfaceBody', {methodGroup: methodGroup}) -%>
+    }
+}

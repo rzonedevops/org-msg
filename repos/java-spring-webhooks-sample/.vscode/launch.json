@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-GraphwebhookApplication<graphwebhook>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "console": "internalConsole",
+      "mainClass": "com.example.graphwebhook.GraphwebhookApplication",
+      "projectName": "graphwebhook",
+      "args": ""
+    }
+  ]
+}

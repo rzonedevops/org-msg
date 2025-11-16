@@ -1,0 +1,37 @@
+name: Go
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main, live ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: 1.21
+
+    - name: Build user app
+      working-directory: "user-auth/graphtutorial/"
+      run: go build -v ./...
+
+    - name: Test user app
+      working-directory: "user-auth/graphtutorial/"
+      run: go test -v ./...
+
+    - name: Build app-only app
+      working-directory: "app-auth/graphapponlytutorial/"
+      run: go build -v ./...
+
+    - name: Test app-only app
+      working-directory: "app-auth/graphapponlytutorial/"
+      run: go test -v ./...

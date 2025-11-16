@@ -1,0 +1,43 @@
+{
+  "name": "msgraph-snippets-typescript",
+  "version": "1.0.0",
+  "description": "![License.](https://img.shields.io/badge/license-MIT-green.svg)",
+  "repository": {
+    "url": "https://github.com/microsoftgraph/msgraph-snippets-typescript"
+  },
+  "main": "./out/index.js",
+  "scripts": {
+    "start": "ts-node ./src/index.ts",
+    "build": "tsc",
+    "lint": "eslint .",
+    "format": "prettier --write **/**.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Microsoft Corporation",
+  "license": "MIT",
+  "devDependencies": {
+    "@microsoft/microsoft-graph-types": "^2.43.1",
+    "@types/config": "^3.3.5",
+    "@types/isomorphic-fetch": "^0.0.39",
+    "@types/node": "^20.19.0",
+    "@types/readline-sync": "^1.4.8",
+    "@typescript-eslint/eslint-plugin": "^8.46.4",
+    "@typescript-eslint/parser": "^8.46.3",
+    "eslint": "^9.39.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-header": "^3.1.1",
+    "eslint-plugin-prettier": "^5.5.4",
+    "prettier": "^3.6.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@azure/identity": "^4.13.0",
+    "@microsoft/microsoft-graph-client": "^3.0.7",
+    "config": "^3.3.12",
+    "date-fns": "^4.1.0",
+    "https-proxy-agent": "^7.0.6",
+    "isomorphic-fetch": "^3.0.0",
+    "readline-sync": "^1.4.10"
+  }
+}

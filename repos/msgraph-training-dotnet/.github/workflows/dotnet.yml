@@ -1,0 +1,31 @@
+name: dotnet build
+
+on:
+  push:
+    branches: [ main, live ]
+  pull_request:
+    branches: [ main, live ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v5
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v5
+      with:
+        dotnet-version: 9.x
+    - name: Restore dependencies
+      working-directory: user-auth/GraphTutorial/
+      run: dotnet restore
+    - name: Build
+      working-directory: user-auth/GraphTutorial/
+      run: dotnet build --no-restore
+    - name: Restore dependencies
+      working-directory: app-auth/GraphAppOnlyTutorial/
+      run: dotnet restore
+    - name: Build
+      working-directory: app-auth/GraphAppOnlyTutorial/
+      run: dotnet build --no-restore

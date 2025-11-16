@@ -1,0 +1,27 @@
+---
+description: Arquivo gerado automaticamente. NÃO MODIFICAR
+ms.openlocfilehash: 88f35d11cfb237022774242c446a3c48a081f783
+ms.sourcegitcommit: 25acfa7d0153336c9a35d30a1dd422aeadc1342c
+ms.translationtype: MT
+ms.contentlocale: pt-BR
+ms.lasthandoff: 02/03/2022
+ms.locfileid: "62350817"
+---
+```java
+
+GraphServiceClient graphClient = GraphServiceClient.builder().authenticationProvider( authProvider ).buildClient();
+
+HomeRealmDiscoveryPolicy homeRealmDiscoveryPolicy = new HomeRealmDiscoveryPolicy();
+LinkedList<String> definitionList = new LinkedList<String>();
+definitionList.add("{"HomeRealmDiscoveryPolicy":
+     {"AccelerateToFederatedDomain":true,
+      "PreferredDomain":"federated.example.edu",
+      "AlternateIdLogin":{"Enabled":true}}}");
+homeRealmDiscoveryPolicy.definition = definitionList;
+homeRealmDiscoveryPolicy.displayName = "Contoso default HRD Policy";
+
+graphClient.policies().homeRealmDiscoveryPolicies("{id}")
+    .buildRequest()
+    .patch(homeRealmDiscoveryPolicy);
+
+```

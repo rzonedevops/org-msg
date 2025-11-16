@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.microsoft.graph.snippets">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-sdk tools:overrideLibrary="com.microsoft.identity.msal" />
+
+    <application
+        android:name="com.microsoft.graph.snippets.application.SnippetApp"
+        android:allowBackup="false"
+        android:fullBackupContent="false"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name="com.microsoft.graph.snippets.SignInActivity"
+            android:label="@string/app_name_short">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.microsoft.graph.snippets.SnippetListActivity" />
+        <activity
+            android:name="com.microsoft.graph.snippets.SnippetDetailActivity"
+            android:label="@string/title_activity_snippet_detail" />
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.microsoft.graph.snippets.SnippetListActivity" />
+        <activity
+            android:name="com.microsoft.identity.client.BrowserTabActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="msalENTER_YOUR_CLIENT_ID"  android:host="auth" />
+            </intent-filter>
+        </activity>
+        <meta-data
+            android:name="authority string"
+            android:value="https://login.microsoftonline.com/common"/>
+        <meta-data
+            android:name="com.microsoft.identity.client.ClientId"
+            android:value="ENTER_YOUR_CLIENT_ID"/>
+    </application>
+</manifest>

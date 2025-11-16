@@ -1,0 +1,76 @@
+{
+  "changelog": [
+    {
+      "ChangeList": [
+        {
+          "Id": "6990ba5d-3fd0-4c0f-836d-2ce020b1d2f5",
+          "ApiChange": "Property",
+          "ChangedApiName": "incidentIds,resource,resourceType,sourceLocation,destinationLocation",
+          "ChangeType": "Addition",
+          "Description": "Added the following properties to the [alert](https://learn.microsoft.com/en-us/graph/api/resources/alert?view=graph-rest-1.0) entity:  **incidentIds**, [securityResources](https://learn.microsoft.com/en-us/graph/api/resources/securityResource?view=graph-rest-1.0) - **resource**, **resourceType**,[networkConnection](https://learn.microsoft.com/en-us/graph/api/resources/networkconnection?view=graph-rest-1.0) - **sourceLocation**, **destinationLocation**.",
+          "Target": "alert,securityResources,networkConnection"
+        }
+      ],
+      "Id": "6990ba5d-3fd0-4c0f-836d-2ce020b1d2f5",
+      "Cloud": "prd",
+      "Version": "v1.0",
+      "CreatedDateTime": "2020-06-01T00:00:00",
+      "WorkloadArea": "Security",
+      "SubArea": ""
+    },
+    {
+      "ChangeList": [
+        {
+          "Id": "7f201f04-85ef-49cb-849f-4885fdd08870",
+          "ApiChange": "Resource",
+          "ChangedApiName": "create,get,list,threatAssessmentRequest",
+          "ChangeType": "Addition",
+          "Description": "Added [create](https://learn.microsoft.com/en-us/graph/api/informationprotection-post-threatassessmentrequests?view=graph-rest-1.0), [get](https://learn.microsoft.com/en-us/graph/api/threatassessmentrequest-get?view=graph-rest-1.0) and [list](https://learn.microsoft.com/en-us/graph/api/informationprotection-list-threatassessmentrequests?view=graph-rest-1.0) APIs to manage [threatAssessmentRequest](https://learn.microsoft.com/en-us/graph/api/resources/threatAssessmentRequest?view=graph-rest-1.0) resources.",
+          "Target": "create,get,list,threatAssessmentRequest"
+        }
+      ],
+      "Id": "7f201f04-85ef-49cb-849f-4885fdd08870",
+      "Cloud": "prd",
+      "Version": "v1.0",
+      "CreatedDateTime": "2020-02-01T00:00:00",
+      "WorkloadArea": "Security",
+      "SubArea": ""
+    },
+    {
+      "ChangeList": [
+        {
+          "Id": "403de8ef-1aea-40ed-a4f8-2549073bf79e",
+          "ApiChange": "method",
+          "ChangedApiName": "comments,Closed in IPC,Closed in MCAS",
+          "ChangeType": "Change",
+          "Description": "The [Update alert](https://learn.microsoft.com/en-us/graph/api/alert-update?view=graph-rest-1.0&tabs=http) method now updates the **comments** field with the following values only: **Closed in IPC**, **Closed in MCAS**.",
+          "Target": "Update alert"
+        }
+      ],
+      "Id": "403de8ef-1aea-40ed-a4f8-2549073bf79e",
+      "Cloud": "prd",
+      "Version": "v1.0",
+      "CreatedDateTime": "2020-01-01T00:00:00",
+      "WorkloadArea": "Security",
+      "SubArea": ""
+    },
+    {
+      "ChangeList": [
+        {
+          "Id": "7f8dd226-41d6-456c-8836-f833ebe5f662",
+          "ApiChange": "Property",
+          "ChangedApiName": "parent",
+          "ChangeType": "Addition",
+          "Description": "Added the **parent** property to the [informationProtectionLabel](https://learn.microsoft.com/en-us/graph/api/resources/informationprotectionlabel?view=graph-rest-beta) resource.",
+          "Target": "informationProtectionLabel"
+        }
+      ],
+      "Id": "7f8dd226-41d6-456c-8836-f833ebe5f662",
+      "Cloud": "prd",
+      "Version": "beta",
+      "CreatedDateTime": "2020-06-25T19:36:30.757Z",
+      "WorkloadArea": "Security",
+      "SubArea": ""
+    }
+  ]
+}

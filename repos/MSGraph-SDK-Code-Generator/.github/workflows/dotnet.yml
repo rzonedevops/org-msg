@@ -1,0 +1,39 @@
+name: .NET
+
+on:
+  push:
+    branches: [ main, dev ]
+  pull_request:
+    branches: [ main, dev ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v5
+      with:
+        submodules: recursive
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v5.0.0
+      with:
+        dotnet-version: 8.0.x
+    - name: Restore dependencies
+      run: dotnet restore ./Typewriter.sln
+    - name: Build
+      run: dotnet build ./Typewriter.sln --no-restore
+    - name: Test
+      run: dotnet test ./Typewriter.sln --no-build --verbosity normal
+    - name: Upload languages test output on failure
+      uses: actions/upload-artifact@v5
+      if: ${{ failure() }}
+      with:
+        name: languages-test-output
+        path: 'test/Typewriter.Test/bin/Debug/net8.0/OutputDirectory*/**'
+    - name: Upload unit test output on failure
+      uses: actions/upload-artifact@v5
+      if: ${{ failure() }}
+      with:
+        name: unit-test-output
+        path: test/Typewriter.Test/bin/Debug/net8.0/output/

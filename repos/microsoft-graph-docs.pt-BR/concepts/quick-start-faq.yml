@@ -1,0 +1,84 @@
+### YamlMime:FAQ
+metadata:
+  title: Perguntas frequentes do início rápido do Microsoft Graph
+  description: Essas perguntas frequentes respondem a perguntas relacionadas ao início Graph Microsoft.
+  author: jasonjoh
+  ms.localizationpriority: medium
+  ms.openlocfilehash: 181f37b706a64395a912fe45b6b53a9b1901ea68
+  ms.sourcegitcommit: 10b45b3e666bf6b438803885128bc2f0fa2fa994
+  ms.translationtype: MT
+  ms.contentlocale: pt-BR
+  ms.lasthandoff: 05/24/2022
+  ms.locfileid: "65653557"
+title: Perguntas frequentes do início rápido do Microsoft Graph
+summary: >
+  Essas perguntas frequentes respondem a perguntas relacionadas ao [início Graph Microsoft](https://developer.microsoft.com/graph/quick-start).
+
+
+  ## <a name="about-quick-start-samples"></a>Sobre exemplos de início rápido
+
+
+  Os exemplos de início rápido mostram como acessar os recursos do Microsoft Graph. Esses exemplos acessam dois serviços com uma autenticação: Azure Active Directory e Outlook. Cada exemplo de início rápido acessa informações do perfil de um usuário da conta da Microsoft e exibe mensagens de sua caixa de entrada.
+
+
+  O início rápido envolve três etapas:
+
+
+  1. Escolha seu idioma.
+
+  2. Obtenha a ID do cliente (ID do aplicativo).
+
+  3. Baixe e execute o exemplo.
+
+
+  Quando você completar o início rápido, você possui um aplicativo pronto para ser executado.
+
+
+  ## <a name="prerequisites"></a>Pré-requisitos
+
+
+  Todos os exemplos de início rápido exigem acesso a uma conta pessoal da Microsoft com uma caixa de correio no Outlook.com ou a uma conta corporativa ou de estudante da Microsoft com uma Exchange Online de correio. Se você não tiver uma conta da Microsoft, há algumas opções para obter uma conta gratuita:
+
+
+  - Você pode [se inscrever para uma nova conta pessoal da Microsoft](https://signup.live.com/signup?wa=wsignin1.0&rpsnv=12&ct=1454618383&rver=6.4.6456.0&wp=MBI_SSL_SHARED&wreply=https://mail.live.com/default.aspx&id=64855&cbcxt=mai&bk=1454618383&uiflavor=web&uaid=b213a65b4fdc484382b6622b3ecaa547&mkt=E-US&lc=1033&lic=1).
+
+  - Você pode [se inscrever no Microsoft 365 Developer Program](https://developer.microsoft.com/office/dev-program) para obter uma assinatura Microsoft 365 desenvolvedor gratuita.
+sections:
+- name: Perguntas frequentes
+  questions:
+  - question: >
+      Posso obter o código de início rápido sem fazer o download através da página de início rápido?
+    answer: >
+      Com certeza! Cada download de exemplo de início rápido é baseado em um tutorial do Microsoft Graph, portanto, você tem duas outras opções para obter o mesmo código-fonte:
+
+
+      - Crie o código por conta própria seguindo tutorial passo a passo.
+
+      - Faça o download do projeto concluído a partir do repositório GitHub correspondente e siga as instruções no README para configurar e executar a amostra.
+
+
+      Para exibir uma tabela dos tutoriais e repositórios GitHub correspondentes, consulte os tutoriais do [Microsoft Graph.](tutorials.md)
+  - question: >
+      Por que nenhum dos exemplos de início rápido mostra casos de uso de autenticação avançados?
+    answer: >
+      Os exemplos de início rápido oferecem uma introdução à autenticação e às chamadas à API do Microsoft Graph. Você pode saber mais sobre outros [fluxos de autenticação](/azure/active-directory/develop/authentication-flows-app-scenarios) na Azure Active Directory documentação.
+  - question: >
+      E se eu tiver um erro inesperado ou um problema com um início rápido?
+    answer: >
+      Se você tiver problemas para fazer com que o início rápido funcione corretamente, abra um problema no repositório de GitHub correspondente. Para exibir uma tabela dos tutoriais e repositórios GitHub correspondentes, consulte os tutoriais do [Microsoft Graph.](tutorials.md)
+- name: Problemas conhecidos
+  questions:
+  - question: >
+      Ao executar um início rápido, eu receber a mensagem de erro AADSTS50011.
+    answer: "A mensagem de erro _\"**AADSTS50011:** A URL_ de resposta especificada na solicitação não corresponde às URLs de resposta configuradas para o aplicativo\" indica um problema com o registro do aplicativo para o início rápido. \n\nQuando você baixa um exemplo de início rápido da página de início rápido do [Microsoft Graph](https://developer.microsoft.com/graph/quick-start), criamos o registro do aplicativo e configuramos uma URL de resposta (também conhecida como URL de redirecionamento) que corresponde à URL padrão usada pelo projeto de exemplo. Se você alterar a URL, o registro do aplicativo não corresponderá mais e poderá causar esse erro.\n\nPara resolver esse erro, consulte o arquivo README.md incluído no projeto de início rápido para obter instruções sobre como criar um registro de aplicativo e configurá-lo no código de exemplo.\n"
+  - question: >
+      Depois de entrar, me disseram que preciso de aprovação do administrador.
+    answer: >
+      Depois de entrar em um dos exemplos de início rápido, você poderá ver a seguinte mensagem: "Precisa de aprovação do administrador _**:** XXX Tutorial precisa de permissão para acessar recursos em sua organização que somente um administrador pode conceder. Peça a um administrador para conceder permissão a este aplicativo antes de usá-lo."_
+
+
+      Esse não é um bug com o exemplo. Nenhum dos exemplos de início rápido solicita nenhum escopo de permissão do Microsoft Graph que, por *padrão,* exija o consentimento do administrador. Os administradores de locatários podem desabilitar sua capacidade de consentir com os escopos de permissão do Microsoft Graph para todos os aplicativos que eles não aprovaram. Nesse caso, você verá esse erro.
+
+
+      Para resolver esse erro, trabalhe com seus administradores para obter aprovação, use uma conta microsoft pessoal (Outlook.com) ou use um locatário de teste Microsoft 365 com Exchange Online.
+additionalContent: "\n## <a name=\"didnt-find-what-you-need\"></a>Não consegue encontrar o que precisa?\n\nSe essas perguntas frequentes não abordaram uma pergunta ou problema que você encontrou com um ou mais dos exemplos de início rápido, informe-nos usando a seção **comentários** a seguir."

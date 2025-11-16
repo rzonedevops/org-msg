@@ -1,0 +1,12 @@
+name: 'EOL Blocker'
+description: 'Detects and blocks pull requests with improper end-of-line sequences'
+inputs:
+  repoToken:
+    description: 'Token for the repository.'
+    required: true
+  excludeFiles:
+    description: 'Custom exclusion list. Semi-colon delimited list of glob patterns.'
+    required: false
+runs:
+  using: 'node20'
+  main: 'dist/index.js'

@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "noEmitOnError": false,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "removeComments": true,
+    "lib": [ "es2015", "dom" ],
+    "sourceMap": true,
+    "target": "es5",
+    "declaration": false,
+    "noImplicitAny": false,
+    "suppressImplicitAnyIndexErrors": true,
+    "outDir": "compiler-output"
+  },
+  "exclude": [
+    "main.ts",
+    "node_modules/"
+  ]
+}

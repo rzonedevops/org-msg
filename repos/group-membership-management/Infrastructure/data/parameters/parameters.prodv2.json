@@ -1,0 +1,75 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "isProduction": {
+      "value": true
+    },
+    "notificationsTableName": {
+      "value": "notifications"
+    },
+    "serviceBusTopicSubscriptions": {
+      "value": [
+        {
+          "name": "GroupMembership",
+          "ruleName": "syncType",
+          "ruleSqlExpression": "Type = 'GroupMembership'"
+        },
+        {
+          "name": "TeamsChannelMembership",
+          "ruleName": "syncType",
+          "ruleSqlExpression": "Type = 'TeamsChannelMembership'"
+        },
+        {
+          "name": "GroupOwnership",
+          "ruleName": "syncType",
+          "ruleSqlExpression": "Type = 'GroupOwnership'"
+        }
+      ]
+    },
+    "serviceBusTopicName": {
+      "value": "syncJobs"
+    },
+    "serviceBusQueueName": {
+      "value": "membership"
+    },
+    "notifierProviderId": {
+      "value": ""
+    },
+    "sqlAdministratorsGroupId": {
+      "value": ""
+    },
+    "sqlAdministratorsGroupName": {
+      "value": ""
+    },
+    "sqlSkuName": {
+      "value": "GP_S_Gen5"
+    },
+    "sqlSkuTier": {
+      "value": "GeneralPurpose"
+    },
+    "sqlSkuFamily": {
+      "value": "Gen5"
+    },
+    "sqlSkuCapacity": {
+      "value": 4
+    },
+    "serviceBusMembershipUpdatersTopicSubscriptions": {
+      "value": {
+        "topicName": "membershipUpdaters",
+        "subscriptions": [
+          {
+            "name": "GraphUpdater",
+            "ruleName": "updaterType",
+            "ruleSqlExpression": "Type = 'GroupMembership'"
+          },
+          {
+            "name": "TeamsChannelUpdater",
+            "ruleName": "updaterType",
+            "ruleSqlExpression": "Type = 'TeamsChannelMembership'"
+          }
+        ]
+      }
+    }
+  }
+}

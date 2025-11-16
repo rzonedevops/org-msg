@@ -1,0 +1,24 @@
+name: 'Comment rotation action'
+description: 'Adds a comment to the PR and removes previously added comment if it already ran on the PR.'
+branding:
+  icon: activity
+  color: orange
+inputs:
+  comment:
+    description:
+      'Comment to post. This can be comment text or a path to a file containing the comment text.'
+    required: true
+  prNumber:
+    description:
+      'PR number to post the comment on'
+    required: true
+  GH_TOKEN:
+    description: 'GitHub token to post/remove comments. The workflow must have the permissions: `issues: write` and `pull-requests: write`.'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    COMMENT: ${{inputs.comment}}
+    PR_NUMBER: ${{inputs.prNumber}}
+    GH_TOKEN: ${{inputs.GH_TOKEN}}

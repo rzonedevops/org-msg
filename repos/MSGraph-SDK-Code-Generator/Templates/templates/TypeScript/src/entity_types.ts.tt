@@ -1,0 +1,51 @@
+<# // Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information. #>
+<#@ template debug="true" hostspecific="true" language="C#" #>
+<#@ output extension="\\" #>
+<#
+    CustomT4Host host           = (CustomT4Host) Host;
+    CodeWriterTypeScript writer = (CodeWriterTypeScript) host.CodeWriter;
+
+    var model                   = host.CurrentModel;
+    var typeScriptNamespaces    = model.GetTypeScriptNamespaces();
+    var mainNamespace           = typeScriptNamespaces.MainNamespace.GetMainNamespace();
+#>
+<#
+if (mainNamespace == "microsoftgraphbeta")
+{
+#>
+// Project: https://github.com/microsoftgraph/msgraph-beta-typescript-typings
+<#
+} else
+{
+#>
+// Project: https://github.com/microsoftgraph/msgraph-typescript-typings
+<#
+}
+#>
+// Definitions by: Microsoft Graph Team <https://github.com/microsoftgraph>
+//                 Michael Mainer <https://github.com/MIchaelMainer>
+//                 Peter Ombwa <https://github.com/peombwa>
+//                 Mustafa Zengin <https://github.com/zengin>
+//                 DeVere Dyett <https://github.com/ddyett>
+//                 Nikitha Udaykumar Chettiar <https://github.com/nikithauc>
+<#
+if (mainNamespace != "microsoftgraphbeta")
+{
+#>
+// Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
+<#
+}
+#>
+// TypeScript Version: 2.1
+
+export as namespace <#=mainNamespace#>;
+
+export type NullableOption<T> = T | null;
+
+<#=typeScriptNamespaces.MainNamespace.ToString()#>
+<#
+foreach (var subNamespace in typeScriptNamespaces.SubNamespaces)
+{
+#><#=subNamespace.Value.ToString()#><#
+}
+#>

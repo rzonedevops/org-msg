@@ -1,0 +1,217 @@
+name: Lint, Build, Test and Deploy
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+      - dev
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+
+env:
+  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  install:
+    name: Install node modules
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+
+      - name: Cache npm
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: npm-${{ hashFiles('package-lock.json') }}
+          restore-keys: npm-
+
+      - name: Cache node_modules
+        uses: actions/cache@v4
+        id: cache-node-modules
+        with:
+          path: |
+            node_modules
+            packages/*/node_modules
+          key: modules-${{ hashFiles('package-lock.json') }}
+
+      - name: Install dependencies
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: npm ci --no-audit
+
+  code-linting:
+    name: Lint
+    needs: install
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+
+      - name: Cache node_modules
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            packages/*/node_modules
+          key: modules-${{ hashFiles('package-lock.json') }}
+
+      - name: Lint
+        run: npm run lint
+
+  build:
+    name: Build packages
+    needs: install
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+
+      - name: Cache node_modules
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            packages/*/node_modules
+          key: modules-${{ hashFiles('package-lock.json') }}
+
+      - name: Build
+        run: npm run build
+        env:
+          CI: false
+
+  test:
+    name: Test
+    needs: install
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        shard: [1, 2, 3, 4, 5, 6]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+
+      - name: Cache node_modules
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            packages/*/node_modules
+          key: modules-${{ hashFiles('package-lock.json') }}
+
+      - name: Test
+        run: npm run test -- --verbose --shard=${{ matrix.shard }}/${{ strategy.job-total }} --coverage  --testResultsProcessor=jest-sonar-reporter
+
+      - name: Fix code coverage paths
+        run: |
+          sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' coverage/lcov.info
+          sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' reports/test-report.xml
+
+      - run: cp reports/test-report.xml coverage/${{matrix.shard}}.xml
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: coverage-${{ matrix.shard }}-artifacts
+          path: coverage/
+
+  sonar-cloud:
+    name: Sonar Cloud analysis
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/download-artifact@v4
+        with:
+          path: coverage
+          pattern: coverage-*
+          merge-multiple: true
+
+      - name: Run sonar cloud analysis
+        uses: SonarSource/sonarqube-scan-action@v5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+  publish-preview-site:
+    name: Static preview site creation
+    needs: install
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+    outputs:
+      static_web_app_url: ${{ steps.builddeploy.outputs.static_web_app_url }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build And Deploy
+        env:
+          REACT_APP_CLIENT_ID: ${{ secrets.REACT_APP_CLIENT_ID }}
+          REACT_APP_FEEDBACK_CAMPAIGN_ID: ${{ secrets.REACT_APP_FEEDBACK_CAMPAIGN_ID }},
+          REACT_APP_NPS_FEEDBACK_CAMPAIGN_ID: ${{secrets.REACT_APP_NPS_FEEDBACK_CAMPAIGN_ID}}
+          REACT_APP_INSTRUMENTATION_KEY: ${{ secrets.REACT_APP_STAGING_INSTRUMENTATION_KEY }}
+          REACT_APP_CONNECTION_STRING: ${{ secrets.REACT_APP_STAGING_CONNECTION_STRING }}
+          REACT_APP_NOMINATION_PERIOD: ${{secrets.REACT_APP_NOMINATION_PERIOD}}
+          REACT_APP_COOLDOWN_PERIOD: ${{secrets.REACT_APP_COOLDOWN_PERIOD}}
+          REACT_APP_USAGE_TIME: ${{secrets.REACT_APP_USAGE_TIME}}
+          REACT_APP_DEVX_API_URL: ${{secrets.REACT_APP_DEVX_API_URL}}
+          REACT_APP_MIGRATION_PARAMETER: ${{secrets.REACT_APP_MIGRATION_PARAMETER}}
+          SKIP_DEPLOY_ON_MISSING_SECRETS: true
+          CI: false
+        id: builddeploy
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_JOLLY_SAND_0AC78C710 }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
+          action: 'upload'
+          app_location: '/' # App source code path
+          output_location: 'build' # Built app content directory - optional
+
+      - name: Set url
+        run: |
+          echo "::set-output name=static_web_app_url::$PLAYWRIGHT_TESTS_BASE_URL"
+          echo $PLAYWRIGHT_TESTS_BASE_URL
+
+  close_pull_request_job:
+    if: github.event_name == 'pull_request' && github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    name: Close Pull Request Job
+    steps:
+      - name: Close Pull Request
+        id: closepullrequest
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_JOLLY_SAND_0AC78C710 }}
+          action: 'close'

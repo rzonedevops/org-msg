@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <InvariantGlobalization>true</InvariantGlobalization>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <TrimmerSingleWarn>false</TrimmerSingleWarn>
+        <PublishTrimmed>true</PublishTrimmed>
+        <PublishAot>true</PublishAot>
+        <NoWarn>IL3000</NoWarn> <!-- Ignore IL3000 warning as it references a code outside our control -->
+    </PropertyGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\..\src\Microsoft.Graph.Core\Microsoft.Graph.Core.csproj" />
+      <TrimmerRootAssembly Include="Microsoft.Graph.Core" />
+    </ItemGroup>
+</Project>

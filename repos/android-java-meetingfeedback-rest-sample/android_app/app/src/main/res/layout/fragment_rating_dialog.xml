@@ -1,0 +1,71 @@
+<!--
+   - Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license.
+   - See LICENSE in the project root for license information.
+  -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:padding="24dp"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:textSize="16sp"
+        android:id="@+id/fragment_rating_organizer_name"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/rate_this_meeting_text"
+        android:textStyle="bold"
+        android:paddingTop="8dp"
+        android:textSize="16sp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="8dp"
+        >
+
+        <RatingBar
+            android:numStars="5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/fragment_rating_rating_bar"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/being_the_highest_text"
+            android:textSize="12sp"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/how_to_improve_text"
+        android:paddingTop="16dp"
+        android:textSize="16sp"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:lines="3"
+        android:inputType="textMultiLine"
+        android:layout_height="wrap_content"
+        android:id="@+id/fragment_rating_comments"
+        />
+
+
+</LinearLayout>

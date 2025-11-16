@@ -1,0 +1,2 @@
+### latest-reply-extractor
+The code from `com.microsoft.graphdataconnect.skillsfinder.replyextractor.parser.text` package is taken from https://github.com/edlio/EmailReplyParser and adapted for our specific use case.

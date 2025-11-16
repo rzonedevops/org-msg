@@ -1,0 +1,531 @@
+{
+    "folder": {
+        "name": "mgdc101"
+    },
+    "nbformat": 4,
+    "nbformat_minor": 2,
+    "bigDataPool": {
+        "referenceName": "DefaultPool",
+        "type": "BigDataPoolReference"
+    },
+    "sessionProperties": {
+        "driverMemory": "28g",
+        "driverCores": 4,
+        "executorMemory": "28g",
+        "executorCores": 4,
+        "numExecutors": 2,
+        "conf": {
+            "spark.dynamicAllocation.enabled": "false",
+            "spark.dynamicAllocation.minExecutors": "2",
+            "spark.dynamicAllocation.maxExecutors": "2"
+        }
+    },
+    "metadata": {
+        "saveOutput": true,
+        "synapse_widget": {
+            "version": "0.1"
+        },
+        "kernelspec": {
+            "name": "synapse_spark",
+            "display_name": "Synapse Spark"
+        },
+        "language_info": {
+            "name": "scala"
+        },
+        "a365ComputeOptions": {
+            "id": "/subscriptions/894f56bb-ecf5-4a8b-a3e1-6b67703d7c1c/resourceGroups/mgdc101/providers/Microsoft.Synapse/workspaces/mgdc101synapse/bigDataPools/DefaultPool",
+            "name": "DefaultPool",
+            "type": "Spark",
+            "endpoint": "https://mgdc101synapse.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/DefaultPool",
+            "auth": {
+                "type": "AAD",
+                "authResource": "https://dev.azuresynapse.net"
+            },
+            "sparkVersion": "2.4",
+            "nodeCount": 3,
+            "cores": 4,
+            "memory": 28,
+            "extraHeader": null
+        }
+    },
+    "cells": [
+        {
+            "cell_type": "code",
+            "metadata": {
+                "jupyter": {
+                    "source_hidden": false,
+                    "outputs_hidden": false
+                },
+                "nteract": {
+                    "transient": {
+                        "deleting": false
+                    }
+                },
+                "collapsed": true,
+                "tags": [
+                    "parameters"
+                ]
+            },
+            "source": [
+                "val storageAccountKey = \"\"\n",
+                "val usersInputContainer = \"\"\n",
+                "val storageAccountName = \"\"\n",
+                "val usersInputFolderPath = \"\"\n",
+                "val managerInputContainer = \"\"\n",
+                "val managerInputFolderPath = \"\"\n",
+                "val jdbcHostname = \"\"\n",
+                "val jdbcPort = 1433\n",
+                "val jdbcDatabase =\"\"\n",
+                "val jdbcUsername = \"\"\n",
+                "val jdbcPassword = \"\""
+            ],
+            "attachments": null,
+            "outputs": [],
+            "execution_count": 18
+        },
+        {
+            "cell_type": "code",
+            "metadata": {
+                "jupyter": {
+                    "source_hidden": false,
+                    "outputs_hidden": false
+                },
+                "nteract": {
+                    "transient": {
+                        "deleting": false
+                    }
+                },
+                "collapsed": true,
+                "tags": [
+                    "parameters"
+                ]
+            },
+            "source": [
+                "case class UserDetails(\n",
+                "                        aboutMe: String,\n",
+                "                        birthday: String,\n",
+                "                        hireDate: String,\n",
+                "                        mySite: String,\n",
+                "                        preferredName: String,\n",
+                "                        accountEnabled: Boolean,\n",
+                "                        city: String,\n",
+                "                        companyName: String,\n",
+                "                        country: String,\n",
+                "                        createdDateTime: String,\n",
+                "                        department: String,\n",
+                "                        displayName: String,\n",
+                "                        givenName: String,\n",
+                "                        id: String,\n",
+                "                        jobTitle: String,\n",
+                "                        mail: String,\n",
+                "                        officeLocation: String,\n",
+                "                        onPremisesImmutableId: String,\n",
+                "                        postalCode: String,\n",
+                "                        preferredLanguage: String,\n",
+                "                        state: String,\n",
+                "                        streetAddress: String,\n",
+                "                        surname: String,\n",
+                "                        usageLocation: String,\n",
+                "                        userPrincipalName: String,\n",
+                "                        userType: String,\n",
+                "                        puser: String,\n",
+                "                        ptenant: String,\n",
+                "                        pAdditionalInfo: String,\n",
+                "                        datarow: BigInt,\n",
+                "                        userrow: BigInt,\n",
+                "                        pagerow: BigInt\n",
+                "                      )\n",
+                "case class UserManager(puser: String,\n",
+                "                       displayName: String,\n",
+                "                       mail: String)\n",
+                "case class EmployeeProfile(\n",
+                "                            aboutMe: String,\n",
+                "                            birthday: String,\n",
+                "                            hireDate: String,\n",
+                "                            mySite: String,\n",
+                "                            preferredName: String,\n",
+                "                            accountEnabled: Boolean,\n",
+                "                            city: String,\n",
+                "                            companyName: String,\n",
+                "                            country: String,\n",
+                "                            createdDateTime: String,\n",
+                "                            department: String,\n",
+                "                            displayName: String,\n",
+                "                            givenName: String,\n",
+                "                            id: String,\n",
+                "                            jobTitle: String,\n",
+                "                            mail: String,\n",
+                "                            officeLocation: String,\n",
+                "                            onPremisesImmutableId: String,\n",
+                "                            postalCode: String,\n",
+                "                            preferredLanguage: String,\n",
+                "                            state: String,\n",
+                "                            streetAddress: String,\n",
+                "                            surname: String,\n",
+                "                            usageLocation: String,\n",
+                "                            userPrincipalName: String,\n",
+                "                            userType: String,\n",
+                "                            puser: String,\n",
+                "                            ptenant: String,\n",
+                "                            pAdditionalInfo: String,\n",
+                "                            datarow: BigInt,\n",
+                "                            userrow: BigInt,\n",
+                "                            pagerow: BigInt,\n",
+                "                            reportsTo: String,\n",
+                "                            managerEmail: String\n",
+                "                          )\n",
+                "\n",
+                "object EmployeeProfile {\n",
+                "  def apply(userDetails: UserDetails,\n",
+                "            reportsTo: String,\n",
+                "            managerEmail: String): EmployeeProfile = {\n",
+                "    new EmployeeProfile(\n",
+                "        userDetails.aboutMe,\n",
+                "        userDetails.birthday,\n",
+                "        userDetails.hireDate,\n",
+                "        userDetails.mySite,\n",
+                "        userDetails.preferredName,\n",
+                "        userDetails.accountEnabled,\n",
+                "        userDetails.city,\n",
+                "        userDetails.companyName,\n",
+                "        userDetails.country,\n",
+                "        userDetails.createdDateTime,\n",
+                "        if (userDetails.department == null) \"N/A\" else userDetails.department,\n",
+                "        userDetails.displayName,\n",
+                "        userDetails.givenName,\n",
+                "        userDetails.id,\n",
+                "        userDetails.jobTitle,\n",
+                "        userDetails.mail,\n",
+                "        userDetails.officeLocation,\n",
+                "        userDetails.onPremisesImmutableId,\n",
+                "        userDetails.postalCode,\n",
+                "        userDetails.preferredLanguage,\n",
+                "        userDetails.state,\n",
+                "        userDetails.streetAddress,\n",
+                "        userDetails.surname,\n",
+                "        userDetails.usageLocation,\n",
+                "        userDetails.userPrincipalName,\n",
+                "        userDetails.userType,\n",
+                "        userDetails.puser,\n",
+                "        userDetails.ptenant,\n",
+                "        userDetails.pAdditionalInfo,\n",
+                "        userDetails.datarow,\n",
+                "        userDetails.userrow,\n",
+                "        userDetails.pagerow,\n",
+                "        if(reportsTo == null) \"-\" else reportsTo ,\n",
+                "        if (managerEmail != null) managerEmail.trim else managerEmail\n",
+                "    )\n",
+                "  }\n",
+                "}"
+            ],
+            "attachments": null,
+            "outputs": [],
+            "execution_count": 4
+        },
+        {
+            "cell_type": "code",
+            "metadata": {
+                "jupyter": {
+                    "source_hidden": false,
+                    "outputs_hidden": false
+                },
+                "nteract": {
+                    "transient": {
+                        "deleting": false
+                    }
+                },
+                "collapsed": true
+            },
+            "source": [
+                "spark.conf.set(s\"fs.azure.account.key.$storageAccountName.blob.core.windows.net\",storageAccountKey)"
+            ],
+            "attachments": null,
+            "outputs": [],
+            "execution_count": 5
+        },
+        {
+            "cell_type": "code",
+            "metadata": {
+                "jupyter": {
+                    "source_hidden": false,
+                    "outputs_hidden": false
+                },
+                "nteract": {
+                    "transient": {
+                        "deleting": false
+                    }
+                },
+                "collapsed": true
+            },
+            "source": [
+                "val usersDataInputPath = s\"wasbs://$usersInputContainer@$storageAccountName.blob.core.windows.net/$usersInputFolderPath\""
+            ],
+            "attachments": null,
+            "outputs": [],
+            "execution_count": 6
+        },
+        {
+            "cell_type": "code",
+            "metadata": {
+                "jupyter": {
+                    "source_hidden": false,
+                    "outputs_hidden": false
+                },
+                "nteract": {
+                    "transient": {
+                        "deleting": false
+                    }
+                },
+                "collapsed": true
+            },
+            "source": [
+                "import org.apache.spark.sql.DataFrame\n",
+                "var m365UsersDf: DataFrame = spark.read.json(usersDataInputPath)"
+            ],
+            "attachments": null,
+            "outputs": [],
+            "execution_count": 7
+        },
+        {
+            "cell_type": "code",
+            "metadata": {
+                "jupyter": {
+                    "source_hidden": false,
+                    "outputs_hidden": false
+                },
+                "nteract": {
+                    "transient": {
+                        "deleting": false
+                    }
+                },
+                "collapsed": true
+            },
+            "source": [
+                "m365UsersDf = m365UsersDf.select(\"aboutMe\", \"birthday\", \"hireDate\", \"mySite\", \"preferredName\", \"accountEnabled\", \"city\", \"companyName\",\n",
+                "\"country\", \"createdDateTime\", \"department\", \"displayName\", \"givenName\", \"id\", \"jobTitle\",\n",
+                "\"mail\", \"officeLocation\", \"onPremisesImmutableId\", \"postalCode\", \"preferredLanguage\",\n",
+                "\"state\", \"streetAddress\", \"surname\", \"usageLocation\", \"userPrincipalName\", \"userType\",\n",
+                "\"puser\", \"ptenant\", \"pAdditionalInfo\", \"datarow\", \"userrow\", \"pagerow\")"
+            ],
+            "attachments": null,
+            "outputs": [],
+            "execution_count": 8
+        },
+        {
+            "cell_type": "code",
+            "metadata": {
+                "jupyter": {
+                    "source_hidden": false,
+                    "outputs_hidden": false
+                },
+                "nteract": {
+                    "transient": {
+                        "deleting": false
+                    }
+                },
+                "collapsed": true
+            },
+            "source": [
+                "val m365UsersDs = m365UsersDf.as[UserDetails]"
+            ],
+            "attachments": null,
+            "outputs": [],
+            "execution_count": 9
+        },
+        {
+            "cell_type": "code",
+            "metadata": {
+                "jupyter": {
+                    "source_hidden": false,
+                    "outputs_hidden": false
+                },
+                "nteract": {
+                    "transient": {
+                        "deleting": false
+                    }
+                },
+                "collapsed": true
+            },
+            "source": [
+                "val managerDataInputPath = s\"wasbs://$managerInputContainer@$storageAccountName.blob.core.windows.net/$managerInputFolderPath\""
+            ],
+            "attachments": null,
+            "outputs": [],
+            "execution_count": 10
+        },
+        {
+            "cell_type": "code",
+            "metadata": {
+                "jupyter": {
+                    "source_hidden": false,
+                    "outputs_hidden": false
+                },
+                "nteract": {
+                    "transient": {
+                        "deleting": false
+                    }
+                },
+                "collapsed": true
+            },
+            "source": [
+                "val m365UsersManagersDf = spark.read.json(managerDataInputPath)"
+            ],
+            "attachments": null,
+            "outputs": [],
+            "execution_count": 11
+        },
+        {
+            "cell_type": "code",
+            "metadata": {
+                "jupyter": {
+                    "source_hidden": false,
+                    "outputs_hidden": false
+                },
+                "nteract": {
+                    "transient": {
+                        "deleting": false
+                    }
+                },
+                "collapsed": true
+            },
+            "source": [
+                "val m365UsersManagersDs = m365UsersManagersDf.select(\"puser\", \"displayName\", \"mail\").as[UserManager]"
+            ],
+            "attachments": null,
+            "outputs": [],
+            "execution_count": 12
+        },
+        {
+            "cell_type": "code",
+            "metadata": {
+                "jupyter": {
+                    "source_hidden": false,
+                    "outputs_hidden": false
+                },
+                "nteract": {
+                    "transient": {
+                        "deleting": false
+                    }
+                },
+                "collapsed": true
+            },
+            "source": [
+                "val usersWithManagersDs = m365UsersDs.joinWith(m365UsersManagersDs, m365UsersDf(\"id\") === m365UsersManagersDs(\"puser\"), \"left\")"
+            ],
+            "attachments": null,
+            "outputs": [],
+            "execution_count": 13
+        },
+        {
+            "cell_type": "code",
+            "metadata": {
+                "jupyter": {
+                    "source_hidden": false,
+                    "outputs_hidden": false
+                },
+                "nteract": {
+                    "transient": {
+                        "deleting": false
+                    }
+                },
+                "collapsed": true
+            },
+            "source": [
+                "val employeeProfilesDs = usersWithManagersDs.mapPartitions { partition => {\n",
+                "\n",
+                "      partition.map {\n",
+                "        case (userDetails: UserDetails, userManager: UserManager) =>\n",
+                "          EmployeeProfile(\n",
+                "            userDetails,\n",
+                "            reportsTo = userManager.displayName,\n",
+                "            managerEmail = userManager.mail)\n",
+                "        case (userDetails: UserDetails, _) =>\n",
+                "          EmployeeProfile(\n",
+                "            userDetails,\n",
+                "            reportsTo = null,\n",
+                "            managerEmail = null)\n",
+                "      }\n",
+                "    }\n",
+                "    }"
+            ],
+            "attachments": null,
+            "outputs": [],
+            "execution_count": 14
+        },
+        {
+            "cell_type": "code",
+            "metadata": {
+                "jupyter": {
+                    "source_hidden": false,
+                    "outputs_hidden": false
+                },
+                "nteract": {
+                    "transient": {
+                        "deleting": false
+                    }
+                },
+                "collapsed": true
+            },
+            "source": [
+                "val jdbcUrl = s\"jdbc:sqlserver://$jdbcHostname:$jdbcPort;database=$jdbcDatabase;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;\""
+            ],
+            "attachments": null,
+            "outputs": [],
+            "execution_count": 19
+        },
+        {
+            "cell_type": "code",
+            "metadata": {
+                "jupyter": {
+                    "source_hidden": false,
+                    "outputs_hidden": false
+                },
+                "nteract": {
+                    "transient": {
+                        "deleting": false
+                    }
+                },
+                "collapsed": true
+            },
+            "source": [
+                "import java.util.Properties\n",
+                "val scope = \"https://database.windows.net/\"\n",
+                "val driverClass = \"com.microsoft.sqlserver.jdbc.SQLServerDriver\"\n",
+                "val connectionProperties = new Properties()\n",
+                "connectionProperties.put(\"Driver\", driverClass)\n",
+                "connectionProperties.put(\"hostNameInCertificate\", \"*.database.windows.net\")\n",
+                "connectionProperties.put(\"encrypt\", \"true\")\n",
+                "connectionProperties.put(\"ServerCertificate\", \"false\")\n",
+                "connectionProperties.put(\"trustServerCertificate\", \"false\")\n",
+                "connectionProperties.put(\"loginTimeout\", \"30\")\n",
+                "connectionProperties.put(\"user\", jdbcUsername)\n",
+                "connectionProperties.put(\"password\", jdbcPassword)"
+            ],
+            "attachments": null,
+            "outputs": [],
+            "execution_count": 20
+        },
+        {
+            "cell_type": "code",
+            "metadata": {
+                "jupyter": {
+                    "source_hidden": false,
+                    "outputs_hidden": false
+                },
+                "nteract": {
+                    "transient": {
+                        "deleting": false
+                    }
+                },
+                "collapsed": true
+            },
+            "source": [
+                "import org.apache.spark.sql.SaveMode\n",
+                "employeeProfilesDs.coalesce(1).write.mode(SaveMode.Append).jdbc(jdbcUrl, \"users\", connectionProperties)"
+            ],
+            "attachments": null,
+            "outputs": [],
+            "execution_count": 21
+        }
+    ]
+}

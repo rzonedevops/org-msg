@@ -1,0 +1,31 @@
+---
+description: Автоматически созданный файл. НЕ ИЗМЕНЯТЬ
+ms.openlocfilehash: bbcaa38cd7a8c14f02c4dad3d46ea4d3e87810a3f6d0bcf1926cd8f326e360a7
+ms.sourcegitcommit: 986c33b848fa22a153f28437738953532b78c051
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 08/05/2021
+ms.locfileid: "57308331"
+---
+```javascript
+
+const options = {
+    authProvider,
+};
+
+const client = Client.init(options);
+
+const governanceRoleSetting = {
+   adminEligibleSettings: [
+      {
+         ruleIdentifier: 'ExpirationRule',
+         setting: '{\"permanentAssignment\':false,\'maximumGrantPeriodInMinutes\':129600}"
+      }
+   ]
+};
+
+await client.api('/privilegedAccess/azureResources/roleSettings/5fb5aef8-1081-4b8e-bb16-9d5d0385bab5')
+    .version('beta')
+    .update(governanceRoleSetting);
+
+```

@@ -1,0 +1,18 @@
+---
+description: Автоматически созданный файл. НЕ ИЗМЕНЯТЬ
+ms.openlocfilehash: 6d0bfb7d6ee1465c79559ffcecccb736c6d0a9d0e02cd2e712500af6f78c640d
+ms.sourcegitcommit: 986c33b848fa22a153f28437738953532b78c051
+ms.translationtype: HT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 08/05/2021
+ms.locfileid: "57430366"
+---
+```csharp
+
+GraphServiceClient graphClient = new GraphServiceClient( authProvider );
+
+var sites = await graphClient.Sites["{site-id}"].Sites
+    .Request()
+    .GetAsync();
+
+```

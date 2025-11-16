@@ -1,0 +1,21 @@
+{
+    "Subject": "Weekly Sync",
+    "Location": {
+        "DisplayName": "Water cooler"
+    },
+    "Attendees": [
+                  {"Type": "Required", "EmailAddress": {"Address": "mara@fabrikam.com"}}
+                  ],
+    "Start": {
+        "DateTime": "<STARTDATETIME>",
+        "TimeZone": "<TIMEZONE>"
+    },
+    "End": {
+        "DateTime": "<ENDDATETIME>",
+        "TimeZone": "<TIMEZONE>"
+    },
+    "Body": {
+        "Content": "Status updates, blocking issues, and next steps.",
+        "ContentType": "Text"
+    }
+}

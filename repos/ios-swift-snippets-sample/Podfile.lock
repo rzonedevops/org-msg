@@ -1,0 +1,34 @@
+PODS:
+  - MSAL (0.4.0):
+    - MSAL/app-lib (= 0.4.0)
+  - MSAL/app-lib (0.4.0)
+  - MSGraphSDK (0.10.1):
+    - MSGraphSDK/Common (= 0.10.1)
+    - MSGraphSDK/Extensions (= 0.10.1)
+    - MSGraphSDK/Implementations (= 0.10.1)
+    - MSGraphSDK/MSGraphCoreSDK (= 0.10.1)
+  - MSGraphSDK/Common (0.10.1)
+  - MSGraphSDK/Extensions (0.10.1):
+    - MSGraphSDK/Implementations
+    - MSGraphSDK/MSGraphCoreSDK
+  - MSGraphSDK/Implementations (0.10.1):
+    - MSGraphSDK/Common
+  - MSGraphSDK/MSGraphCoreSDK (0.10.1):
+    - MSGraphSDK/Common
+
+DEPENDENCIES:
+  - MSAL (~> 0.4.0)
+  - MSGraphSDK
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - MSAL
+    - MSGraphSDK
+
+SPEC CHECKSUMS:
+  MSAL: fb209227bd464771648206286eb2bcca46f438ec
+  MSGraphSDK: 3c43eb632ca969593f1bdd5612b573e436bd3283
+
+PODFILE CHECKSUM: 3ad47728eb54cefdfb1d559e398f484d13aca6a9
+
+COCOAPODS: 1.6.1

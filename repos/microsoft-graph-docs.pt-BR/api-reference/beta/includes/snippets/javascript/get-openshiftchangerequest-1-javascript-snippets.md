@@ -1,0 +1,22 @@
+---
+description: Arquivo gerado automaticamente. NÃO MODIFICAR
+ms.openlocfilehash: 5888f7adb85cc081eef47429d0eaa25e2b1b4c27f531c1bf379c0fe3b8ca48ec
+ms.sourcegitcommit: 986c33b848fa22a153f28437738953532b78c051
+ms.translationtype: MT
+ms.contentlocale: pt-BR
+ms.lasthandoff: 08/05/2021
+ms.locfileid: "57215568"
+---
+```javascript
+
+const options = {
+    authProvider,
+};
+
+const client = Client.init(options);
+
+let openShiftChangeRequest = await client.api('/teams/{id}/schedule/openShiftChangeRequests/SREQ_0b87dd20-d5ed-4764-9c3e-cfc8516def09')
+    .version('beta')
+    .get();
+
+```

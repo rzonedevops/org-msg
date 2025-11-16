@@ -1,0 +1,589 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E504670F2148089F00E97F84 /* MSGraphMSALAuthProvider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E50467052148089F00E97F84 /* MSGraphMSALAuthProvider.framework */; };
+		E50467142148089F00E97F84 /* MSGraphMSALAuthProviderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E50467132148089F00E97F84 /* MSGraphMSALAuthProviderTests.m */; };
+		E50467162148089F00E97F84 /* MSGraphMSALAuthProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = E50467082148089F00E97F84 /* MSGraphMSALAuthProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E50467212148273F00E97F84 /* MSALAuthenticationProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = E504671F2148273F00E97F84 /* MSALAuthenticationProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E54D12872271C7A900EB517A /* MSALAuthenticationProviderOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = E54D12852271C7A900EB517A /* MSALAuthenticationProviderOptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E54D12882271C7A900EB517A /* MSALAuthenticationProviderOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = E54D12862271C7A900EB517A /* MSALAuthenticationProviderOptions.m */; };
+		E54D129122734DF500EB517A /* MSALAuthenticationProviderOptionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E54D129022734DF500EB517A /* MSALAuthenticationProviderOptionsTests.m */; };
+		E54D1294227357D100EB517A /* MSAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E54D1293227357D100EB517A /* MSAL.framework */; };
+		E5667825214BD31000C6B7AE /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5667824214BD31000C6B7AE /* libOCMock.a */; };
+		E5667827214BD95A00C6B7AE /* MSALAuthenticationProviderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E5667826214BD95A00C6B7AE /* MSALAuthenticationProviderTests.m */; };
+		E5AACA42214941C3001B9146 /* MSALAuthenticationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = E5AACA41214941C3001B9146 /* MSALAuthenticationProvider.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E50467102148089F00E97F84 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E50466FC2148089F00E97F84 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E50467042148089F00E97F84;
+			remoteInfo = MSGraphMSALAuthProvider;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E50467052148089F00E97F84 /* MSGraphMSALAuthProvider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MSGraphMSALAuthProvider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E50467082148089F00E97F84 /* MSGraphMSALAuthProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSGraphMSALAuthProvider.h; sourceTree = "<group>"; };
+		E50467092148089F00E97F84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E504670E2148089F00E97F84 /* MSGraphMSALAuthProviderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MSGraphMSALAuthProviderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E50467132148089F00E97F84 /* MSGraphMSALAuthProviderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSGraphMSALAuthProviderTests.m; sourceTree = "<group>"; };
+		E50467152148089F00E97F84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E504671F2148273F00E97F84 /* MSALAuthenticationProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSALAuthenticationProvider.h; sourceTree = "<group>"; };
+		E54D12852271C7A900EB517A /* MSALAuthenticationProviderOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSALAuthenticationProviderOptions.h; sourceTree = "<group>"; };
+		E54D12862271C7A900EB517A /* MSALAuthenticationProviderOptions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSALAuthenticationProviderOptions.m; sourceTree = "<group>"; };
+		E54D129022734DF500EB517A /* MSALAuthenticationProviderOptionsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSALAuthenticationProviderOptionsTests.m; sourceTree = "<group>"; };
+		E54D1293227357D100EB517A /* MSAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MSAL.framework; path = ../Carthage/Build/iOS/MSAL.framework; sourceTree = "<group>"; };
+		E566781A214BD31000C6B7AE /* OCMockObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockObject.h; sourceTree = "<group>"; };
+		E566781B214BD31000C6B7AE /* OCMMacroState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMMacroState.h; sourceTree = "<group>"; };
+		E566781C214BD31000C6B7AE /* OCMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMock.h; sourceTree = "<group>"; };
+		E566781D214BD31000C6B7AE /* NSNotificationCenter+OCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+OCMAdditions.h"; sourceTree = "<group>"; };
+		E566781E214BD31000C6B7AE /* OCMFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMFunctions.h; sourceTree = "<group>"; };
+		E566781F214BD31000C6B7AE /* OCMStubRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMStubRecorder.h; sourceTree = "<group>"; };
+		E5667820214BD31000C6B7AE /* OCMRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMRecorder.h; sourceTree = "<group>"; };
+		E5667821214BD31000C6B7AE /* OCMLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMLocation.h; sourceTree = "<group>"; };
+		E5667822214BD31000C6B7AE /* OCMConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMConstraint.h; sourceTree = "<group>"; };
+		E5667823214BD31000C6B7AE /* OCMArg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMArg.h; sourceTree = "<group>"; };
+		E5667824214BD31000C6B7AE /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOCMock.a; sourceTree = "<group>"; };
+		E5667826214BD95A00C6B7AE /* MSALAuthenticationProviderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSALAuthenticationProviderTests.m; sourceTree = "<group>"; };
+		E5AACA41214941C3001B9146 /* MSALAuthenticationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSALAuthenticationProvider.m; sourceTree = "<group>"; };
+		E5DF414122735CCF007C8280 /* MSAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MSAL.framework; path = ../Carthage/Build/iOS/MSAL.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E50467012148089F00E97F84 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E504670B2148089F00E97F84 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E54D1294227357D100EB517A /* MSAL.framework in Frameworks */,
+				E504670F2148089F00E97F84 /* MSGraphMSALAuthProvider.framework in Frameworks */,
+				E5667825214BD31000C6B7AE /* libOCMock.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E50466FB2148089F00E97F84 = {
+			isa = PBXGroup;
+			children = (
+				E50467072148089F00E97F84 /* MSGraphMSALAuthProvider */,
+				E50467122148089F00E97F84 /* MSGraphMSALAuthProviderTests */,
+				E50467062148089F00E97F84 /* Products */,
+				E54D1292227357D000EB517A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		E50467062148089F00E97F84 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E50467052148089F00E97F84 /* MSGraphMSALAuthProvider.framework */,
+				E504670E2148089F00E97F84 /* MSGraphMSALAuthProviderTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E50467072148089F00E97F84 /* MSGraphMSALAuthProvider */ = {
+			isa = PBXGroup;
+			children = (
+				E50467082148089F00E97F84 /* MSGraphMSALAuthProvider.h */,
+				E50467092148089F00E97F84 /* Info.plist */,
+				E504671F2148273F00E97F84 /* MSALAuthenticationProvider.h */,
+				E5AACA41214941C3001B9146 /* MSALAuthenticationProvider.m */,
+				E54D12852271C7A900EB517A /* MSALAuthenticationProviderOptions.h */,
+				E54D12862271C7A900EB517A /* MSALAuthenticationProviderOptions.m */,
+			);
+			path = MSGraphMSALAuthProvider;
+			sourceTree = "<group>";
+		};
+		E50467122148089F00E97F84 /* MSGraphMSALAuthProviderTests */ = {
+			isa = PBXGroup;
+			children = (
+				E54D129022734DF500EB517A /* MSALAuthenticationProviderOptionsTests.m */,
+				E50467132148089F00E97F84 /* MSGraphMSALAuthProviderTests.m */,
+				E5667826214BD95A00C6B7AE /* MSALAuthenticationProviderTests.m */,
+				E566780B214BBFFE00C6B7AE /* Frameworks */,
+				E50467152148089F00E97F84 /* Info.plist */,
+			);
+			path = MSGraphMSALAuthProviderTests;
+			sourceTree = "<group>";
+		};
+		E54D1292227357D000EB517A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E54D1293227357D100EB517A /* MSAL.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E566780B214BBFFE00C6B7AE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E5667824214BD31000C6B7AE /* libOCMock.a */,
+				E5667819214BD31000C6B7AE /* OCMock */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		E5667819214BD31000C6B7AE /* OCMock */ = {
+			isa = PBXGroup;
+			children = (
+				E566781A214BD31000C6B7AE /* OCMockObject.h */,
+				E566781B214BD31000C6B7AE /* OCMMacroState.h */,
+				E566781C214BD31000C6B7AE /* OCMock.h */,
+				E566781D214BD31000C6B7AE /* NSNotificationCenter+OCMAdditions.h */,
+				E566781E214BD31000C6B7AE /* OCMFunctions.h */,
+				E566781F214BD31000C6B7AE /* OCMStubRecorder.h */,
+				E5667820214BD31000C6B7AE /* OCMRecorder.h */,
+				E5667821214BD31000C6B7AE /* OCMLocation.h */,
+				E5667822214BD31000C6B7AE /* OCMConstraint.h */,
+				E5667823214BD31000C6B7AE /* OCMArg.h */,
+			);
+			path = OCMock;
+			sourceTree = "<group>";
+		};
+		E5DF413E22735B49007C8280 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E5DF414122735CCF007C8280 /* MSAL.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		E50467022148089F00E97F84 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E50467212148273F00E97F84 /* MSALAuthenticationProvider.h in Headers */,
+				E54D12872271C7A900EB517A /* MSALAuthenticationProviderOptions.h in Headers */,
+				E50467162148089F00E97F84 /* MSGraphMSALAuthProvider.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		E50467042148089F00E97F84 /* MSGraphMSALAuthProvider */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E50467192148089F00E97F84 /* Build configuration list for PBXNativeTarget "MSGraphMSALAuthProvider" */;
+			buildPhases = (
+				E50467002148089F00E97F84 /* Sources */,
+				E50467012148089F00E97F84 /* Frameworks */,
+				E50467022148089F00E97F84 /* Headers */,
+				E50467032148089F00E97F84 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MSGraphMSALAuthProvider;
+			productName = MSGraphMSALAuthProvider;
+			productReference = E50467052148089F00E97F84 /* MSGraphMSALAuthProvider.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E504670D2148089F00E97F84 /* MSGraphMSALAuthProviderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E504671C2148089F00E97F84 /* Build configuration list for PBXNativeTarget "MSGraphMSALAuthProviderTests" */;
+			buildPhases = (
+				E504670A2148089F00E97F84 /* Sources */,
+				E504670B2148089F00E97F84 /* Frameworks */,
+				E504670C2148089F00E97F84 /* Resources */,
+				E5DF414322735D66007C8280 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E50467112148089F00E97F84 /* PBXTargetDependency */,
+			);
+			name = MSGraphMSALAuthProviderTests;
+			productName = MSGraphMSALAuthProviderTests;
+			productReference = E504670E2148089F00E97F84 /* MSGraphMSALAuthProviderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E50466FC2148089F00E97F84 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = Microsoft;
+				TargetAttributes = {
+					E50467042148089F00E97F84 = {
+						CreatedOnToolsVersion = 9.3;
+						ProvisioningStyle = Automatic;
+					};
+					E504670D2148089F00E97F84 = {
+						CreatedOnToolsVersion = 9.3;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = E50466FF2148089F00E97F84 /* Build configuration list for PBXProject "MSGraphMSALAuthProvider" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E50466FB2148089F00E97F84;
+			productRefGroup = E50467062148089F00E97F84 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E50467042148089F00E97F84 /* MSGraphMSALAuthProvider */,
+				E504670D2148089F00E97F84 /* MSGraphMSALAuthProviderTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E50467032148089F00E97F84 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E504670C2148089F00E97F84 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E5DF414322735D66007C8280 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/../Carthage/Build/iOS/MSAL.framework",
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/MSAL.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E50467002148089F00E97F84 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E54D12882271C7A900EB517A /* MSALAuthenticationProviderOptions.m in Sources */,
+				E5AACA42214941C3001B9146 /* MSALAuthenticationProvider.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E504670A2148089F00E97F84 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E50467142148089F00E97F84 /* MSGraphMSALAuthProviderTests.m in Sources */,
+				E5667827214BD95A00C6B7AE /* MSALAuthenticationProviderTests.m in Sources */,
+				E54D129122734DF500EB517A /* MSALAuthenticationProviderOptionsTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E50467112148089F00E97F84 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E50467042148089F00E97F84 /* MSGraphMSALAuthProvider */;
+			targetProxy = E50467102148089F00E97F84 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		E50467172148089F00E97F84 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E50467182148089F00E97F84 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E504671A2148089F00E97F84 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)/**",
+					"$(PROJECT_DIR)/../Carthage/Build/iOS/**",
+					"$(PROJECT_DIR)/MSGraphMSALAuthProvider/**",
+					"$(PROJECT_DIR)/MSGraphMSALAuthProvider",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = MSGraphMSALAuthProvider/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Microsoft.MSGraph.MSGraphMSALAuthProvider;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E504671B2148089F00E97F84 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)/**",
+					"$(PROJECT_DIR)/../Carthage/Build/iOS/**",
+					"$(PROJECT_DIR)/MSGraphMSALAuthProvider/**",
+					"$(PROJECT_DIR)/MSGraphMSALAuthProvider",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = MSGraphMSALAuthProvider/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Microsoft.MSGraph.MSGraphMSALAuthProvider;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		E504671D2148089F00E97F84 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"&(PROJECT_DIIR)/MSGraphMSALAuthProviderTests/Frameworks",
+					"$(SRCROOT)/../Carthage/Build/iOS/**",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/MSGraphMSALAuthProviderTests/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MSGraphMSALAuthProviderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MSGraphMSALAuthProviderTests/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Microsoft.MSGraph.MSGraphMSALAuthProviderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E504671E2148089F00E97F84 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"&(PROJECT_DIIR)/MSGraphMSALAuthProviderTests/Frameworks",
+					"$(SRCROOT)/../Carthage/Build/iOS/**",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/MSGraphMSALAuthProviderTests/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MSGraphMSALAuthProviderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MSGraphMSALAuthProviderTests/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Microsoft.MSGraph.MSGraphMSALAuthProviderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E50466FF2148089F00E97F84 /* Build configuration list for PBXProject "MSGraphMSALAuthProvider" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E50467172148089F00E97F84 /* Debug */,
+				E50467182148089F00E97F84 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E50467192148089F00E97F84 /* Build configuration list for PBXNativeTarget "MSGraphMSALAuthProvider" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E504671A2148089F00E97F84 /* Debug */,
+				E504671B2148089F00E97F84 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E504671C2148089F00E97F84 /* Build configuration list for PBXNativeTarget "MSGraphMSALAuthProviderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E504671D2148089F00E97F84 /* Debug */,
+				E504671E2148089F00E97F84 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E50466FC2148089F00E97F84 /* Project object */;
+}

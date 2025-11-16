@@ -1,0 +1,22 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+yapf = "*"
+pylint = "*"
+wheel = "==0.30.0"  # Last wheel version to generate metadata.json file which we use
+homebrew-pypi-poet = "*"
+jinja2 = "*"
+mock = "*"
+pytest = "*"
+mock-open = "*"
+bump2version = "*"
+azure-storage-blob = "==2.1.0"
+
+[packages]
+msgraph-cli-core = "*"
+
+[pipenv]
+allow_prereleases = true  # azure-cli-core version installed is a pre-release

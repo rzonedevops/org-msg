@@ -1,0 +1,17 @@
+steps:
+- template: /.azure-pipelines/generation-templates/use-dotnet-sdk.yml@self
+- checkout: self
+  displayName: checkout generator
+  fetchDepth: 1
+  submodules: recursive
+  persistCredentials: true
+
+- pwsh: dotnet build $(Build.SourcesDirectory)/src/Typewriter/Typewriter.csproj --configuration $(buildConfiguration)
+  displayName: 'Build Typewriter'
+
+- task: CopyFiles@2
+  inputs:
+    sourceFolder: '$(Build.SourcesDirectory)/src/Typewriter/bin/$(BuildConfiguration)/net8.0'
+    contents: '**/*'
+    targetFolder: '$(Build.ArtifactStagingDirectory)'
+  displayName: Copy Typewriter executable

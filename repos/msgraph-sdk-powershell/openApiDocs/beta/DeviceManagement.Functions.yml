@@ -1,0 +1,1028 @@
+openapi: 3.0.4
+info:
+  title: DeviceManagement.Functions
+  version: v1.0-beta
+servers:
+  - url: https://graph.microsoft.com/beta/
+    description: Core
+paths:
+  /deviceManagement/microsoft.graph.getAssignedRoleDetails():
+    get:
+      tags:
+        - deviceManagement.deviceManagement.Functions
+      summary: Invoke function getAssignedRoleDetails
+      description: Retrieves the assigned role definitions and role assignments of the currently authenticated user.
+      operationId: deviceManagement_getAssignedRoleDetail
+      responses:
+        2XX:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/microsoft.graph.deviceAndAppManagementAssignedRoleDetails'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: function
+  /deviceManagement/microsoft.graph.getComanagedDevicesSummary():
+    get:
+      tags:
+        - deviceManagement.deviceManagement.Functions
+      summary: Invoke function getComanagedDevicesSummary
+      operationId: deviceManagement_getComanagedDevicesSummary
+      responses:
+        2XX:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/microsoft.graph.comanagedDevicesSummary'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: function
+  /deviceManagement/microsoft.graph.getComanagementEligibleDevicesSummary():
+    get:
+      tags:
+        - deviceManagement.deviceManagement.Functions
+      summary: Invoke function getComanagementEligibleDevicesSummary
+      operationId: deviceManagement_getComanagementEligibleDevicesSummary
+      responses:
+        2XX:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/microsoft.graph.comanagementEligibleDevicesSummary'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: function
+  /deviceManagement/microsoft.graph.getEffectivePermissions():
+    get:
+      tags:
+        - deviceManagement.deviceManagement.Functions
+      summary: Invoke function getEffectivePermissions
+      operationId: deviceManagement_getEffectivePermission
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+      responses:
+        2XX:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      type: string
+                      nullable: true
+                  '@odata.nextLink':
+                    type: string
+                    nullable: true
+                additionalProperties:
+                  type: object
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: function
+      x-ms-pageable:
+        nextLinkName: '@odata.nextLink'
+        operationName: listMore
+  '/deviceManagement/microsoft.graph.getEffectivePermissions(scope=''{scope}'')':
+    get:
+      tags:
+        - deviceManagement.deviceManagement.Functions
+      summary: Invoke function getEffectivePermissions
+      operationId: deviceManagement_getEffectivePermission
+      parameters:
+        - name: scope
+          in: path
+          description: 'Usage: scope=''{scope}'''
+          required: true
+          style: simple
+          schema:
+            type: string
+            nullable: true
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+      responses:
+        2XX:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/microsoft.graph.rolePermission'
+                  '@odata.nextLink':
+                    type: string
+                    nullable: true
+                additionalProperties:
+                  type: object
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: function
+      x-ms-pageable:
+        nextLinkName: '@odata.nextLink'
+        operationName: listMore
+  '/deviceManagement/microsoft.graph.getRoleScopeTagsByIds(ids={ids})':
+    get:
+      tags:
+        - deviceManagement.deviceManagement.Functions
+      summary: Invoke function getRoleScopeTagsByIds
+      operationId: deviceManagement_getRoleScopeTagsGraphBPreId
+      parameters:
+        - name: ids
+          in: path
+          description: 'Usage: ids={ids}'
+          required: true
+          style: simple
+          schema:
+            type: array
+            items:
+              type: string
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              type: string
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              type: string
+      responses:
+        2XX:
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: Collection of roleScopeTag
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/microsoft.graph.roleScopeTag'
+                  '@odata.nextLink':
+                    type: string
+                    nullable: true
+                additionalProperties:
+                  type: object
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: function
+      x-ms-pageable:
+        nextLinkName: '@odata.nextLink'
+        operationName: listMore
+  '/deviceManagement/microsoft.graph.getRoleScopeTagsByResource(resource=''{resource}'')':
+    get:
+      tags:
+        - deviceManagement.deviceManagement.Functions
+      summary: Invoke function getRoleScopeTagsByResource
+      operationId: deviceManagement_getRoleScopeTagsGraphBPreResource
+      parameters:
+        - name: resource
+          in: path
+          description: 'Usage: resource=''{resource}'''
+          required: true
+          style: simple
+          schema:
+            type: string
+            nullable: true
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              type: string
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              type: string
+      responses:
+        2XX:
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: Collection of roleScopeTag
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/microsoft.graph.roleScopeTag'
+                  '@odata.nextLink':
+                    type: string
+                    nullable: true
+                additionalProperties:
+                  type: object
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: function
+      x-ms-pageable:
+        nextLinkName: '@odata.nextLink'
+        operationName: listMore
+  '/deviceManagement/microsoft.graph.getSuggestedEnrollmentLimit(enrollmentType=''{enrollmentType}'')':
+    get:
+      tags:
+        - deviceManagement.deviceManagement.Functions
+      summary: Invoke function getSuggestedEnrollmentLimit
+      operationId: deviceManagement_getSuggestedEnrollmentLimit
+      parameters:
+        - name: enrollmentType
+          in: path
+          description: 'Usage: enrollmentType=''{enrollmentType}'''
+          required: true
+          style: simple
+          schema:
+            type: string
+            nullable: true
+      responses:
+        2XX:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/microsoft.graph.suggestedEnrollmentLimit'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: function
+  '/deviceManagement/microsoft.graph.retrieveUserRoleDetail(userid=''{userid}'')':
+    get:
+      tags:
+        - deviceManagement.deviceManagement.Functions
+      summary: Invoke function retrieveUserRoleDetail
+      operationId: deviceManagement_retrieveUserRoleDetail
+      parameters:
+        - name: userid
+          in: path
+          description: 'Usage: userid=''{userid}'''
+          required: true
+          style: simple
+          schema:
+            type: string
+            nullable: true
+      responses:
+        2XX:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/microsoft.graph.deviceAndAppManagementAssignedRoleDetail'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: function
+  '/deviceManagement/microsoft.graph.scopedForResource(resource=''{resource}'')':
+    get:
+      tags:
+        - deviceManagement.deviceManagement.Functions
+      summary: Invoke function scopedForResource
+      operationId: deviceManagement_scopedGraphFPreResource
+      parameters:
+        - name: resource
+          in: path
+          description: 'Usage: resource=''{resource}'''
+          required: true
+          style: simple
+          schema:
+            type: string
+            nullable: true
+      responses:
+        2XX:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: boolean
+                    default: false
+                additionalProperties:
+                  type: object
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: function
+  /deviceManagement/microsoft.graph.userExperienceAnalyticsSummarizedDeviceScopes():
+    get:
+      tags:
+        - deviceManagement.deviceManagement.Functions
+      summary: Invoke function userExperienceAnalyticsSummarizedDeviceScopes
+      operationId: deviceManagement_userExperienceAnalyticsSummarizedDeviceScope
+      responses:
+        2XX:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/microsoft.graph.userExperienceAnalyticsDeviceScopeSummary'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: function
+  /deviceManagement/microsoft.graph.userExperienceAnalyticsSummarizeWorkFromAnywhereDevices():
+    get:
+      tags:
+        - deviceManagement.deviceManagement.Functions
+      summary: Invoke function userExperienceAnalyticsSummarizeWorkFromAnywhereDevices
+      operationId: deviceManagement_userExperienceAnalyticsSummarizeWorkFromAnywhereDevice
+      responses:
+        2XX:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/microsoft.graph.userExperienceAnalyticsWorkFromAnywhereDevicesSummary'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: function
+  '/deviceManagement/microsoft.graph.verifyWindowsEnrollmentAutoDiscovery(domainName=''{domainName}'')':
+    get:
+      tags:
+        - deviceManagement.deviceManagement.Functions
+      summary: Invoke function verifyWindowsEnrollmentAutoDiscovery
+      operationId: deviceManagement_verifyWindowsEnrollmentAutoDiscovery
+      parameters:
+        - name: domainName
+          in: path
+          description: 'Usage: domainName=''{domainName}'''
+          required: true
+          style: simple
+          schema:
+            type: string
+            nullable: true
+      responses:
+        2XX:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: boolean
+                    default: false
+                additionalProperties:
+                  type: object
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: function
+components:
+  schemas:
+    microsoft.graph.deviceAndAppManagementAssignedRoleDetails:
+      title: deviceAndAppManagementAssignedRoleDetails
+      type: object
+      properties:
+        roleAssignmentIds:
+          type: array
+          items:
+            type: string
+            nullable: true
+          description: Role Assignment IDs for the specifc Role Assignments assigned to a user. This property is read-only.
+          readOnly: true
+        roleDefinitionIds:
+          type: array
+          items:
+            type: string
+            nullable: true
+          description: Role Definition IDs for the specifc Role Definitions assigned to a user. This property is read-only.
+          readOnly: true
+      additionalProperties:
+        type: object
+      description: The set of Role Definitions and Role Assignments assigned to a user.
+    microsoft.graph.comanagedDevicesSummary:
+      title: comanagedDevicesSummary
+      type: object
+      properties:
+        compliancePolicyCount:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          description: Number of devices with CompliancePolicy swung-over. This property is read-only.
+          format: int32
+          readOnly: true
+        configurationSettingsCount:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          description: Number of devices with ConfigurationSettings swung-over. This property is read-only.
+          format: int32
+          readOnly: true
+        endpointProtectionCount:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          description: Number of devices with EndpointProtection swung-over. This property is read-only.
+          format: int32
+          readOnly: true
+        inventoryCount:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          description: Number of devices with Inventory swung-over. This property is read-only.
+          format: int32
+          readOnly: true
+        modernAppsCount:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          description: Number of devices with ModernApps swung-over. This property is read-only.
+          format: int32
+          readOnly: true
+        officeAppsCount:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          description: Number of devices with OfficeApps swung-over. This property is read-only.
+          format: int32
+          readOnly: true
+        resourceAccessCount:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          description: Number of devices with ResourceAccess swung-over. This property is read-only.
+          format: int32
+          readOnly: true
+        totalComanagedCount:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          description: Number of Co-Managed Devices. This property is read-only.
+          format: int32
+          readOnly: true
+        windowsUpdateForBusinessCount:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          description: Number of devices with WindowsUpdateForBusiness swung-over. This property is read-only.
+          format: int32
+          readOnly: true
+      additionalProperties:
+        type: object
+      description: Summary data for co managed devices
+    microsoft.graph.comanagementEligibleDevicesSummary:
+      title: comanagementEligibleDevicesSummary
+      type: object
+      properties:
+        comanagedCount:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          description: Count of devices already Co-Managed
+          format: int32
+        eligibleButNotAzureAdJoinedCount:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          description: Count of devices eligible for Co-Management but not yet joined to Azure Active Directory
+          format: int32
+        eligibleCount:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          description: Count of devices fully eligible for Co-Management
+          format: int32
+        ineligibleCount:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          description: Count of devices ineligible for Co-Management
+          format: int32
+        needsOsUpdateCount:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          description: Count of devices that will be eligible for Co-Management after an OS update
+          format: int32
+        scheduledForEnrollmentCount:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          description: Count of devices scheduled for Co-Management enrollment. Valid values 0 to 9999999
+          format: int32
+      additionalProperties:
+        type: object
+    microsoft.graph.rolePermission:
+      title: rolePermission
+      type: object
+      properties:
+        actions:
+          type: array
+          items:
+            type: string
+            nullable: true
+          description: Allowed Actions - Deprecated
+        resourceActions:
+          type: array
+          items:
+            $ref: '#/components/schemas/microsoft.graph.resourceAction'
+          description: Resource Actions each containing a set of allowed and not allowed permissions.
+      additionalProperties:
+        type: object
+      description: Contains the set of ResourceActions determining the allowed and not allowed permissions for each role.
+    microsoft.graph.roleScopeTag:
+      allOf:
+        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - title: roleScopeTag
+          type: object
+          properties:
+            description:
+              type: string
+              description: Description of the Role Scope Tag.
+              nullable: true
+            displayName:
+              type: string
+              description: The display or friendly name of the Role Scope Tag.
+              nullable: true
+            isBuiltIn:
+              type: boolean
+              description: Description of the Role Scope Tag. This property is read-only.
+              readOnly: true
+            assignments:
+              type: array
+              items:
+                $ref: '#/components/schemas/microsoft.graph.roleScopeTagAutoAssignment'
+              description: The list of assignments for this Role Scope Tag.
+              x-ms-navigationProperty: true
+          additionalProperties:
+            type: object
+          description: Role Scope Tag
+    microsoft.graph.suggestedEnrollmentLimit:
+      title: suggestedEnrollmentLimit
+      type: object
+      properties:
+        suggestedDailyLimit:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          description: The suggested enrollment limit within a day
+          format: int32
+      additionalProperties:
+        type: object
+      description: The suggestedEnrollmentLimit resource represents the suggested enrollment limit when given an enrollment type.
+    microsoft.graph.deviceAndAppManagementAssignedRoleDetail:
+      title: deviceAndAppManagementAssignedRoleDetail
+      type: object
+      properties:
+        permissions:
+          type: array
+          items:
+            type: string
+            nullable: true
+          description: 'The list of permissions assigned to a specific user based on their associated role definitions. Each permission defines the specific actions the user can perform on Intune resources, such as managing devices, applications, or configurations. Some possible values are: Microsoft.Intune/MobileApps/Read, Microsoft.Intune/DeviceConfigurations/Write, Microsoft.Intune/ManagedDevices/Retire, and Microsoft.Intune/DeviceCompliancePolicies/Assign. This Permissions property provides a comprehensive view of the user''s effective access rights, ensuring that they can only perform actions relevant to their assigned roles. This property is read-only.'
+          readOnly: true
+        roleDefinitions:
+          type: array
+          items:
+            $ref: '#/components/schemas/microsoft.graph.deviceAndAppManagementAssignedRoleDefinition'
+          description: 'A collection of RoleDefinitions represents the various administrative roles that define permissions and access levels within Microsoft Intune. Each RoleDefinition outlines a set of permissions that determine the actions an admin or user can perform in the Intune environment. These permissions can include actions like reading or writing to specific resources, managing device configurations, deploying policies, or handling user data. RoleDefinitions are critical for enforcing role-based access control (RBAC), ensuring that administrators can only interact with the features and data relevant to their responsibilities. RoleDefinitions in Intune can either be built-in roles provided by Microsoft or custom roles created by an organization to tailor access based on specific needs. These definitions are referenced when assigning roles to users or groups, effectively controlling the scope of their administrative privileges. The collection of RoleDefinitions is managed through the Intune console or the Graph API, allowing for scalable role management across large environments. This property is read-only.'
+          readOnly: true
+      additionalProperties:
+        type: object
+      description: 'The DeviceAndAppManagementAssignedRoleDetail is a complex type in Microsoft Intune used to represent the Role Definitions and Permissions that are assigned to a specific user. This type provides a detailed view of the roles a user holds, along with the associated permissions that determine the specific actions the user can perform within Intune environment.'
+    microsoft.graph.userExperienceAnalyticsDeviceScopeSummary:
+      title: userExperienceAnalyticsDeviceScopeSummary
+      type: object
+      properties:
+        completedDeviceScopeIds:
+          type: array
+          items:
+            type: string
+            nullable: true
+          description: A collection of the user experience analytics device scope Unique Identifiers that are enabled and finished recalculating the report metric.
+        insufficientDataDeviceScopeIds:
+          type: array
+          items:
+            type: string
+            nullable: true
+          description: A collection of user experience analytics device scope Unique Identitfiers that are enabled but there is insufficient data to calculate results.
+        totalDeviceScopes:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          description: The total number of user experience analytics device scopes. Valid values -2147483648 to 2147483647
+          format: int32
+        totalDeviceScopesEnabled:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          description: The total number of user experience analytics device scopes that are enabled. Valid values -2147483648 to 2147483647
+          format: int32
+      additionalProperties:
+        type: object
+      description: The user experience analytics tenant level information for all the device scope configurations
+    microsoft.graph.userExperienceAnalyticsWorkFromAnywhereDevicesSummary:
+      title: userExperienceAnalyticsWorkFromAnywhereDevicesSummary
+      type: object
+      properties:
+        autopilotDevicesSummary:
+          $ref: '#/components/schemas/microsoft.graph.userExperienceAnalyticsAutopilotDevicesSummary'
+        cloudIdentityDevicesSummary:
+          $ref: '#/components/schemas/microsoft.graph.userExperienceAnalyticsCloudIdentityDevicesSummary'
+        cloudManagementDevicesSummary:
+          $ref: '#/components/schemas/microsoft.graph.userExperienceAnalyticsCloudManagementDevicesSummary'
+        coManagedDevices:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          description: Total number of co-managed devices. Read-only. Valid values -2147483648 to 2147483647
+          format: int32
+        devicesNotAutopilotRegistered:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          description: The count of intune devices that are not autopilot registerd. Read-only. Valid values -2147483648 to 2147483647
+          format: int32
+        devicesWithoutAutopilotProfileAssigned:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          description: The count of intune devices not autopilot profile assigned. Read-only. Valid values -2147483648 to 2147483647
+          format: int32
+        devicesWithoutCloudIdentity:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          description: The count of devices that are not cloud identity. Read-only. Valid values -2147483648 to 2147483647
+          format: int32
+        intuneDevices:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          description: The count of intune devices that are not autopilot registerd. Read-only. Valid values -2147483648 to 2147483647
+          format: int32
+        tenantAttachDevices:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          description: Total count of tenant attach devices. Read-only. Valid values -2147483648 to 2147483647
+          format: int32
+        totalDevices:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          description: The total count of devices. Read-only. Valid values -2147483648 to 2147483647
+          format: int32
+        unsupportedOSversionDevices:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          description: The count of Windows 10 devices that have unsupported OS versions. Read-only. Valid values -2147483648 to 2147483647
+          format: int32
+        windows10Devices:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          description: The count of windows 10 devices. Read-only. Valid values -2147483648 to 2147483647
+          format: int32
+        windows10DevicesSummary:
+          $ref: '#/components/schemas/microsoft.graph.userExperienceAnalyticsWindows10DevicesSummary'
+        windows10DevicesWithoutTenantAttach:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          description: The count of windows 10 devices that are Intune and co-managed. Read-only. Valid values -2147483648 to 2147483647
+          format: int32
+      additionalProperties:
+        type: object
+      description: The user experience analytics Work From Anywhere metrics devices summary.
+    microsoft.graph.resourceAction:
+      title: resourceAction
+      type: object
+      properties:
+        allowedResourceActions:
+          type: array
+          items:
+            type: string
+            nullable: true
+          description: Allowed Actions
+        notAllowedResourceActions:
+          type: array
+          items:
+            type: string
+            nullable: true
+          description: Not Allowed Actions.
+      additionalProperties:
+        type: object
+      description: Set of allowed and not allowed actions for a resource.
+    microsoft.graph.entity:
+      title: entity
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier for an entity. Read-only.
+      additionalProperties:
+        type: object
+    microsoft.graph.roleScopeTagAutoAssignment:
+      allOf:
+        - $ref: '#/components/schemas/microsoft.graph.entity'
+        - title: roleScopeTagAutoAssignment
+          type: object
+          properties:
+            target:
+              $ref: '#/components/schemas/microsoft.graph.deviceAndAppManagementAssignmentTarget'
+          additionalProperties:
+            type: object
+          description: Contains the properties for auto-assigning a Role Scope Tag to a group to be applied to Devices.
+    microsoft.graph.deviceAndAppManagementAssignedRoleDefinition:
+      title: deviceAndAppManagementAssignedRoleDefinition
+      type: object
+      properties:
+        permissions:
+          type: array
+          items:
+            type: string
+            nullable: true
+          description: 'A list of permissions based on its associated role. Each permission defines the specific actions the user can perform on Intune resources, such as managing devices, applications, or configurations. Some possible values are: Microsoft.Intune/MobileApps/Read, Microsoft.Intune/DeviceConfigurations/Write, Microsoft.Intune/ManagedDevices/Retire, and Microsoft.Intune/DeviceCompliancePolicies/Assign. This Permissions property offers a comprehensive view of the user''s effective access rights, ensuring that they can only perform actions relevant to their assigned roles. This property is read-only.'
+          readOnly: true
+        roleDefinitionDisplayName:
+          type: string
+          description: 'The RoleDefinitionDisplayName property represents the human-readable name of a specific role definition in Microsoft Intune. This property provides a clear and descriptive name that indicates the purpose or scope of the role, helping administrators identify and assign appropriate roles to users or groups.Some example values for RoleDefinitionDisplayName might include: ''Helpdesk Operator,'' ''Application Manager,'' or ''Policy Administrator.'' This display name is primarily used in the Intune console or Graph API to present roles in a user-friendly manner, making it easier for administrators to manage role-based access control (RBAC) efficiently. This property is read-only.'
+          nullable: true
+          readOnly: true
+      additionalProperties:
+        type: object
+      description: 'Complex type to represent the role that is assigned to the user. This type contains the ID, the display name, and the permissions of the role.'
+    microsoft.graph.userExperienceAnalyticsAutopilotDevicesSummary:
+      title: userExperienceAnalyticsAutopilotDevicesSummary
+      type: object
+      properties:
+        devicesNotAutopilotRegistered:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          description: The count of intune devices that are not autopilot registerd. Read-only.
+          format: int32
+        devicesWithoutAutopilotProfileAssigned:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          description: The count of intune devices not autopilot profile assigned. Read-only.
+          format: int32
+        totalWindows10DevicesWithoutTenantAttached:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          description: The count of windows 10 devices that are Intune and co-managed. Read-only.
+          format: int32
+      additionalProperties:
+        type: object
+      description: The user experience analytics summary of Devices not windows autopilot ready.
+    microsoft.graph.userExperienceAnalyticsCloudIdentityDevicesSummary:
+      title: userExperienceAnalyticsCloudIdentityDevicesSummary
+      type: object
+      properties:
+        deviceWithoutCloudIdentityCount:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          description: The count of devices that are not cloud identity. Read-only.
+          format: int32
+      additionalProperties:
+        type: object
+      description: The user experience analytics work from anywhere cloud identity devices summary.
+    microsoft.graph.userExperienceAnalyticsCloudManagementDevicesSummary:
+      title: userExperienceAnalyticsCloudManagementDevicesSummary
+      type: object
+      properties:
+        coManagedDeviceCount:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          description: Total number of  co-managed devices. Read-only.
+          format: int32
+        intuneDeviceCount:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          description: The count of intune devices that are not autopilot registerd. Read-only.
+          format: int32
+        tenantAttachDeviceCount:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          description: Total count of tenant attach devices. Read-only.
+          format: int32
+      additionalProperties:
+        type: object
+      description: The user experience work from anywhere Cloud management devices summary.
+    microsoft.graph.userExperienceAnalyticsWindows10DevicesSummary:
+      title: userExperienceAnalyticsWindows10DevicesSummary
+      type: object
+      properties:
+        unsupportedOSversionDeviceCount:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: number
+          description: The count of Windows 10 devices that have unsupported OS versions. Read-only.
+          format: int32
+      additionalProperties:
+        type: object
+      description: The user experience analytics work from anywhere Windows 10 devices summary.
+    microsoft.graph.ODataErrors.ODataError:
+      required:
+        - error
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/microsoft.graph.ODataErrors.MainError'
+      additionalProperties:
+        type: object
+    microsoft.graph.deviceAndAppManagementAssignmentTarget:
+      title: deviceAndAppManagementAssignmentTarget
+      type: object
+      properties:
+        deviceAndAppManagementAssignmentFilterId:
+          type: string
+          description: The ID of the filter for the target assignment.
+          nullable: true
+        deviceAndAppManagementAssignmentFilterType:
+          $ref: '#/components/schemas/microsoft.graph.deviceAndAppManagementAssignmentFilterType'
+      additionalProperties:
+        type: object
+      description: Base type for assignment targets.
+    microsoft.graph.ODataErrors.MainError:
+      required:
+        - code
+        - message
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+          x-ms-primary-error-message: true
+        target:
+          type: string
+          nullable: true
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/microsoft.graph.ODataErrors.ErrorDetails'
+        innerError:
+          $ref: '#/components/schemas/microsoft.graph.ODataErrors.InnerError'
+      additionalProperties:
+        type: object
+    microsoft.graph.deviceAndAppManagementAssignmentFilterType:
+      title: deviceAndAppManagementAssignmentFilterType
+      enum:
+        - none
+        - include
+        - exclude
+      type: string
+      description: Represents type of the assignment filter.
+      x-ms-enum:
+        name: deviceAndAppManagementAssignmentFilterType
+        modelAsString: false
+        values:
+          - value: none
+            description: Default value. Do not use.
+            name: none
+          - value: include
+            description: 'Indicates in-filter, rule matching will offer the payload to devices.'
+            name: include
+          - value: exclude
+            description: 'Indicates out-filter, rule matching will not offer the payload to devices.'
+            name: exclude
+    microsoft.graph.ODataErrors.ErrorDetails:
+      required:
+        - code
+        - message
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        target:
+          type: string
+          nullable: true
+      additionalProperties:
+        type: object
+    microsoft.graph.ODataErrors.InnerError:
+      type: object
+      additionalProperties:
+        type: object
+      description: The structure of this object is service-specific
+  responses:
+    error:
+      description: error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/microsoft.graph.ODataErrors.ODataError'
+  parameters:
+    top:
+      name: $top
+      in: query
+      description: Show only the first n items
+      style: form
+      explode: false
+      schema:
+        minimum: 0
+        type: integer
+      example: 50
+    skip:
+      name: $skip
+      in: query
+      description: Skip the first n items
+      style: form
+      explode: false
+      schema:
+        minimum: 0
+        type: integer
+    search:
+      name: $search
+      in: query
+      description: Search items by search phrases
+      style: form
+      explode: false
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      description: Filter items by property values
+      style: form
+      explode: false
+      schema:
+        type: string
+    count:
+      name: $count
+      in: query
+      description: Include count of items
+      style: form
+      explode: false
+      schema:
+        type: boolean
+  securitySchemes:
+    azureaadv2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+          tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+          scopes: { }
+security:
+  - azureaadv2: [ ]

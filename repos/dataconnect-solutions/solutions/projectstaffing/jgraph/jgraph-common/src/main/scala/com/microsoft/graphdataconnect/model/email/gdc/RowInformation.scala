@@ -1,0 +1,12 @@
+/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT license. See LICENSE file in the project root for full license information.
+ */
+
+package com.microsoft.graphdataconnect.model.email.gdc
+
+case class RowInformation(errorInformation: String = "",
+                          userReturnedNoData: Option[Boolean] = None,
+                          isUserSummaryRow: Option[Boolean] = None,
+                          userHasCompleteData: Option[Boolean] = None
+                         )

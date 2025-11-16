@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="text-center">
+    <h1 class="display-4 mb-4">Welcome to Teams Realtime Activity Feed</h1>
+    <p class="lead mb-5">Monitor and transcribe Microsoft Teams meetings in real-time using Microsoft Graph API</p>
+    
+    <div class="row justify-content-center">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="ms-Icon ms-Icon--Microphone ms-fontSize-42 text-primary mb-3 d-block"></i>
+                    <h4 class="card-title">Real-time Transcription</h4>
+                    <p class="card-text">Get live transcriptions of Teams meetings as they happen</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="ms-Icon ms-Icon--People ms-fontSize-42 text-primary mb-3 d-block"></i>
+                    <h4 class="card-title">Meeting Insights</h4>
+                    <p class="card-text">Track participants and gather valuable meeting data</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="ms-Icon ms-Icon--CloudUpload ms-fontSize-42 text-primary mb-3 d-block"></i>
+                    <h4 class="card-title">Cloud-Powered</h4>
+                    <p class="card-text">Powered by Microsoft Graph and Azure services</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-5">
+        <a asp-controller="EventSubscriptions" asp-action="Create" class="btn btn-info btn-lg">
+            <i class="ms-Icon ms-Icon--UserEvent me-2"></i>Add Event Subscription
+        </a>
+        <a asp-controller="Subscriptions" asp-action="Create" class="btn btn-primary btn-lg">
+            <i class="ms-Icon ms-Icon--Add me-2"></i>Start Monitoring
+        </a>
+        <a asp-controller="Subscriptions" asp-action="Index" class="btn btn-secondary btn-lg">
+            <i class="ms-Icon ms-Icon--ViewList me-2"></i>View Subscriptions
+        </a>
+    </div>
+</div>

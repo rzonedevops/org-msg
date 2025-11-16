@@ -1,0 +1,77 @@
+name: eslint-config-msgraph release pipeline
+
+trigger:
+  tags:
+    include:
+    - 'v*.*.*'
+
+stages:
+- stage: version_info
+  pool:
+    vmImage: ubuntu-latest
+  jobs:
+  - job: version
+    steps:
+      - checkout: self
+      - task: NodeTool@0
+        inputs:
+          versionSpec: '20.x'
+        displayName: Install nodejs v20.x
+      # Read latest version from npm
+      - script: |
+          npm_version=$(npm show @microsoft/eslint-config-msgraph version)
+          echo "##vso[task.setVariable variable=npm_version;isOutput=true]$npm_version"
+        displayName: Read latest version from npmjs
+        name: npm
+      # Read version from package.json
+      - script: |
+          pkg_version=$(jq -r .version ./package.json)
+          echo "##vso[task.setVariable variable=pkg_version;isOutput=true]$pkg_version"
+        name: pkg
+
+- stage: publish
+  dependsOn: version_info
+  condition: ne(dependencies.version_info.outputs['version.npm.npm_version'], dependencies.version_info.outputs['version.pkg.pkg_version'])
+  # check that pkg and npm versions are not equal
+  jobs:
+  - deployment: PublishToNPM
+    displayName: Publish to npm
+    pool:
+      vmImage: 'windows-latest'
+    # creates an environment if it doesn't exist
+    environment: 'eslint-config-msgraph'
+    strategy: 
+      runOnce:
+        deploy:
+         steps:
+          - checkout: self
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '20.x'
+            displayName: Install nodejs 20.x
+          # building the package
+          - script: |
+              mkdir dist
+              npm pack --pack-destination dist
+              cp package.json dist
+            displayName: build npm package
+          # use ESRP to publish the package to NPM
+          - task: EsrpRelease@7
+            inputs:
+              connectedservicename: 'Federated DevX ESRP Managed Identity Connection'
+              keyvaultname: 'akv-prod-eastus'
+              authcertname: 'ReferenceLibraryPrivateCert'
+              signcertname: 'ReferencePackagePublisherCertificate'
+              clientid: '65035b7f-7357-4f29-bf25-c5ee5c3949f8'
+              Intent: 'PackageDistribution'
+              ContentType: 'npm'
+              ContentSource: 'Folder'
+              FolderLocation: ./dist/
+              WaitForReleaseCompletion: true
+              Owners: 'gavinbarron@microsoft.com,martinmusale@microsoft.com'
+              Approvers: 'mmainer@microsoft.com,martinmusale@microsoft.com'
+              ServiceEndpointUrl: 'https://api.esrp.microsoft.com'
+              MainPublisher: 'ESRPRELPACMAN'
+              DomainTenantId: 'cdc5aeea-15c5-4db6-b079-fcadd2505dc2'
+
+

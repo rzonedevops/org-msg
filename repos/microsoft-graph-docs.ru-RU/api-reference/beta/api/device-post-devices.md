@@ -1,0 +1,157 @@
+---
+title: Создание устройства
+description: Создайте новое устройство.
+author: spunukol
+ms.localizationpriority: medium
+ms.prod: directory-management
+doc_type: apiPageType
+ms.openlocfilehash: a5edf3cc84b8e922376bdda54a38d2bf9e768a70
+ms.sourcegitcommit: 995056279c2151d7ce4a0fcff067fbc6edced728
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 05/20/2022
+ms.locfileid: "65602730"
+---
+# <a name="create-device"></a>Создание устройства
+
+Пространство имен: microsoft.graph
+
+[!INCLUDE [beta-disclaimer](../../includes/beta-disclaimer.md)]
+
+Создайте новое устройство.
+## <a name="permissions"></a>Разрешения
+Для вызова этого API требуется одно из указанных ниже разрешений. Дополнительные сведения, включая сведения о том, как выбрать разрешения, см. в статье [Разрешения](/graph/permissions-reference).
+
+
+|Тип разрешения      | Разрешения (в порядке повышения привилегий)              |
+|:--------------------|:---------------------------------------------------------|
+|Делегированные (рабочая или учебная учетная запись) | Directory.AccessAsUser.All |
+|Делегированные (личная учетная запись Майкрософт) | Не поддерживается.    |
+|Для приложений | Не поддерживается. |
+
+Вызывающему пользователю также должна быть одна из следующих [ролей Azure AD](/azure/active-directory/roles/permissions-reference)*:* глобальный администратор, *Intune администратор* или *Windows 365 администратор.*
+
+## <a name="http-request"></a>HTTP-запрос
+<!-- { "blockType": "ignored" } -->
+```http
+POST /devices
+
+```
+## <a name="request-headers"></a>Заголовки запросов
+| Имя       | Описание|
+|:---------------|:--------|
+| Авторизация  | Bearer {token}. Обязательный. |
+
+## <a name="request-body"></a>Текст запроса
+Предоставьте в тексте запроса описание объекта [device](../resources/device.md) в формате JSON.
+
+Так как **ресурс устройства** поддерживает [расширения,](/graph/extensibility-overview)`POST` вы можете использовать операцию и добавлять настраиваемые свойства с собственными данными в экземпляр устройства при ее создании.
+
+## <a name="response"></a>Отклик
+
+В случае успеха этот метод возвращает код отклика `201 Created` и объект [device](../resources/device.md) в тексте отклика.
+
+## <a name="example"></a>Пример
+##### <a name="request"></a>Запрос
+Ниже приведен пример запроса.
+
+# <a name="http"></a>[HTTP](#tab/http)
+<!-- {
+  "blockType": "request",
+  "name": "create_device_from_devices"
+}-->
+```http
+POST https://graph.microsoft.com/beta/devices
+Content-type: application/json
+
+{
+  "accountEnabled": true,
+  "alternativeSecurityIds": [
+    {
+      "type": 99,
+      "identityProvider": "identityProvider-value",
+      "key": "base64Y3YxN2E1MWFlYw=="
+    }
+  ],
+  "approximateLastSignInDateTime": "2016-10-19T10:37:00Z",
+  "deviceId": "deviceId-value",
+  "deviceMetadata": "deviceMetadata-value",
+  "deviceVersion": 99
+}
+```
+# <a name="c"></a>[C#](#tab/csharp)
+[!INCLUDE [sample-code](../includes/snippets/csharp/create-device-from-devices-csharp-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+[!INCLUDE [sample-code](../includes/snippets/javascript/create-device-from-devices-javascript-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# <a name="objective-c"></a>[Objective-C](#tab/objc)
+[!INCLUDE [sample-code](../includes/snippets/objc/create-device-from-devices-objc-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# <a name="java"></a>[Java](#tab/java)
+[!INCLUDE [sample-code](../includes/snippets/java/create-device-from-devices-java-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# <a name="go"></a>[Go](#tab/go)
+[!INCLUDE [sample-code](../includes/snippets/go/create-device-from-devices-go-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+[!INCLUDE [sample-code](../includes/snippets/powershell/create-device-from-devices-powershell-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+---
+
+Предоставьте в тексте запроса описание объекта [device](../resources/device.md) в формате JSON.
+##### <a name="response"></a>Отклик
+Ниже представлен пример отклика. Примечание: показанный здесь объект отклика может быть сокращен для удобочитаемости.
+<!-- {
+  "blockType": "response",
+  "truncated": true,
+  "@odata.type": "microsoft.graph.device"
+} -->
+```http
+HTTP/1.1 200 OK
+Content-type: application/json
+
+{
+  "accountEnabled": true,
+  "alternativeSecurityIds": [
+    {
+      "type": 99,
+      "identityProvider": "identityProvider-value",
+      "key": "base64Y3YxN2E1MWFlYw=="
+    }
+  ],
+  "approximateLastSignInDateTime": "2016-10-19T10:37:00Z",
+  "deviceId": "deviceId-value",
+  "deviceMetadata": "deviceMetadata-value",
+  "deviceVersion": 99
+}
+```
+
+## <a name="see-also"></a>См. также
+
+- [Добавление пользовательских данных в ресурсы с помощью расширений](/graph/extensibility-overview)
+- [Добавление пользовательских данных в ресурсы user с помощью открытых расширений (предварительная версия)](/graph/extensibility-open-users)
+- [Добавление пользовательских данных в ресурсы group с помощью расширений схемы (предварительная версия)](/graph/extensibility-schema-groups)
+
+
+<!-- uuid: 8fcb5dbc-d5aa-4681-8e31-b001d5168d79
+2015-10-25 14:57:30 UTC -->
+<!--
+{
+  "type": "#page.annotation",
+  "description": "Create device",
+  "keywords": "",
+  "section": "documentation",
+  "tocPath": "",
+  "suppressions": [
+  ]
+}
+-->
+
+

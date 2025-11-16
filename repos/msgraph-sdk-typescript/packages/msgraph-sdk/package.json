@@ -1,0 +1,38 @@
+{
+  "name": "@microsoft/msgraph-sdk",
+  "version": "1.0.0-preview.74",
+  "description": "Microsoft Graph JavaScript client library",
+  "keywords": [
+    "microsoft",
+    "graph",
+    "msgraph"
+  ],
+  "author": "Microsoft <graphsdkpub+javascript@microsoft.com>",
+  "homepage": "https://github.com/microsoftgraph/msgraph-sdk-typescript#readme",
+  "license": "MIT",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/microsoftgraph/msgraph-sdk-typescript.git"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "clean": "rimraf -g **/*.d.ts && rimraf -g **/*.d.ts.map && rimraf -g **/*.js.map && rimraf -g **/*.js && rimraf tsconfig.tsbuildinfo"
+  },
+  "bugs": {
+    "url": "https://github.com/microsoftgraph/msgraph-sdk-typescript/issues"
+  },
+  "dependencies": {
+    "@microsoft/msgraph-sdk-core": "^1.0.0-preview.17",
+    "tslib": "^2.6.2"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.3",
+    "typescript": "^5.3.3"
+  },
+  "type": "module"
+}

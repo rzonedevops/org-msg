@@ -1,0 +1,19 @@
+---
+description: Автоматически созданный файл. НЕ ИЗМЕНЯТЬ
+ms.openlocfilehash: 3a67dab14456d0fb97d91449f663803022968719
+ms.sourcegitcommit: 30d1f0d898b6e4488d1938251fba143370119241
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 05/11/2022
+ms.locfileid: "65341175"
+---
+```go
+
+//THE GO SDK IS IN PREVIEW. NON-PRODUCTION USE ONLY
+graphClient := msgraphsdk.NewGraphServiceClient(requestAdapter)
+
+organizationId := "organization-id"
+result, err := graphClient.OrganizationById(&organizationId).Get()
+
+
+```

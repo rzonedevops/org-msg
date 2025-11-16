@@ -1,0 +1,314 @@
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License.
+
+name: $(BuildDefinitionName)_$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
+
+trigger:
+  branches:
+    include:
+      - main
+pr:
+  branches:
+    include:
+      - main
+
+pool:
+  name: Azure Pipelines
+  vmImage: windows-latest
+
+variables:
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+  ProductBinPath: '$(Build.SourcesDirectory)\Microsoft.OData.UML\bin\$(BuildConfiguration)' 
+
+
+stages:
+
+- stage: build
+  jobs:
+    - job: build
+      steps:
+      - task: UseDotNet@2
+        displayName: 'Use .NET 6'
+        inputs:
+          version: 6.x
+
+      - task: PoliCheck@1
+        displayName: 'Run PoliCheck'
+        inputs:
+          inputType: CmdLine
+          cmdLineArgs: '/F:$(Build.SourcesDirectory) /T:9 /Sev:"1|2" /PE:2 /O:poli_result.xml'
+
+      # Install the nuget tool.
+      - task: NuGetToolInstaller@0
+        displayName: 'Use NuGet >=5.2.0'
+        inputs:
+          versionSpec: '>=5.2.0'
+          checkLatest: true
+
+      # Build the Product project
+      - task: DotNetCoreCLI@2
+        displayName: 'build'
+        inputs:
+          projects: '$(Build.SourcesDirectory)\Microsoft.OData.Diagram.sln'
+          arguments: '--configuration $(BuildConfiguration) --no-incremental'
+
+      # Run the Unit test
+      - task: DotNetCoreCLI@2
+        displayName: 'test'
+        inputs:
+          command: test
+          projects: '$(Build.SourcesDirectory)\Microsoft.OData.Diagram.sln'
+          arguments: '--configuration $(BuildConfiguration) --no-build'
+
+      # CredScan
+      - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@2
+        displayName: 'Run CredScan'
+        inputs:
+          toolMajorVersion: 'V2'
+          scanFolder: '$(Build.SourcesDirectory)'
+          debugMode: false
+
+      - task: AntiMalware@3
+        displayName: 'Run MpCmdRun.exe - ProductBinPath'
+        inputs:
+          FileDirPath: '$(ProductBinPath)'
+        enabled: false
+
+      - task: BinSkim@3
+        displayName: 'Run BinSkim - Product Binaries'
+        inputs:
+          InputType: Basic
+          AnalyzeTarget: '$(ProductBinPath)\**\Microsoft.OData.UML.dll'
+          AnalyzeSymPath: '$(ProductBinPath)'
+          AnalyzeVerbose: true
+          AnalyzeHashes: true
+          AnalyzeEnvironment: true
+
+      - task: PublishSecurityAnalysisLogs@2
+        displayName: 'Publish Security Analysis Logs'
+        inputs:
+          ArtifactName: SecurityLogs
+
+      - task: PostAnalysis@1
+        displayName: 'Post Analysis'
+        inputs:
+          BinSkim: true
+          CredScan: true
+          PoliCheck: true
+
+      - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@5
+        displayName: 'ESRP CodeSigning'
+        inputs:
+          ConnectedServiceName: 'Federated DevX ESRP Managed Identity Connection'
+          AppRegistrationClientId: '65035b7f-7357-4f29-bf25-c5ee5c3949f8'
+          AppRegistrationTenantId: 'cdc5aeea-15c5-4db6-b079-fcadd2505dc2'
+          AuthAKVName: 'akv-prod-eastus'
+          AuthCertName: 'ReferenceLibraryPrivateCert'
+          AuthSignCertName: 'ReferencePackagePublisherCertificate'
+          FolderPath: $(Build.SourcesDirectory)
+          signConfigType: inlineSignParams
+          inlineOperation: |
+            [
+                {
+                    "keyCode": "CP-230012",
+                    "operationSetCode": "SigntoolSign",
+                    "parameters": [
+                    {
+                        "parameterName": "OpusName",
+                        "parameterValue": "Microsoft"
+                    },
+                    {
+                        "parameterName": "OpusInfo",
+                        "parameterValue": "http://www.microsoft.com"
+                    },
+                    {
+                        "parameterName": "FileDigest",
+                        "parameterValue": "/fd \"SHA256\""
+                    },
+                    {
+                        "parameterName": "PageHash",
+                        "parameterValue": "/NPH"
+                    },
+                    {
+                        "parameterName": "TimeStamp",
+                        "parameterValue": "/tr \"http://rfc3161.gtm.corp.microsoft.com/TSS/HttpTspServer\" /td sha256"
+                    }
+                    ],
+                    "toolName": "sign",
+                    "toolVersion": "1.0"
+                },
+                {
+                    "keyCode": "CP-230012",
+                    "operationSetCode": "SigntoolVerify",
+                    "parameters": [ ],
+                    "toolName": "sign",
+                    "toolVersion": "1.0"
+                }
+            ]
+          SessionTimeout: 20
+      
+      # Pack
+      - task: DotNetCoreCLI@2
+        displayName: 'pack Csdl to UML Library'
+        inputs:
+          command: pack
+          projects: Microsoft.OData.UML/Microsoft.OData.UML.csproj
+          arguments: '-o $(Build.ArtifactStagingDirectory) --configuration $(BuildConfiguration) --no-build --include-symbols --include-source /p:SymbolPackageFormat=snupkg'
+      
+      # Pack
+      - task: DotNetCoreCLI@2
+        displayName: 'pack CLI tool'
+        inputs:
+          command: pack
+          projects: Microsoft.OData.Diagram/Microsoft.OData.Diagram.csproj
+          arguments: '-o $(Build.ArtifactStagingDirectory) --configuration $(BuildConfiguration) --no-build --include-symbols --include-source /p:SymbolPackageFormat=snupkg'
+      
+      - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@5
+        displayName: 'ESRP CodeSigning Nuget Packages'
+        inputs:
+          ConnectedServiceName: 'Federated DevX ESRP Managed Identity Connection'
+          AppRegistrationClientId: '65035b7f-7357-4f29-bf25-c5ee5c3949f8'
+          AppRegistrationTenantId: 'cdc5aeea-15c5-4db6-b079-fcadd2505dc2'
+          AuthAKVName: 'akv-prod-eastus'
+          AuthCertName: 'ReferenceLibraryPrivateCert'
+          AuthSignCertName: 'ReferencePackagePublisherCertificate'
+          FolderPath: '$(Build.ArtifactStagingDirectory)'
+          Pattern: '*.nupkg'
+          signConfigType: inlineSignParams
+          inlineOperation: |
+            [
+                {
+                    "keyCode": "CP-401405",
+                    "operationSetCode": "NuGetSign",
+                    "parameters": [ ],
+                    "toolName": "sign",
+                    "toolVersion": "1.0"
+                },
+                {
+                    "keyCode": "CP-401405",
+                    "operationSetCode": "NuGetVerify",
+                    "parameters": [ ],
+                    "toolName": "sign",
+                    "toolVersion": "1.0"
+                }
+            ]
+          SessionTimeout: 20
+
+      - task: PowerShell@2
+        displayName: "Get CLI tool version-number from .csproj"
+        inputs:
+          targetType: 'inline'
+          script: |
+              $xml = [Xml] (Get-Content .\Microsoft.OData.Diagram\Microsoft.OData.Diagram.csproj)
+              $version = $xml.Project.PropertyGroup.Version
+              echo $version
+              echo "##vso[task.setvariable variable=version]$version"  
+
+      # publish cli tool as an .exe
+      - task: DotNetCoreCLI@2
+        displayName: publish CLI tool as executable
+        inputs:
+          command: 'publish'
+          arguments: -c Release --runtime win-x64 -p:PublishSingleFile=true --self-contained true --output $(Build.ArtifactStagingDirectory)/Microsoft.OData.Diagram-v$(version) -p:PublishTrimmed=true
+          projects: 'Microsoft.OData.Diagram/Microsoft.OData.Diagram.csproj'
+          publishWebProjects: False
+          zipAfterPublish: false 
+
+      - task: CopyFiles@2
+        displayName: Prepare staging folder for upload
+        inputs:
+         targetFolder: $(Build.ArtifactStagingDirectory)/Nugets
+         sourceFolder: $(Build.ArtifactStagingDirectory)
+         content: '*.nupkg'
+
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publish Artifact: Nugets'
+        inputs:
+          ArtifactName: Nugets
+          PathtoPublish: '$(Build.ArtifactStagingDirectory)/Nugets'
+
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publish Artifact: CLI tool'
+        inputs: 
+          ArtifactName: Microsoft.OData.Diagram-v$(version)
+          PathtoPublish: '$(Build.ArtifactStagingDirectory)/Microsoft.OData.Diagram-v$(version)'
+
+- stage: deploy
+  condition: and(contains(variables['build.sourceBranch'], 'refs/heads/main'), succeeded())
+  dependsOn: build
+  jobs:
+    - deployment: deploy_cli
+      dependsOn: []
+      environment: nuget-org
+      strategy:
+        runOnce:
+          deploy:
+            pool:
+              vmImage: ubuntu-latest
+            steps:
+            - task: DownloadPipelineArtifact@2
+              displayName: Download nupkg from artifacts
+              inputs:
+                artifact: Nugets
+                source: current
+            - task: DownloadPipelineArtifact@2
+              displayName: Download cli tool executable from artifacts
+              inputs:
+                source: current
+            - pwsh: |
+                $artifactMainDirectory = Get-ChildItem -Filter Microsoft.OData.Diagram-* -Directory -Recurse | select -First 1
+                $artifactName = $artifactMainDirectory.Name -replace "Microsoft.OData.Diagram-", ""
+                #Set Variable $artifactName
+                Write-Host "##vso[task.setvariable variable=artifactName; isSecret=false; isOutput=true;]$artifactName"
+                Write-Host "##vso[task.setvariable variable=artifactMainDirectory; isSecret=false; isOutput=true;]$artifactMainDirectory"
+              displayName: 'Fetch Artifact Name'
+
+            - task: NuGetCommand@2
+              displayName: 'NuGet push'
+              inputs:
+                command: push
+                packagesToPush: '$(Pipeline.Workspace)/Nugets/Microsoft.OData.Diagram.*.nupkg'
+                nuGetFeedType: external
+                publishFeedCredentials: 'microsoftgraph NuGet connection'
+            - task: GitHubRelease@1
+              displayName: 'GitHub release (create)'
+              inputs:
+                gitHubConnection: 'Michael-Wamae'
+                tagSource: userSpecifiedTag
+                tag: '$(artifactName)'
+                title: '$(artifactName)'
+                releaseNotesSource: inline
+                assets: '$(Pipeline.Workspace)\**\*.exe'
+                changeLogType: issueBased
+    
+    - deployment: deploy_lib
+      dependsOn: []
+      environment: nuget-org
+      strategy:
+        runOnce:
+          deploy:
+            pool:
+              vmImage: ubuntu-latest
+            steps:
+            - task: DownloadPipelineArtifact@2
+              displayName: Download nupkg from artifacts
+              inputs:
+                artifact: Nugets
+                source: current
+            - powershell: |
+                $fileNames = "$(Pipeline.Workspace)/Nugets/Microsoft.OData.Diagram.*.nupkg"
+                foreach($fileName in $fileNames) {
+                  if(Test-Path $fileName) {
+                    rm $fileName -Verbose
+                  }
+                }
+              displayName: remove other nupkgs to avoid duplication
+            - task: NuGetCommand@2
+              displayName: 'NuGet push'
+              inputs:
+                command: push
+                packagesToPush: '$(Pipeline.Workspace)/Nugets/Microsoft.OData.UML.*.nupkg'
+                nuGetFeedType: external
+                publishFeedCredentials: 'microsoftgraph NuGet connection'
+

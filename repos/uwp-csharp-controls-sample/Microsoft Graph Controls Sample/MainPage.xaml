@@ -1,0 +1,59 @@
+﻿<Page xmlns:my="using:Microsoft.Toolkit.Uwp.UI.Controls" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Microsoft_Graph_Controls_Sample"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Custom="using:Microsoft.Toolkit.Uwp.UI.Controls.Graph"
+    x:Class="Microsoft_Graph_Controls_Sample.MainPage"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <NavigationView x:Name="NavMain" ItemInvoked="NavMain_ItemInvoked" AlwaysShowHeader="False" Header="⛔Azure App ID not set! Save your app ID before proceeding.⛔">
+        <NavigationView.MenuItems>
+            <NavigationViewItem Content="Home" x:Name="home" Tag="home">
+                <NavigationViewItem.Icon>
+                    <SymbolIcon Symbol="Home"/>
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+            <NavigationViewItemSeparator/>
+            <NavigationViewItem Content="Azure AD Login" x:Name="aadlogin" Tag="aadlogin">
+                <NavigationViewItem.Icon>
+                    <SymbolIcon Symbol="Globe"/>
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+            <NavigationViewItem Content="User Profile Card" x:Name="usrcard" Tag="usrcard">
+                <NavigationViewItem.Icon>
+                    <SymbolIcon Symbol="ContactInfo"/>
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+            <NavigationViewItem Content="People Picker" x:Name="pplpicker" Tag="pplpicker">
+                <NavigationViewItem.Icon>
+                    <SymbolIcon Symbol="OtherUser"/>
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+            <NavigationViewItem Content="SharePoint File List" x:Name="splist" Tag="splist">
+                <NavigationViewItem.Icon>
+                    <SymbolIcon Symbol="AllApps"/>
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+        </NavigationView.MenuItems>
+        <Grid x:Name="GrdBase">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+            </Grid.ColumnDefinitions>
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto" VerticalScrollMode="Auto" Grid.Column="0" Margin="20 20 0 0">
+                <Frame Name="ContentFrame"></Frame>
+            </ScrollViewer>
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto" VerticalScrollMode="Auto" Grid.Column="1" Margin="10 20">
+                <my:MarkdownTextBlock x:Name="MdbReadme" Grid.Column="1" Margin="30 10 10 10"  />
+            </ScrollViewer>
+
+            <my:GridSplitter x:Name="Splitter" Width="11" HorizontalAlignment="Left" Grid.Column="1" ResizeBehavior="BasedOnAlignment" Background="Transparent" GripperForeground="{ThemeResource AppBarItemForegroundThemeBrush}">
+            </my:GridSplitter>
+        </Grid>
+    </NavigationView>
+</Page>

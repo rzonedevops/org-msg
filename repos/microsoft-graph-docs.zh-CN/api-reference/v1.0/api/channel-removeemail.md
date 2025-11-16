@@ -1,0 +1,114 @@
+---
+title: channel： removeEmail
+description: 删除频道的预配电子邮件。
+author: anandab-msft
+ms.localizationpriority: medium
+ms.prod: microsoft-teams
+doc_type: apiPageType
+ms.openlocfilehash: a952c0df050526168cbfb9cf09d01408533d3975
+ms.sourcegitcommit: 25acfa7d0153336c9a35d30a1dd422aeadc1342c
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 02/03/2022
+ms.locfileid: "62342854"
+---
+# <a name="channel-removeemail"></a>channel： removeEmail
+
+命名空间：microsoft.graph
+
+删除频道 [的电子邮件地址](../resources/channel.md)。
+
+只有在使用 [provisionEmail](channel-provisionemail.md) 方法或通过 Microsoft Teams 客户端设置电子邮件地址时，才能删除该地址。
+
+## <a name="permissions"></a>权限
+
+要调用此 API，需要以下权限之一。要了解详细信息，包括如何选择权限的信息，请参阅[权限](/graph/permissions-reference)。
+
+| 权限类型                        | 权限（从最低特权到最高特权） |
+| :------------------------------------- | :------------------------------------------ |
+| 委派（工作或学校帐户）     | ChannelSettings.ReadWrite.All               |
+| 委派（个人 Microsoft 帐户） | 不支持。                              |
+| 应用程序                            | 不支持。                              |
+
+## <a name="http-request"></a>HTTP 请求
+<!-- { "blockType": "ignored" } -->
+```http
+POST /teams/{team-id}/channels/{channel-id}/removeEmail
+```
+## <a name="request-headers"></a>请求标头
+| 标头        | 值                     |
+| :------------ | :------------------------ |
+| Authorization | Bearer {token}。必需。 |
+
+## <a name="request-body"></a>请求正文
+
+请勿提供此方法的请求正文。
+
+## <a name="response"></a>响应
+
+如果成功，此操作返回 `204 No Content` 响应代码。
+
+## <a name="example"></a>示例
+### <a name="request"></a>请求
+
+
+# <a name="http"></a>[HTTP](#tab/http)
+<!-- {
+  "blockType": "request",
+  "sampleKeys": ["893075dd-2487-4122-925f-022c42e20265", "19:561fbdbbfca848a484f0a6f00ce9dbbd@thread.tacv2"],
+  "name": "channel_removeemail"
+}
+-->
+```http
+POST https://graph.microsoft.com/beta/teams/893075dd-2487-4122-925f-022c42e20265/channels/19:561fbdbbfca848a484f0a6f00ce9dbbd@thread.tacv2/removeEmail
+```
+# <a name="c"></a>[C#](#tab/csharp)
+[!INCLUDE [sample-code](../includes/snippets/csharp/channel-removeemail-csharp-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+[!INCLUDE [sample-code](../includes/snippets/javascript/channel-removeemail-javascript-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# <a name="objective-c"></a>[Objective-C](#tab/objc)
+[!INCLUDE [sample-code](../includes/snippets/objc/channel-removeemail-objc-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# <a name="java"></a>[Java](#tab/java)
+[!INCLUDE [sample-code](../includes/snippets/java/channel-removeemail-java-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# <a name="go"></a>[Go](#tab/go)
+[!INCLUDE [sample-code](../includes/snippets/go/channel-removeemail-go-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+[!INCLUDE [sample-code](../includes/snippets/powershell/channel-removeemail-powershell-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+---
+
+
+### <a name="response"></a>响应
+<!-- {
+  "blockType": "response",
+  "truncated": true
+}
+-->
+``` http
+HTTP/1.1 204 No Content
+```
+<!-- uuid: e848414b-4669-4484-ac36-1504c58a3fb8
+2015-10-25 14:57:30 UTC -->
+<!--
+{
+  "type": "#page.annotation",
+  "description": "Remove channel email",
+  "keywords": "",
+  "section": "documentation",
+  "tocPath": "",
+  "suppressions": []
+}
+-->
+
+

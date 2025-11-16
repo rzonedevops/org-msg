@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>1.0.0</Version>
+    <Authors>Microsoft</Authors>
+    <Company>Microsoft</Company>
+    <Product>Csdl Diagrams</Product>
+    <PackageId>Microsoft.OData.UML</PackageId>
+    <Description>.Net standard 2.0 library to generate diagram source files (such as PlantUml) from OData CSDL files.</Description>
+	<Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
+	<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Title>Microsoft.OData.UML</Title>
+	<PackageIconUrl>http://go.microsoft.com/fwlink/?LinkID=288890</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/microsoftgraph/csdl-diagrams</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/microsoftgraph/csdl-diagrams</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	<LangVersion>8.0</LangVersion>
+	<AssemblyName>Microsoft.OData.UML</AssemblyName>
+	<RootNamespace>Microsoft.OData.UML</RootNamespace>
+	<SignAssembly>true</SignAssembly>
+	<EmbedUntrackedSources>true</EmbedUntrackedSources>
+	<AssemblyOriginatorKeyFile>Microsoft.CsdlDiagrams.Net.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.OData.Edm" Version="7.10.0" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="System.Text.Json" Version="8.0.5" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+</Project>

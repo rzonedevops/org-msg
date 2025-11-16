@@ -1,0 +1,868 @@
+metadata:
+  experimental: true
+  experiment_id: b8938daf-1bcb-4f
+items:
+  - name: Microsoft Graph 文档
+    href: index.yml
+  - name: 浏览
+    expanded: true
+    items:
+      - name: Microsoft Graph 概述
+        href: overview.md
+      - name: Microsoft Graph 中的服务
+        href: overview-major-services.md
+      - name: 最近更新
+        expanded: true
+        items:
+          - name: 新增功能亮点
+            href: whats-new-overview.md
+            displayName: 'what''s new, updates'
+          - name: API 更改日志
+            href: 'https://developer.microsoft.com/graph/changelog'
+            displayName: 'API changes, API updates, Microsoft Graph API, REST API, REST API updates'
+      - name: 可访问的用户
+        items:
+          - name: 概述
+            href: users-you-can-reach.md
+            displayName: users you can reach
+          - name: 区域云部署
+            href: deployments.md
+          - name: 混合部署（已弃用）
+            href: hybrid-rest-support.md
+      - name: 快速启动
+        href: 'https://developer.microsoft.com/graph/quick-start'
+        displayName: quickstart
+      - name: 教程
+        items:
+          - name: 概述
+            href: tutorials.md
+            displayName: tutorials
+          - name: .NET
+            href: /graph/tutorials/dotnet
+          - name: 转到
+            href: /graph/tutorials/go
+          - name: Java
+            href: /graph/tutorials/java
+          - name: JavaScript
+            href: /graph/tutorials/javascript
+          - name: PHP
+            href: /graph/tutorials/php
+          - name: Power Automate
+            href: /graph/tutorials/power-automate
+          - name: PowerShell
+            href: /graph/tutorials/powershell
+          - name: Python
+            href: /graph/tutorials/python
+          - name: TypeScript
+            href: /graph/tutorials/typescript
+      - name: 版本控制和支持
+        href: versioning-and-support.md
+      - name: 使用条款
+        href: /legal/microsoft-apis/terms-of-use?context=graph/context
+  - name: 学习
+    expanded: true
+    items:
+      - name: 用户
+        items:
+          - name: 概述
+            href: azuread-users-concept-overview.md
+            displayName: users
+          - name: 访问用户数据
+            href: /learn/modules/msgraph-access-user-data
+      - name: 组
+        items:
+          - name: 概述
+            href: /graph/api/resources/groups-overview?context=graph/context
+            displayName: groups
+          - name: Microsoft 365 组
+            href: office365-groups-concept-overview.md
+          - name: 配置组选项
+            href: group-set-options.md
+          - name: 管理组生命周期
+            href: /learn/modules/msgraph-access-group-data
+      - name: 应用程序
+        items:
+          - name: 概述
+            href: applications-concept-overview.md
+            displayName: 'applications, apps'
+          - name: 自动完成基于 SAML 的 SSO 配置
+            href: application-saml-sso-configure-api.md
+          - name: 配置应用程序代理
+            href: application-proxy-configure-api.md
+      - name: 大规模访问数据
+        items:
+          - name: 数据连接概述
+            href: data-connect-concept-overview.md
+            displayName: 'Microsoft Graph Data Connect, access data, bulk data'
+          - name: 构建第一个数据连接应用程序
+            href: data-connect-quickstart.yml
+            displayName: Microsoft Graph Data Connect
+          - name: 数据集、区域和接收器
+            href: data-connect-datasets.md
+          - name: 策略和计费
+            href: data-connect-policies.md
+          - name: 用户选择和筛选
+            href: data-connect-filtering.md
+          - name: 与 PAM 集成
+            href: data-connect-pam.md
+            displayName: Privileged Access Management
+          - name: 数据连接常见问题解答
+            href: data-connect-faq.md
+            displayName: 'Microsoft Graph Data Connect, frequently asked questions'
+      - name: 日历
+        items:
+          - name: 概述
+            href: outlook-calendar-concept-overview.md
+            displayName: 'Outlook, calendar'
+          - name: 查找会议时间
+            href: findmeetingtimes-example.md
+          - name: 获取忙/闲日程安排
+            href: outlook-get-free-busy-schedule.md
+          - name: 建议新的会议时间
+            href: outlook-calendar-meeting-proposals.md
+          - name: 将事件设置为联机会议
+            href: outlook-calendar-online-meetings.md
+          - name: 选择联机会议 API
+            href: choose-online-meeting-api.md
+          - name: 安排定期事件
+            href: outlook-schedule-recurring-events.md
+          - name: 共享或委托日历
+            href: outlook-share-or-delegate-calendar.md
+          - name: 获取共享事件
+            href: outlook-get-shared-events-calendars.md
+          - name: 创建共享事件
+            href: outlook-create-event-in-shared-delegated-calendar.md
+          - name: 附加大型文件
+            href: outlook-large-attachments.md
+          - name: 获取不可变 ID
+            href: outlook-immutable-id.md
+          - name: 订阅变更通知
+            href: outlook-change-notifications-overview.md
+      - name: 云通信
+        items:
+          - name: 概述
+            href: cloud-communications-concept-overview.md
+            displayName: cloud communications
+          - name: 入门
+            href: cloud-communications-get-started.md
+          - name: 支持的呼叫类型
+            href: cloud-communications-calls.md
+          - name: 通话记录
+            href: cloud-communications-callrecords.md
+          - name: 联机会议项目和权限
+            href: cloud-communications-online-meeting-artifacts.md
+          - name: 选择媒体托管选项
+            href: cloud-communications-media.md
+          - name: 创建或加入联机会议
+            href: cloud-communications-online-meetings.md
+          - name: 选择联机会议 API
+            href: choose-online-meeting-api.md
+          - name: 配置应用程序访问权限
+            href: cloud-communication-online-meeting-application-access-policy.md
+          - name: 管理机器人电话号码
+            href: cloud-communications-phone-number.md
+          - name: 识别大型库视图参与者
+            href: cloud-communications-identifylargegalleryview.md
+          - name: 订阅线上会议的更改通知
+            href: changenotifications-for-onlinemeeting.md
+      - name: 合规性
+        href: compliance-concept-overview.md
+      - name: 连接外部内容
+        items:
+          - name: 连接器概述
+            href: connecting-external-content-connectors-overview.md
+            displayName: 'Microsoft Graph connectors, connect external content'
+          - name: 连接器 API
+            href: connecting-external-content-connectors-api-overview.md
+            displayName: Microsoft Graph connectors
+          - name: 使用 Postman
+            href: connecting-external-content-connectors-api-postman.md
+            displayName: 'connector, connectors'
+          - name: 构建首个自定义连接器
+            href: connecting-external-content-build-quickstart.yml
+            displayName: 'connectors, Microsoft Graph connectors'
+          - name: 管理连接
+            href: connecting-external-content-manage-connections.md
+          - name: 管理架构
+            href: connecting-external-content-manage-schema.md
+          - name: 管理项目
+            href: connecting-external-content-manage-items.md
+          - name: 使用外部组
+            href: connecting-external-content-external-groups.md
+          - name: API 限制
+            href: connecting-external-content-api-limits.md
+      - name: 跨设备体验
+        items:
+          - name: 概述
+            href: cross-device-concept-overview.md
+            displayName: 'Project Rome, cross-device, cross device, cross-device experience'
+          - name: 使用活动源 API
+            href: activity-feed-concept-overview.md
+            displayName: 'cross-device, cross device'
+          - name: 使用设备中继 API（预览版）
+            href: device-relay-concept-overview.md
+            displayName: 'cross-device, cross device'
+          - name: 构建跨设备的应用
+            href: cross-device-app-configuration.md
+            displayName: 'cross device, Project Rome'
+      - name: 客户预订（预览版）
+        items:
+          - name: 概述
+            href: booking-concept-overview.md
+            displayName: 'Bookings, Microsoft Bookings, booking, customer booking'
+          - name: 业务规则
+            href: bookingsbusiness-business-rules.md
+            displayName: 'Bookings, Microsoft Bookings, booking'
+      - name: 设备和应用管理
+        expanded: true
+        items:
+          - name: 云打印
+            items:
+              - name: 概述
+                href: universal-print-concept-overview.md
+                displayName: 'Universal Print, Cloud printing, printing, device and app management'
+              - name: 上传数据以上传会话
+                href: upload-data-to-upload-session.md
+                displayName: Universal Print Job Submission
+              - name: 订阅变更通知
+                href: universal-print-webhook-notifications.md
+                displayName: Universal Print Webhook Notifications
+          - name: 公司管理
+            href: intune-concept-overview.md
+            displayName: Intune
+          - name: 云电脑（预览版）
+            href: cloudpc-concept-overview.md
+          - name: 设备更新（预览）
+            items:
+              - name: 概述
+                href: windowsupdates-concept-overview.md
+                displayName: 'Windows updates, Windows update, device update'
+              - name: 软件更新
+                href: windowsupdates-software-updates.md
+              - name: 部署
+                href: windowsupdates-deployments.md
+              - name: 注册管理
+                href: windowsupdates-enroll.md
+              - name: 部署功能更新
+                href: windowsupdates-deploy-update.md
+              - name: 部署加速更新
+                href: windowsupdates-deploy-expedited-update.md
+              - name: 安排部署
+                href: windowsupdates-schedule-deployment.md
+              - name: 管理安全措施
+                href: windowsupdates-manage-safeguards.md
+              - name: 管理监视规则
+                href: windowsupdates-manage-monitoring-rules.md
+          - name: 多租户管理（预览）
+            href: managedtenants-concept-overview.md
+            displayName: Microsoft 365 Lighthouse
+          - name: 服务运行状况和通信
+            href: service-communications-concept-overview.md
+            displayName: service communications
+      - name: 教育
+        items:
+          - name: 概述
+            href: education-concept-overview.md
+            displayName: education
+          - name: 评分标准
+            href: education-rubric-overview.md
+          - name: 上传文件
+            href: education-upload-resource-overview.md
+          - name: 分配和提交状态转换
+            href: assignments-submissions-states-transition.md
+          - name: 指定分配通知的默认通道
+            href: education-build-notificationchannelurl.md
+      - name: 扩展
+        items:
+          - name: 概述
+            href: extensibility-overview.md
+          - name: 使用开放扩展
+            href: extensibility-open-users.md
+          - name: 使用架构扩展
+            href: extensibility-schema-groups.md
+      - name: 文件
+        items:
+          - name: 概述
+            href: onedrive-concept-overview.md
+            displayName: 'files, OneDrive, OneDrive for Business, OneDrive business, OneDrive personal, SharePoint'
+          - name: 寻址驱动器项
+            href: onedrive-addressing-driveitems.md
+      - name: Financials（预览版）
+        href: dynamics-business-central-concept-overview.md
+        displayName: 'Dynamics, Dynamics 365 Business Central'
+      - name: 身份和访问
+        items:
+          - name: 概述
+            href: azuread-identity-access-management-concept-overview.md
+            displayName: 'Azure AD, Microsoft identity platform, identity, access'
+          - name: 目录管理
+            items:
+              - name: 管理自定义安全属性（预览版）
+                href: custom-security-attributes-examples.md
+                displayName: 'directory, identity'
+              - name: 使用 PIM 分配 Azure AD 角色
+                href: tutorial-assign-azureadroles.md
+          - name: 身份和登录
+            items:
+              - name: 身份验证方法
+                href: authenticationmethods-get-started.md
+                displayName: 'identity, authenticate, sign-in, sign in, signin'
+              - name: 识别和修正风险
+                href: tutorial-riskdetection-api.md
+          - name: 管控
+            items:
+              - name: 管理资源访问权限
+                href: tutorial-access-package-api.md
+                displayName: 'governance, identity'
+              - name: 查看资源访问权限
+                items:
+                  - name: 概述
+                    href: accessreviews-overview.md
+                    displayName: 'identity, access reviews API, review access'
+                  - name: 查看安全组的访问权限
+                    href: tutorial-accessreviews-securitygroup.md
+                  - name: 查看访客用户的访问权限
+                    href: tutorial-accessreviews-M365group.md
+                  - name: 查看特权角色的访问权限
+                    href: tutorial-accessreviews-roleassignments.md
+                  - name: 配置作用域
+                    href: accessreviews-scope-concept.md
+                  - name: 分配审阅者
+                    href: accessreviews-reviewers-concept.md
+              - name: 使用 PIM 分配 Azure AD 角色
+                href: tutorial-assign-azureadroles.md
+      - name: 邮件
+        items:
+          - name: 概述
+            href: outlook-mail-concept-overview.md
+            displayName: 'Outlook, Outlook mail, mail, message'
+          - name: 自动发送邮件
+            href: outlook-create-send-messages.md
+          - name: 整理邮件
+            href: outlook-organize-messages.md
+          - name: 获取 MIME 内容
+            href: outlook-get-mime-message.md
+          - name: 发送 MIME 邮件
+            href: outlook-send-mime-message.md
+          - name: 附加大型文件
+            href: outlook-large-attachments.md
+          - name: 获取共享邮件
+            href: outlook-share-messages-folders.md
+          - name: 从其他用户身份发送邮件
+            href: outlook-send-mail-from-other-user.md
+          - name: 获取不可变 ID
+            href: outlook-immutable-id.md
+          - name: 订阅变更通知
+            href: outlook-change-notifications-overview.md
+      - name: 注释
+        items:
+          - name: 概述
+            href: integrate-with-onenote.md
+            displayName: 'OneNote, notes'
+          - name: 获取 OneNote 内容
+            href: onenote-get-content.md
+          - name: 打开 OneNote 客户端
+            href: open-onenote-client.md
+          - name: 创建页面
+            href: onenote-create-page.md
+          - name: 更新页面内容
+            href: onenote-update-page.md
+          - name: 添加图像、视频和文件
+            href: onenote-images-files.md
+          - name: 创建绝对定位的元素
+            href: onenote-abs-pos.md
+          - name: 提取数据
+            href: onenote-extract-data.md
+          - name: 使用笔记标记
+            href: onenote-note-tags.md
+          - name: 资源
+            expanded: true
+            items:
+              - name: 输入和输出 HTML
+                href: onenote-input-output-html.md
+              - name: 最佳做法
+                href: onenote-best-practices.md
+              - name: 品牌准则
+                href: onenote-branding.md
+              - name: 错误代码
+                href: onenote-error-codes.md
+      - name: 通知（已弃用）
+        items:
+          - name: 概述
+            href: notifications-concept-overview.md
+            displayName: 'deprecated, notifications'
+          - name: 入门
+            items:
+              - name: 与通知集成
+                href: notifications-integration-e2e-overview.md
+              - name: 应用注册
+                href: notifications-integration-app-registration.md
+              - name: 跨设备载入
+                href: notifications-integration-cross-device-experiences-onboarding.md
+              - name: 应用服务器集成
+                href: notifications-integrating-app-server.md
+              - name: Windows 应用集成
+                href: notifications-integrating-with-windows.md
+              - name: Android 应用集成
+                href: notifications-integrating-with-android.md
+              - name: iOS 应用集成
+                href: notifications-integrating-with-ios.md
+      - name: 人员和工作场所智能
+        items:
+          - name: 概述
+            href: social-intel-concept-overview.md
+            displayName: 'people, workplace, intelligence, people and workplace intelligence'
+          - name: 获取相关人员的信息
+            href: people-example.md
+          - name: 自定义人员见解隐私（预览）
+            href: insights-customize-people-insights-privacy.md
+          - name: 自定义个人资料卡片（预览）
+            href: add-properties-profilecard.md
+          - name: 项见解概述
+            href: item-insights-overview.md
+          - name: 自定义项见解隐私（预览）
+            href: insights-customize-item-insights-privacy.md
+      - name: 个人联系人
+        items:
+          - name: 概述
+            href: outlook-contacts-concept-overview.md
+            displayName: 'Outlook, Outlook contacts, Outlook contact, People, personal contacts'
+          - name: 获取共享联系人
+            href: outlook-get-shared-contacts-folders.md
+          - name: 获取不可变 ID
+            href: outlook-immutable-id.md
+          - name: 订阅变更通知
+            href: outlook-change-notifications-overview.md
+      - name: 报告
+        items:
+          - name: 概述
+            href: reportroot-concept-overview.md
+            displayName: 'report, reports'
+          - name: 针对 Microsoft 365 使用情况报告的授权
+            href: reportroot-authorization.md
+      - name: 搜索
+        items:
+          - name: 概述
+            href: search-concept-overview.md
+            displayName: search
+          - name: 搜索邮件
+            href: search-concept-messages.md
+          - name: 搜索事件
+            href: search-concept-events.md
+          - name: OneDrive 和 SharePoint 中的搜索内容
+            href: search-concept-files.md
+          - name: 搜索连接器
+            href: search-concept-custom-types.md
+          - name: 搜索人员
+            href: search-concept-person.md
+          - name: 管理管理员搜索答案（预览版）
+            href: search-concept-answers.md
+          - name: 管理搜索结果布局
+            href: search-concept-display-layout.md
+          - name: 改进搜索结果
+            href: search-concept-aggregation.md
+          - name: 请求拼写更正
+            href: search-concept-speller.md
+          - name: 剪裁重复搜索结果
+            href: search-concept-trim-duplicate.md
+          - name: 使用查询模板
+            href: search-concept-query-template.md
+          - name: 排序搜索结果
+            href: search-concept-sort.md
+      - name: 安全性
+        items:
+          - name: 概述
+            href: security-concept-overview.md
+            displayName: security
+          - name: 数据流
+            href: security-dataflow.md
+          - name: Authorization
+            href: security-authorization.md
+          - name: 集成解决方案
+            href: security-integration.md
+          - name: 信息保护
+            href: information-protection-overview.md
+          - name: 合作伙伴机遇
+            href: security-partner-overview.md
+      - name: 网站和列表
+        href: sharepoint-concept-overview.md
+        displayName: 'SharePoint, OneDrive, OneDrive for Business, OneDrive business, OneDrive personal, sites, lists'
+      - name: 任务和计划
+        href: planner-concept-overview.md
+        displayName: Planner
+      - name: 团队合作
+        items:
+          - name: 概述
+            href: teams-concept-overview.md
+            displayName: 'teams, team, teamwork, Microsoft Teams'
+          - name: 创建组和团队
+            href: teams-create-group-and-team.md
+          - name: 列出所有团队
+            href: teams-list-all-teams.md
+          - name: 选择联机会议 API
+            href: choose-online-meeting-api.md
+          - name: 配置内置选项卡
+            href: teams-configuring-builtin-tabs.md
+          - name: 使用机器人发送主动邮件
+            href: /microsoftteams/platform/graph-api/proactive-bots-and-messages/graph-proactive-bots-and-messages?context=graph/context
+          - name: 受保护的 API
+            href: teams-protected-apis.md
+          - name: 许可和付款模型
+            href: teams-licenses.md
+          - name: 活动源通知
+            items:
+              - name: 发送活动源通知
+                href: teams-send-activityfeednotifications.md
+              - name: 最佳做法
+                href: teams-activity-feed-notifications-best-practices.md
+          - name: 订阅变更通知
+            href: teams-change-notification-in-microsoft-teams-overview.md
+          - name: 获取系统邮件
+            href: system-messages.md
+      - name: 待办任务
+        displayName: Microsoft To Do
+        items:
+          - name: 概述
+            href: todo-concept-overview.md
+          - name: 将文件附加到任务
+            href: todo-attachments.md
+      - name: 工作簿和图表
+        items:
+          - name: 概述
+            href: excel-concept-overview.md
+            displayName: 'Excel, workbooks, charts'
+          - name: 管理会话
+            href: excel-manage-sessions.md
+          - name: 显示图表图像
+            href: excel-display-chart-image.md
+          - name: 使用工作簿函数
+            href: excel-use-functions.md
+          - name: 更新区域格式
+            href: excel-update-range-format.md
+          - name: 向工作簿写入数据
+            href: excel-write-to-workbook.md
+          - name: 最佳做法
+            href: workbook-best-practice.md
+          - name: 错误代码
+            href: workbook-error-codes.md
+          - name: 错误处理
+            href: workbook-error-handling.md
+  - name: 开发
+    expanded: true
+    items:
+      - name: 身份验证和授权
+        items:
+          - name: 概述
+            href: auth/index.yml
+            displayName: 'authentication, authorization, authenticate, authorize'
+          - name: 基本信息
+            href: auth/auth-concepts.md
+          - name: 注册应用
+            href: auth-register-app-v2.md
+          - name: 代表用户获取访问权限
+            href: auth-v2-user.md
+          - name: 无用户访问
+            href: auth-v2-service.md
+          - name: 权限
+            href: permissions-reference.md
+          - name: 管理应用访问权限 (CSP)
+            href: auth-cloudsolutionprovider.md
+          - name: 限制邮箱访问
+            href: auth-limit-mailbox-access.md
+          - name: 解决授权错误
+            href: resolve-auth-errors.md
+      - name: 使用 API
+        items:
+          - name: 概述
+            href: use-the-api.md
+            displayName: 'Microsoft Graph API, API, Microsoft Graph REST API, REST API'
+          - name: 访问数据和方法
+            href: traverse-the-graph.md
+          - name: 分页
+            href: paging.md
+          - name: 查询参数
+            items:
+              - name: 使用查询参数
+                href: query-parameters.md
+                displayName: 'OData query parameters, OData'
+              - name: 使用搜索查询参数
+                href: search-query-parameter.md
+              - name: 高级查询功能
+                href: aad-advanced-queries.md
+              - name: 使用查询参数优化请求
+                href: /learn/modules/optimize-data-usage
+          - name: 批处理
+            href: json-batching.md
+            displayName: Batch request
+          - name: 限制
+            items:
+              - name: 概述
+                displayName: throttling
+                href: throttling.md
+              - name: 服务特定限制
+                displayName: throttling
+                href: throttling-limits.md
+              - name: 优化网络流量
+                href: /learn/modules/optimize-network-traffic
+                displayName: throttling
+          - name: 更改通知
+            items:
+              - name: 概述
+                href: webhooks.md
+                displayName: 'change notifications, WebHooks, set up notifications for changes in resource data'
+              - name: 更改通知教程
+                href: /learn/modules/msgraph-changenotifications-trackchanges
+              - name: 缺失更改通知
+                href: webhooks-lifecycle.md
+              - name: 与资源数据有关的通知
+                href: webhooks-with-resource-data.md
+              - name: 获取通过不同方式传送的通知
+                href: change-notifications-delivery.md
+              - name: 更改云打印的通知
+                href: universal-print-webhook-notifications.md
+              - name: Microsoft Teams 资源的更改通知
+                items:
+                  - name: 通知类型和有效负载
+                    href: teams-change-notification-in-microsoft-teams-overview.md
+                    displayName: 'change notifications, Teams, Microsoft Teams'
+                  - name: Teams 和频道
+                    href: teams-changenotifications-team-and-channel.md
+                  - name: 团队和频道成员身份
+                    href: teams-changenotifications-teamMembership.md
+                  - name: 聊天和频道消息
+                    href: teams-changenotifications-chatmessage.md
+                  - name: 聊天
+                    href: teams-changenotifications-chat.md
+                  - name: 团队成员身份
+                    href: teams-changenotifications-chatMembership.md
+              - name: 更改 Outlook 资源的通知
+                href: outlook-change-notifications-overview.md
+          - name: 更改跟踪
+            items:
+              - name: 概述
+                href: delta-query-overview.md
+                displayName: 'Delta query, track changes, change tracking'
+              - name: 获取事件更改（示例）
+                href: delta-query-events.md
+              - name: 获取组更改（示例）
+                href: delta-query-groups.md
+              - name: 获取消息更改（示例）
+                href: delta-query-messages.md
+              - name: 获取用户更改（示例）
+                href: delta-query-users.md
+          - name: 添加自定义数据
+            displayName: 'directory extensions, schema extensions, open extensions, extension attributes'
+            href: extensibility-overview.md
+          - name: 使用 Graph 浏览器
+            items:
+              - name: 入门
+                href: graph-explorer/graph-explorer-overview.md
+                displayName: 'Graph Explorer, try the API, try API'
+              - name: 使用 Graph 管理器
+                href: graph-explorer/graph-explorer-features.md
+          - name: 使用 Postman
+            href: use-postman.md
+      - name: 迁移
+        items:
+          - name: Azure AD Graph
+            items:
+              - name: 迁移 Azure AD Graph 应用
+                href: migrate-azure-ad-graph-overview.md
+                displayName: 'Migration, Azure AD Graph, migrate'
+              - name: 应用迁移清单
+                href: migrate-azure-ad-graph-planning-checklist.md
+              - name: 1：查看差异
+                expanded: true
+                items:
+                  - name: 请求
+                    href: migrate-azure-ad-graph-request-differences.md
+                  - name: 服务功能
+                    href: migrate-azure-ad-graph-feature-differences.md
+                  - name: 资源类型
+                    href: migrate-azure-ad-graph-resource-differences.md
+                  - name: 实体属性
+                    href: migrate-azure-ad-graph-property-differences.md
+                  - name: 方法
+                    href: migrate-azure-ad-graph-method-differences.md
+              - name: 2：检查 API 使用情况
+                href: migrate-azure-ad-graph-audit-api-use.md
+              - name: 3：查看应用详细信息
+                expanded: true
+                items:
+                  - name: 应用注册
+                    href: migrate-azure-ad-graph-app-registration.md
+                  - name: 身份验证库
+                    href: migrate-azure-ad-graph-authentication-library.md
+                  - name: .NET 客户端库
+                    href: migrate-azure-ad-graph-client-libraries.md
+              - name: 4：部署、测试和扩展
+                href: migrate-azure-ad-graph-deploy-test-extend.md
+              - name: Azure AD Graph 迁移常见问题解答
+                href: migrate-azure-ad-graph-faq.md
+                displayName: 'migrate, frequently asked questions'
+              - name: 配置 Azure AD Graph 权限
+                href: migrate-azure-ad-graph-configure-permissions.md
+          - name: Exchange Web 服务
+            items:
+              - name: 迁移 EWS 应用
+                href: migrate-exchange-web-services-overview.md
+                displayName: 'Migration, Exchange Web Services, EWS, migrate'
+              - name: 身份验证
+                href: migrate-exchange-web-services-authentication.md
+              - name: API 映射
+                href: migrate-exchange-web-services-api-mapping.md
+      - name: 使用 SDK
+        items:
+          - name: 概述
+            href: sdks/sdks-overview.md
+            displayName: 'SDK, SDKs, Microsoft Graph SDK'
+          - name: 安装 SDK
+            href: sdks/sdk-installation.md
+            displayName: 'install SDK, install SDKs, installation'
+          - name: 创建客户端
+            href: sdks/create-client.md
+          - name: 自定义客户端
+            href: sdks/customize-client.md
+          - name: 选择验证提供程序
+            href: sdks/choose-authentication-providers.md
+          - name: 创建请求
+            href: sdks/create-requests.md
+          - name: 逐页浏览集合
+            href: sdks/paging.md
+          - name: 创建批处理请求
+            href: sdks/batch-requests.md
+          - name: 上传大文件
+            href: sdks/large-file-upload.md
+          - name: 使用 beta 版 API
+            href: sdks/use-beta.md
+          - name: 使用 PowerShell
+            items:
+              - name: PowerShell 概述
+                href: /powershell/microsoftgraph/overview?toc=/graph/toc.json
+              - name: 安装 PowerShell SDK
+                href: /powershell/microsoftgraph/installation?toc=/graph/toc.json
+              - name: 入门
+                href: /powershell/microsoftgraph/get-started?toc=/graph/toc.json
+              - name: 导航 PowerShell SDK
+                href: /powershell/microsoftgraph/navigating?toc=/graph/toc.json
+              - name: 仅应用身份验证
+                href: /powershell/microsoftgraph/app-only?toc=/graph/toc.json
+      - name: 使用工具包
+        items:
+          - name: 概述
+            href: toolkit/overview.md
+            displayName: 'Microsoft Graph Toolkit, toolkit'
+          - name: 入门
+            items:
+              - name: 入门
+                href: toolkit/get-started/overview.md
+                displayName: 'Microsoft Graph Toolkit, toolkit'
+              - name: React 工具包
+                href: toolkit/get-started/mgt-react.md
+              - name: SPFx 工具包
+                href: toolkit/get-started/mgt-spfx.md
+          - name: 构建首个应用
+            items:
+              - name: 注册 Azure AD 租户应用
+                href: toolkit/get-started/add-aad-app-registration.md
+              - name: 构建 Web 应用程序 (JavaScript)
+                href: toolkit/get-started/build-a-web-app.md
+              - name: 构建 web 应用程序 (React)
+                href: toolkit/get-started/use-toolkit-with-react.md
+              - name: 构建 web 应用 (Angular)
+                href: toolkit/get-started/use-toolkit-with-angular.md
+              - name: 构建 SharePoint Web 部件
+                href: toolkit/get-started/build-a-sharepoint-web-part.md
+              - name: 生成 Teams 选项卡
+                href: toolkit/get-started/build-a-microsoft-teams-tab.md
+              - name: 使用 SSO 生成 Teams 选项卡
+                href: toolkit/get-started/build-a-microsoft-teams-sso-tab.md
+              - name: 构建电子应用
+                href: toolkit/get-started/build-an-electron-app.md
+          - name: 提供程序
+            items:
+              - name: 使用提供程序
+                href: toolkit/providers/providers.md
+                displayName: 'Microsoft Graph Toolkit providers, toolkit provider'
+              - name: MSAL 提供商
+                href: toolkit/providers/msal.md
+              - name: MSAL2 提供商
+                href: toolkit/providers/msal2.md
+              - name: SharePoint 提供商
+                href: toolkit/providers/sharepoint.md
+              - name: Teams 提供商
+                href: toolkit/providers/teams.md
+              - name: Teams MSAL2 提供商
+                href: toolkit/providers/teams-msal2.md
+              - name: TeamsFx 提供商
+                href: toolkit/providers/teamsfx.md
+              - name: 电子提供程序
+                href: toolkit/providers/electron.md
+              - name: 代理服务器提供商
+                href: toolkit/providers/proxy.md
+              - name: 自定义提供程序
+                href: toolkit/providers/custom.md
+          - name: 组件
+            items:
+              - name: 登录
+                href: toolkit/components/login.md
+                displayName: 'Microsoft Graph toolkit components, toolkit component'
+              - name: 获取
+                href: toolkit/components/get.md
+              - name: 人员
+                href: toolkit/components/person.md
+              - name: 人员
+                href: toolkit/components/people.md
+              - name: 个人卡片
+                href: toolkit/components/person-card.md
+              - name: 人员选取器
+                href: toolkit/components/people-picker.md
+              - name: Teams 频道选取器
+                href: toolkit/components/teams-channel-picker.md
+              - name: 议程
+                href: toolkit/components/agenda.md
+              - name: 规划器任务
+                href: toolkit/components/tasks.md
+              - name: 待办任务
+                href: toolkit/components/todo.md
+              - name: 文件
+                href: toolkit/components/file.md
+              - name: 文件列表
+                href: toolkit/components/file-list.md
+          - name: 自定义组件
+            items:
+              - name: 对组件进行样式设置
+                href: toolkit/customize-components/style.md
+              - name: 组件模板化
+                href: toolkit/customize-components/templates.md
+              - name: 正在处理事件
+                href: toolkit/customize-components/events.md
+              - name: 在组件中缓存 Microsoft Graph 调用
+                href: toolkit/customize-components/cache.md
+              - name: 本地化组件
+                href: toolkit/customize-components/localization.md
+              - name: 从右到左支持
+                href: toolkit/customize-components/right-to-left.md
+      - name: 资源
+        expanded: true
+        items:
+          - name: 最佳做法
+            href: best-practices-concept.md
+            displayName: 'Microsoft Graph, Best practices for working with Microsoft Graph'
+          - name: 已知问题
+            href: known-issues.md
+            displayName: 'Microsoft Graph, Known issues with Microsoft Graph'
+          - name: API 更改日志
+            href: changelog.md
+          - name: 错误
+            href: errors.md
+            displayName: Microsoft Graph error responses and error resource types
+          - name: Azure AD 服务限制
+            displayName: Azure AD service limits and restrictions
+            href: /azure/active-directory/enterprise-users/directory-service-limits-restrictions?toc=/graph/toc.json
+      - name: API v1.0 参考
+        href: /graph/api/overview?view=graph-rest-1.0&preserve-view=true
+        displayName: Microsoft Graph REST API v1.0 reference
+      - name: API beta 参考
+        href: /graph/api/overview?view=graph-rest-beta&preserve-view=true
+        displayName: 'Microsoft Graph beta endpoint reference, Microsoft Graph REST API Beta'

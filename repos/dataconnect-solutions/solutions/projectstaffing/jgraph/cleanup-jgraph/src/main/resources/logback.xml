@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT license. See LICENSE file in the project root for full license information.
+  -->
+
+<configuration>
+
+    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %magenta(%X{correlationId}) %highlight(%-5level) %logger{36} - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <!-- Uncomment in order to include spark logs -->
+    <!--    <root level="${JGRAPH_LOG_LEVEL:-info}">-->
+    <!--        <appender-ref ref="Console" />-->
+    <!--    </root>-->
+
+    <logger name="com.microsoft.graphdataconnect" level="${JGRAPH_LOG_LEVEL:-info}" additivity="false">
+        <appender-ref ref="Console"/>
+    </logger>
+
+</configuration>

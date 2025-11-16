@@ -1,0 +1,19 @@
+---
+description: Arquivo gerado automaticamente. NÃO MODIFICAR
+ms.openlocfilehash: 39920c2e19f4a5dd0b14b281470a989f71501464ceea62873767e0d64eae121c
+ms.sourcegitcommit: 986c33b848fa22a153f28437738953532b78c051
+ms.translationtype: MT
+ms.contentlocale: pt-BR
+ms.lasthandoff: 08/05/2021
+ms.locfileid: "57100794"
+---
+```java
+
+GraphServiceClient graphClient = GraphServiceClient.builder().authenticationProvider( authProvider ).buildClient();
+
+PrivilegedApprovalMyRequestsCollectionPage myRequests = graphClient.privilegedApproval()
+    .myRequests()
+    .buildRequest()
+    .get();
+
+```

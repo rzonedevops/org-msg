@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>ApiDoctor.Publishing</id>
+        <version>$version$</version>
+        <title>API Doctor API documentation publishing extension</title>
+        <authors>Microsoft</authors>
+        <owners>dspektor@microsoft.com</owners>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Toolkit to enable publishing from markdown to other formats.</description>
+        <releaseNotes>Check http://github.com/onedrive/apidoctor for details.</releaseNotes>
+        <licenseUrl>http://msdn.microsoft.com/en-US/cc300389</licenseUrl>
+        <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+        <dependencies>
+            <group targetFramework="netcore50">
+                <dependency id="ApiDoctor.Validation" version="$version$" />
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="bin\Release\net5.0\ApiDoctor.Publishing.dll" target="lib\netcore50\ApiDoctor.Publishing.dll" />
+    </files>
+</package>

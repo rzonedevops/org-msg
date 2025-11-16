@@ -1,0 +1,19 @@
+---
+description: 自动生成文件。 请不要修改
+ms.openlocfilehash: bab607776e05e99f3a4a229c2c1b0ded2eccf35e
+ms.sourcegitcommit: 30d1f0d898b6e4488d1938251fba143370119241
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 05/11/2022
+ms.locfileid: "65326622"
+---
+```go
+
+//THE GO SDK IS IN PREVIEW. NON-PRODUCTION USE ONLY
+graphClient := msgraphsdk.NewGraphServiceClient(requestAdapter)
+
+plannerTaskId := "plannerTask-id"
+result, err := graphClient.Planner().TasksById(&plannerTaskId).BucketTaskBoardFormat().Get()
+
+
+```

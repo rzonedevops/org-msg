@@ -1,0 +1,162 @@
+---
+author: JeremyKelley
+title: 创建捆绑包
+description: 创建 driveItems 捆绑包
+ms.localizationpriority: medium
+ms.prod: sharepoint
+doc_type: apiPageType
+ms.openlocfilehash: dc6f1cf54cc615b65abe3573a9b6481f83a9f3be
+ms.sourcegitcommit: f5382652b6880fab42040df40a08de7cb2d74d35
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/17/2022
+ms.locfileid: "63561623"
+---
+# <a name="create-bundle"></a>创建捆绑包
+
+命名空间：microsoft.graph
+
+将新 [捆绑包][] 添加到用户驱动器。
+
+[bundle]: ../resources/bundle.md
+
+## <a name="permissions"></a>权限
+
+要调用此 API，需要以下权限之一。要了解详细信息，包括如何选择权限的信息，请参阅[权限](/graph/permissions-reference)。
+
+|权限类型      | 权限（从最低特权到最高特权）              |
+|:--------------------|:---------------------------------------------------------|
+|委派（工作或学校帐户） | 不支持。                             |
+|委派（个人 Microsoft 帐户） | Files.ReadWrite、Files.ReadWrite.All   |
+|应用程序          | 不支持。                                           |
+
+## <a name="http-request"></a>HTTP 请求
+
+<!-- { "blockType": "ignored" } -->
+
+```http
+POST /drive/bundles
+```
+
+## <a name="request-headers"></a>请求标头
+
+| 名称          | 说明  |
+|:------------- |:------------ |
+| Authorization | 持有者 \{token\}。必需。 |
+
+## <a name="request-body"></a>请求正文
+
+在请求正文中，提供要创建的捆绑包的 JSON 表示形式。
+
+## <a name="response"></a>响应
+
+如果请求成功，将返回表示新创建的捆绑包的 [driveItem](../resources/driveitem.md) 。
+
+有关错误响应的信息，请参阅 [错误响应][error-response]。
+
+## <a name="examples"></a>示例
+
+### <a name="example-1-create-a-bundle"></a>示例 1：创建捆绑包
+
+以下示例演示如何创建基本的新捆绑包。
+此请求将创建一个名为 的新捆绑包 `Just some files` ，并添加两个现有项到该捆绑包。
+此捆绑包可用于与其他用户共享文件集合，而无需共享存储这些项目的文件夹。
+
+#### <a name="request"></a>请求
+
+<!-- { "blockType": "request", "name": "create-bundle" } -->
+
+```http
+POST https://graph.microsoft.com/beta/drive/bundles
+Content-Type: application/json
+
+{
+  "name": "Just some files",
+  "@microsoft.graph.conflictBehavior" : "rename",
+  "bundle": { },
+  "children": [
+    { "id": "1234asdf" },
+    { "id": "1234qwerty" }
+  ]
+}
+```
+
+#### <a name="response"></a>响应
+
+<!-- { "blockType": "response", "@odata.type": "microsoft.graph.driveItem", "truncated": true } -->
+
+```http
+HTTP/1.1 201 Created
+Content-Type: application/json
+
+{
+  "id": "1234321!abc",
+  "name": "Just some files",
+  "bundle": {
+    "childCount": 2
+  }
+}
+```
+
+为了提高可读性，可能缩短了此处显示的响应对象。
+
+### <a name="example-2-create-an-album"></a>示例 2：创建相册
+
+创建新相册的请求相似，尽管在 bundle Facet 中，相册属性设置为非 null 值。
+
+#### <a name="request"></a>请求
+
+<!-- { "blockType": "request", "name": "create-album" } -->
+
+```http
+POST https://graph.microsoft.com/beta/drive/bundles
+Content-Type: application/json
+
+{
+  "name": "My Day at the Beach",
+  "@microsoft.graph.conflictBehavior" : "rename",
+  "bundle": { "album": {} },
+  "children": [
+    { "id": "1234asdf" }
+  ]
+}
+```
+
+#### <a name="response"></a>响应
+
+<!-- { "blockType": "response", "@odata.type": "microsoft.graph.driveItem", "truncated": true } -->
+
+```http
+HTTP/1.1 201 Created
+Content-Type: application/json
+
+{
+  "id": "1234321!abc",
+  "name": "Just some files",
+  "bundle": {
+    "childCount": 2,
+    "album": { }
+ }
+}
+```
+
+为了提高可读性，可能缩短了此处显示的响应对象。
+
+如果将 _@microsoft.graph.conflictBehavior_ 设置为 **rename** ，并且已存在同名的捆绑包，则新的捆绑包名称将更新为唯一。
+OneDrive将在捆绑包名称的末尾附加一个数字。
+
+例如，将把 `My Day at the Beach` 重命名为 `My Day at the Beach 1`。
+如果 `My Day at the Beach 1` 已取值，则数字将再次递增，直到发现唯一的捆绑包名称。
+
+
+[error-response]: /graph/errors
+
+<!-- {
+  "type": "#page.annotation",
+  "description": "Create a new bundle or photo album.",
+  "keywords": "create,bundle",
+  "section": "documentation",
+  "tocPath&quot;: &quot;Bundles/Create"
+} -->
+
+

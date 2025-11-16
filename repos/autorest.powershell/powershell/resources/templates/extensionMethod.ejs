@@ -1,0 +1,74 @@
+<% var key = project.helper.ConvertToValidMethodGroupKey(methodGroup.$key)-%>
+<% var OperationsName = clientName != '' ? clientName : project.helper.PascalCase(key) + 'Operations'-%>
+<%# ToDo: currently assume the SyncMethodsGenerationMode is Essential type, and need to add support for other types -%>
+        /// <summary>
+        /// <%=project.helper.wrapComments('        ', '/// ', method.language.default.description)%>
+<%# ToDo: add support for externaldocsurl -%>
+        /// </summary>
+<%# ToDo: add <remarks> if there are both description and summary -%>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+<% if(method.parameters && !method.language.default.pageable?.nextPageOperation) { method.parameters.filter(p => p.implementation != 'Client' && !project.helper.IsConstantParameter(p) && p.protocol.http?.in != 'complexHeader' && !(p.extensions && p.extensions['x-ms-parameter-grouping'])).forEach(function (parameter) {-%>
+        /// <param name='<%-parameter.language.default.name%>'>
+        /// <%=project.helper.wrapComments('        ', '/// ', parameter.language.default.description)%>
+        /// </param>
+<% });}-%>
+<% if(method.language.default.pageable?.nextPageOperation) {-%>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+<% } -%>
+<%# ToDo: add support for GetObsoleteAttribute-%>
+<%# ToDo: add support for AccessModifier, assume public for the time being-%>
+        public static <%-method.language.default.returnType%> <%-method.language.default.name%>(this I<%-OperationsName%> operations<%- method.language.default.syncMethodParameterDeclaration ? ', ' + method.language.default.syncMethodParameterDeclaration: '' %>)
+        {
+<%# ToDo: need to handle different return type, body, header and the others including no return type-%>
+<% if(method.language.default.returnType != 'void') {-%>
+                return ((I<%-OperationsName%>)operations).<%-method.language.default.name%>Async(<%-method.language.default.syncMethodInvocationArgs%>).GetAwaiter().GetResult();
+<% } else { -%>
+                ((I<%-OperationsName%>)operations).<%-method.language.default.name%>Async(<%-method.language.default.syncMethodInvocationArgs%>).GetAwaiter().GetResult();
+<% } -%>
+        }
+
+        /// <summary>
+        /// <%=project.helper.wrapComments('        ', '/// ', method.language.default.description)%>
+<%# ToDo: add support for externaldocsurl -%>
+        /// </summary>
+<%# ToDo: add <remarks> if there are both description and summary -%>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+<% if(method.parameters && !method.language.default.pageable?.nextPageOperation) { method.parameters.filter(p => p.implementation != 'Client' && !project.helper.IsConstantParameter(p) && p.protocol.http?.in != 'complexHeader' && !p.readOnly && !(p.extensions && p.extensions['x-ms-parameter-grouping'])).forEach(function (parameter) {-%>
+        /// <param name='<%-parameter.language.default.name%>'>
+        /// <%=project.helper.wrapComments('        ', '/// ', parameter.language.default.description)%>
+        /// </param>
+<% });}-%>
+<% if(method.language.default.pageable?.nextPageOperation) {-%>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+<% } -%>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+<%# ToDo: add support for GetObsoleteAttribute-%>
+<%# ToDo: add support for AccessModifier, assume public for the time being-%>
+        public static async System.Threading.Tasks.Task<%- method.language.default.returnType != 'void' ? '<' + method.language.default.returnType + '>' : ''%> <%-method.language.default.name%>Async(this I<%-OperationsName%> operations<%- method.language.default.asyncMethodParameterDeclaration ? ', ' + method.language.default.asyncMethodParameterDeclaration: '' %>)
+        {
+<%# ToDo: need to handle different return type, body, header and the others including no return type-%>
+<% if(method.language.default.returnType != 'void') {-%>
+<% if(method.language.default.returnType == 'System.IO.Stream') {-%>
+            var _result = await operations.<%-method.language.default.name%>WithHttpMessagesAsync(<%-method.language.default.asyncMethodInvocationArgs%>).ConfigureAwait(false);
+            _result.Request.Dispose();
+            return _result.Body;
+<% } else {-%>
+            using (var _result = await operations.<%-method.language.default.name%>WithHttpMessagesAsync(<%-method.language.default.asyncMethodInvocationArgs%>).ConfigureAwait(false))
+            {
+                return <%- method.language.default.responseType.startsWith('Microsoft.Rest.Azure.AzureOperationResponse') ? '_result.Body' : '_result.Headers'%>;
+            }
+<% }-%>
+<% } else { -%>
+            (await operations.<%-method.language.default.name%>WithHttpMessagesAsync(<%-method.language.default.asyncMethodInvocationArgs%>).ConfigureAwait(false)).Dispose();
+<% }-%>
+        }

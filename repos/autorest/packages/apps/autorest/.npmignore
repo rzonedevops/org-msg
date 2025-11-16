@@ -1,0 +1,12 @@
+*.ts
+!*.d.ts
+*.js.map
+tsconfig.json
+.npmignore
+*.tsbuildinfo
+bin
+*.tgz
+test/**
+static_modules/
+!/preinstall-check.js
+!/post-install.js

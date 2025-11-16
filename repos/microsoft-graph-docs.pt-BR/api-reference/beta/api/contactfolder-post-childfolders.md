@@ -1,0 +1,133 @@
+---
+title: Criar ContactFolder
+description: 'Cria uma nova contactFolder como um filho de uma pasta especificada. '
+author: kevinbellinger
+ms.localizationpriority: medium
+ms.prod: outlook
+doc_type: apiPageType
+ms.openlocfilehash: b27e06241416e37563a163562e60d010388c614f
+ms.sourcegitcommit: a16b765507093d892022603d521c0ae8043de432
+ms.translationtype: MT
+ms.contentlocale: pt-BR
+ms.lasthandoff: 01/20/2022
+ms.locfileid: "62094317"
+---
+# <a name="create-contactfolder"></a>Criar ContactFolder
+
+Namespace: microsoft.graph
+
+[!INCLUDE [beta-disclaimer](../../includes/beta-disclaimer.md)]
+
+Cria uma nova contactFolder como um filho de uma pasta especificada. 
+
+Também é possível [criar uma nova contactFolder sob a pasta de contatos padrão do usuário](user-post-contactfolders.md).
+## <a name="permissions"></a>Permissões
+Uma das seguintes permissões é obrigatória para chamar esta API. Para saber mais, incluindo como escolher permissões, confira [Permissões](/graph/permissions-reference).
+
+|Tipo de permissão      | Permissões (da com menos para a com mais privilégios)              |
+|:--------------------|:---------------------------------------------------------|
+|Delegado (conta corporativa ou de estudante) | Contacts.ReadWrite    |
+|Delegado (conta pessoal da Microsoft) | Contacts.ReadWrite    |
+|Aplicativo | Contacts.ReadWrite |
+
+## <a name="http-request"></a>Solicitação HTTP
+<!-- { "blockType": "ignored" } -->
+```http
+POST /me/contactFolders/{id}/childFolders
+POST /users/{id | userPrincipalName}/contactFolders/{id}/childFolders
+```
+## <a name="request-headers"></a>Cabeçalhos de solicitação
+| Cabeçalho       | Valor |
+|:---------------|:--------|
+| Autorização  | {token} de portador. Obrigatório.  |
+| Content-Type  | application/json. Obrigatório.  |
+
+## <a name="request-body"></a>Corpo da solicitação
+No corpo da solicitação, forneça uma representação JSON do objeto [ContactFolder](../resources/contactfolder.md).
+
+## <a name="response"></a>Resposta
+
+Se bem-sucedido, este método retorna o código de resposta `201 Created` e o objeto [ContactFolder](../resources/contactfolder.md) no corpo da resposta.
+
+## <a name="example"></a>Exemplo
+
+### <a name="request"></a>Solicitação
+
+Este é um exemplo da solicitação.
+
+# <a name="http"></a>[HTTP](#tab/http)
+<!-- {
+  "blockType": "request",
+  "name": "create_contactfolder_from_contactfolder"
+}-->
+```http
+POST https://graph.microsoft.com/beta/me/contactFolders/{id}/childFolders
+Content-type: application/json
+
+{
+  "displayName": "Family"
+}
+```
+# <a name="c"></a>[C#](#tab/csharp)
+[!INCLUDE [sample-code](../includes/snippets/csharp/create-contactfolder-from-contactfolder-csharp-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+[!INCLUDE [sample-code](../includes/snippets/javascript/create-contactfolder-from-contactfolder-javascript-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# <a name="objective-c"></a>[Objective-C](#tab/objc)
+[!INCLUDE [sample-code](../includes/snippets/objc/create-contactfolder-from-contactfolder-objc-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# <a name="java"></a>[Java](#tab/java)
+[!INCLUDE [sample-code](../includes/snippets/java/create-contactfolder-from-contactfolder-java-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# <a name="go"></a>[Go](#tab/go)
+[!INCLUDE [sample-code](../includes/snippets/go/create-contactfolder-from-contactfolder-go-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+[!INCLUDE [sample-code](../includes/snippets/powershell/create-contactfolder-from-contactfolder-powershell-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+---
+
+
+No corpo da solicitação, forneça uma representação JSON do objeto [contactFolder](../resources/contactfolder.md).
+
+### <a name="response"></a>Resposta
+
+Aqui está um exemplo da resposta. Observação: o objeto de resposta mostrado aqui pode ser reduzido para facilitar a leitura.
+<!-- {
+  "blockType": "response",
+  "truncated": true,
+  "@odata.type": "microsoft.graph.contactFolder"
+} -->
+```http
+HTTP/1.1 200 OK
+Content-type: application/json
+
+{
+  "parentFolderId": "AQMkADIxYjJiYgEzLTFmNjYALTRjYTMtODA1NC0wZDkxZGNmOTcxNTQALgAAA8RJzXYaLKZPlmn0ge0edZkBADa3qi2IMXRNg6RwQSHe_F8AAAIBDgAAAA==",
+  "displayName": "Family",
+  "id": "AAMkADIxYjJiYmIzLTFmNjYtNGNhMy04MDU0LTBkOTFkY2Y5NzE1NAAuAAAAAADESc12GiymT5Zp9IHtHnWZAQA2t6otiDF0TYOkcEEh3vhfAAAGgUC1AAA="
+}
+```
+
+<!-- uuid: 8fcb5dbc-d5aa-4681-8e31-b001d5168d79
+2015-10-25 14:57:30 UTC -->
+<!--
+{
+  "type": "#page.annotation",
+  "description": "Create ContactFolder",
+  "keywords": "",
+  "section": "documentation",
+  "tocPath": "",
+  "suppressions": [
+  ]
+}
+-->
+
+

@@ -1,0 +1,96 @@
+package com.microsoft.graph.beta.models.teamsadministration;
+
+import com.microsoft.graph.beta.models.Entity;
+import com.microsoft.kiota.serialization.Parsable;
+import com.microsoft.kiota.serialization.ParseNode;
+import com.microsoft.kiota.serialization.SerializationWriter;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+@jakarta.annotation.Generated("com.microsoft.kiota")
+public class TeamsAdminRoot extends Entity implements Parsable {
+    /**
+     * Instantiates a new {@link TeamsAdminRoot} and sets the default values.
+     */
+    public TeamsAdminRoot() {
+        super();
+    }
+    /**
+     * Creates a new instance of the appropriate class based on discriminator value
+     * @param parseNode The parse node to use to read the discriminator value and create the object
+     * @return a {@link TeamsAdminRoot}
+     */
+    @jakarta.annotation.Nonnull
+    public static TeamsAdminRoot createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new TeamsAdminRoot();
+    }
+    /**
+     * The deserialization information for the current model
+     * @return a {@link Map<String, java.util.function.Consumer<ParseNode>>}
+     */
+    @jakarta.annotation.Nonnull
+    public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
+        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(super.getFieldDeserializers());
+        deserializerMap.put("policy", (n) -> { this.setPolicy(n.getObjectValue(TeamsPolicyAssignment::createFromDiscriminatorValue)); });
+        deserializerMap.put("telephoneNumberManagement", (n) -> { this.setTelephoneNumberManagement(n.getObjectValue(TelephoneNumberManagementRoot::createFromDiscriminatorValue)); });
+        deserializerMap.put("userConfigurations", (n) -> { this.setUserConfigurations(n.getCollectionOfObjectValues(TeamsUserConfiguration::createFromDiscriminatorValue)); });
+        return deserializerMap;
+    }
+    /**
+     * Gets the policy property value. Represents a navigation property to the Teams policy assignment object.
+     * @return a {@link TeamsPolicyAssignment}
+     */
+    @jakarta.annotation.Nullable
+    public TeamsPolicyAssignment getPolicy() {
+        return this.backingStore.get("policy");
+    }
+    /**
+     * Gets the telephoneNumberManagement property value. Represents a collection of available telephone number management operations.
+     * @return a {@link TelephoneNumberManagementRoot}
+     */
+    @jakarta.annotation.Nullable
+    public TelephoneNumberManagementRoot getTelephoneNumberManagement() {
+        return this.backingStore.get("telephoneNumberManagement");
+    }
+    /**
+     * Gets the userConfigurations property value. Represents the configuration information of users who have accounts hosted on Microsoft Teams.
+     * @return a {@link java.util.List<TeamsUserConfiguration>}
+     */
+    @jakarta.annotation.Nullable
+    public java.util.List<TeamsUserConfiguration> getUserConfigurations() {
+        return this.backingStore.get("userConfigurations");
+    }
+    /**
+     * Serializes information the current object
+     * @param writer Serialization writer to use to serialize this model
+     */
+    public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
+        Objects.requireNonNull(writer);
+        super.serialize(writer);
+        writer.writeObjectValue("policy", this.getPolicy());
+        writer.writeObjectValue("telephoneNumberManagement", this.getTelephoneNumberManagement());
+        writer.writeCollectionOfObjectValues("userConfigurations", this.getUserConfigurations());
+    }
+    /**
+     * Sets the policy property value. Represents a navigation property to the Teams policy assignment object.
+     * @param value Value to set for the policy property.
+     */
+    public void setPolicy(@jakarta.annotation.Nullable final TeamsPolicyAssignment value) {
+        this.backingStore.set("policy", value);
+    }
+    /**
+     * Sets the telephoneNumberManagement property value. Represents a collection of available telephone number management operations.
+     * @param value Value to set for the telephoneNumberManagement property.
+     */
+    public void setTelephoneNumberManagement(@jakarta.annotation.Nullable final TelephoneNumberManagementRoot value) {
+        this.backingStore.set("telephoneNumberManagement", value);
+    }
+    /**
+     * Sets the userConfigurations property value. Represents the configuration information of users who have accounts hosted on Microsoft Teams.
+     * @param value Value to set for the userConfigurations property.
+     */
+    public void setUserConfigurations(@jakarta.annotation.Nullable final java.util.List<TeamsUserConfiguration> value) {
+        this.backingStore.set("userConfigurations", value);
+    }
+}

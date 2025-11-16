@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+  <edmx:DataServices>
+    <Schema Namespace="microsoft.graph" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityType Name="entity" Abstract="true">
+        <Key>
+          <PropertyRef Name="id"/>
+        </Key>
+        <Property Name="id" Unicode="false" Nullable="false" Type="Edm.String"/>
+      </EntityType>
+      
+      <EntityType Name="testType" BaseType="microsoft.graph.entity">
+        <Property Name="propertyAlpha" Type="microsoft.graph.derivedComplexTypeRequest"/>
+      </EntityType>
+      <ComplexType Name="emptyBaseComplexTypeRequest" Abstract="true"/>
+      <ComplexType Name="derivedComplexTypeRequest" BaseType="microsoft.graph.emptyBaseComplexTypeRequest">
+        <Property Name="propName1" Type="Edm.String" />
+        <Property Name="propName2" Type="Edm.String" />
+      </ComplexType>
+      <ComplexType Name="responseObject" />
+      <Action Name="query" IsBound="true">
+        <Parameter Name="bindingParameter" Type="microsoft.graph.testType" />
+        <Parameter Name="requests" Type="Collection(microsoft.graph.derivedComplexTypeRequest)" Nullable="false" />
+        <ReturnType Type="Collection(microsoft.graph.responseObject)" Nullable="false" />
+      </Action>
+      
+      <EntityType Name="testType2" BaseType="microsoft.graph.entity"></EntityType>
+      <EntityType Name="testType3" BaseType="microsoft.graph.entity"></EntityType>
+      <EntityType Name="testType4" BaseType="microsoft.graph.testType3"></EntityType>
+      <EntityType Name="testEntity" BaseType="microsoft.graph.entity">
+        <NavigationProperty Name="testNav" Type="microsoft.graph.testType"/>
+        <NavigationProperty Name="testInvalidNav" Type="microsoft.graph.testType2"/>
+        <NavigationProperty Name="testExplicitNav" Type="microsoft.graph.testType3"/>
+      </EntityType>
+      <EntityType Name="testSingleton" BaseType="microsoft.graph.entity">
+        <NavigationProperty Name="testSingleNav" Type="microsoft.graph.testType" ContainsTarget="true" />
+      </EntityType>
+      <EntityType Name="testSingleton2" BaseType="microsoft.graph.entity">
+        <NavigationProperty Name="testSingleNav2" Type="microsoft.graph.testType3" ContainsTarget="true" />
+      </EntityType>
+      <ComplexType Name="thumbnail">
+        <Property Name="content" Type="Edm.Stream" />
+        <Property Name="height" Type="Edm.Int32" />
+        <Property Name="sourceItemId" Type="Edm.String" />
+        <Property Name="url" Type="Edm.String" />
+        <Property Name="width" Type="Edm.Int32" />
+      </ComplexType>
+      <ComplexType Name="recipient">
+        <Property Name="name" Type="Edm.String" />
+        <Property Name="email" Type="Edm.String" />
+      </ComplexType>
+      <ComplexType Name="emptyComplexType" Abstract="true"/>
+      
+      <EntityType Name="timeOffRequest" BaseType="microsoft.graph.entity">
+        <Property Name="name" Type="Edm.String" />
+      </EntityType>
+      <EntityType Name="timeOff" BaseType="microsoft.graph.entity">
+        <Property Name="name" Type="Edm.String" />
+      </EntityType>
+      <EntityType Name="schedule" BaseType="microsoft.graph.entity">
+        <Property Name="enabled" Type="Edm.Boolean" />
+        <NavigationProperty Name="timesOff" Type="Collection(microsoft.graph.timeOff)" ContainsTarget="true" />
+        <NavigationProperty Name="timeOffRequests" Type="Collection(microsoft.graph.timeOffRequest)" ContainsTarget="true" />
+      </EntityType>
+      
+      <EntityType Name="onenotePage" HasStream="true" BaseType="microsoft.graph.entity">
+        <Property Name="content" Type="Edm.Stream" />
+        <NavigationProperty Name="parentNotebook" Type="microsoft.graph.notebook" ContainsTarget="true" />
+      </EntityType>
+      <EntityType Name="plannerGroup" BaseType="microsoft.graph.entity">
+        <NavigationProperty Name="plans" Type="Collection(microsoft.graph.plannerPlan)" />
+      </EntityType>
+
+      <Action Name="forward" IsBound="true">
+        <Parameter Name="bindingParameter" Type="microsoft.graph.onenotePage" />
+        <Parameter Name="ToRecipients" Type="Collection(microsoft.graph.recipient)" Nullable="false" />
+        <Parameter Name="Details" Type="Edm.String" Unicode="false" />
+        <Parameter Name="Comment" Type="Edm.String" Unicode="false" />
+      </Action>
+      <Action Name="forward" IsBound="true">
+        <Parameter Name="bindingParameter" Type="microsoft.graph.testType3" />
+        <Parameter Name="ToRecipients" Type="Collection(microsoft.graph.recipient)" Nullable="false" />
+        <Parameter Name="Comment" Type="Edm.String" Unicode="false" />
+      </Action>
+      <Action Name="forward" IsBound="true">
+        <Parameter Name="bindingParameter" Type="microsoft.graph.onenotePage" />
+        <Parameter Name="ToRecipients" Type="Collection(microsoft.graph.recipient)" Nullable="false" />
+        <Parameter Name="Comment" Type="Edm.String" Unicode="false" />
+      </Action>
+      <Action Name="forward" IsBound="true">
+        <Parameter Name="bindingParameter" Type="microsoft.graph.testType3" />
+        <Parameter Name="ToRecipients" Type="Collection(microsoft.graph.recipient)" Nullable="false" />
+        <Parameter Name="Comment" Type="Edm.String" Unicode="false" />
+        <Parameter Name="TestProperty" Type="Edm.String" Nullable="true"/>
+      </Action>
+      
+      <Function Name="FunctionMethodWithString" IsBound="true">
+        <Parameter Name="bindparameter" Type="microsoft.graph.testType2" />
+        <ReturnType Type="Edm.String" Unicode="false" />
+      </Function>
+      <Function Name="FunctionMethodWithBoolean" IsBound="true">
+        <Parameter Name="bindparameter" Type="microsoft.graph.testType2" />
+        <ReturnType Type="Edm.Boolean" Nullable="false" />
+      </Function>
+      <Function Name="FunctionMethodWithInt32" IsBound="true">
+        <Parameter Name="bindparameter" Type="microsoft.graph.testType2" />
+        <ReturnType Type="Edm.Int32" Nullable="false" />
+      </Function>
+      <Action Name="ActionMethodWithInt64" IsBound="true">
+        <Parameter Name="bindingParameter" Type="microsoft.graph.testType3" />
+        <ReturnType Type="Edm.Int64" Nullable="false" />
+      </Action>
+
+      <EntityContainer Name="GraphService">
+        <Singleton Name="testSingleton" Type="microsoft.graph.testSingleton"/>
+        <Singleton Name="testSingleton2" Type="microsoft.graph.testSingleton2"/>
+        <EntitySet Name="testTypes" EntityType="microsoft.graph.testType3"/>
+      </EntityContainer>
+      <Annotations Target="microsoft.graph.onenotePage/content">
+        <Annotation Term="Org.OData.Core.V1.Description" String="The OneNotePage content.&#xD;&#xA;&#xD;&#xA; Test token string" />
+      </Annotations>
+      <Annotations Target="microsoft.graph.directoryObject">
+        <Annotation Term="Org.OData.Capabilities.V1.ExpandRestrictions">
+          <Record>
+            <PropertyValue Property="Expandable" Bool="false" />
+          </Record>
+        </Annotation>
+        <Annotation Term="Org.OData.Capabilities.V1.NavigationRestrictions">
+          <Record>
+            <PropertyValue Property="Referenceable" Bool="false" />
+          </Record>
+        </Annotation>
+        <Annotation Term="Org.OData.Capabilities.V1.SelectRestrictions">
+          <Record>
+            <PropertyValue Property="Selectable" Bool="false" />
+          </Record>
+        </Annotation>
+        <Annotation Term="Org.OData.Capabilities.V1.CountRestrictions">
+          <Record>
+            <PropertyValue Property="Countable" Bool="false" />
+          </Record>
+        </Annotation>
+        <Annotation Term="Org.OData.Capabilities.V1.FilterRestrictions">
+          <Record>
+            <PropertyValue Property="Filterable" Bool="false" />
+          </Record>
+        </Annotation>
+        <Annotation Term="Org.OData.Capabilities.V1.SkipSupported" Bool="false" />
+      </Annotations>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

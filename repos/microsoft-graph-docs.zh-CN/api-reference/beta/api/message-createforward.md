@@ -1,0 +1,296 @@
+---
+title: 'message: createForward'
+description: 创建草稿以转发 JSON 或 MIME 格式的现有邮件。
+author: abheek-das
+ms.localizationpriority: medium
+ms.prod: outlook
+doc_type: apiPageType
+ms.openlocfilehash: ac83f7c75599e41b9a441f9d619a39bcf64c8ddc
+ms.sourcegitcommit: 25acfa7d0153336c9a35d30a1dd422aeadc1342c
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 02/03/2022
+ms.locfileid: "62341644"
+---
+# <a name="message-createforward"></a>message: createForward
+
+命名空间：microsoft.graph
+
+[!INCLUDE [beta-disclaimer](../../includes/beta-disclaimer.md)]
+
+创建草稿以转发 JSON 或 [](../resources/message.md)MIME 格式的现有邮件。
+
+使用 JSON 格式时，可以： 
+- 指定参数的 comment 或 `message` **body** 属性。 指定这两者将返回 HTTP 400 错误请求错误。
+- 指定参数 `toRecipients` 的参数或 **toRecipients** `message` 属性。 指定两者或同时指定两者都将返回 HTTP 400 错误请求错误。
+- 随后 [更新](../api/message-update.md)草稿以将内容添加到 **正文**，或更改其他邮件属性。
+
+使用 MIME 格式时：
+- 提供适用的 [Internet 邮件头](https://tools.ietf.org/html/rfc2076) 和 [MIME 内容](https://tools.ietf.org/html/rfc2045)，所有内容在请求正文中都通过 **base64** 格式进行编码。
+- 向 MIME 内容添加任何附件和 S/MIME 属性。
+
+在后续操作中[发送](../api/message-send.md)草稿消息。
+
+或者， [在单个操作](../api/message-forward.md) 中转发邮件。
+
+## <a name="permissions"></a>权限
+要调用此 API，需要以下权限之一。要了解详细信息，包括如何选择权限的信息，请参阅[权限](/graph/permissions-reference)。
+
+|权限类型      | 权限（从最低特权到最高特权）              |
+|:--------------------|:---------------------------------------------------------|
+|委派（工作或学校帐户） | Mail.ReadWrite    |
+|委派（个人 Microsoft 帐户） | Mail.ReadWrite    |
+|应用程序 | Mail.ReadWrite |
+
+## <a name="http-request"></a>HTTP 请求
+<!-- { "blockType": "ignored" } -->
+```http
+POST /me/messages/{id}/createForward
+POST /users/{id | userPrincipalName}/messages/{id}/createForward
+POST /me/mailFolders/{id}/messages/{id}/createForward
+POST /users/{id | userPrincipalName}/mailFolders/{id}/messages/{id}/createForward
+```
+## <a name="request-headers"></a>请求标头
+| 名称       | 类型 | 说明|
+|:---------------|:--------|:----------|
+| Authorization  | string  | Bearer {token}。必需。|
+| Content-Type | string  | 实体正文中的数据性质。必需。<br/> 对 JSON 对象使用 `application/json`，对 MIME 内容使用 `text/plain`。|
+
+## <a name="request-body"></a>请求正文
+若要发送 JSON 对象，请提供以下参数。
+
+| 参数    | 类型   |说明|
+|:---------------|:--------|:----------|
+|注释|String|要包含的注释。可以为空字符串。|
+|toRecipients|[recipient](../resources/recipient.md) collection|收件人列表|
+|消息|[message](../resources/message.md)|回复邮件中要更新的任何可写属性。|
+
+当指定 MIME 格式的正文时，请提供 MIME 内容与适用的 Internet 邮件头（“收件人”、“抄送”、“密件抄送”、“主题”）所有内容在请求正文中编码为 **base64** 格式。
+
+## <a name="response"></a>响应
+
+如果成功，此方法在响应正文中返回 `201 Created` 响应代码和 [message](../resources/message.md) 对象。
+
+如果请求正文包含错误的 MIME 内容，此方法将返回 `400 Bad request` 和以下错误消息：“无效的 base64 字符串 MIME 内容”。
+
+## <a name="examples"></a>示例
+
+### <a name="example-1-create-a-draft-message-in-json-format-to-forward-an-existing-message"></a>示例 1：创建 JSON 格式的草稿邮件以转发现有邮件
+下面是一个如何调用此 API 的示例。
+##### <a name="request"></a>请求
+下面是一个请求示例。
+
+# <a name="http"></a>[HTTP](#tab/http)
+<!-- {
+  "blockType": "request",
+  "name": "message_createforward"
+}-->
+```http
+POST https://graph.microsoft.com/beta/me/messages/AAMkADA1MTAAAH5JaLAAA=/createForward
+Content-Type: application/json
+
+{
+  "message":{  
+    "isDeliveryReceiptRequested": true,
+    "toRecipients":[
+      {
+        "emailAddress": {
+          "address":"danas@contoso.onmicrosoft.com",
+          "name":"Dana Swope"
+        }
+      }
+     ]
+  },
+  "comment": "Dana, just want to make sure you get this; you'll need this if the project gets approved." 
+}
+```
+# <a name="c"></a>[C#](#tab/csharp)
+[!INCLUDE [sample-code](../includes/snippets/csharp/message-createforward-csharp-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+[!INCLUDE [sample-code](../includes/snippets/javascript/message-createforward-javascript-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# <a name="objective-c"></a>[Objective-C](#tab/objc)
+[!INCLUDE [sample-code](../includes/snippets/objc/message-createforward-objc-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# <a name="java"></a>[Java](#tab/java)
+[!INCLUDE [sample-code](../includes/snippets/java/message-createforward-java-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# <a name="go"></a>[Go](#tab/go)
+[!INCLUDE [sample-code](../includes/snippets/go/message-createforward-go-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+[!INCLUDE [sample-code](../includes/snippets/powershell/message-createforward-powershell-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+---
+
+
+##### <a name="response"></a>响应
+这是一个示例响应。注意：为提高可读性，可能缩短了此处显示的响应对象。
+<!-- {
+  "blockType": "response",
+  "truncated": true,
+  "@odata.type": "microsoft.graph.message"
+} -->
+```http
+HTTP/1.1 201 Created
+Content-type: application/json
+
+{
+  "@odata.context": "https://graph.microsoft.com/beta/$metadata#Me/messages/$entity",
+  "@odata.id": "https://graph.microsoft.com/beta/users('86b6ceaf-57f7-4278-97c4-4da0a97f6cdb@70559e59-b378-49ea-8e53-07a3a3d27f5b')/messages('AAMkADA1MTAAAH5JKqAAA=')",
+  "@odata.etag": "W/\"CQAAABYAAADX8oL1Wa7jQbcPAHouCzswAAAH5/DQ\"",
+  "id": "AAMkADA1MTAAAH5JKqAAA=",
+  "subject": "FW: Let's start a group",
+  "body": {
+    "contentType": "HTML",
+    "content": "<html>\r\n<body>\r\nDana, just want to make sure you get this; you'll need this if the project gets approved.\r\n<b>From:</b> Admin<br>\r\n<b>Sent:</b> Tuesday, March 15, 2016 6:47:54 AM<br>\r\n<b>To:</b> Samantha Booth; Randi Welch<br>\r\n<b>Subject:</b> RE: Let's start a group</body>\r\n</html>\r\n"
+  },
+  "sender": {
+    "emailAddress": {
+      "name": "Admin",
+      "address": "admin@contoso.onmicrosoft.com"
+    }
+  },
+  "from": null,
+  "toRecipients": [
+    {
+      "emailAddress": {
+        "name": "Dana Swope",
+        "address": "danas@contoso.onmicrosoft.com"
+      }
+    }
+  ]
+}
+```
+
+
+### <a name="example-2-create-a-draft-message-in-mime-format-to-forward-an-existing-message"></a>示例 2：创建 MIME 格式的草稿邮件以转发现有邮件
+
+##### <a name="request"></a>请求
+
+<!-- {
+  "blockType": "ignored",
+  "name": "message_createForward_mime_beta"
+}-->
+
+```http
+POST https://graph.microsoft.com/beta/me/messages/AAMkADA1MTAAAH5JaLAAA=/createForward
+Content-Type: text/plain
+
+RnJvbTogQWxleCBXaWxiZXIgPEFsZXhXQGNvbnRvc28uY29tPgpUbzogTWVnYW4gQm93ZW4gPE1l
+Z2FuQkBjb250b3NvLmNvbT4KU3ViamVjdDogSW50ZXJuYWwgUmVzdW1lIFN1Ym1pc3Npb246IFNh
+bGVzIEFzc29jaWF0ZQpUaHJlYWQtVG9waWM6IEludGVybmFsIFJlc3VtZSBTdWJtaXNzaW9uOiBT
+YWxlcyBBc3NvY2lhdGUKVGhyZWFkLUluZGV4OiBjb2RlY29kZWNvZGVoZXJlaGVyZWhlcmUKRGF0
+ZTogU3VuLCAyOCBGZWIgMjAyMSAwNzoxNTowMCArMDAwMApNZXNzYWdlLUlEOgoJPE1XSFBSMTMw
+MU1CMjAwMDAwMDAwRDc2RDlDMjgyMjAwMDA5QUQ5QTlASFdIUFIxMzAxTUIwMDAwLmNvZGVudW0u
+cHJvZC5vdXRsb29rLmNvbT4KQ29udGVudC1MYW5ndWFnZTogZW4tVVMKWC1NUy1IYXMtQXR0YWNo
+OgpYLU1TLVRORUYtQ29ycmVsYXRvcjoKWC1NUy1FeGNoYW5n
+```
+
+##### <a name="response"></a>响应
+下面是一个响应示例。
+
+<!-- {
+  "blockType": "response",
+  "@odata.type": "microsoft.graph.message",
+  "truncated": true
+} -->
+
+```http
+HTTP/1.1 201 Created
+Content-type: application/json
+
+{
+    "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#users('0aaa0aa0-0000-0a00-a00a-0000009000a0')/messages/$entity",
+    "@odata.etag": "W/\"AAAAAAAAAAAa00AAAa0aAaAa0a0AAAaAAAAaAa0a\"",
+    "id": "AAMkADA1MTAAAAqldOAAA=",
+    "createdDateTime": "2021-04-23T18:13:44Z",
+    "lastModifiedDateTime": "2021-04-23T18:13:44Z",
+    "changeKey": "AAAAAAAAAAAA00aaaa000aaA",
+    "categories": [],
+    "receivedDateTime": "2021-04-23T18:13:44Z",
+    "sentDateTime": "2021-02-28T07:15:00Z",
+    "hasAttachments": false,
+    "internetMessageId": "<AAAAAAAAAA@AAAAAAA0001AA0000.codcod00.prod.outlook.com>",
+    "subject": "Internal Resume Submission: Sales Associate",
+    "bodyPreview": "Hi, Megan.I have an interest in the Sales Associate position. Please consider my resume, which you can access here...",
+    "importance": "normal",
+    "parentFolderId": "LKJDSKJHkjhfakKJHFKWKKJHKJdhkjHDK==",
+    "conversationId": "SDSFSmFSDGI5LWZhYjc4fsdfsd=",
+    "conversationIndex": "Adfsdfsdfsdfw==",
+    "isDeliveryReceiptRequested": null,
+    "isReadReceiptRequested": false,
+    "isRead": true,
+    "isDraft": true,
+    "webLink": "https://outlook.office365.com/owa/?ItemID=AAMkAGNhOWAvsurl=1&viewmodel=ReadMessageItem",
+    "inferenceClassification": "focused",
+    "body": {
+        "contentType": "text",
+        "content": "Hi, Megan.I have an interest in the Sales Associate position. Please consider my resume, which you can access here... Regards,Alex"
+    },
+    "sender": {
+        "emailAddress": {
+            "name": "Alex Wilber",
+            "address": "AlexW@contoso.com"
+        }
+    },
+    "from": {
+        "emailAddress": {
+            "name": "Alex Wilber",
+            "address": "AlexW@contoso.com"
+        }
+    },
+    "toRecipients": [
+        {
+            "emailAddress": {
+                "name": "Megan Bowen",
+                "address": "MeganB@contoso.com"
+            }
+        }
+    ],
+    "ccRecipients": [],
+    "bccRecipients": [],
+    "replyTo": [],
+    "flag": {
+        "flagStatus": "notFlagged"
+    }
+}
+
+```
+
+如果请求正文包含错误的 MIME 内容，此方法返回以下错误消息。
+
+<!-- { "blockType": "ignored" } -->
+
+```http
+HTTP/1.1 400 Bad Request
+Content-type: application/json
+
+{
+    "error": {
+        "code": "ErrorMimeContentInvalidBase64String",
+        "message": "Invalid base64 string for MIME content."
+    }
+}
+```
+
+<!-- uuid: 8fcb5dbc-d5aa-4681-8e31-b001d5168d79
+2015-10-25 14:57:30 UTC -->
+<!--
+{
+  "type": "#page.annotation",
+  "description": "message: createForward",
+  "keywords": "",
+  "section": "documentation",
+  "tocPath": "",
+  "suppressions": [
+  ]
+}
+-->

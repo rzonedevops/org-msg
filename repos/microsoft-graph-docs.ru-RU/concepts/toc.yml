@@ -1,0 +1,868 @@
+metadata:
+  experimental: true
+  experiment_id: b8938daf-1bcb-4f
+items:
+  - name: Документация по Microsoft Graph
+    href: index.yml
+  - name: Обзор
+    expanded: true
+    items:
+      - name: Обзор Microsoft Graph
+        href: overview.md
+      - name: Службы в Microsoft Graph
+        href: overview-major-services.md
+      - name: Новые возможности
+        expanded: true
+        items:
+          - name: Обзор новых возможностей
+            href: whats-new-overview.md
+            displayName: 'what''s new, updates'
+          - name: Журнал изменений API
+            href: 'https://developer.microsoft.com/graph/changelog'
+            displayName: 'API changes, API updates, Microsoft Graph API, REST API, REST API updates'
+      - name: 'Пользователи, с которыми вы можете связаться'
+        items:
+          - name: Обзор
+            href: users-you-can-reach.md
+            displayName: users you can reach
+          - name: Национальные облачные развертывания
+            href: deployments.md
+          - name: Гибридные развертывания (нерекомендуемые)
+            href: hybrid-rest-support.md
+      - name: Краткое руководство
+        href: 'https://developer.microsoft.com/graph/quick-start'
+        displayName: quickstart
+      - name: Учебники
+        items:
+          - name: Обзор
+            href: tutorials.md
+            displayName: tutorials
+          - name: .NET
+            href: /graph/tutorials/dotnet
+          - name: Go
+            href: /graph/tutorials/go
+          - name: Java
+            href: /graph/tutorials/java
+          - name: JavaScript
+            href: /graph/tutorials/javascript
+          - name: PHP
+            href: /graph/tutorials/php
+          - name: Power Automate
+            href: /graph/tutorials/power-automate
+          - name: PowerShell
+            href: /graph/tutorials/powershell
+          - name: Python
+            href: /graph/tutorials/python
+          - name: TypeScript
+            href: /graph/tutorials/typescript
+      - name: Управление версиями и поддержка
+        href: versioning-and-support.md
+      - name: Условия использования
+        href: /legal/microsoft-apis/terms-of-use?context=graph/context
+  - name: Узнать
+    expanded: true
+    items:
+      - name: Пользователи
+        items:
+          - name: Обзор
+            href: azuread-users-concept-overview.md
+            displayName: users
+          - name: Доступ к данным пользователя
+            href: /learn/modules/msgraph-access-user-data
+      - name: Группы
+        items:
+          - name: Обзор
+            href: /graph/api/resources/groups-overview?context=graph/context
+            displayName: groups
+          - name: Группы Microsoft 365
+            href: office365-groups-concept-overview.md
+          - name: Настройка параметров группы
+            href: group-set-options.md
+          - name: Управление жизненным циклом групп
+            href: /learn/modules/msgraph-access-group-data
+      - name: Приложения
+        items:
+          - name: Обзор
+            href: applications-concept-overview.md
+            displayName: 'applications, apps'
+          - name: Автоматизация настройки единого входа на основе SAML
+            href: application-saml-sso-configure-api.md
+          - name: Настройка прокси приложения
+            href: application-proxy-configure-api.md
+      - name: Получение доступа к данным в масштабе
+        items:
+          - name: Обзор Подключения к данным
+            href: data-connect-concept-overview.md
+            displayName: 'Microsoft Graph Data Connect, access data, bulk data'
+          - name: Создание первого приложения Data Connect
+            href: data-connect-quickstart.yml
+            displayName: Microsoft Graph Data Connect
+          - name: 'Наборы данных, регионы и приемники'
+            href: data-connect-datasets.md
+          - name: Политики и выставление счетов
+            href: data-connect-policies.md
+          - name: Выбор и фильтрация пользователей
+            href: data-connect-filtering.md
+          - name: Интеграция с PAM
+            href: data-connect-pam.md
+            displayName: Privileged Access Management
+          - name: 'Подключение к данным: вопросы и ответы'
+            href: data-connect-faq.md
+            displayName: 'Microsoft Graph Data Connect, frequently asked questions'
+      - name: Календарь
+        items:
+          - name: Обзор
+            href: outlook-calendar-concept-overview.md
+            displayName: 'Outlook, calendar'
+          - name: Поиск времени для собрания
+            href: findmeetingtimes-example.md
+          - name: Получение сведений о доступности
+            href: outlook-get-free-busy-schedule.md
+          - name: Предложение нового времени собрания
+            href: outlook-calendar-meeting-proposals.md
+          - name: Задать событие как собрание по сети
+            href: outlook-calendar-online-meetings.md
+          - name: Выберите API собрания по сети
+            href: choose-online-meeting-api.md
+          - name: Планирование повторяющихся событий
+            href: outlook-schedule-recurring-events.md
+          - name: Предоставление доступа к календарю или его делегирование
+            href: outlook-share-or-delegate-calendar.md
+          - name: Получение общих событий
+            href: outlook-get-shared-events-calendars.md
+          - name: Создание общих событий
+            href: outlook-create-event-in-shared-delegated-calendar.md
+          - name: Вложение больших файлов
+            href: outlook-large-attachments.md
+          - name: Получение неизменяемых идентификаторов
+            href: outlook-immutable-id.md
+          - name: Подписка на уведомления об изменениях
+            href: outlook-change-notifications-overview.md
+      - name: Коммуникации из облака
+        items:
+          - name: Обзор
+            href: cloud-communications-concept-overview.md
+            displayName: cloud communications
+          - name: Начало работы
+            href: cloud-communications-get-started.md
+          - name: Поддерживаемые типы вызовов
+            href: cloud-communications-calls.md
+          - name: Записи звонков
+            href: cloud-communications-callrecords.md
+          - name: Артефакты и разрешения собраний по сети
+            href: cloud-communications-online-meeting-artifacts.md
+          - name: Выбор варианта размещения мультимедиа
+            href: cloud-communications-media.md
+          - name: Создание собраний по сети и присоединение к ним
+            href: cloud-communications-online-meetings.md
+          - name: Выбор API собрания по сети
+            href: choose-online-meeting-api.md
+          - name: Настройка доступа приложений
+            href: cloud-communication-online-meeting-application-access-policy.md
+          - name: Управление номерами телефонов ботов
+            href: cloud-communications-phone-number.md
+          - name: Определение участников представления "Большая галерея"
+            href: cloud-communications-identifylargegalleryview.md
+          - name: Подписка на уведомления об изменениях для собраний по сети
+            href: changenotifications-for-onlinemeeting.md
+      - name: Соответствие требованиям
+        href: compliance-concept-overview.md
+      - name: Подключение внешнего контента
+        items:
+          - name: Обзор соединителей
+            href: connecting-external-content-connectors-overview.md
+            displayName: 'Microsoft Graph connectors, connect external content'
+          - name: Connectors API
+            href: connecting-external-content-connectors-api-overview.md
+            displayName: Microsoft Graph connectors
+          - name: Использование Postman
+            href: connecting-external-content-connectors-api-postman.md
+            displayName: 'connector, connectors'
+          - name: Создание первого настраиваемого соединителя
+            href: connecting-external-content-build-quickstart.yml
+            displayName: 'connectors, Microsoft Graph connectors'
+          - name: Управление подключениями
+            href: connecting-external-content-manage-connections.md
+          - name: Управление схемой
+            href: connecting-external-content-manage-schema.md
+          - name: Управление элементами
+            href: connecting-external-content-manage-items.md
+          - name: Использование внешних групп
+            href: connecting-external-content-external-groups.md
+          - name: Ограничения API
+            href: connecting-external-content-api-limits.md
+      - name: Взаимодействие с разными устройствами
+        items:
+          - name: Обзор
+            href: cross-device-concept-overview.md
+            displayName: 'Project Rome, cross-device, cross device, cross-device experience'
+          - name: Использование API веб-канала активности
+            href: activity-feed-concept-overview.md
+            displayName: 'cross-device, cross device'
+          - name: Использование API ретрансляции устройств (предварительная версия)
+            href: device-relay-concept-overview.md
+            displayName: 'cross-device, cross device'
+          - name: Создание приложений для различных устройств
+            href: cross-device-app-configuration.md
+            displayName: 'cross device, Project Rome'
+      - name: Запись клиентов (предварительная версия)
+        items:
+          - name: Обзор
+            href: booking-concept-overview.md
+            displayName: 'Bookings, Microsoft Bookings, booking, customer booking'
+          - name: Бизнес-правила
+            href: bookingsbusiness-business-rules.md
+            displayName: 'Bookings, Microsoft Bookings, booking'
+      - name: Управление устройствами и приложениями
+        expanded: true
+        items:
+          - name: Облачная печать
+            items:
+              - name: Обзор
+                href: universal-print-concept-overview.md
+                displayName: 'Universal Print, Cloud printing, printing, device and app management'
+              - name: Добавление данных в сеанс отправки
+                href: upload-data-to-upload-session.md
+                displayName: Universal Print Job Submission
+              - name: Подписка на уведомления об изменениях
+                href: universal-print-webhook-notifications.md
+                displayName: Universal Print Webhook Notifications
+          - name: Корпоративное управление
+            href: intune-concept-overview.md
+            displayName: Intune
+          - name: Облачный компьютер (предварительная версия)
+            href: cloudpc-concept-overview.md
+          - name: Обновления устройств (предварительная версия)
+            items:
+              - name: Обзор
+                href: windowsupdates-concept-overview.md
+                displayName: 'Windows updates, Windows update, device update'
+              - name: Обновления программного обеспечения
+                href: windowsupdates-software-updates.md
+              - name: Развертывания
+                href: windowsupdates-deployments.md
+              - name: Регистрация в управлении
+                href: windowsupdates-enroll.md
+              - name: Развертывание обновления компонентов
+                href: windowsupdates-deploy-update.md
+              - name: Развертывание ускоренного обновления
+                href: windowsupdates-deploy-expedited-update.md
+              - name: Планирование развертывания
+                href: windowsupdates-schedule-deployment.md
+              - name: Управление защитными мерами
+                href: windowsupdates-manage-safeguards.md
+              - name: Управление правилами мониторинга
+                href: windowsupdates-manage-monitoring-rules.md
+          - name: Управление несколькими клиентами (предварительная версия)
+            href: managedtenants-concept-overview.md
+            displayName: Microsoft 365 Lighthouse
+          - name: Работоспособность и взаимодействие служб
+            href: service-communications-concept-overview.md
+            displayName: service communications
+      - name: Образование
+        items:
+          - name: Общие сведения
+            href: education-concept-overview.md
+            displayName: education
+          - name: Рубрики
+            href: education-rubric-overview.md
+          - name: Отправка файлов
+            href: education-upload-resource-overview.md
+          - name: Смена состояния назначения и отправки
+            href: assignments-submissions-states-transition.md
+          - name: Укажите канал по умолчанию для уведомлений о назначениях
+            href: education-build-notificationchannelurl.md
+      - name: Расширения
+        items:
+          - name: Обзор
+            href: extensibility-overview.md
+          - name: Использование открытых расширений
+            href: extensibility-open-users.md
+          - name: Использование расширений схемы
+            href: extensibility-schema-groups.md
+      - name: Файлы
+        items:
+          - name: Обзор
+            href: onedrive-concept-overview.md
+            displayName: 'files, OneDrive, OneDrive for Business, OneDrive business, OneDrive personal, SharePoint'
+          - name: Обращение к элементам диска
+            href: onedrive-addressing-driveitems.md
+      - name: Финансовые показатели (предварительная версия)
+        href: dynamics-business-central-concept-overview.md
+        displayName: 'Dynamics, Dynamics 365 Business Central'
+      - name: Удостоверение и доступ
+        items:
+          - name: Обзор
+            href: azuread-identity-access-management-concept-overview.md
+            displayName: 'Azure AD, Microsoft identity platform, identity, access'
+          - name: Управление каталогом
+            items:
+              - name: Управление настраиваемыми атрибутами безопасности (предварительная версия)
+                href: custom-security-attributes-examples.md
+                displayName: 'directory, identity'
+              - name: Назначение ролей Azure AD с помощью PIM
+                href: tutorial-assign-azureadroles.md
+          - name: Удостоверение и вход
+            items:
+              - name: Методы проверки подлинности
+                href: authenticationmethods-get-started.md
+                displayName: 'identity, authenticate, sign-in, sign in, signin'
+              - name: Определение и устранение риска
+                href: tutorial-riskdetection-api.md
+          - name: Управление
+            items:
+              - name: Управление доступом к ресурсам
+                href: tutorial-access-package-api.md
+                displayName: 'governance, identity'
+              - name: Проверка доступа к ресурсам
+                items:
+                  - name: Обзор
+                    href: accessreviews-overview.md
+                    displayName: 'identity, access reviews API, review access'
+                  - name: Проверка доступа к группе безопасности
+                    href: tutorial-accessreviews-securitygroup.md
+                  - name: Просмотр доступа для гостевых пользователей
+                    href: tutorial-accessreviews-M365group.md
+                  - name: Просмотр доступа к привилегированным ролям
+                    href: tutorial-accessreviews-roleassignments.md
+                  - name: Настройка области
+                    href: accessreviews-scope-concept.md
+                  - name: Назначение проверяющих
+                    href: accessreviews-reviewers-concept.md
+              - name: Назначение ролей Azure AD с помощью PIM
+                href: tutorial-assign-azureadroles.md
+      - name: Почта
+        items:
+          - name: Обзор
+            href: outlook-mail-concept-overview.md
+            displayName: 'Outlook, Outlook mail, mail, message'
+          - name: Автоматизация обмена сообщениями
+            href: outlook-create-send-messages.md
+          - name: Упорядочение сообщений
+            href: outlook-organize-messages.md
+          - name: Получение содержимого MIME
+            href: outlook-get-mime-message.md
+          - name: Отправка сообщения MIME
+            href: outlook-send-mime-message.md
+          - name: Вложение больших файлов
+            href: outlook-large-attachments.md
+          - name: Получение общих сообщений
+            href: outlook-share-messages-folders.md
+          - name: Отправка почты от имени другого пользователя
+            href: outlook-send-mail-from-other-user.md
+          - name: Получение неизменяемых идентификаторов
+            href: outlook-immutable-id.md
+          - name: Подписка на уведомления об изменениях
+            href: outlook-change-notifications-overview.md
+      - name: Примечания
+        items:
+          - name: Обзор
+            href: integrate-with-onenote.md
+            displayName: 'OneNote, notes'
+          - name: Получение содержимого OneNote
+            href: onenote-get-content.md
+          - name: Открытие клиента OneNote
+            href: open-onenote-client.md
+          - name: Создание страниц
+            href: onenote-create-page.md
+          - name: Обновление содержимого страницы
+            href: onenote-update-page.md
+          - name: 'Добавление изображений, видео и файлов'
+            href: onenote-images-files.md
+          - name: Создание элементов с абсолютным положением
+            href: onenote-abs-pos.md
+          - name: Извлечение данных
+            href: onenote-extract-data.md
+          - name: Использование тегов заметок
+            href: onenote-note-tags.md
+          - name: Ресурсы
+            expanded: true
+            items:
+              - name: Входной и выходной HTML-код
+                href: onenote-input-output-html.md
+              - name: Рекомендации
+                href: onenote-best-practices.md
+              - name: Правила размещения фирменной символики
+                href: onenote-branding.md
+              - name: Коды ошибок
+                href: onenote-error-codes.md
+      - name: Уведомления (упразднено)
+        items:
+          - name: Обзор
+            href: notifications-concept-overview.md
+            displayName: 'deprecated, notifications'
+          - name: Начало работы
+            items:
+              - name: Интеграция с уведомлениями
+                href: notifications-integration-e2e-overview.md
+              - name: Регистрация приложения
+                href: notifications-integration-app-registration.md
+              - name: Подключение к разным устройствах
+                href: notifications-integration-cross-device-experiences-onboarding.md
+              - name: Интеграция сервера приложений
+                href: notifications-integrating-app-server.md
+              - name: Интеграция приложений Windows
+                href: notifications-integrating-with-windows.md
+              - name: Интеграция приложений Android
+                href: notifications-integrating-with-android.md
+              - name: Интеграция приложений IOS
+                href: notifications-integrating-with-ios.md
+      - name: Люди и рабочая аналитика
+        items:
+          - name: Обзор
+            href: social-intel-concept-overview.md
+            displayName: 'people, workplace, intelligence, people and workplace intelligence'
+          - name: Получение информации о релевантных людях
+            href: people-example.md
+          - name: Настройка конфиденциальности аналитики людей (предварительная версия)
+            href: insights-customize-people-insights-privacy.md
+          - name: Настройка карточки профиля (предварительная версия)
+            href: add-properties-profilecard.md
+          - name: Обзор аналитики элементов
+            href: item-insights-overview.md
+          - name: Настройка конфиденциальности аналитики элементов (предварительная версия)
+            href: insights-customize-item-insights-privacy.md
+      - name: Личные контакты
+        items:
+          - name: Обзор
+            href: outlook-contacts-concept-overview.md
+            displayName: 'Outlook, Outlook contacts, Outlook contact, People, personal contacts'
+          - name: Получение общих контактов
+            href: outlook-get-shared-contacts-folders.md
+          - name: Получение неизменяемых идентификаторов
+            href: outlook-immutable-id.md
+          - name: Подписка на уведомления об изменениях
+            href: outlook-change-notifications-overview.md
+      - name: Отчеты
+        items:
+          - name: Обзор
+            href: reportroot-concept-overview.md
+            displayName: 'report, reports'
+          - name: Авторизация для отчетов об использовании Microsoft 365
+            href: reportroot-authorization.md
+      - name: Поиск
+        items:
+          - name: Обзор
+            href: search-concept-overview.md
+            displayName: search
+          - name: Поиск сообщений
+            href: search-concept-messages.md
+          - name: Поиск событий
+            href: search-concept-events.md
+          - name: Поиск содержимого в OneDrive и SharePoint
+            href: search-concept-files.md
+          - name: Соединители поиска
+            href: search-concept-custom-types.md
+          - name: Поиск людей
+            href: search-concept-person.md
+          - name: Управление поиском ответов администратора (предварительная версия)
+            href: search-concept-answers.md
+          - name: Управление макетом результатов поиска
+            href: search-concept-display-layout.md
+          - name: Уточнение результатов поиска
+            href: search-concept-aggregation.md
+          - name: Запрос орфографических исправлений
+            href: search-concept-speller.md
+          - name: Обрезка повторяющихся результатов поиска
+            href: search-concept-trim-duplicate.md
+          - name: Использование шаблонов запросов
+            href: search-concept-query-template.md
+          - name: Сортировка результатов поиска
+            href: search-concept-sort.md
+      - name: Безопасность
+        items:
+          - name: Обзор
+            href: security-concept-overview.md
+            displayName: security
+          - name: Поток данных
+            href: security-dataflow.md
+          - name: Authorization
+            href: security-authorization.md
+          - name: Интегрированные решения
+            href: security-integration.md
+          - name: Защита информации
+            href: information-protection-overview.md
+          - name: Возможности для партнеров
+            href: security-partner-overview.md
+      - name: Сайты и списки
+        href: sharepoint-concept-overview.md
+        displayName: 'SharePoint, OneDrive, OneDrive for Business, OneDrive business, OneDrive personal, sites, lists'
+      - name: Задачи и планы
+        href: planner-concept-overview.md
+        displayName: Planner
+      - name: Командная работа
+        items:
+          - name: Обзор
+            href: teams-concept-overview.md
+            displayName: 'teams, team, teamwork, Microsoft Teams'
+          - name: Создание группы и команды
+            href: teams-create-group-and-team.md
+          - name: Перечисление всех команд
+            href: teams-list-all-teams.md
+          - name: Выбор API собрания по сети
+            href: choose-online-meeting-api.md
+          - name: Настройка встроенных вкладок
+            href: teams-configuring-builtin-tabs.md
+          - name: Отправка упреждающих сообщений с помощью бота
+            href: /microsoftteams/platform/graph-api/proactive-bots-and-messages/graph-proactive-bots-and-messages?context=graph/context
+          - name: Защищенные API
+            href: teams-protected-apis.md
+          - name: Модели лицензирования и оплаты
+            href: teams-licenses.md
+          - name: Уведомления ленты новостей
+            items:
+              - name: Отправка уведомлений ленты новостей
+                href: teams-send-activityfeednotifications.md
+              - name: Рекомендации
+                href: teams-activity-feed-notifications-best-practices.md
+          - name: Подписка на уведомления об изменениях
+            href: teams-change-notification-in-microsoft-teams-overview.md
+          - name: Получение системных сообщений
+            href: system-messages.md
+      - name: Задачи To-Do
+        displayName: Microsoft To Do
+        items:
+          - name: Обзор
+            href: todo-concept-overview.md
+          - name: Вложение файлов в задачу
+            href: todo-attachments.md
+      - name: Книги и диаграммы
+        items:
+          - name: Обзор
+            href: excel-concept-overview.md
+            displayName: 'Excel, workbooks, charts'
+          - name: Управление сеансами
+            href: excel-manage-sessions.md
+          - name: Показ изображения диаграммы
+            href: excel-display-chart-image.md
+          - name: Использование функций книг
+            href: excel-use-functions.md
+          - name: Обновление формата диапазона
+            href: excel-update-range-format.md
+          - name: Запись данных в книгу
+            href: excel-write-to-workbook.md
+          - name: Рекомендации
+            href: workbook-best-practice.md
+          - name: Коды ошибок
+            href: workbook-error-codes.md
+          - name: Обработка ошибок
+            href: workbook-error-handling.md
+  - name: Разработка
+    expanded: true
+    items:
+      - name: Проверка подлинности и авторизация
+        items:
+          - name: Обзор
+            href: auth/index.yml
+            displayName: 'authentication, authorization, authenticate, authorize'
+          - name: Основы
+            href: auth/auth-concepts.md
+          - name: Регистрация приложения
+            href: auth-register-app-v2.md
+          - name: Получение доступа от имени пользователя
+            href: auth-v2-user.md
+          - name: Получение доступа без пользователя
+            href: auth-v2-service.md
+          - name: Разрешения
+            href: permissions-reference.md
+          - name: Управление доступом к приложению (CSP)
+            href: auth-cloudsolutionprovider.md
+          - name: Ограничение доступа к почтовому ящику
+            href: auth-limit-mailbox-access.md
+          - name: Устранить ошибки авторизации
+            href: resolve-auth-errors.md
+      - name: Использование API
+        items:
+          - name: Обзор
+            href: use-the-api.md
+            displayName: 'Microsoft Graph API, API, Microsoft Graph REST API, REST API'
+          - name: Доступ к данным и методам
+            href: traverse-the-graph.md
+          - name: Разбиение на страницы
+            href: paging.md
+          - name: Параметры запроса
+            items:
+              - name: Использование параметров запроса
+                href: query-parameters.md
+                displayName: 'OData query parameters, OData'
+              - name: Использование параметра поискового запроса
+                href: search-query-parameter.md
+              - name: Расширенные возможности запросов
+                href: aad-advanced-queries.md
+              - name: Оптимизация запросов с помощью параметров запроса
+                href: /learn/modules/optimize-data-usage
+          - name: Пакетная обработка
+            href: json-batching.md
+            displayName: Batch request
+          - name: Регулирование
+            items:
+              - name: Обзор
+                displayName: throttling
+                href: throttling.md
+              - name: Ограничения для отдельных служб
+                displayName: throttling
+                href: throttling-limits.md
+              - name: Оптимизация сетевого трафика
+                href: /learn/modules/optimize-network-traffic
+                displayName: throttling
+          - name: Уведомления об изменениях
+            items:
+              - name: Обзор
+                href: webhooks.md
+                displayName: 'change notifications, WebHooks, set up notifications for changes in resource data'
+              - name: Учебник по уведомлениям об изменениях
+                href: /learn/modules/msgraph-changenotifications-trackchanges
+              - name: Пропущенные уведомления об изменениях
+                href: webhooks-lifecycle.md
+              - name: Уведомления с данными ресурсов
+                href: webhooks-with-resource-data.md
+              - name: Получение уведомлений разными способами
+                href: change-notifications-delivery.md
+              - name: Уведомления об изменениях облачной печати
+                href: universal-print-webhook-notifications.md
+              - name: Уведомления об изменениях для ресурсов Microsoft Teams
+                items:
+                  - name: Типы уведомлений и полезные данные
+                    href: teams-change-notification-in-microsoft-teams-overview.md
+                    displayName: 'change notifications, Teams, Microsoft Teams'
+                  - name: Команды и каналы
+                    href: teams-changenotifications-team-and-channel.md
+                  - name: Участие в командах и каналах
+                    href: teams-changenotifications-teamMembership.md
+                  - name: Сообщения в чатах и каналах
+                    href: teams-changenotifications-chatmessage.md
+                  - name: Чат
+                    href: teams-changenotifications-chat.md
+                  - name: Участие в чате
+                    href: teams-changenotifications-chatMembership.md
+              - name: Уведомления об изменениях для ресурсов Outlook
+                href: outlook-change-notifications-overview.md
+          - name: Отслеживание изменений
+            items:
+              - name: Обзор
+                href: delta-query-overview.md
+                displayName: 'Delta query, track changes, change tracking'
+              - name: Получение изменений для событий (пример)
+                href: delta-query-events.md
+              - name: Получение изменений для групп (пример)
+                href: delta-query-groups.md
+              - name: Получение изменений для сообщений (пример)
+                href: delta-query-messages.md
+              - name: Получение изменений для пользователей (пример)
+                href: delta-query-users.md
+          - name: Добавление пользовательских данных
+            displayName: 'directory extensions, schema extensions, open extensions, extension attributes'
+            href: extensibility-overview.md
+          - name: Использование песочницы Graph
+            items:
+              - name: Начало работы
+                href: graph-explorer/graph-explorer-overview.md
+                displayName: 'Graph Explorer, try the API, try API'
+              - name: Работа с песочницей Graph
+                href: graph-explorer/graph-explorer-features.md
+          - name: Использование Postman
+            href: use-postman.md
+      - name: Миграция
+        items:
+          - name: Azure AD Graph
+            items:
+              - name: Миграция приложений Azure AD Graph
+                href: migrate-azure-ad-graph-overview.md
+                displayName: 'Migration, Azure AD Graph, migrate'
+              - name: Контрольный список для переноса приложений
+                href: migrate-azure-ad-graph-planning-checklist.md
+              - name: 1. Проверка различий
+                expanded: true
+                items:
+                  - name: Запросы
+                    href: migrate-azure-ad-graph-request-differences.md
+                  - name: Функции службы
+                    href: migrate-azure-ad-graph-feature-differences.md
+                  - name: Типы ресурсов
+                    href: migrate-azure-ad-graph-resource-differences.md
+                  - name: Свойства объектов
+                    href: migrate-azure-ad-graph-property-differences.md
+                  - name: Методы
+                    href: migrate-azure-ad-graph-method-differences.md
+              - name: 2. Изучение использования API
+                href: migrate-azure-ad-graph-audit-api-use.md
+              - name: 3. Проверка сведений о приложении
+                expanded: true
+                items:
+                  - name: Регистрация приложения
+                    href: migrate-azure-ad-graph-app-registration.md
+                  - name: Библиотеки проверки подлинности
+                    href: migrate-azure-ad-graph-authentication-library.md
+                  - name: Клиентские библиотеки .NET
+                    href: migrate-azure-ad-graph-client-libraries.md
+              - name: '4. Развертывание, тестирование и расширение'
+                href: migrate-azure-ad-graph-deploy-test-extend.md
+              - name: 'Миграция Azure AD Graph: вопросы и ответы'
+                href: migrate-azure-ad-graph-faq.md
+                displayName: 'migrate, frequently asked questions'
+              - name: Настройка разрешений Azure AD Graph
+                href: migrate-azure-ad-graph-configure-permissions.md
+          - name: Веб-службы Exchange
+            items:
+              - name: Миграция приложений EWS
+                href: migrate-exchange-web-services-overview.md
+                displayName: 'Migration, Exchange Web Services, EWS, migrate'
+              - name: Проверка подлинности
+                href: migrate-exchange-web-services-authentication.md
+              - name: Сопоставление API
+                href: migrate-exchange-web-services-api-mapping.md
+      - name: Использование пакетов SDK
+        items:
+          - name: Обзор
+            href: sdks/sdks-overview.md
+            displayName: 'SDK, SDKs, Microsoft Graph SDK'
+          - name: Установка пакета SDK
+            href: sdks/sdk-installation.md
+            displayName: 'install SDK, install SDKs, installation'
+          - name: Создание клиента
+            href: sdks/create-client.md
+          - name: Настройка клиента
+            href: sdks/customize-client.md
+          - name: Выбор поставщика проверки подлинности
+            href: sdks/choose-authentication-providers.md
+          - name: Создание запросов
+            href: sdks/create-requests.md
+          - name: Постраничное разбиение коллекции
+            href: sdks/paging.md
+          - name: Создание пакетного запроса
+            href: sdks/batch-requests.md
+          - name: Отправка больших файлов
+            href: sdks/large-file-upload.md
+          - name: Использование бета-версии API
+            href: sdks/use-beta.md
+          - name: Воспользуйтесь PowerShell
+            items:
+              - name: Обзор PowerShell
+                href: /powershell/microsoftgraph/overview?toc=/graph/toc.json
+              - name: Установка пакета SDK для PowerShell
+                href: /powershell/microsoftgraph/installation?toc=/graph/toc.json
+              - name: Начало работы
+                href: /powershell/microsoftgraph/get-started?toc=/graph/toc.json
+              - name: Навигация в пакете SDK для PowerShell
+                href: /powershell/microsoftgraph/navigating?toc=/graph/toc.json
+              - name: Проверка подлинности только для приложений
+                href: /powershell/microsoftgraph/app-only?toc=/graph/toc.json
+      - name: Использование набора средств
+        items:
+          - name: Обзор
+            href: toolkit/overview.md
+            displayName: 'Microsoft Graph Toolkit, toolkit'
+          - name: Начало работы
+            items:
+              - name: Начало работы
+                href: toolkit/get-started/overview.md
+                displayName: 'Microsoft Graph Toolkit, toolkit'
+              - name: Набор средств для React
+                href: toolkit/get-started/mgt-react.md
+              - name: Набор средств для SPFx
+                href: toolkit/get-started/mgt-spfx.md
+          - name: Создание первого приложения
+            items:
+              - name: Регистрация приложения Azure AD
+                href: toolkit/get-started/add-aad-app-registration.md
+              - name: Создание веб-приложения (JavaScript)
+                href: toolkit/get-started/build-a-web-app.md
+              - name: Создание веб-приложения (React)
+                href: toolkit/get-started/use-toolkit-with-react.md
+              - name: Создание веб-приложения (Angular)
+                href: toolkit/get-started/use-toolkit-with-angular.md
+              - name: Создание веб-части SharePoint
+                href: toolkit/get-started/build-a-sharepoint-web-part.md
+              - name: Создание вкладки Teams
+                href: toolkit/get-started/build-a-microsoft-teams-tab.md
+              - name: Создание вкладки Teams с единым входом
+                href: toolkit/get-started/build-a-microsoft-teams-sso-tab.md
+              - name: Создание приложения Electron
+                href: toolkit/get-started/build-an-electron-app.md
+          - name: Поставщики
+            items:
+              - name: Использование поставщиков
+                href: toolkit/providers/providers.md
+                displayName: 'Microsoft Graph Toolkit providers, toolkit provider'
+              - name: Поставщик MSAL
+                href: toolkit/providers/msal.md
+              - name: Поставщик MSAL2
+                href: toolkit/providers/msal2.md
+              - name: Поставщик SharePoint
+                href: toolkit/providers/sharepoint.md
+              - name: Поставщик Teams
+                href: toolkit/providers/teams.md
+              - name: Поставщик MSAL2 Teams
+                href: toolkit/providers/teams-msal2.md
+              - name: Поставщик TeamsFx
+                href: toolkit/providers/teamsfx.md
+              - name: Поставщик Electron
+                href: toolkit/providers/electron.md
+              - name: Поставщик прокси
+                href: toolkit/providers/proxy.md
+              - name: Настраиваемый поставщик
+                href: toolkit/providers/custom.md
+          - name: Компоненты
+            items:
+              - name: Вход
+                href: toolkit/components/login.md
+                displayName: 'Microsoft Graph toolkit components, toolkit component'
+              - name: Получение
+                href: toolkit/components/get.md
+              - name: Пользователь
+                href: toolkit/components/person.md
+              - name: Люди
+                href: toolkit/components/people.md
+              - name: Карточка контакта
+                href: toolkit/components/person-card.md
+              - name: Выбор людей
+                href: toolkit/components/people-picker.md
+              - name: Средство выбора каналов Teams
+                href: toolkit/components/teams-channel-picker.md
+              - name: Повестка дня
+                href: toolkit/components/agenda.md
+              - name: Задачи Планировщика
+                href: toolkit/components/tasks.md
+              - name: Задачи To-Do
+                href: toolkit/components/todo.md
+              - name: Файл
+                href: toolkit/components/file.md
+              - name: Список файлов
+                href: toolkit/components/file-list.md
+          - name: Настройка компонентов
+            items:
+              - name: Компоненты стиля
+                href: toolkit/customize-components/style.md
+              - name: Компоненты создания шаблонов
+                href: toolkit/customize-components/templates.md
+              - name: Обработка событий
+                href: toolkit/customize-components/events.md
+              - name: Кэширование вызовов Microsoft Graph в компонентах
+                href: toolkit/customize-components/cache.md
+              - name: Компоненты локализации
+                href: toolkit/customize-components/localization.md
+              - name: Поддержка направления текста справа налево
+                href: toolkit/customize-components/right-to-left.md
+      - name: Ресурсы
+        expanded: true
+        items:
+          - name: Рекомендации
+            href: best-practices-concept.md
+            displayName: 'Microsoft Graph, Best practices for working with Microsoft Graph'
+          - name: Известные проблемы
+            href: known-issues.md
+            displayName: 'Microsoft Graph, Known issues with Microsoft Graph'
+          - name: Журнал изменений API
+            href: changelog.md
+          - name: Ошибки
+            href: errors.md
+            displayName: Microsoft Graph error responses and error resource types
+          - name: Ограничения службы Azure AD
+            displayName: Azure AD service limits and restrictions
+            href: /azure/active-directory/enterprise-users/directory-service-limits-restrictions?toc=/graph/toc.json
+      - name: Справочные материалы по API версии 1.0
+        href: /graph/api/overview?view=graph-rest-1.0&preserve-view=true
+        displayName: Microsoft Graph REST API v1.0 reference
+      - name: Справочные материалы по бета-версии API
+        href: /graph/api/overview?view=graph-rest-beta&preserve-view=true
+        displayName: 'Microsoft Graph beta endpoint reference, Microsoft Graph REST API Beta'

@@ -1,0 +1,24 @@
+---
+description: Arquivo gerado automaticamente. NÃO MODIFICAR
+ms.openlocfilehash: dd6ef8ac6d74178d16c7b64eed74fd19368ba5488086701684c6b1a6fa100151
+ms.sourcegitcommit: 986c33b848fa22a153f28437738953532b78c051
+ms.translationtype: MT
+ms.contentlocale: pt-BR
+ms.lasthandoff: 08/05/2021
+ms.locfileid: "56899976"
+---
+```javascript
+
+const options = {
+    authProvider,
+};
+
+const client = Client.init(options);
+
+let tabs = await client.api('/teams/6903fa93-605b-43ef-920e-77c4729f8258/channels/19:33b76eea88574bd1969dca37e2b7a819@thread.skype/tabs')
+    .version('beta')
+    .filter('teamsApp/id eq \'com.microsoft.teamspace.tab.planner\'')
+    .expand('teamsApp')
+    .get();
+
+```

@@ -1,0 +1,120 @@
+package com.microsoft.graph.models;
+
+import com.microsoft.kiota.serialization.Parsable;
+import com.microsoft.kiota.serialization.ParseNode;
+import com.microsoft.kiota.serialization.SerializationWriter;
+import java.time.OffsetDateTime;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+@jakarta.annotation.Generated("com.microsoft.kiota")
+public class OfferShiftRequest extends ScheduleChangeRequest implements Parsable {
+    /**
+     * Instantiates a new {@link OfferShiftRequest} and sets the default values.
+     */
+    public OfferShiftRequest() {
+        super();
+        this.setOdataType("#microsoft.graph.offerShiftRequest");
+    }
+    /**
+     * Creates a new instance of the appropriate class based on discriminator value
+     * @param parseNode The parse node to use to read the discriminator value and create the object
+     * @return a {@link OfferShiftRequest}
+     */
+    @jakarta.annotation.Nonnull
+    public static OfferShiftRequest createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        final ParseNode mappingValueNode = parseNode.getChildNode("@odata.type");
+        if (mappingValueNode != null) {
+            final String mappingValue = mappingValueNode.getStringValue();
+            switch (mappingValue) {
+                case "#microsoft.graph.swapShiftsChangeRequest": return new SwapShiftsChangeRequest();
+            }
+        }
+        return new OfferShiftRequest();
+    }
+    /**
+     * The deserialization information for the current model
+     * @return a {@link Map<String, java.util.function.Consumer<ParseNode>>}
+     */
+    @jakarta.annotation.Nonnull
+    public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
+        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(super.getFieldDeserializers());
+        deserializerMap.put("recipientActionDateTime", (n) -> { this.setRecipientActionDateTime(n.getOffsetDateTimeValue()); });
+        deserializerMap.put("recipientActionMessage", (n) -> { this.setRecipientActionMessage(n.getStringValue()); });
+        deserializerMap.put("recipientUserId", (n) -> { this.setRecipientUserId(n.getStringValue()); });
+        deserializerMap.put("senderShiftId", (n) -> { this.setSenderShiftId(n.getStringValue()); });
+        return deserializerMap;
+    }
+    /**
+     * Gets the recipientActionDateTime property value. The date and time when the recipient approved or declined the request.
+     * @return a {@link OffsetDateTime}
+     */
+    @jakarta.annotation.Nullable
+    public OffsetDateTime getRecipientActionDateTime() {
+        return this.backingStore.get("recipientActionDateTime");
+    }
+    /**
+     * Gets the recipientActionMessage property value. The message sent by the recipient regarding the request.
+     * @return a {@link String}
+     */
+    @jakarta.annotation.Nullable
+    public String getRecipientActionMessage() {
+        return this.backingStore.get("recipientActionMessage");
+    }
+    /**
+     * Gets the recipientUserId property value. The recipient&apos;s user ID.
+     * @return a {@link String}
+     */
+    @jakarta.annotation.Nullable
+    public String getRecipientUserId() {
+        return this.backingStore.get("recipientUserId");
+    }
+    /**
+     * Gets the senderShiftId property value. The sender&apos;s shift ID.
+     * @return a {@link String}
+     */
+    @jakarta.annotation.Nullable
+    public String getSenderShiftId() {
+        return this.backingStore.get("senderShiftId");
+    }
+    /**
+     * Serializes information the current object
+     * @param writer Serialization writer to use to serialize this model
+     */
+    public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
+        Objects.requireNonNull(writer);
+        super.serialize(writer);
+        writer.writeStringValue("recipientActionMessage", this.getRecipientActionMessage());
+        writer.writeStringValue("recipientUserId", this.getRecipientUserId());
+        writer.writeStringValue("senderShiftId", this.getSenderShiftId());
+    }
+    /**
+     * Sets the recipientActionDateTime property value. The date and time when the recipient approved or declined the request.
+     * @param value Value to set for the recipientActionDateTime property.
+     */
+    public void setRecipientActionDateTime(@jakarta.annotation.Nullable final OffsetDateTime value) {
+        this.backingStore.set("recipientActionDateTime", value);
+    }
+    /**
+     * Sets the recipientActionMessage property value. The message sent by the recipient regarding the request.
+     * @param value Value to set for the recipientActionMessage property.
+     */
+    public void setRecipientActionMessage(@jakarta.annotation.Nullable final String value) {
+        this.backingStore.set("recipientActionMessage", value);
+    }
+    /**
+     * Sets the recipientUserId property value. The recipient&apos;s user ID.
+     * @param value Value to set for the recipientUserId property.
+     */
+    public void setRecipientUserId(@jakarta.annotation.Nullable final String value) {
+        this.backingStore.set("recipientUserId", value);
+    }
+    /**
+     * Sets the senderShiftId property value. The sender&apos;s shift ID.
+     * @param value Value to set for the senderShiftId property.
+     */
+    public void setSenderShiftId(@jakarta.annotation.Nullable final String value) {
+        this.backingStore.set("senderShiftId", value);
+    }
+}

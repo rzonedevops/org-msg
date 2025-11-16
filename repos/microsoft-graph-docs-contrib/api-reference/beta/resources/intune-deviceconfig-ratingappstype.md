@@ -1,0 +1,29 @@
+---
+title: "ratingAppsType enum type"
+description: "Apps rating as in media content"
+author: "jaiprakashmb"
+ms.localizationpriority: medium
+ms.subservice: "intune"
+doc_type: enumPageType
+ms.date: 08/01/2024
+---
+
+# ratingAppsType enum type
+
+Namespace: microsoft.graph
+
+> **Important:** Microsoft supports Intune /beta APIs, but they are subject to more frequent change. Microsoft recommends using version v1.0 when possible. Check an API's availability in version v1.0 using the Version selector.
+
+> **Note:** The Microsoft Graph API for Intune requires an [active Intune license](https://go.microsoft.com/fwlink/?linkid=839381) for the tenant.
+
+Apps rating as in media content
+
+## Members
+|Member|Value|Description|
+|:---|:---|:---|
+|allAllowed|0|Default value, allow all apps content|
+|allBlocked|1|Do not allow any apps content|
+|agesAbove4|2|4+, age 4 and above|
+|agesAbove9|3|9+, age 9 and above|
+|agesAbove12|4|12+, age 12 and above |
+|agesAbove17|5|17+, age 17 and above|

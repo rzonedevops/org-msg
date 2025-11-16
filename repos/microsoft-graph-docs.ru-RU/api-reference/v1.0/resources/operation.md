@@ -1,0 +1,56 @@
+---
+title: Тип ресурса operation
+description: Состояние длительной операции.
+ms.localizationpriority: medium
+author: billbliss
+ms.prod: teamwork
+doc_type: resourcePageType
+ms.openlocfilehash: e43d86c5c53ce95855bdb0ccd42c3a43049073ca
+ms.sourcegitcommit: 423e698a580c3b902f2816b0216ab9d5b91e6d20
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 06/12/2022
+ms.locfileid: "66034532"
+---
+# <a name="operation-resource-type"></a>Тип ресурса operation
+
+Пространство имен: microsoft.graph
+
+Состояние длительной операции.
+
+## <a name="properties"></a>Свойства
+| Свойство     | Тип   |Описание|
+|:---------------|:--------|:----------|
+|createdDateTime| DateTimeOffset |Время начала операции.|
+|lastActionDateTime| DateTimeOffset |Время последнего действия операции.|
+|status|operationStatus|Текущее состояние операции: `notStarted`, , `running``completed``failed` |
+
+## <a name="json-representation"></a>Представление JSON
+
+Ниже представлено описание ресурса в формате JSON.
+
+<!--{
+  "blockType": "resource",
+  "optionalProperties": [],
+  "baseType": "microsoft.graph.entity",
+  "@odata.type": "microsoft.graph.operation"
+}-->
+
+```json
+{
+  "createdDateTime": "String (timestamp)",
+  "lastActionDateTime": "String (timestamp)",
+  "status": "notStarted | running | completed | failed"
+}
+```
+
+<!-- uuid: 13fa92b1-3b41-498b-aab1-f943464a124f
+2018-03-30 10:29:30 UTC -->
+<!-- {
+  "type": "#page.annotation",
+  "description": "operation resource",
+  "keywords": "",
+  "section": "documentation",
+  "tocPath": ""
+}-->
+

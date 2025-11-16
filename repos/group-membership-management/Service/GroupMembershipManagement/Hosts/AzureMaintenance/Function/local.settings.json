@@ -1,0 +1,27 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "maintenanceTriggerSchedule": "0 0 0 * * *",
+    "logAnalyticsCustomerId": "<customer-id>",
+    "logAnalyticsPrimarySharedKey": "<primary-shared-key>",
+    "maintenanceJobs": "[{'SourceStorageSetting':{'TargetName':'<target-name>','StorageConnectionString':'<connection-string>','StorageType':'table'},'DestinationStorageSetting':{'TargetName':'<target-name>','StorageConnectionString':'<connection-string>','StorageType':'table'},'Backup':true,'Cleanup':true,'DeleteAfterDays':30}]",
+    "appConfigurationEndpoint": "https://gmm-appconfig-<env>.azconfig.io",
+    "jobsStorageAccountConnectionString": "",
+    "ConnectionStrings:JobsContext": "",
+    "ConnectionStrings:JobsContextReadOnly": "",
+    "notificationsTableName": "",
+    "graphCredentials:ClientId": "",
+    "graphCredentials:ClientSecret": "",
+    "graphCredentials:KeyVaultName": "",
+    "graphCredentials:KeyVaultTenantId": "",
+    "graphCredentials:TenantId": "",
+    "senderAddress": "",
+    "senderPassword": "",
+    "supportEmailAddresses": "",
+    "AzureMaintenance:NumberOfDaysBeforeDeletion": 30,
+    "AzureMaintenance:HandleInactiveJobsEnabled":  true,
+    "ThresholdNotification:IsThresholdNotificationEnabled": false
+  }
+}

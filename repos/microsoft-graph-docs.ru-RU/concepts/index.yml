@@ -1,0 +1,124 @@
+### YamlMime:Hub
+title: Документация по Microsoft Graph
+summary: Microsoft Graph открывает доступ к данным и средствам искусственного интеллекта в Microsoft 365. Используйте Microsoft Graph для создания интеллектуальных приложений, получения аналитических сведений и аналитики, а также расширения Microsoft 365 интерфейсов.
+brand: m365
+metadata:
+  title: Документация по Microsoft Graph
+  description: Microsoft Graph открывает доступ к данным и средствам искусственного интеллекта в Microsoft 365. Используйте Microsoft Graph для создания интеллектуальных приложений, получения аналитических сведений и аналитики, а также расширения Microsoft 365 интерфейсов.
+  ms.topic: hub-page
+  ms.prod: ms-graph
+  author: CelesteDG
+  ms.date: 05/11/2022
+  featureFlags:
+  - clicktale
+  ms.openlocfilehash: dd03afc3e1b14d3a0a1c369037fe1c1ffb33731c
+  ms.sourcegitcommit: 10b45b3e666bf6b438803885128bc2f0fa2fa994
+  ms.translationtype: MT
+  ms.contentlocale: ru-RU
+  ms.lasthandoff: 05/24/2022
+  ms.locfileid: "65653352"
+highlightedContent:
+  items:
+  - title: Что представляет собой Microsoft Graph?
+    itemType: overview
+    url: ./overview.md
+  - title: Microsoft Graph REST API
+    itemType: reference
+    url: /graph/api/overview?view=graph-rest-1.0
+  - title: Microsoft Graph Data Connect
+    itemType: overview
+    url: ./data-connect-concept-overview.md
+  - title: Соединители Microsoft Graph
+    itemType: overview
+    url: ./connecting-external-content-connectors-overview.md
+conceptualContent:
+  title: Службы и компоненты
+  items:
+  - title: Пользователи
+    links:
+    - url: ./azuread-users-concept-overview.md
+      itemType: overview
+      text: Доступ к ресурсам пользователей и управление ими напрямую.
+  - title: Группы
+    links:
+    - url: ./office365-groups-concept-overview.md
+      itemType: overview
+      text: Включите совместную работу пользователей и интеграцию между службами.
+  - title: Управление идентификацией и доступом
+    links:
+    - url: ./azuread-identity-access-management-concept-overview.md
+      itemType: overview
+      text: Используйте Azure AD для управления доступом и проверкой подлинности пользователей.
+  - title: Безопасность
+    links:
+    - url: ./security-concept-overview.md
+      itemType: overview
+      text: Подключение продукты, службы и партнеры майкрософт для упрощения операций безопасности.
+  - title: Microsoft Teams командной работы
+    links:
+    - url: ./teams-concept-overview.md
+      itemType: overview
+      text: Изучите функции совместной работы на основе чата, собраний, звонков и корпоративной голосовой связи.
+  - title: Outlook календаря и почты
+    links:
+    - url: ./outlook-calendar-concept-overview.md
+      itemType: overview
+      text: Управление календарями, такими как создание события.
+    - url: ./outlook-mail-concept-overview.md
+      itemType: overview
+      text: Доступ к сообщениям и почтовым данным и управление ими.
+  - title: Новые возможности
+    links:
+    - url: ./whats-new-overview.md
+      itemType: whats-new
+      text: Ознакомьтесь с новыми и обновленными API Graph Майкрософт.
+  - title: Все службы и компоненты
+    links:
+    - url: ./overview-major-services.md
+      itemType: concept
+      text: Изучите службы для повышения производительности, совместной работы, людей и рабочей аналитики, образования и т. д.
+tools:
+  title: Пакеты SDK и средства
+  items:
+  - title: Пакеты SDK
+    imageSrc: ./images/hub/icon01-sdk.svg
+    url: /graph/sdks/sdks-overview
+  - title: Краткое руководство
+    imageSrc: ./images/hub/icon02-quickstart.svg
+    url: https://developer.microsoft.com/graph/quick-start
+  - title: Песочница Graph
+    imageSrc: ./images/hub/icon03-graphexplorer.svg
+    url: https://developer.microsoft.com/en-us/graph/graph-explorer
+  - title: Microsoft Graph Toolkit
+    imageSrc: ./images/hub/icon04-graphtoolkit.svg
+    url: ./toolkit/overview.md
+additionalContent:
+  sections:
+  - title: Ресурсы
+    items:
+    - title: Обучение пути и руководства
+      links:
+      - text: Основные Graph microsoft
+        url: /learn/paths/m365-msgraph-fundamentals/
+      - text: Схемы обучения Майкрософт
+        url: /learn/browse/?products=ms-graph&resource_type=learning%20path
+      - text: Руководства
+        url: /graph/tutorials
+    - title: Сообщество
+      links:
+      - text: Блог Microsoft Graph
+        url: https://developer.microsoft.com/graph/blogs/
+      - text: Видео и подкасты
+        url: https://developer.microsoft.com/graph/gallery/?filterBy=Videos,Podcasts
+      - text: Ежемесячные звонки сообщества
+        url: https://www.youtube.com/playlist?list=PLWZJrkeLOrbabneRhISU-N7uK4PvVy-jV
+    - title: Поддержка
+      links:
+      - text: Поддержка Graph Майкрософт
+        url: https://developer.microsoft.com/graph/support
+      - text: Microsoft Graph Q&a community support
+        url: /answers/products/graph
+      - text: Портал отзывов Graph Майкрософт
+        url: https://feedbackportal.microsoft.com/feedback/forum/ebe2edae-97d1-ec11-a7b5-0022481f3c80
+      - text: Известные проблемы
+        url: ./known-issues.md

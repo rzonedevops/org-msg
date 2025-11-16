@@ -1,0 +1,171 @@
+{
+    "name": "PL_Copy_Dataverse_Data",
+    "properties": {
+        "activities": [
+            {
+                "name": "Copy Dataverse Contact",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "02:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "SqlDWSource",
+                        "queryTimeout": "02:00:00",
+                        "partitionOption": "None"
+                    },
+                    "sink": {
+                        "type": "AzureSqlSink",
+                        "preCopyScript": "IF object_ID('Dataverse.contact') IS NOT NULL\nBEGIN\n   \n   TRUNCATE TABLE Dataverse.contact\n\nEND\n",
+                        "tableOption": "autoCreate",
+                        "disableMetricsCollection": false,
+                        "sqlWriterUseTableLock": false
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "typeConversion": true,
+                        "typeConversionSettings": {
+                            "allowDataTruncation": true,
+                            "treatBooleanAsNumber": false
+                        }
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "DS_Dataverse_Contact",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "DS_Synapse_Contact",
+                        "type": "DatasetReference"
+                    }
+                ]
+            },
+            {
+                "name": "Copy Dataverse systemuser",
+                "type": "Copy",
+                "dependsOn": [
+                    {
+                        "activity": "Copy Dataverse Contact",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "SqlDWSource",
+                        "queryTimeout": "02:00:00",
+                        "partitionOption": "None"
+                    },
+                    "sink": {
+                        "type": "AzureSqlSink",
+                        "preCopyScript": "IF object_ID('Dataverse.systemuser') IS NOT NULL\nBEGIN\n   \n   TRUNCATE TABLE Dataverse.systemuser\n\nEND",
+                        "tableOption": "autoCreate",
+                        "disableMetricsCollection": false,
+                        "sqlWriterUseTableLock": false
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "typeConversion": true,
+                        "typeConversionSettings": {
+                            "allowDataTruncation": true,
+                            "treatBooleanAsNumber": false
+                        }
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "DS_Dataverse_SystemUser",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "DS_Synapse_systemuser",
+                        "type": "DatasetReference"
+                    }
+                ]
+            },
+            {
+                "name": "Copy Dataverse Account",
+                "type": "Copy",
+                "dependsOn": [
+                    {
+                        "activity": "Copy Dataverse systemuser",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "02:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "SqlDWSource",
+                        "queryTimeout": "02:00:00",
+                        "partitionOption": "None"
+                    },
+                    "sink": {
+                        "type": "AzureSqlSink",
+                        "preCopyScript": "IF object_ID('Dataverse.Account') IS NOT NULL\nBEGIN\n   \n   TRUNCATE TABLE Dataverse.Account\n\nEND\n",
+                        "tableOption": "autoCreate",
+                        "disableMetricsCollection": false,
+                        "sqlWriterUseTableLock": false
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "typeConversion": true,
+                        "typeConversionSettings": {
+                            "allowDataTruncation": true,
+                            "treatBooleanAsNumber": false
+                        }
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "DS_Dataverse_Account",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "DS_Synapse_Account",
+                        "type": "DatasetReference"
+                    }
+                ]
+            }
+        ],
+        "folder": {
+            "name": "CRM"
+        },
+        "annotations": [],
+        "lastPublishTime": "2021-09-01T19:30:17Z"
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}

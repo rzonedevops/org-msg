@@ -1,0 +1,59 @@
+---
+description: Автоматически созданный файл. НЕ ИЗМЕНЯТЬ
+ms.openlocfilehash: fae71b788c66e27fe3c73e77492c5bba78f8f3477f0a36010bbaf01c5eebe275
+ms.sourcegitcommit: 986c33b848fa22a153f28437738953532b78c051
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 08/05/2021
+ms.locfileid: "57267388"
+---
+```javascript
+
+const options = {
+    authProvider,
+};
+
+const client = Client.init(options);
+
+const call = {
+  '@odata.type': '#microsoft.graph.call',
+  callbackUri: 'https://bot.contoso.com/callback',
+  source: {
+    '@odata.type': '#microsoft.graph.participantInfo',
+    identity: {
+      '@odata.type': '#microsoft.graph.identitySet',
+      application: {
+        '@odata.type': '#microsoft.graph.identity',
+        displayName: 'Calling Bot',
+        id: '2891555a-92ff-42e6-80fa-6e1300c6b5c6'
+      }
+    },
+    region: null,
+    languageId: null
+  },
+  targets: [
+    {
+      '@odata.type': '#microsoft.graph.invitationParticipantInfo',
+      identity: {
+        '@odata.type': '#microsoft.graph.identitySet',
+        user: {
+          '@odata.type': '#microsoft.graph.identity',
+          displayName: 'John',
+          id: '112f7296-5fa4-42ca-bae8-6a692b15d4b8'
+        }
+      }
+    }
+  ],
+  requestedModalities: [
+    'audio'
+  ],
+ mediaConfig: {
+    '@odata.type': '#microsoft.graph.appHostedMediaConfig',
+    blob: '<Media Session Configuration>'
+  }
+};
+
+await client.api('/communications/calls')
+    .post(call);
+
+```

@@ -1,0 +1,16 @@
+{
+  "name": "root",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "clean": "npm run clean --workspaces",
+    "test": "npm run test -w @microsoft/msgraph-sdk-tests"
+  },
+  "devDependencies": {
+    "rimraf": "^6.0.1"
+  },
+  "version": "1.0.0-preview.74"
+}

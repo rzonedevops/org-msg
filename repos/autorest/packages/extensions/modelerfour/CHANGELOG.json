@@ -1,0 +1,1162 @@
+{
+  "name": "@autorest/modelerfour",
+  "entries": [
+    {
+      "version": "4.27.0",
+      "tag": "@autorest/modelerfour_v4.27.0",
+      "date": "Thu, 16 Nov 2023 16:00:04 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Upgrade dependencies"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@autorest/codemodel\" from `~4.19.3` to `~4.20.0`"
+          },
+          {
+            "comment": "Updating dependency \"@autorest/extension-base\" from `~3.5.2` to `~3.6.0`"
+          },
+          {
+            "comment": "Updating dependency \"@autorest/test-utils\" from `~0.5.3` to `~0.6.0`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/codegen\" from `~2.9.2` to `~2.10.0`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/datastore\" from `~4.7.1` to `~4.8.0`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/openapi\" from `~3.5.0` to `~3.6.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.26.2",
+      "tag": "@autorest/modelerfour_v4.26.2",
+      "date": "Fri, 26 May 2023 14:12:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Map `rfc7231` to `rfc1123` for date-time formats"
+          },
+          {
+            "comment": "Bypass autocorrect to type: object in some cases"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@autorest/extension-base\" from `~3.5.1` to `~3.5.2`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/openapi\" from `~3.4.1` to `~3.5.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.26.1",
+      "tag": "@autorest/modelerfour_v4.26.1",
+      "date": "Thu, 13 Apr 2023 04:20:09 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix issue with multipart request body could cause circular reference"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.26.0",
+      "tag": "@autorest/modelerfour_v4.26.0",
+      "date": "Wed, 07 Dec 2022 22:24:34 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Support final-state-schema lro option"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update dependencies"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@autorest/codemodel\" from `~4.19.2` to `~4.19.3`"
+          },
+          {
+            "comment": "Updating dependency \"@autorest/extension-base\" from `~3.5.0` to `~3.5.1`"
+          },
+          {
+            "comment": "Updating dependency \"@autorest/test-utils\" from `~0.5.2` to `~0.5.3`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/codegen\" from `~2.9.1` to `~2.9.2`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/datastore\" from `~4.7.0` to `~4.7.1`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/openapi\" from `~3.4.0` to `~3.4.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.25.0",
+      "tag": "@autorest/modelerfour_v4.25.0",
+      "date": "Thu, 03 Nov 2022 18:44:18 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add support for specifying `api-version` parameter in the server variables"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.24.3",
+      "tag": "@autorest/modelerfour_v4.24.3",
+      "date": "Thu, 22 Sep 2022 15:51:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix duplicate $host when using {nextLink} param"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.24.2",
+      "tag": "@autorest/modelerfour_v4.24.2",
+      "date": "Fri, 12 Aug 2022 19:53:22 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @autorest/codemodel with missing `ArmIdSchema` from yaml schema"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@autorest/codemodel\" from `~4.19.1` to `~4.19.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.24.1",
+      "tag": "@autorest/modelerfour_v4.24.1",
+      "date": "Mon, 08 Aug 2022 16:48:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix `format: arm-id` wasn't doing anything"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@autorest/codemodel\" from `~4.19.0` to `~4.19.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.24.0",
+      "tag": "@autorest/modelerfour_v4.24.0",
+      "date": "Tue, 19 Jul 2022 15:09:55 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Added support for `format:arm-id` creating a ]`ArmIdSchema` to represent Azure Resource Manager Resource Identifiers"
+          },
+          {
+            "comment": "Added: Include `externalDocs` information in codemodel"
+          },
+          {
+            "comment": "Treat `format: uri` as `format: url`"
+          },
+          {
+            "comment": "Errors emitted in 'modelerfour' step  will have sourcemap."
+          },
+          {
+            "comment": "Improved 'name is empty' error to contain more information."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@autorest/codemodel\" from `~4.18.2` to `~4.19.0`"
+          },
+          {
+            "comment": "Updating dependency \"@autorest/extension-base\" from `~3.4.2` to `~3.5.0`"
+          },
+          {
+            "comment": "Updating dependency \"@autorest/test-utils\" from `~0.5.1` to `~0.5.2`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/datastore\" from `~4.6.1` to `~4.7.0`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/openapi\" from `~3.3.0` to `~3.4.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.23.6",
+      "tag": "@autorest/modelerfour_v4.23.6",
+      "date": "Fri, 27 May 2022 15:55:11 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix issue with having `application/json` and `application/x-www-form-urlencoded` content type for the request body. Json now takes precedence"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.23.5",
+      "tag": "@autorest/modelerfour_v4.23.5",
+      "date": "Wed, 18 May 2022 02:34:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix name bgeneration for contenttype and accept parameters only incrementing to 1"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.23.4",
+      "tag": "@autorest/modelerfour_v4.23.4",
+      "date": "Mon, 09 May 2022 15:29:40 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix `x-ms-client-flatten` defined at the root of the model would always flatten that model when referemced in properties"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.23.3",
+      "tag": "@autorest/modelerfour_v4.23.3",
+      "date": "Tue, 03 May 2022 20:20:34 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "**Fix** issue when using unknown media types with a known one. Ignore those."
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.23.2",
+      "tag": "@autorest/modelerfour_v4.23.2",
+      "date": "Thu, 07 Apr 2022 20:47:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Modelerfour set correct known media type when `application/json` with `type: string`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.23.1",
+      "tag": "@autorest/modelerfour_v4.23.1",
+      "date": "Mon, 21 Mar 2022 15:38:03 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix: Request body with `type: string, format: bytes|duration|date-time` being treated as string instead of base64 json"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.23.0",
+      "tag": "@autorest/modelerfour_v4.23.0",
+      "date": "Tue, 15 Mar 2022 16:00:38 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add support for setting original `operationId` on operation"
+          },
+          {
+            "comment": "**Update** to the logic for resolving operation requests. Group request by body types instead of content-types to prevent overload issues\""
+          },
+          {
+            "comment": "Generalize security scheme by allowing AAD Token "
+          },
+          {
+            "comment": "Added support for special headers: headers automatically handled by the generator"
+          },
+          {
+            "comment": "Uptake change in typing in openapi library"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Fix name of special headers, and compare using lowercase."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@autorest/codemodel\" from `~4.17.2` to `~4.18.0`"
+          },
+          {
+            "comment": "Updating dependency \"@autorest/test-utils\" from `~0.5.0` to `~0.5.1`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/codegen\" from `~2.9.0` to `~2.9.1`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/datastore\" from `~4.6.0` to `~4.6.1`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/openapi\" from `~3.2.3` to `~3.3.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.22.3",
+      "tag": "@autorest/modelerfour_v4.22.3",
+      "date": "Tue, 07 Dec 2021 16:58:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "**fix** discriminator value added to top level if it has some allOf"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.22.2",
+      "tag": "@autorest/modelerfour_v4.22.2",
+      "date": "Mon, 06 Dec 2021 20:16:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "**Fix** Flattened models with duplicate properties using `AutoGenerated` name instead of flattened path based"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.22.1",
+      "tag": "@autorest/modelerfour_v4.22.1",
+      "date": "Mon, 22 Nov 2021 21:55:51 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@autorest/extension-base\" from `~3.4.0` to `~3.4.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.22.0",
+      "tag": "@autorest/modelerfour_v4.22.0",
+      "date": "Fri, 19 Nov 2021 04:23:42 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Uptake change to extension-base to provide sourcemap support for errors"
+          },
+          {
+            "comment": "**Added** Support for overriding shared param description"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "**Fix** issue with properties causing name conflict when consecutive words are deduplicated"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@autorest/codemodel\" from `~4.17.0` to `~4.17.2`"
+          },
+          {
+            "comment": "Updating dependency \"@autorest/extension-base\" from `~3.3.2` to `~3.4.0`"
+          },
+          {
+            "comment": "Updating dependency \"@autorest/test-utils\" from `~0.4.0` to `~0.5.0`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/codegen\" from `~2.8.0` to `~2.9.0`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/datastore\" from `~4.5.1` to `~4.6.0`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/openapi\" from `~3.2.1` to `~3.2.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.21.4",
+      "tag": "@autorest/modelerfour_v4.21.4",
+      "date": "Mon, 04 Oct 2021 18:15:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "**Fix** Flatten nullable property doesn't propagate."
+          },
+          {
+            "comment": "**Internal** remove use of string and array extension method `.last`."
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.21.3",
+      "tag": "@autorest/modelerfour_v4.21.3",
+      "date": "Wed, 29 Sep 2021 15:39:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "**Fix** Unknown format for number schema should not be an error."
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.21.2",
+      "tag": "@autorest/modelerfour_v4.21.2",
+      "date": "Wed, 22 Sep 2021 15:23:39 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "**Fix** log error when using parameter with `content.<mediaType>` as not being supported"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.21.1",
+      "tag": "@autorest/modelerfour_v4.21.1",
+      "date": "Thu, 16 Sep 2021 18:49:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "**Add** validation when schema use allOf referencing a schema with a different type"
+          },
+          {
+            "comment": "**Tweak** Better error message when enum has an empty value"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.21.0",
+      "tag": "@autorest/modelerfour_v4.21.0",
+      "date": "Wed, 08 Sep 2021 15:39:22 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "**Fix** Dictionaries don't get xml serialization information passed into codemodel"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "**Internal** Remove @azure-tools/linq library\""
+          },
+          {
+            "comment": "**Perf** Modified yaml dump improving serialization"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@autorest/codemodel\" from `~4.16.0` to `~4.17.0`"
+          },
+          {
+            "comment": "Updating dependency \"@autorest/extension-base\" from `~3.3.0` to `~3.3.1`"
+          },
+          {
+            "comment": "Updating dependency \"@autorest/test-utils\" from `~0.3.0` to `~0.4.0`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/codegen\" from `~2.6.0` to `~2.7.0`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/datastore\" from `~4.4.0` to `~4.5.0`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/openapi\" from `~3.2.0` to `~3.2.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.20.0",
+      "tag": "@autorest/modelerfour_v4.20.0",
+      "date": "Mon, 19 Jul 2021 15:15:41 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Added support for anonymous security scheme"
+          },
+          {
+            "comment": "**Added** New option to make Content-Type extensible"
+          },
+          {
+            "comment": "**Added** Configuration to ignore certain header names from being added to the model parameters lists"
+          },
+          {
+            "comment": "**Change** Single-value enums are extensible by default and will not generate a constant "
+          },
+          {
+            "comment": "Drop support for node 10"
+          },
+          {
+            "comment": "**Perf** Flattener major performance improvement for large specs"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "**Fix** Ciruclar reference issue when using allOf parent referencing back to child in properties"
+          },
+          {
+            "comment": "**Improve** Duplicate schema resolution"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@autorest/codemodel\" from `~4.15.0` to `~4.16.0`"
+          },
+          {
+            "comment": "Updating dependency \"@autorest/extension-base\" from `~3.2.1` to `~3.3.0`"
+          },
+          {
+            "comment": "Updating dependency \"@autorest/test-utils\" from `~0.2.2` to `~0.3.0`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/codegen\" from `~2.5.294` to `~2.6.0`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/datastore\" from `~4.3.1` to `~4.4.0`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/openapi\" from `~3.1.3` to `~3.2.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.19.3",
+      "tag": "@autorest/modelerfour_v4.19.3",
+      "date": "Thu, 03 Jun 2021 22:37:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "**Fix** Allow empty paths in operation"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.19.2",
+      "tag": "@autorest/modelerfour_v4.19.2",
+      "date": "Thu, 20 May 2021 16:41:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "**Immproved** error message for duplicate operations"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@azure-tools/openapi\" from `~3.1.2` to `~3.1.3`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.19.1",
+      "tag": "@autorest/modelerfour_v4.19.1",
+      "date": "Tue, 04 May 2021 18:18:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "**Fix** Using multiple security layers(`AND`) now produce warning instead of error."
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.19.0",
+      "tag": "@autorest/modelerfour_v4.19.0",
+      "date": "Tue, 27 Apr 2021 17:48:43 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "**Added** Distinction between anything and anyobject"
+          },
+          {
+            "comment": "**Added** Support for openapi deprecation"
+          },
+          {
+            "comment": "**Added** Support known set of security scheme"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "**Perf** Major performance improvment to duplicate schema finder"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@autorest/codemodel\" from `~4.14.8` to `~4.15.0`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/datastore\" from `~4.3.0` to `~4.3.1`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/openapi\" from `~3.1.1` to `~3.1.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.18.4",
+      "tag": "@autorest/modelerfour_v4.18.4",
+      "date": "Mon, 19 Apr 2021 21:06:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "**Fix** Enum defined just with allOf of other enum"
+          },
+          {
+            "comment": "**Typo** Ambigious -> Ambiguous "
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.18.3",
+      "tag": "@autorest/modelerfour_v4.18.3",
+      "date": "Tue, 13 Apr 2021 21:32:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "**Fix** Enum without type resulting in null values"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.18.2",
+      "tag": "@autorest/modelerfour_v4.18.2",
+      "date": "Fri, 09 Apr 2021 19:53:22 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "**Fix** api-version-mode configuration not working if not auto"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@autorest/codemodel\" from `~4.14.7` to `~4.14.8`"
+          },
+          {
+            "comment": "Updating dependency \"@autorest/test-utils\" from `~0.2.1` to `~0.2.2`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/datastore\" from `~4.2.2` to `~4.3.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.18.1",
+      "tag": "@autorest/modelerfour_v4.18.1",
+      "date": "Thu, 01 Apr 2021 15:46:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @azure-tools/uri version to ~3.1.1"
+          },
+          {
+            "comment": "**Cleanup** Migrated use of require -> es6 imports"
+          },
+          {
+            "comment": "**Update** how binary request body are treated if the content-type is not binary: Group all binary body together to prevent multiple method overload with same parameter"
+          },
+          {
+            "comment": "**Fix** Some unhandled promises"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@autorest/test-utils\" from `~0.2.0` to `~0.2.1`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/datastore\" from `~4.2.1` to `~4.2.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.18.0",
+      "tag": "@autorest/modelerfour_v4.18.0",
+      "date": "Tue, 16 Mar 2021 15:52:56 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "**Change** let single value enum parameters be able to be grouped."
+          },
+          {
+            "comment": "**Feature** Support using `allOf` in enum to reference a parent enum. All the parent choices will be flattened in the child enum"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "**Respect** OpenAPI3 discriminator mapping"
+          },
+          {
+            "comment": "Bump dependencies versions"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@autorest/codemodel\" from `~4.14.6` to `~4.14.7`"
+          },
+          {
+            "comment": "Updating dependency \"@autorest/extension-base\" from `~3.2.0` to `~3.2.1`"
+          },
+          {
+            "comment": "Updating dependency \"@autorest/test-utils\" from `~0.1.0` to `~0.2.0`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/codegen\" from `~2.5.293` to `~2.5.294`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/datastore\" from `~4.1.271` to `~4.2.0`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/openapi\" from `~3.1.0` to `~3.1.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.17.2",
+      "tag": "@autorest/modelerfour_v4.17.2",
+      "date": "Fri, 05 Mar 2021 16:31:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Allow server variables to provide a string format(url, uri, etc.)"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.17.1",
+      "tag": "@autorest/modelerfour_v4.17.1",
+      "date": "Fri, 26 Feb 2021 21:50:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "**Fix** Don't add a duplicate Content-Type parameter if it is already provided in the spec"
+          },
+          {
+            "comment": "Fix x-ms-header-collection-prefix injected dictionary not defined in the list of schemas"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.17.0",
+      "tag": "@autorest/modelerfour_v4.17.0",
+      "date": "Fri, 19 Feb 2021 21:42:09 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "**Change** Body parmaeters for a `formData` body will be seperate parameters in the generated model instead of being grouped in a body object."
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Change property redefinition error when changing type into a warning to allow polymorphism"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@autorest/codemodel\" from `~4.14.5` to `~4.14.6`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.16.2",
+      "tag": "@autorest/modelerfour_v4.16.2",
+      "date": "Thu, 11 Feb 2021 18:03:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "**Internals** Update chalk dependency to ^4.1.0"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.16.1",
+      "tag": "@autorest/modelerfour_v4.16.1",
+      "date": "Mon, 08 Feb 2021 23:06:15 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Internal: Update tsconfig, files get generated directly under dist/ instead of dist/src/"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Set `isInMultipart: true` for multipart parameters"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@autorest/codemodel\" from `~4.14.4` to `~4.14.5`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.16.0",
+      "tag": "@autorest/modelerfour_v4.16.0",
+      "date": "Thu, 04 Feb 2021 19:05:18 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Migrate bundling system from static-link to webpack"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix the use of  circular dependencies in additionalProperties [PR #3819](https://github.com/Azure/autorest/pull/3819)"
+          },
+          {
+            "comment": "Internal code linting fixes"
+          },
+          {
+            "comment": "Internal: Move out test custom matchers to seperate package"
+          },
+          {
+            "comment": "Rename @azure-tools/autorest-extension-base dependency to new @autorest/extension-base pkg"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@autorest/codemodel\" from `~4.14.3` to `~4.14.4`"
+          },
+          {
+            "comment": "Updating dependency \"@autorest/extension-base\" from `~3.1.0` to `~3.2.0`"
+          },
+          {
+            "comment": "Updating dependency \"@autorest/test-utils\" from `~0.0.1` to `~0.1.0`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/codegen\" from `~2.5.0` to `~2.5.293`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/datastore\" from `~4.1.0` to `~4.1.271`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/openapi\" from `~3.0.0` to `~3.1.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.15.456",
+      "tag": "@autorest/modelerfour_v4.15.456",
+      "date": "Thu, 28 Jan 2021 00:22:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix static linking issue with modelerfour resulting in incompatible dependency."
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.15.455",
+      "tag": "@autorest/modelerfour_v4.15.455",
+      "date": "Tue, 26 Jan 2021 21:36:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update modelerfour to use renamed package @azuretools/codemodel -> @autorest/codemodel."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@autorest/codemodel\" from `~4.14.1` to `~4.14.3`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.15.x",
+      "tag": "@autorest/modelerfour_v4.15.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "**Fix** Missing description in responses. ([PR 370](https://github.com/Azure/autorest.modelerfour/pull/370))"
+          },
+          {
+            "comment": "**Feature** Added new flag `always-create-accept-parameter` to enable/disable accept param auto generation. ([PR 366](https://github.com/Azure/autorest.modelerfour/pull/366))"
+          },
+          {
+            "comment": "**Fix** Allow request with body being a file and `application/json` content-type. ([PR 363](https://github.com/Azure/autorest.modelerfour/pull/363))"
+          },
+          {
+            "comment": "**Fix** Dictionaries of dictionaries not being modeled as such(`dict[str, object]` instead of `dict[str, dict[str, str]]`). ([PR 372](https://github.com/Azure/autorest.modelerfour/pull/372))"
+          },
+          {
+            "comment": "**Fix** Issue with sibling models(Model just being a ref of another) causing circular dependency exception. ([PR 375](https://github.com/Azure/autorest.modelerfour/pull/375))"
+          },
+          {
+            "comment": "**Fix** Issue with duplicates schemas names due to consequtive name duplicate removal. ([PR 374](https://github.com/Azure/autorest.modelerfour/pull/374))"
+          },
+          {
+            "comment": "Schemas with `x-ms-enum`'s `modelAsString` set to `true` will now be represented as `ChoiceSchema` even with a single value."
+          },
+          {
+            "comment": "`Accept` headers are now automatically added to operations having responses with content types"
+          },
+          {
+            "comment": "Added `always-seal-x-ms-enum` settings to always create `SealedChoiceSchema` when an `x-ms-enum` is encountered"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.14.x",
+      "tag": "@autorest/modelerfour_v4.14.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "added `exception` SchemaContext for `usage` when used as an exception response"
+          },
+          {
+            "comment": "changed `output` SchemaContext for `usage` to no longer include exception response uses"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.13.x",
+      "tag": "@autorest/modelerfour_v4.13.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add security info (checks to see if `input.components?.securitySchemes` has any content)"
+          },
+          {
+            "comment": "sync version of m4 and perks/codemodel == 4.13.x"
+          },
+          {
+            "comment": "adding quality prechecker step as a way to test the OAI document for quality before modelerfour runs."
+          },
+          {
+            "comment": "report duplicate parents via allOf as an error."
+          },
+          {
+            "comment": "added `modelerfour.lenient-model-deduplication` to cause schemas with duplicated names to be renamed with an `AutoGenerated` suffix.  Note that this is a *temporary* measuer that should only be used when Swaggers cannot be updated easily.  This option will be removed in a future version of Modeler Four."
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.12.x",
+      "tag": "@autorest/modelerfour_v4.12.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "updated CI to build packages"
+          },
+          {
+            "comment": "any is in a category in schemas"
+          },
+          {
+            "comment": "times is a new category in schemas (not populated yet, next build)"
+          },
+          {
+            "comment": "polymorphic payloads are not flattened (when it's the class that declares the discriminator)"
+          },
+          {
+            "comment": "readonly is pulled from the schema if it's there"
+          },
+          {
+            "comment": "body parameters should have the required flag set correctly"
+          },
+          {
+            "comment": "content-type is now a header parameter (wasn't set before)"
+          },
+          {
+            "comment": "added `modelerfour.always-create-content-type-parameter` to always get the content type parameter even when there are only one option."
+          },
+          {
+            "comment": "add support for x-ms-api-version extension to force enabling/disabling parameter to be treated as an api-version parameter"
+          },
+          {
+            "comment": "the checker plugin will now halt on errors (can be disabled by `modelerfour.additional-checks: false`)"
+          },
+          {
+            "comment": "when an enum without type is presented, if the values are all strings, assume 'string'"
+          },
+          {
+            "comment": "flatten parents first for consistency"
+          },
+          {
+            "comment": "added choiceType for content-type schema"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.6.x",
+      "tag": "@autorest/modelerfour_v4.6.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add additional checks for empty names, collisions"
+          },
+          {
+            "comment": "fix errant processing on APString => Apstring "
+          },
+          {
+            "comment": "x-ms-client-name fixes on parameters"
+          },
+          {
+            "comment": "added setting for `preserve-uppercase-max-length` to preserve uppercase words up to a certain length."
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.5.x",
+      "tag": "@autorest/modelerfour_v4.5.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "static linking libraries for stability"
+          },
+          {
+            "comment": "processed all names in namer, styles can be set in config (see below):"
+          },
+          {
+            "comment": "support overrides in namer "
+          },
+          {
+            "comment": "static linked dependency"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.4.x",
+      "tag": "@autorest/modelerfour_v4.4.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "parameter grouping "
+          },
+          {
+            "comment": "some namer changes "
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.3.x",
+      "tag": "@autorest/modelerfour_v4.3.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "flattening (model and payload) enabled."
+          },
+          {
+            "comment": "properties should respect x-ms-client-name (many fixes)"
+          },
+          {
+            "comment": "global parameters should try to be in order of original spec"
+          },
+          {
+            "comment": "filter out 'x-ms-original' from extensions"
+          },
+          {
+            "comment": "add serializedName for host parameters"
+          },
+          {
+            "comment": "make sure reused global parameter is added to method too"
+          },
+          {
+            "comment": "processed values in constants/enums a bit better, support AnySchema for no type/format "
+          },
+          {
+            "comment": "support server variable parameters as method unless they have x-ms-parameter-location"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.2.75",
+      "tag": "@autorest/modelerfour_v4.2.75",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add `style` to parameters to support collection format "
+          },
+          {
+            "comment": "`potential-breaking-change` Include common paramters from oai/path #68 (requires fix from autorest-core 3.0.6160+ ) "
+          },
+          {
+            "comment": "propogate extensions from server parameters (ie, x-ms-skip-url-encoding) #61"
+          },
+          {
+            "comment": "`potential-breaking-change` make operation groups case insensitive. #59 "
+          },
+          {
+            "comment": "`potential-breaking-change` sealedChoice/Choice selection was backwards ( was creating a sealedchoice schema for modelAsString:true and vice versa) #62 "
+          },
+          {
+            "comment": "`potential-breaking-change` drop constant schema from response, use constantschema's valueType instead. #63"
+          },
+          {
+            "comment": "`potential-breaking-change` fix body parameter marked as required when not marked so in spec. #64"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.1.60",
+      "tag": "@autorest/modelerfour_v4.1.60",
+      "comments": {
+        "patch": [
+          {
+            "comment": "query parameters should have a serializedName so that they don't rely on the cosmetic name property."
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.1.58",
+      "tag": "@autorest/modelerfour_v4.1.58",
+      "comments": {
+        "patch": [
+          {
+            "comment": "version bump, change your configuration to specify version `~4.1.0` or greater\n  \n  ``` \n  use-extension:\n    \"@autorest/modelerfour\" : \"~4.1.0\" \n  ```\n  - each Http operation (via `.protocol.http`) will now have a separate `path` and `uri` properties. \n  <br>Both are still templates, and will have parameters. \n  <br>The parameters for the `uri` property will have `in` set to `ParameterLocation.Uri`\n  <br>The parameters for the `path` property will continue to have `in` set to `ParameterLocation.Path`\n\n  \n  - autorest-core recently added an option to aggressively deduplicate inline models (ie, ones without a name)\n  and modeler-four based generator will have that enabled by default. (ie `deduplicate-inline-models: true`)\n  <br>This may increase deduplication time on extremely large openapi models.\n\n  - this package contains the initial code for the flattener plugin, however it is not yet enabled.\n\n  - updated `@azure-tools/codemodel` package to `3.0.241`:\n  <br>`uri` (required) was added to `HttpRequest`\n  <br>`flattenedNames` (optional) was added to `Property` (in anticipation of supporting flattening)"
+          }
+        ]
+      }
+    }
+  ]
+}

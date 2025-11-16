@@ -1,0 +1,25 @@
+{
+    "name": "office365_linkedservice",
+    "type": "Microsoft.Synapse/workspaces/linkedservices",
+    "properties": {
+        "annotations": [],
+        "type": "Office365",
+        "typeProperties": {
+            "office365TenantId": "<office365TenantId>",
+            "servicePrincipalTenantId": "<servicePrincipalTenantId>",
+            "servicePrincipalId": "<servicePrincipalId>",
+            "servicePrincipalKey": {
+                "type": "AzureKeyVaultSecret",
+                "store": {
+                    "referenceName": "keyvault_linkedservice",
+                    "type": "LinkedServiceReference"
+                },
+                "secretName": "m365-reader-secret"
+            }
+        },
+        "connectVia": {
+            "referenceName": "AutoResolveIntegrationRuntime",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}

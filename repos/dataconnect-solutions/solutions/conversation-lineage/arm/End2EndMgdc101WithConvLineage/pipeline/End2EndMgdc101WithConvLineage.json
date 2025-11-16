@@ -1,0 +1,219 @@
+{
+    "name": "End2EndMgdc101WithConvLineage",
+    "properties": {
+        "activities": [
+            {
+                "name": "Process Emails Data",
+                "type": "ExecutePipeline",
+                "dependsOn": [
+                    {
+                        "activity": "Process Users Data",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "userProperties": [],
+                "typeProperties": {
+                    "pipeline": {
+                        "referenceName": "PrepareEmailsData",
+                        "type": "PipelineReference"
+                    },
+                    "waitOnCompletion": true,
+                    "parameters": {
+                        "batchStartTime": {
+                            "value": "@pipeline().parameters.batchStartTime",
+                            "type": "Expression"
+                        },
+                        "batchEndTime": {
+                            "value": "@pipeline().parameters.batchEndTime",
+                            "type": "Expression"
+                        },
+                        "m365_extraction_group_id": {
+                            "value": "@pipeline().parameters.m365_extraction_group_id",
+                            "type": "Expression"
+                        }
+                    }
+                }
+            },
+            {
+                "name": "Process Events Data",
+                "type": "ExecutePipeline",
+                "dependsOn": [
+                    {
+                        "activity": "Process Users Data",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "userProperties": [],
+                "typeProperties": {
+                    "pipeline": {
+                        "referenceName": "PrepareEventsData",
+                        "type": "PipelineReference"
+                    },
+                    "waitOnCompletion": true,
+                    "parameters": {
+                        "batchStartTime": {
+                            "value": "@pipeline().parameters.batchStartTime",
+                            "type": "Expression"
+                        },
+                        "batchEndTime": {
+                            "value": "@pipeline().parameters.batchEndTime",
+                            "type": "Expression"
+                        },
+                        "m365_extraction_group_id": {
+                            "value": "@pipeline().parameters.m365_extraction_group_id",
+                            "type": "Expression"
+                        }
+                    }
+                }
+            },
+            {
+                "name": "Process Team Chats Data",
+                "type": "ExecutePipeline",
+                "dependsOn": [
+                    {
+                        "activity": "Process Users Data",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "userProperties": [],
+                "typeProperties": {
+                    "pipeline": {
+                        "referenceName": "PrepareTeamChatsData",
+                        "type": "PipelineReference"
+                    },
+                    "waitOnCompletion": true,
+                    "parameters": {
+                        "batchStartTime": {
+                            "value": "@pipeline().parameters.batchStartTime",
+                            "type": "Expression"
+                        },
+                        "batchEndTime": {
+                            "value": "@pipeline().parameters.batchEndTime",
+                            "type": "Expression"
+                        },
+                        "m365_extraction_group_id": {
+                            "value": "@pipeline().parameters.m365_extraction_group_id",
+                            "type": "Expression"
+                        }
+                    }
+                }
+            },
+            {
+                "name": "Process Users Data",
+                "type": "ExecutePipeline",
+                "dependsOn": [],
+                "userProperties": [],
+                "typeProperties": {
+                    "pipeline": {
+                        "referenceName": "PrepareUsersData",
+                        "type": "PipelineReference"
+                    },
+                    "waitOnCompletion": true,
+                    "parameters": {
+                        "batchStartTime": {
+                            "value": "@pipeline().parameters.batchStartTime",
+                            "type": "Expression"
+                        },
+                        "batchEndTime": {
+                            "value": "@pipeline().parameters.batchEndTime",
+                            "type": "Expression"
+                        },
+                        "m365_extraction_group_id": {
+                            "value": "@pipeline().parameters.m365_extraction_group_id",
+                            "type": "Expression"
+                        }
+                    }
+                }
+            },
+            {
+                "name": "ConversationLineage",
+                "type": "ExecutePipeline",
+                "dependsOn": [
+                    {
+                        "activity": "Process Emails Data",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    },
+                    {
+                        "activity": "Process Events Data",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    },
+                    {
+                        "activity": "Process Team Chats Data",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "userProperties": [],
+                "typeProperties": {
+                    "pipeline": {
+                        "referenceName": "ConversationLineage",
+                        "type": "PipelineReference"
+                    },
+                    "waitOnCompletion": true,
+                    "parameters": {
+                        "sql_database_name": {
+                            "value": "@pipeline().parameters.sql_database_name",
+                            "type": "Expression"
+                        },
+                        "sql_table_name": {
+                            "value": "@pipeline().parameters.sql_table_name",
+                            "type": "Expression"
+                        },
+                        "azure_ai_endpoint": {
+                            "value": "@pipeline().parameters.azure_ai_endpoint",
+                            "type": "Expression"
+                        },
+                        "sql_server_name": {
+                            "value": "@pipeline().parameters.sql_server_name",
+                            "type": "Expression"
+                        }
+                    }
+                }
+            }
+        ],
+        "parameters": {
+            "batchStartTime": {
+                "type": "string",
+                "defaultValue": "2020-01-01T00:00:00Z"
+            },
+            "batchEndTime": {
+                "type": "string",
+                "defaultValue": "2022-01-01T00:00:00Z"
+            },
+            "sql_database_name": {
+                "type": "string",
+                "defaultValue": "<sql_database_name>"
+            },
+            "sql_table_name": {
+                "type": "string",
+                "defaultValue": "dbo.vInternal_Interactions_one_to_many"
+            },
+            "azure_ai_endpoint": {
+                "type": "string",
+                "defaultValue": "<azure_ai_endpoint>"
+            },
+            "sql_server_name": {
+                "type": "string",
+                "defaultValue": "<sql_server_name>"
+            },  
+            "m365_extraction_group_id": {
+                "type": "string",
+                "defaultValue": "<m365_extraction_group_id>"
+            }
+        },
+        "annotations": [],
+        "lastPublishTime": "2021-07-12T16:34:46Z"
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}

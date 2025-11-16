@@ -1,0 +1,41 @@
+{
+  "assemblyOriginatorKeyFile": "35MSSharedLib1024.snk",
+  "authors": "Microsoft",
+  "copyright": "© Microsoft Corporation. All rights reserved.",
+  "description": "Microsoft Graph PowerShell module",
+  "iconUri": "https://raw.githubusercontent.com/microsoftgraph/msgraph-sdk-powershell/dev/docs/images/graph_color256.png",
+  "licenseUri": "https://aka.ms/devservicesagreement",
+  "owners": "Microsoft",
+  "projectUri": "https://github.com/microsoftgraph/msgraph-sdk-powershell",
+  "releaseNotes": "See https://aka.ms/GraphPowerShell-Release.",
+  "requireLicenseAcceptance": "true",
+  "tags": [
+    "MicrosoftGraph",
+    "Microsoft",
+    "Office365",
+    "Graph",
+    "PowerShell",
+    "Outlook",
+    "OneDrive",
+    "AzureAD",
+    "SharePoint",
+    "Intune",
+    "AzureAutomationNotSupported",
+    "PSModule",
+    "PSIncludes_Cmdlet"
+  ],
+  "versions": {
+    "authentication": {
+      "prerelease": "",
+      "version": "2.32.0"
+    },
+    "beta": {
+      "prerelease": "",
+      "version": "2.32.0"
+    },
+    "v1.0": {
+      "prerelease": "",
+      "version": "2.32.0"
+    }
+  }
+}

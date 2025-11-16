@@ -1,0 +1,160 @@
+---
+title: identityApiConnector：uploadClientCertificate
+description: Upload API 连接器身份验证配置 (PFX) PKCS 12 格式密钥。
+ms.localizationpriority: medium
+author: nickgmicrosoft
+ms.prod: identity-and-sign-in
+doc_type: apiPageType
+ms.openlocfilehash: ca764d5a8c5643b1c97eb93bb24611614a9cdc70
+ms.sourcegitcommit: a6cbea0e45d2e84b867b59b43ba6da86b54495a3
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "60998183"
+---
+# <a name="identityapiconnector-uploadclientcertificate"></a>identityApiConnector：uploadClientCertificate
+
+命名空间：microsoft.graph
+
+[!INCLUDE [beta-disclaimer](../../includes/beta-disclaimer.md)]
+
+Upload API 连接器的身份验证配置 (.pfx) PKCS 12 格式密钥。 输入是 PKCS 12 证书内容的 Base64 编码值。 此方法返回 [apiConnector](../resources/identityApiConnector.md)。
+
+## <a name="permissions"></a>权限
+
+要调用此 API，需要以下权限之一。要了解详细信息，包括如何选择权限的信息，请参阅[权限](/graph/permissions-reference)。
+
+| 权限类型                        | 权限（从最低特权到最高特权） |
+| :------------------------------------- | :------------------------------------------ |
+| 委派（工作或学校帐户）     | APIConnectors.ReadWrite.All |
+| 委派（个人 Microsoft 帐户） | 不支持。  |
+| 应用程序                            | APIConnectors.ReadWrite.All |
+
+工作或学校帐户需要属于以下角色之一：
+
+* 全局管理员
+* 外部标识用户Flow管理员
+
+## <a name="http-request"></a>HTTP 请求
+
+<!-- { "blockType": "ignored" } -->
+
+```http
+POST /identity/apiconnectors/{id}/uploadClientCertificate
+```
+
+## <a name="request-headers"></a>请求标头
+
+| 名称          | 说明   |
+|:--------------|:--------------|
+| Authorization | Bearer {token}。必需。 |
+| Content-type  | application/json. Required. |
+
+## <a name="request-body"></a>请求正文
+
+在请求正文中，提供具有以下参数的 JSON 对象。
+
+|属性|类型|说明|
+|:---|:---|:---|
+|pkcs12Value|String| 这是用于发送 pfx 内容的字段。 该值应为实际证书内容的 Base64 编码版本。 必需。|
+|密码|String| 这是 pfx 文件的密码。 必需。 如果未使用密码，则仍必须提供 的值 `""` 。|
+
+## <a name="response"></a>响应
+
+如果成功，此方法将返回 `200 OK` 响应代码和 [apiConnector，](../resources/identityApiConnector.md) 其中包含客户端证书 `authenticationConfiguration` 的公共信息。
+
+## <a name="examples"></a>示例
+
+### <a name="request"></a>请求
+
+下面展示了示例请求。
+
+
+# <a name="http"></a>[HTTP](#tab/http)
+<!-- {
+  "blockType": "request",
+  "name": "identityapiconnector_uploadclientcertificate"
+}-->
+
+```http
+POST https://graph.microsoft.com/beta/identity/apiconnectors/{id}/uploadClientCertificate
+Content-type: application/json
+
+{
+    "pkcs12Value": "eyJhbGciOiJSU0EtT0FFUCIsImVuYyI6IkEyNTZHQ00ifQ...kDJ04sJShkkgjL9Bm49plA",
+    "password": "<password>"
+}
+```
+# <a name="c"></a>[C#](#tab/csharp)
+[!INCLUDE [sample-code](../includes/snippets/csharp/identityapiconnector-uploadclientcertificate-csharp-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+[!INCLUDE [sample-code](../includes/snippets/javascript/identityapiconnector-uploadclientcertificate-javascript-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# <a name="objective-c"></a>[Objective-C](#tab/objc)
+[!INCLUDE [sample-code](../includes/snippets/objc/identityapiconnector-uploadclientcertificate-objc-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# <a name="java"></a>[Java](#tab/java)
+[!INCLUDE [sample-code](../includes/snippets/java/identityapiconnector-uploadclientcertificate-java-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# <a name="go"></a>[Go](#tab/go)
+[!INCLUDE [sample-code](../includes/snippets/go/identityapiconnector-uploadclientcertificate-go-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+---
+
+
+### <a name="response"></a>响应
+
+下面展示了示例响应。
+
+> **注意：** `authenticationConfiguration` 响应中的 类型为 [microsoft.graph.clientCertificateAuthentication，](../resources/clientcertificateauthentication.md) 因为这表示已上载证书的公共信息。
+
+<!-- {
+  "blockType": "response",
+  "truncated": true,
+  "@odata.type": "microsoft.graph.identityApiConnector"
+}
+-->
+
+```http
+HTTP/1.1 200 OK
+Content-type: application/json
+
+{
+    "@odata.context": "https://graph.microsoft.com/beta/$metadata#identity/apiConnectors/$entity",
+    "id": "guid",
+    "displayName": "My API connector",
+    "targetUrl": "https://api.contoso.com/endpoint",
+    "authenticationConfiguration": {
+        "@odata.type": "#microsoft.graph.clientCertificateAuthentication",
+        "certificateList": [
+            {
+                "thumbprint": "0EB255CC895477798BA418B378255204304897AD",
+                "notAfter": 1666350522,
+                "notBefore": 1508670522,
+                "isActive": true
+            },
+            {
+                "thumbprint": "1AB255CC895477798BA418B378255204304897BC",
+                "notAfter": 1766350522,
+                "notBefore": 1608670522,
+                "isActive": false
+            }
+        ]
+    }
+}
+```
+
+<!-- uuid: 16cd6b66-4b1a-43a1-adaf-3a886856ed982019-02-04 14:57:30 UTC -->
+<!-- {
+  "type": "#page.annotation",
+  "description": "identityApiConnector: uploadClientCertificate",
+  "keywords": "",
+  "section": "documentation",
+  "tocPath": ""
+}-->

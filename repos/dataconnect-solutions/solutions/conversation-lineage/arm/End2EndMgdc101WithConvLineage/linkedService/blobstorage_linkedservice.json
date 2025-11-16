@@ -1,0 +1,26 @@
+{
+    "name": "blobstorage_linkedservice",
+    "properties": {
+        "annotations": [],
+        "type": "AzureBlobStorage",
+        "typeProperties": {
+            "serviceEndpoint": "<storageAccountEndpoint>",
+            "tenant": "<servicePrincipalTenantId>",
+            "servicePrincipalId": "<servicePrincipalId>",
+            "servicePrincipalKey": {
+                "type": "AzureKeyVaultSecret",
+                "store": {
+                    "referenceName": "keyvault_linkedservice",
+                    "type": "LinkedServiceReference"
+                },
+                "secretName": "m365-reader-secret"
+            },
+            "accountKind": "BlobStorage"
+        },
+        "connectVia": {
+            "referenceName": "AutoResolveIntegrationRuntime",
+            "type": "IntegrationRuntimeReference"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/linkedservices"
+}

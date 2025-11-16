@@ -1,0 +1,39 @@
+@model TranscriptSubscriptionSample.Models.CreateEventSubscriptionViewModel
+
+@{
+    ViewData["Title"] = "Create Event Subscription";
+}
+
+<h2 class="headerText">Create Event Subscription</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            
+            <div class="form-group mb-3">
+                <label asp-for="OrganizerId" class="control-label"></label>
+                <input asp-for="OrganizerId" class="form-control" placeholder="Enter organizer ID" />
+                <span asp-validation-for="OrganizerId" class="text-danger"></span>
+                <small class="form-text text-muted">The ID of the meeting organizer</small>
+            </div>
+            
+            <div class="form-group mb-3">
+                <label asp-for="ExpirationDate" class="control-label"></label>
+                <input asp-for="ExpirationDate" type="datetime-local" class="form-control" />
+                <span asp-validation-for="ExpirationDate" class="text-danger"></span>
+                <small class="form-text text-muted">Subscription will expire at this date/time</small>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Create Subscription" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,23 @@
+{
+  "bootstrap-sha": "991a5e0bc2ea4db108a127a1d079967b97ae1280",
+  "exclude-paths": [
+    ".git",
+    ".idea",
+    ".github",
+    ".vscode"
+  ],
+  "release-type": "simple",
+  "include-component-in-tag": false,
+  "include-v-in-tag": true,
+  "packages": {
+    ".": {
+      "package-name": "msgraph-core",
+      "changelog-path": "CHANGELOG.md",
+      "extra-files": [
+        "pyproject.toml",
+        "src/msgraph_core/_constants.py"
+      ]
+    }
+  },
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
+}

@@ -1,0 +1,209 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "skipMailNotifications": {
+      "value": false,
+      "metadata": {
+        "description": "If you don't want to send email notifications set this to true. When this is true, 'senderUsername','senderPassword','supportEmailAddresses','syncDisabledCCEmailAddresses','syncCompletedCCEmailAddresses' should be set to 'not-set'."
+      }
+    },
+    "isMailApplicationPermissionGranted": {
+      "value": false,
+      "metadata": {
+        "description": "If you are not able or don't want to use delegated Mail.Send permission, you can grant application permission Mail.Send to the <solution>-Graph-<environment> or <solution>-identity-<environment>-Graph application depending on the authentication type selected. Then set this parameter to true."
+      }
+    },
+    "senderUsername": {
+      "value": "",
+      "metadata": {
+        "description": "The email address of the user that will be used to send emails."
+      }
+    },
+    "senderPassword": {
+      "value": "",
+      "metadata": {
+        "description": "The password of the user that will be used to send emails."
+      }
+    },
+    "supportEmailAddresses": {
+      "value": "",
+      "metadata": {
+        "description": "The email addresses of the users that will receive support emails."
+      }
+    },
+    "syncDisabledCCEmailAddresses": {
+      "value": "",
+      "metadata": {
+        "description": "The email addresses of the users that will receive emails when a sync job is disabled."
+      }
+    },
+    "syncCompletedCCEmailAddresses": {
+      "value": "",
+      "metadata": {
+        "description": "The email addresses of the users that will receive emails when a sync job is completed."
+      }
+    },
+    "teamsChannelServiceAccountObjectId": {
+      "value": "",
+      "metadata": {
+        "description": "The object id of the service account that will be used to manage Teams channels."
+      }
+    },
+    "teamsChannelServiceAccountUsername": {
+      "value": "",
+      "metadata": {
+        "description": "The username of the service account that will be used to manage Teams channels."
+      }
+    },
+    "teamsChannelServiceAccountPassword": {
+      "value": "",
+      "metadata": {
+        "description": "The password of the service account that will be used to manage Teams channels."
+      }
+    },
+    "location": {
+      "value": "",
+      "metadata": {
+        "description": "The Azure region where the resources will be deployed. See https://azure.microsoft.com/en-us/explore/global-infrastructure/geographies/#overview"
+      }
+    },
+    "uiLocation": {
+      "value": "",
+      "metadata": {
+        "description": "The Azure region where the UI will be deployed. Could be the same value as the 'location' parameter or different."
+      }
+    },
+    "tenantId": {
+      "value": "",
+      "metadata": {
+        "description": "The Azure AD tenant id."
+      }
+    },
+    "sqlAdministratorsGroupId": {
+      "value": "",
+      "metadata": {
+        "description": "The object id of the group that will be added as an administrator to the SQL server. Make sure you are a member of this group."
+      }
+    },
+    "sqlAdministratorsGroupName": {
+      "value": "",
+      "metadata": {
+        "description": "The name of the group that will be added as an administrator to the SQL server."
+      }
+    },
+    "sqlSkuCapacity": {
+      "value": 4
+    },
+    "sqlSkuFamily": {
+      "value": "Gen5"
+    },
+    "sqlSkuName": {
+      "value": "GP_S_Gen5"
+    },
+    "sqlSkuTier": {
+      "value": "GeneralPurpose"
+    },
+    "notifierProviderId": {
+      "value": "00000000-0000-0000-0000-000000000000",
+      "metadata": {
+        "description": "The provider id of the notifier. See https://github.com/microsoftgraph/group-membership-management/blob/main/Documentation/NotifierSetup.md"
+      }
+    },
+    "serviceBusTopicSubscriptions": {
+      "value": [
+        {
+          "name": "Organization",
+          "ruleName": "syncType",
+          "ruleSqlExpression": "Type = 'Organization'"
+        },
+        {
+          "name": "GroupMembership",
+          "ruleName": "syncType",
+          "ruleSqlExpression": "Type = 'GroupMembership'"
+        },
+        {
+          "name": "PlaceMembership",
+          "ruleName": "syncType",
+          "ruleSqlExpression": "Type = 'PlaceMembership'"
+        },
+        {
+          "name": "TeamsChannelMembership",
+          "rulename": "syncType",
+          "rulesqlexpression": "Type = 'TeamsChannelMembership'"
+        },
+        {
+          "name": "GroupOwnership",
+          "ruleName": "syncType",
+          "ruleSqlExpression": "Type = 'GroupOwnership'"
+        },
+        {
+          "name": "SqlMembership",
+          "ruleName": "syncType",
+          "ruleSqlExpression": "Type = 'SqlMembership'"
+        }
+      ]
+    },
+    "serviceBusMembershipUpdatersTopicSubscriptions": {
+      "value": {
+        "topicName": "membershipUpdaters",
+        "subscriptions": [
+          {
+            "name": "GraphUpdater",
+            "ruleName": "updaterType",
+            "ruleSqlExpression": "Type = 'GroupMembership'"
+          },
+          {
+            "name": "TeamsChannelUpdater",
+            "ruleName": "updaterType",
+            "ruleSqlExpression": "Type = 'TeamsChannelMembership'"
+          }
+        ]
+      }
+    },
+    "sharepointDomain": {
+      "value": "m365x00000000.sharepoint.com",
+      "metadata": {
+        "description": "The SharePoint domain of the tenant."
+      }
+    },
+    "tenantDomain": {
+      "value": "m365x00000000.onmicrosoft.com",
+      "metadata": {
+        "description": "The domain of the tenant."
+      }
+    },
+    "appConfigurationDataOwners": {
+      "value": [
+        {
+          "principalId": "<guid>",
+          "principalType": "Device|ForeignGroup|Group|ServicePrincipal|User"
+        }
+      ],
+      "metadata": {
+        "description": "The list of data owners for the App Configuration. principalId is the object id of the user, group, or service principal. principalType is the type of the principal, pick only one value."
+      }
+    },
+    "authenticationType": {
+      "value": "UserAssignedManagedIdentity|ClientSecret|Certificate",
+      "metadata": {
+        "description": "The type of authentication to use for the App Configuration. UserAssignedManagedIdentity is recommended and will use <solution>-identity-<environment>-Graph. ClientSecret and Certificate will use <solution>-Graph-<environment>."
+      }
+    },
+    "certificateName": {
+      "value": "not-set",
+      "metadata": {
+        "description": "The name of the certificate in the Key Vault. This is required if the authenticationType is Certificate. This is only used by application <solutionAbbreviation>-Graph-<EnvironmentAbbreviation>. See https://learn.microsoft.com/en-us/azure/key-vault/certificates/quick-create-portal for more information on certificates."
+      }
+    },
+    "pipeline": {
+      "value": "PopulateDestinationPipeline"
+    },
+    "setRBACPermissions": {
+      "value": true,
+      "metadata": {
+        "description": "Flag to set RBAC permissions for the service principals."
+      }
+    }
+  }
+}

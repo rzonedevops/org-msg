@@ -1,0 +1,7 @@
+{
+  "sourceDirectory": "./Demos/03-add-msgraph",
+  "exampleConfigFile": "./graph-tutorial/PrivateSettings.example.config",
+  "configFile": "PrivateSettings.config",
+  "archiveFile": "AspNetQuickStart.zip",
+  "zipReadMe": "./README.md"
+}

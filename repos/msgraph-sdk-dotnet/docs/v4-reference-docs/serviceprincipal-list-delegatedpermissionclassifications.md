@@ -1,0 +1,112 @@
+---
+title: "List delegatedPermissionClassifications collection of servicePrincipal"
+description: "Retrieve a list of classifications given to delegated permissions exposed by an API's service principal."
+ms.localizationpriority: medium
+doc_type: apiPageType
+ms.prod: "applications"
+author: "psignoret"
+---
+
+# List delegatedPermissionClassifications collection of servicePrincipal
+
+Namespace: microsoft.graph
+
+Retrieve the list of [delegatedPermissionClassification](../resources/delegatedpermissionclassification.md) currently configured for the delegated permissions exposed by an API.
+
+## Permissions
+
+One of the following permissions is required to call this API. To learn more, including how to choose permissions, see [Permissions](/graph/permissions-reference).
+
+|Permission type      | Permissions (from least to most privileged)              |
+|:--------------------|:---------------------------------------------------------|
+|Delegated (work or school account) | Application.Read.All, Directory.Read.All |
+|Delegated (personal Microsoft account) | Not supported.    |
+|Application | Application.Read.All, Application.ReadWrite.OwnedBy, Directory.Read.All |
+
+## HTTP request
+
+You can address the service principal using either its **id** or **appId**. **id** and **appId** are referred to as the **Object ID** and **Application (Client) ID**, respectively, in the Azure portal
+
+<!-- { "blockType": "ignored" } -->
+```http
+GET /servicePrincipals/{id}/delegatedPermissionClassifications
+GET /servicePrincipals(appId='{appId}')/delegatedPermissionClassifications
+```
+
+## Optional query parameters
+
+This method supports the [OData query parameters](/graph/query-parameters) to help customize the response.
+
+## Request headers
+
+| Name           | Description                |
+|:---------------|:---------------------------|
+| Authorization  | Bearer {token}. Required.  |
+
+## Request body
+
+Do not supply a request body for this method.
+
+## Response
+
+If successful, this method returns a `200 OK` response code and a collection of [delegatedPermissionClassification](../resources/delegatedpermissionclassification.md) objects in the response body.
+
+## Example
+
+### Request
+
+The following is an example of the request.
+
+
+# [HTTP](#tab/http)
+<!-- {
+  "blockType": "request",
+  "name": "serviceprincipal_get_delegatedpermissionclassification"
+}-->
+
+```msgraph-interactive
+GET https://graph.microsoft.com/v1.0/servicePrincipals/00063ffc-54e9-405d-b8f3-56124728e051/delegatedPermissionClassifications
+```
+
+# [C#](#tab/csharp)
+
+```csharp
+
+GraphServiceClient graphClient = new GraphServiceClient( authProvider );
+
+var delegatedPermissionClassifications = await graphClient.ServicePrincipals["{servicePrincipal-id}"].DelegatedPermissionClassifications
+	.Request()
+	.GetAsync();
+
+```
+
+
+ For details about how to [add the SDK](/graph/sdks/sdk-installation) to your project and [create an authProvider](/graph/sdks/choose-authentication-providers) instance, see the [SDK documentation](/graph/sdks/sdks-overview).
+
+### Response
+
+The following is an example of the response.
+
+> **Note:** The response object shown here might be shortened for readability.
+
+<!-- {
+  "blockType": "response",
+  "@odata.type": "microsoft.graph.delegatedPermissionClassification",
+  "isCollection": true
+} -->
+
+```http
+HTTP/1.1 200 OK
+Content-type: application/json
+
+{
+  "value": [
+    {
+        "id": "2G3-4TG6YU2J54hjnaRoPQE",
+        "permissionId": "e1fe6dd8-ba31-4d61-89e7-88639da4683d",
+        "permissionName": "User.Read",
+        "classification": "low"
+    }
+  ]
+}
+```

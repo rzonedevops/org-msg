@@ -1,0 +1,823 @@
+﻿openapi: 3.0.1
+info:
+  title: OData Service for namespace DefaultNs
+  description: This OData service is located at http://localhost
+  version: 1.0.1
+servers:
+  - url: http://localhost
+paths:
+  /City:
+    get:
+      tags:
+        - City.City
+      summary: Get entities from City
+      operationId: City.City.ListCity
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - Name
+                - Name desc
+              type: string
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - Name
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+              type: string
+      responses:
+        '200':
+          description: Retrieved entities
+          content:
+            application/json:
+              schema:
+                title: Collection of City
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DefaultNs.City'
+        default:
+          $ref: '#/components/responses/error'
+    post:
+      tags:
+        - City.City
+      summary: Add new entity to City
+      operationId: City.City.CreateCity
+      requestBody:
+        description: New entity
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DefaultNs.City'
+        required: true
+      responses:
+        '201':
+          description: Created entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultNs.City'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  '/City({Name})':
+    get:
+      tags:
+        - City.City
+      summary: Get entity from City by key
+      operationId: City.City.GetCity
+      parameters:
+        - name: Name
+          in: path
+          description: 'key: Name of City'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: City
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - Name
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+              type: string
+      responses:
+        '200':
+          description: Retrieved entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultNs.City'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+    patch:
+      tags:
+        - City.City
+      summary: Update entity in City
+      operationId: City.City.UpdateCity
+      parameters:
+        - name: Name
+          in: path
+          description: 'key: Name of City'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: City
+      requestBody:
+        description: New property values
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DefaultNs.City'
+        required: true
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+    delete:
+      tags:
+        - City.City
+      summary: Delete entity from City
+      operationId: City.City.DeleteCity
+      parameters:
+        - name: Name
+          in: path
+          description: 'key: Name of City'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: City
+        - name: If-Match
+          in: header
+          description: ETag
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  /CountryOrRegion:
+    get:
+      tags:
+        - CountryOrRegion.CountryOrRegion
+      summary: Get entities from CountryOrRegion
+      operationId: CountryOrRegion.CountryOrRegion.ListCountryOrRegion
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - Name
+                - Name desc
+              type: string
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - Name
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+              type: string
+      responses:
+        '200':
+          description: Retrieved entities
+          content:
+            application/json:
+              schema:
+                title: Collection of CountryOrRegion
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DefaultNs.CountryOrRegion'
+        default:
+          $ref: '#/components/responses/error'
+    post:
+      tags:
+        - CountryOrRegion.CountryOrRegion
+      summary: Add new entity to CountryOrRegion
+      operationId: CountryOrRegion.CountryOrRegion.CreateCountryOrRegion
+      requestBody:
+        description: New entity
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DefaultNs.CountryOrRegion'
+        required: true
+      responses:
+        '201':
+          description: Created entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultNs.CountryOrRegion'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  '/CountryOrRegion({Name})':
+    get:
+      tags:
+        - CountryOrRegion.CountryOrRegion
+      summary: Get entity from CountryOrRegion by key
+      operationId: CountryOrRegion.CountryOrRegion.GetCountryOrRegion
+      parameters:
+        - name: Name
+          in: path
+          description: 'key: Name of CountryOrRegion'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: CountryOrRegion
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - Name
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+              type: string
+      responses:
+        '200':
+          description: Retrieved entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultNs.CountryOrRegion'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+    patch:
+      tags:
+        - CountryOrRegion.CountryOrRegion
+      summary: Update entity in CountryOrRegion
+      operationId: CountryOrRegion.CountryOrRegion.UpdateCountryOrRegion
+      parameters:
+        - name: Name
+          in: path
+          description: 'key: Name of CountryOrRegion'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: CountryOrRegion
+      requestBody:
+        description: New property values
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DefaultNs.CountryOrRegion'
+        required: true
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+    delete:
+      tags:
+        - CountryOrRegion.CountryOrRegion
+      summary: Delete entity from CountryOrRegion
+      operationId: CountryOrRegion.CountryOrRegion.DeleteCountryOrRegion
+      parameters:
+        - name: Name
+          in: path
+          description: 'key: Name of CountryOrRegion'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: CountryOrRegion
+        - name: If-Match
+          in: header
+          description: ETag
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  /Me:
+    get:
+      tags:
+        - Me.Person
+      summary: Get Me
+      operationId: Me.Person.GetPerson
+      parameters:
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - UserName
+                - HomeAddress
+                - WorkAddress
+                - Addresses
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+              type: string
+      responses:
+        '200':
+          description: Retrieved entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultNs.Person'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+    patch:
+      tags:
+        - Me.Person
+      summary: Update Me
+      operationId: Me.Person.UpdatePerson
+      requestBody:
+        description: New property values
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DefaultNs.Person'
+        required: true
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  /People:
+    get:
+      tags:
+        - People.Person
+      summary: Get entities from People
+      operationId: People.Person.ListPerson
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - UserName
+                - UserName desc
+                - HomeAddress
+                - HomeAddress desc
+                - WorkAddress
+                - WorkAddress desc
+                - Addresses
+                - Addresses desc
+              type: string
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - UserName
+                - HomeAddress
+                - WorkAddress
+                - Addresses
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+              type: string
+      responses:
+        '200':
+          description: Retrieved entities
+          content:
+            application/json:
+              schema:
+                title: Collection of Person
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DefaultNs.Person'
+        default:
+          $ref: '#/components/responses/error'
+    post:
+      tags:
+        - People.Person
+      summary: Add new entity to People
+      operationId: People.Person.CreatePerson
+      requestBody:
+        description: New entity
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DefaultNs.Person'
+        required: true
+      responses:
+        '201':
+          description: Created entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultNs.Person'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  '/People({UserName})':
+    get:
+      tags:
+        - People.Person
+      summary: Get entity from People by key
+      operationId: People.Person.GetPerson
+      parameters:
+        - name: UserName
+          in: path
+          description: 'key: UserName of Person'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: Person
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - UserName
+                - HomeAddress
+                - WorkAddress
+                - Addresses
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+              type: string
+      responses:
+        '200':
+          description: Retrieved entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultNs.Person'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+    patch:
+      tags:
+        - People.Person
+      summary: Update entity in People
+      operationId: People.Person.UpdatePerson
+      parameters:
+        - name: UserName
+          in: path
+          description: 'key: UserName of Person'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: Person
+      requestBody:
+        description: New property values
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DefaultNs.Person'
+        required: true
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+    delete:
+      tags:
+        - People.Person
+      summary: Delete entity from People
+      operationId: People.Person.DeletePerson
+      parameters:
+        - name: UserName
+          in: path
+          description: 'key: UserName of Person'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: Person
+        - name: If-Match
+          in: header
+          description: ETag
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+components:
+  schemas:
+    DefaultNs.Color:
+      title: Color
+      enum:
+        - Blue
+        - White
+      type: string
+      description: Enum type 'Color' description.
+    DefaultNs.Person:
+      title: Person
+      type: object
+      properties:
+        UserName:
+          type: string
+        HomeAddress:
+          $ref: '#/components/schemas/DefaultNs.Address'
+        WorkAddress:
+          $ref: '#/components/schemas/DefaultNs.Address'
+        Addresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/DefaultNs.Address'
+      example:
+        UserName: string (identifier)
+        HomeAddress:
+          '@odata.type': DefaultNs.Address
+        WorkAddress:
+          '@odata.type': DefaultNs.Address
+        Addresses:
+          - '@odata.type': DefaultNs.Address
+    DefaultNs.City:
+      title: City
+      type: object
+      properties:
+        Name:
+          type: string
+      example:
+        Name: string (identifier)
+    DefaultNs.CountryOrRegion:
+      title: CountryOrRegion
+      type: object
+      properties:
+        Name:
+          type: string
+      example:
+        Name: string (identifier)
+    DefaultNs.Address:
+      title: Address
+      type: object
+      properties:
+        Id:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+          format: int32
+        City:
+          $ref: '#/components/schemas/DefaultNs.City'
+      example:
+        Id: integer
+        City:
+          '@odata.type': DefaultNs.City
+    DefaultNs.WorkAddress:
+      allOf:
+        - $ref: '#/components/schemas/DefaultNs.Address'
+        - title: WorkAddress
+          type: object
+          properties:
+            CountryOrRegion:
+              $ref: '#/components/schemas/DefaultNs.CountryOrRegion'
+      example:
+        Id: integer
+        City:
+          '@odata.type': DefaultNs.City
+        CountryOrRegion:
+          '@odata.type': DefaultNs.CountryOrRegion
+    odata.error:
+      required:
+        - error
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/odata.error.main'
+    odata.error.main:
+      required:
+        - code
+        - message
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        target:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/odata.error.detail'
+        innererror:
+          type: object
+          description: The structure of this object is service-specific
+    odata.error.detail:
+      required:
+        - code
+        - message
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        target:
+          type: string
+  responses:
+    error:
+      description: error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/odata.error'
+  parameters:
+    top:
+      name: $top
+      in: query
+      description: Show only the first n items
+      schema:
+        minimum: 0
+        type: integer
+      example: 50
+    skip:
+      name: $skip
+      in: query
+      description: Skip the first n items
+      schema:
+        minimum: 0
+        type: integer
+    count:
+      name: $count
+      in: query
+      description: Include count of items
+      schema:
+        type: boolean
+    filter:
+      name: $filter
+      in: query
+      description: Filter items by property values
+      schema:
+        type: string
+    search:
+      name: $search
+      in: query
+      description: Search items by search phrases
+      schema:
+        type: string
+  examples:
+    DefaultNs.Person:
+      value:
+        Addresses:
+          - '@odata.type': DefaultNs.Address
+        HomeAddress:
+          '@odata.type': DefaultNs.Address
+        UserName: String (identifier)
+        WorkAddress:
+          '@odata.type': DefaultNs.Address
+    DefaultNs.City:
+      value:
+        Name: String (identifier)
+    DefaultNs.CountryOrRegion:
+      value:
+        Name: String (identifier)
+    DefaultNs.Address:
+      value:
+        City:
+          '@odata.type': DefaultNs.City
+        Id: 0
+    DefaultNs.WorkAddress:
+      value:
+        CountryOrRegion:
+          '@odata.type': DefaultNs.CountryOrRegion
+tags:
+  - name: City.City
+    x-ms-docs-toc-type: page
+  - name: CountryOrRegion.CountryOrRegion
+    x-ms-docs-toc-type: page
+  - name: Me.Person
+    x-ms-docs-toc-type: page
+  - name: People.Person
+    x-ms-docs-toc-type: page

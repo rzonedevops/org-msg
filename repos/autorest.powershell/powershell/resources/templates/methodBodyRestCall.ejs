@@ -1,0 +1,362 @@
+<% if(!method.language.default.pageable?.nextPageOperation) { %>
+<%- project.helper.HandleConstParameters(method)%>
+<% } -%>
+<%# handle x-ms-client-request-id -%>
+<% var clientRequestId = 'x-ms-client-request-id';
+var requestId = 'x-ms-request-id';
+(method.parameters||[]).filter(p => p.protocol.http.in == 'header').forEach(function (parameter) {
+    if (parameter.extensions && parameter.extensions['x-ms-client-request-id']) {
+        clientRequestId = parameter.language.default.serializedName;
+    }
+});
+if (method.extensions && method.extensions['x-ms-request-id']) {
+    requestId = method.extensions['x-ms-request-id'];
+}
+-%>
+<%# end of handling x-ms-client-request-id -%>
+<% if(method.language.default.pageable?.nextPageOperation) {-%>
+            if (nextPageLink == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "nextPageLink");
+            }
+<%(method.parameters || []).filter(p => p.protocol.http.in == 'complexHeader').forEach(function(parameter) {-%>
+<%-project.helper.PopulateGroupParameters(parameter)%>
+<%});-%>
+<% }else{-%> 
+<% (method.requests[0].parameters || []).filter(p=>p.protocol.http.in == 'body').forEach(function(parameter){-%>
+<%if(!(parameter.extensions && parameter.extensions['x-ms-client-flatten'])) {-%>
+<% if (!project.helper.IsValueType(parameter.schema.type) && !project.helper.IsEnum(parameter.schema) && parameter.required && !project.helper.IsConstantEnumParameter(parameter)) { -%>
+            if (<%-parameter.language.default.name%> == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "<%-parameter.language.default.name%>");
+            }
+<% } -%>
+<%if(method.requests[0].protocol.http.method != 'patch') {-%>
+<%# for odata, validation is not needed. -%>
+<%-parameter.extensions && parameter.extensions['x-ms-odata'] ? '' : project.helper.ValidateType(parameter.schema, method, parameter.language.default.name, parameter.nullable != false)%>
+<%}-%>
+<%}-%>
+<% });-%>
+<%  if(method.parameters) { method.parameters.filter(p => (p.schema.type != 'constant' && p.language.default.name != '$host') || p.language.default.name == 'ApiVersion').forEach(function (parameter) {-%>
+<%# ToDo: add check IsNullable with required -%>
+<% var prefix = parameter.implementation == 'Client' ? `this${clientPrefix}.` : ''-%>
+<% if ( !(parameter.extensions && parameter.extensions['x-ms-parameter-grouping']) && parameter.required && !project.helper.IsValueType(parameter.schema.type) && !project.helper.IsEnum(parameter.schema) && !project.helper.IsConstantEnumParameter(parameter)) {-%>
+            if (<%-prefix%><%-parameter.language.default.name%> == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "<%-prefix%><%-parameter.language.default.name%>");
+            }
+<% } -%>
+<%# for odata, validation is not needed. -%>
+<%- parameter.extensions && parameter.extensions['x-ms-odata'] ? '' : project.helper.ValidateType(parameter.schema, method, prefix + parameter.language.default.name, parameter.nullable != false)%>
+<%});}-%>
+<%(method.parameters || []).filter(p => p.protocol.http.in == 'complex').forEach(function(parameter) {-%>
+<%-project.helper.PopulateGroupParameters(parameter)%>
+<%});-%>
+<%# support for p => p.IsConstant && !p.IsClientProperty -%>
+<%(method.parameters || []).filter(p => p.implementation !== 'Client' && p.schema.type === 'constant' && p.required).forEach(function(parameter) {-%>
+            <%-project.helper.GetCsharpType(parameter.schema.valueType)%> <%-parameter.language.default.name%> = <%-parameter.schema.valueType.type === 'string' ? '"' + parameter.schema.value.value + '"' : parameter.schema.value.value%>;
+<%});-%>
+<%# ToDo: add support for BuildInputMappings -%>
+<% (method.requests[0].parameters || []).filter(p=>p.protocol.http.in == 'body').forEach(function(parameter){-%>
+<%if(parameter.extensions && parameter.extensions['x-ms-client-flatten']) {
+    var vps = project.helper.GetAllPublicVirtualProperties(parameter.schema.language.default.virtualProperties).filter(vp => !project.helper.IsConstantEnumProperty(vp) && !vp.readOnly);
+    parameter.language.default.name = project.helper.GetUniqueName(parameter.language.default.name, vps.map(function(vp) {return vp.property.language.default.name;}));
+
+-%>
+            <%-parameter.schema.language.default.name%> <%-parameter.language.default.name%> = new <%-parameter.schema.language.default.name%>();
+<% var vpsWithNullCheck = vps.filter(virtualProperty => project.helper.IsNullCheckRequiredForVirtualProperty(virtualProperty));
+   var vpsWithoutNullCheck = vps.filter(virtualProperty => !project.helper.IsNullCheckRequiredForVirtualProperty(virtualProperty));
+-%>
+<% if(vpsWithNullCheck.length > 0) {-%>
+            if(<%-vpsWithNullCheck.map(vp=>`${vp.property.language.default.name} != null`).join('||')%>)
+            {
+<%vpsWithNullCheck.forEach(function(vp) {-%>
+                <%-parameter.language.default.name%>.<%-vp.property.language.csharp.name%> = <%-vp.property.language.default.name%>;
+<%});-%>
+            }
+<%}-%>
+<%vpsWithoutNullCheck.forEach(function(vp) {-%>
+            <%-parameter.language.default.name%>.<%-vp.property.language.csharp.name%> = <%-vp.property.language.default.name%>;
+<%});-%>
+<%}-%>
+<% });-%>
+<%}-%>
+            // Tracing
+            bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
+                System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+<% if(method.language.default.pageable?.nextPageOperation) {-%>
+                tracingParameters.Add("nextPageLink", nextPageLink);
+<% (method.parameters || []).filter(p => p.protocol.http.in == 'header').forEach(function(p) {-%>
+                tracingParameters.Add("<%-p.language.default.name%>", <%-p.language.default.name%>);
+<%});-%>               
+<% }else{-%>
+<%# ToDo: add support for Model.LogicalParameters.Where(p => !p.IsClientProperty)-%>
+<%method.parameters.filter(p => p.implementation != 'Client' && p.protocol.http.in != 'complex' && p.protocol.http.in != 'complexHeader').forEach(function(p) {-%>
+                tracingParameters.Add("<%-p.language.default.name%>", <%-p.language.default.name%>);
+<%});-%>
+<%# ToDo: currently we just add the unexpanded body parameter, and need to be fixed in the future %>
+<% (method.requests[0].parameters || []).filter(p =>p.protocol.http.in == 'body').forEach(function (parameter) {-%>
+                tracingParameters.Add("<%-parameter.language.default.name%>", <%-parameter.language.default.name%>);
+<% });-%>
+<% }%>
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "<%-method.language.default.name%>", tracingParameters);
+            }
+            // Construct URL
+<% if(method.language.default.pageable?.nextPageOperation) {-%>
+            string _url = "{nextLink}";
+            _url = _url.Replace("{nextLink}", nextPageLink);
+<% }else{%>
+<%# ToDo: may need to support AbsoluteUrl -%>
+            var _baseUrl = this<%-clientPrefix%>.BaseUri.AbsoluteUri;
+<%# ToDo: buildurl, currently only added simple cases, besides we need to handle skip url encoding -%>
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "<%-method.requests[0].protocol.http.path.substring(1)%>").ToString();
+<%if (method.parameters) { method.parameters.filter(p => p.protocol.http.in == 'path').forEach(function (pathParameter) {
+var prefix = pathParameter.implementation == 'Client' ? `this${clientPrefix}.` : '';
+-%>
+            _url = _url.Replace("{<%-pathParameter.language.default.serializedName%>}", <%-project.helper.PathParameterString(pathParameter, clientPrefix)%>);
+<% });}-%>
+<% }%>
+            System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
+<%if (method.parameters && !method.language.default.pageable?.nextPageOperation) { method.parameters.filter(p => p.protocol.http.in == 'query').forEach(function (queryParameter) { -%>
+<% var prefix = queryParameter.implementation == 'Client' ? `this${clientPrefix}.` : ''-%>
+<% if (queryParameter.extensions && queryParameter.extensions['x-ms-odata']) {-%>
+            if (<%-queryParameter.language.default.name%> != null)
+            {
+                var _<%-project.helper.CamelCase(queryParameter.schema.language.default.name)%> = <%-queryParameter.language.default.name%>.ToString();
+                if (!string.IsNullOrEmpty(_<%-project.helper.CamelCase(queryParameter.schema.language.default.name)%>))
+                {
+                    _queryParameters.Add(_<%-project.helper.CamelCase(queryParameter.schema.language.default.name)%>);
+                }
+            }
+<% } else {-%>
+<% if (!queryParameter.required || (!project.helper.IsValueType(queryParameter.schema.type) && !project.helper.IsEnum(queryParameter.schema) && !(queryParameter.schema.choiceType && project.helper.IsValueType(queryParameter.schema.choiceType.type)))) {-%>
+            if (<%-prefix%><%-queryParameter.language.default.name%> != null)
+            {
+                _queryParameters.Add(string.Format("<%-queryParameter.language.default.serializedName%>={0}", <%-project.helper.PathParameterString(queryParameter, clientPrefix)%>));
+            }
+<% } else {-%>
+            _queryParameters.Add(string.Format("<%-queryParameter.language.default.serializedName%>={0}", <%-project.helper.PathParameterString(queryParameter, clientPrefix)%>));
+<% } -%>
+<% }-%>
+<% });}-%>
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new System.Net.Http.HttpRequestMessage();
+            System.Net.Http.HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new System.Net.Http.HttpMethod("<%-method.requests[0].protocol.http.method.toUpperCase()%>");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+<%# ToDo: Add headers except for following default ones -%>
+            if (this<%-clientPrefix%>.GenerateClientRequestId != null && this<%-clientPrefix%>.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("<%-clientRequestId%>", System.Guid.NewGuid().ToString());
+            }
+            if (this<%-clientPrefix%>.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", this<%-clientPrefix%>.AcceptLanguage);
+            }
+<% (method.parameters || []).filter(p => p.protocol.http.in == 'header').forEach(function(parameter) {
+var prefix = parameter.implementation == 'Client' ? `this${clientPrefix}.` : ''-%>
+            if (<%-prefix%><%-parameter.language.default.name%> != null)
+            {
+                if (_httpRequest.Headers.Contains("<%-parameter.language.default.serializedName%>"))
+                {
+                    _httpRequest.Headers.Remove("<%-parameter.language.default.serializedName%>");
+                }
+<% if (parameter.schema.type == 'uuid') { -%>
+                _httpRequest.Headers.TryAddWithoutValidation("<%-parameter.language.default.serializedName%>", Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(<%-prefix%><%-parameter.language.default.name%>, this<%-clientPrefix%>.SerializationSettings).Trim('"'));
+<% } else {-%>
+                _httpRequest.Headers.TryAddWithoutValidation("<%-parameter.language.default.serializedName%>", <%-prefix%><%-parameter.language.default.name%>);
+<% } -%>
+            }
+<% });-%>
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+            // Serialize Request
+            string _requestContent = null;
+<% if(!method.language.default.pageable?.nextPageOperation) {-%>
+<%# ToDo: add RequestBody, formdata support-%>
+<% (method.requests[0].parameters || []).filter(p =>p.protocol.http.in == 'body').forEach(function (parameter) {-%>
+<%# ToDo: currently only support for an unexpanded nullable body, need other support in the future -%>
+<% if (parameter.schema.type == 'binary') {
+    if (parameter.required) {-%>
+            if (<%-parameter.language.default.name%> == null)
+            {
+                throw new System.ArgumentNullException("<%-parameter.language.default.name%>");
+            }
+    <% } -%>
+            if (<%-parameter.language.default.name%> != null && <%-parameter.language.default.name%> != System.IO.Stream.Null)
+            {
+                _httpRequest.Content = new System.Net.Http.StreamContent(<%-parameter.language.default.name%>);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("<%-method.requests[0].protocol.http.mediaTypes[0]%>");
+            }
+<% } else if (!parameter.required || (!project.helper.IsValueType(parameter.schema.type) && !project.helper.IsEnum(parameter.schema) && !(parameter.schema.choiceType && project.helper.IsValueType(parameter.schema.choiceType.type)))) {-%>
+            if(<%-parameter.language.default.name%> != null)
+            {
+                _requestContent = Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(<%-parameter.language.default.name%>, <%-project.helper.GetSerializationSettings(parameter.schema, `this${clientPrefix}`)%>);
+                _httpRequest.Content = new System.Net.Http.StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
+<% } else { -%>
+            _requestContent = Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(<%-parameter.language.default.name%>, <%-project.helper.GetSerializationSettings(parameter.schema, `this${clientPrefix}`)%>);
+            _httpRequest.Content = new System.Net.Http.StringContent(_requestContent, System.Text.Encoding.UTF8);
+            _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+<% } -%>
+<% });-%>
+<% } -%>
+<%# ToDo: Need to confirm in which case Settings.AddCredentials is false -%>
+            // Set Credentials
+            if (this<%-clientPrefix%>.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await this<%-clientPrefix%>.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+<% var responseHeadersRead = method.requests[0].protocol.http.method === 'head' || method.language.default.returnType == 'System.IO.Stream' ? 'System.Net.Http.HttpCompletionOption.ResponseHeadersRead, ': '' -%>
+            _httpResponse = await this<%-clientPrefix%>.HttpClient.SendAsync(_httpRequest, <%-responseHeadersRead%>cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+
+            System.Net.HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+
+            if (<%-method.language.default.failureStatusCodePredicate%>)
+            {
+                var ex = new <%-project.helper.IsCloudErrorException(method) ? 'Microsoft.Rest.Azure.CloudException' : `${method.exceptions[0].schema.language.default.name}Exception`%>(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+<%# ToDo: not sure whether there is the case that there is no default response(error). If so, we will need to add support for it -%>
+                try
+                {
+<%# ToDo: Need to add support for primary type -%>
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+<%var errorClass = !project.helper.IsCloudErrorException(method) ? method.exceptions[0].schema.language.default.name : 'CloudError'-%>
+                    <%-errorClass%> _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<<%-errorClass%>>(_responseContent, this<%-clientPrefix%>.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+<% if(project.helper.IsCloudErrorException(method)) { -%>
+                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
+<% } -%>
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (Newtonsoft.Json.JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
+<% if (project.helper.IsCloudErrorException(method)) {-%>
+                if (_httpResponse.Headers.Contains("<%-(method.extensions && method.extensions[requestId]) ?? requestId%>"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("<%-(method.extensions && method.extensions[requestId]) ?? requestId%>").FirstOrDefault();
+                }
+<% } -%>
+                if (_shouldTrace)
+                {
+                    Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new <%-method.language.default.responseType%>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            <%- method.language.default.initializeResponseBody %>
+            if (_httpResponse.Headers.Contains("<%-requestId%>"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("<%-requestId%>").FirstOrDefault();
+            }
+<%(method.responses || []).filter(r => r.schema || r.binary).forEach(function(resp) {-%>
+            // Deserialize Response
+            if ((int)_statusCode == <%-resp.protocol.http.statusCodes[0]%>)
+            {
+<% if(method.language.default.returnType == 'System.IO.Stream') {-%>
+                _result.Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false);
+<% } else { -%>
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+<%# ToDo: support for XmlSerialization, guess we do not need it actually -%>
+                try
+                {
+<%# ToDo: we assume the return is object, need to add support for other types including support nullable -%>
+<% var respSchema = resp.schema;
+if(resp.schema.type === 'choice' || (resp.schema.type === 'sealed-choice' && (respSchema.schema.choiceType.type != 'string' || (resp.schema.extensions && resp.schema.extensions['x-ms-model-as-string'])))){
+    respSchema = resp.schema.choiceType;
+}
+var deserializeType =  method.language.default.deserializeType ? method.language.default.deserializeType : respSchema.language.csharp.fullname;
+const postfix = (project.helper.IsValueType(respSchema.type) || project.helper.IsEnum(resp.schema)) ? '?' : '';
+-%>
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<<%-deserializeType + postfix%>>(_responseContent, <%-project.helper.GetDeserializationSettings(respSchema, `this${clientPrefix}`)%>);
+                }
+                catch (Newtonsoft.Json.JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+<% } -%>
+            }
+<% });-%>
+<%# ToDo: add support for case Model.ReturnType.Body != null && Model.DefaultResponse.Body != null && !Model.Responses.Any()-%>
+<%# ToDo: add support for case there are return in headers-%>
+<% if (method.language.default.returnTypeHeader.name !== '') { -%>
+            try
+            {
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<<%-method.language.default.returnTypeHeader.name%>>(Newtonsoft.Json.JsonSerializer.Create(this<%-clientPrefix%>.DeserializationSettings));
+            }
+            catch (Newtonsoft.Json.JsonException ex)
+            {
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw new Microsoft.Rest.SerializationException("Unable to deserialize the headers.", _httpResponse.GetHeadersAsJson().ToString(), ex);
+            }
+<% } -%>
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+
+
+
+
+

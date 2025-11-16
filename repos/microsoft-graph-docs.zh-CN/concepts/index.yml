@@ -1,0 +1,124 @@
+### YamlMime:Hub
+title: Microsoft Graph 文档
+summary: Microsoft Graph 是 Microsoft 365 中通往数据和智能的网关。 使用 Microsoft Graph生成智能应用、派生见解和分析，并扩展Microsoft 365体验。
+brand: m365
+metadata:
+  title: Microsoft Graph 文档
+  description: Microsoft Graph 是 Microsoft 365 中通往数据和智能的网关。 使用 Microsoft Graph生成智能应用、派生见解和分析，并扩展Microsoft 365体验。
+  ms.topic: hub-page
+  ms.prod: ms-graph
+  author: CelesteDG
+  ms.date: 05/11/2022
+  featureFlags:
+  - clicktale
+  ms.openlocfilehash: dd03afc3e1b14d3a0a1c369037fe1c1ffb33731c
+  ms.sourcegitcommit: 10b45b3e666bf6b438803885128bc2f0fa2fa994
+  ms.translationtype: MT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 05/24/2022
+  ms.locfileid: "65653348"
+highlightedContent:
+  items:
+  - title: 什么是 Microsoft Graph？
+    itemType: overview
+    url: ./overview.md
+  - title: Microsoft Graph REST API
+    itemType: reference
+    url: /graph/api/overview?view=graph-rest-1.0
+  - title: Microsoft Graph 数据连接
+    itemType: overview
+    url: ./data-connect-concept-overview.md
+  - title: Microsoft Graph 连接器
+    itemType: overview
+    url: ./connecting-external-content-connectors-overview.md
+conceptualContent:
+  title: 服务和功能
+  items:
+  - title: 用户
+    links:
+    - url: ./azuread-users-concept-overview.md
+      itemType: overview
+      text: 直接访问和操作用户资源。
+  - title: 组
+    links:
+    - url: ./office365-groups-concept-overview.md
+      itemType: overview
+      text: 在服务之间启用用户协作和集成。
+  - title: 标识和访问管理
+    links:
+    - url: ./azuread-identity-access-management-concept-overview.md
+      itemType: overview
+      text: 使用 Azure AD 方法管理访问和对用户进行身份验证。
+  - title: 安全性
+    links:
+    - url: ./security-concept-overview.md
+      itemType: overview
+      text: 连接 Microsoft 安全产品、服务和合作伙伴来简化安全操作。
+  - title: Microsoft Teams团队合作
+    links:
+    - url: ./teams-concept-overview.md
+      itemType: overview
+      text: 了解基于聊天的协作、会议、通话和企业语音功能。
+  - title: Outlook日历和邮件
+    links:
+    - url: ./outlook-calendar-concept-overview.md
+      itemType: overview
+      text: 控制日历，例如创建事件。
+    - url: ./outlook-mail-concept-overview.md
+      itemType: overview
+      text: 访问和管理邮件和邮件数据。
+  - title: 新变化？
+    links:
+    - url: ./whats-new-overview.md
+      itemType: whats-new
+      text: 发现新的和更新的 Microsoft Graph API。
+  - title: 所有服务和功能
+    links:
+    - url: ./overview-major-services.md
+      itemType: concept
+      text: 探索生产力、协作、人员和工作场所智能、教育等服务。
+tools:
+  title: SDK 和工具
+  items:
+  - title: SDK
+    imageSrc: ./images/hub/icon01-sdk.svg
+    url: /graph/sdks/sdks-overview
+  - title: 快速启动
+    imageSrc: ./images/hub/icon02-quickstart.svg
+    url: https://developer.microsoft.com/graph/quick-start
+  - title: Graph 浏览器
+    imageSrc: ./images/hub/icon03-graphexplorer.svg
+    url: https://developer.microsoft.com/en-us/graph/graph-explorer
+  - title: Microsoft Graph 工具包
+    imageSrc: ./images/hub/icon04-graphtoolkit.svg
+    url: ./toolkit/overview.md
+additionalContent:
+  sections:
+  - title: 资源
+    items:
+    - title: Learning路径和教程
+      links:
+      - text: Microsoft Graph基础知识
+        url: /learn/paths/m365-msgraph-fundamentals/
+      - text: Microsoft 学习路径
+        url: /learn/browse/?products=ms-graph&resource_type=learning%20path
+      - text: 教程
+        url: /graph/tutorials
+    - title: 社区
+      links:
+      - text: Microsoft Graph API
+        url: https://developer.microsoft.com/graph/blogs/
+      - text: 视频和播客
+        url: https://developer.microsoft.com/graph/gallery/?filterBy=Videos,Podcasts
+      - text: 每月社区呼叫
+        url: https://www.youtube.com/playlist?list=PLWZJrkeLOrbabneRhISU-N7uK4PvVy-jV
+    - title: 支持
+      links:
+      - text: Microsoft Graph支持
+        url: https://developer.microsoft.com/graph/support
+      - text: Microsoft Graph Q&A 社区支持
+        url: /answers/products/graph
+      - text: Microsoft Graph反馈门户
+        url: https://feedbackportal.microsoft.com/feedback/forum/ebe2edae-97d1-ec11-a7b5-0022481f3c80
+      - text: 已知问题
+        url: ./known-issues.md

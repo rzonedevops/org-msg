@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Microsoft Teams Realtime Activity Feed</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/constoso-theme.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/RealtimeActivityFeedSample.styles.css" asp-append-version="true" />
+    <!-- Microsoft Fluent UI Icons -->
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css">
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light ms-navbar border-bottom shadow-sm mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand d-flex align-items-center" asp-area="" asp-controller="Home" asp-action="Index">
+                    <i class="ms-Icon ms-Icon--ActivityFeed me-2" style="font-size: 24px;"></i>
+                    <span class="ms-brand-text fw-semibold">Realtime Activity Feed</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link ms-nav-link" asp-area="" asp-controller="Home" asp-action="Index">
+                                <i class="ms-Icon ms-Icon--Home me-1"></i> Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link ms-nav-link" asp-area="" asp-controller="Subscriptions" asp-action="Index">
+                                <i class="ms-Icon ms-Icon--TeamsLogo me-1"></i> Subscriptions
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link ms-nav-link" asp-area="" asp-controller="EventSubscriptions" asp-action="Index">
+                                <i class="ms-Icon ms-Icon--Event me-1"></i> Event Subscriptions
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link ms-nav-link" asp-area="" asp-controller="Logs" asp-action="Index">
+                                <i class="ms-Icon ms-Icon--TextDocument me-1"></i> Logs
+                            </a>
+                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link ms-nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">
+                            <i class="ms-Icon ms-Icon--Lock me-1"></i> Privacy
+                        </a>
+                    </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        @if (User?.Identity?.IsAuthenticated == true)
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="ms-Icon ms-Icon--Contact me-2"></i>
+                                    <span>@User.Identity.Name</span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="userDropdown">
+                                    <li>
+                                        <a class="dropdown-item" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignOut">
+                                            <i class="ms-Icon ms-Icon--SignOut me-2"></i> Sign out
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="btn btn-primary btn-sm ms-2" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignIn">
+                                    <i class="ms-Icon ms-Icon--Signin me-1"></i> Sign in
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main" class="flex-grow-1">
+        <div class="container containerMain">
+            <div class="fade-in">
+                @RenderBody()
+            </div>
+        </div>
+    </main>
+
+    <footer class="border-top footer text-muted ms-footer mt-auto py-3 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <small>&copy; @DateTime.Now.Year - Contoso Inc. All rights reserved.</small>
+                </div>
+                <div class="col-md-6 text-end">
+                    <small>
+                        <a asp-area="" asp-controller="Home" asp-action="Privacy" class="text-decoration-none">
+                            <i class="ms-Icon ms-Icon--Lock me-1"></i> Privacy
+                        </a>
+                        <span class="mx-2">|</span>
+                        <a href="https://docs.microsoft.com/graph" target="_blank" class="text-decoration-none">
+                            <i class="ms-Icon ms-Icon--ExternalLink me-1"></i> Microsoft Graph
+                        </a>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

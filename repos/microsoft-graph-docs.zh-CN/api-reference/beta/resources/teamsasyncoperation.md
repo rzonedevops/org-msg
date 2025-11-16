@@ -1,0 +1,84 @@
+---
+title: teamsAsyncOperation 资源类型
+description: 'a Microsoft Teams async operation is an operation that lifetimes the lifetime of a single API request. '
+author: nkramer
+localization_priority: Normal
+ms.prod: microsoft-teams
+doc_type: resourcePageType
+ms.openlocfilehash: 2db0708ada9bb57ad4f0f88da89c797ff4a4e1e2
+ms.sourcegitcommit: 596b3d5636f3f3e042d180ea8f039f00ebd6b38a
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/30/2021
+ms.locfileid: "53665898"
+---
+# <a name="teamsasyncoperation-resource-type"></a>teamsAsyncOperation 资源类型
+
+命名空间：microsoft.graph
+
+[!INCLUDE [beta-disclaimer](../../includes/beta-disclaimer.md)]
+
+a Microsoft Teams async operation is an operation that lifetimes the lifetime of a single API request. 这些操作长时间运行或成本过高，在发起请求的时间范围内无法完成。
+
+启动异步操作时，该方法返回 202 Accepted 响应代码。 响应还将包含 Location 标头，其中包含 teamsAsyncOperation 的位置。 通过向此位置提出 GET 请求来定期检查操作的状态;检查>等待 30 秒。
+当请求成功完成时，状态将为"已成功"，targetResourceLocation 将指向已创建/已修改的资源。
+
+## <a name="methods"></a>方法
+
+|  方法                                                                   |  返回类型                                                                     | 说明                                                       | 
+| :------------------------------------------------------------------------ | :------------------------------------------------------------------------------- | :---------------------------------------------------------------- |
+| [列出聊天操作](../api/chat-list-operations.md)               | [resourceSpecificPermissionGrant](resourcespecificpermissiongrant.md) 集合 | 列出运行或正在特定聊天上运行的异步操作。 |
+| [获取操作](../api/teamsasyncoperation-get.md)                   | [resourceSpecificPermissionGrant](resourcespecificpermissiongrant.md) 集合 | 获取运行或正在特定资源上运行的异步操作。 |
+
+## <a name="properties"></a>属性
+
+| 属性 | 类型   | 说明 |
+|:---------------|:--------|:----------|
+|id|string |唯一操作 ID。|
+|operationType|[teamsAsyncOperationType](teamsasyncoperationtype.md) |表示要描述的操作的类型。 |
+|createdDateTime|DateTimeOffset |创建操作的时间。|
+|status|[teamsAsyncOperationStatus](teamsasyncoperationstatus.md)| 操作状态。|
+|lastActionDateTime|DateTimeOffset |上次更新异步操作的时间。|
+|attemptsCount|Int32|在标记为成功或失败之前尝试该操作次数。|
+|targetResourceId|guid |由于此异步操作而创建或修改的对象（通常为团队）的[ID。](../resources/team.md)|
+|targetResourceLocation|string|由于此异步操作而创建或修改的对象的位置。 此 URL 应视为不透明值，而不是解析到其组件路径。|
+|error|[operationError](operationerror.md)|导致异步操作失败的任何错误。|
+
+## <a name="json-representation"></a>JSON 表示形式
+
+下面是资源的 JSON 表示形式。
+
+<!-- {
+  "blockType": "resource",
+  "keyProperty": "id",
+  "@odata.type": "microsoft.graph.teamsAsyncOperation"
+}-->
+
+```json
+{
+    "id": "string",
+    "operationType": "string",
+    "createdDateTime": "string (timestamp)",
+    "status": "string",
+    "lastActionDateTime": "string (timestamp)",
+    "attemptsCount": "Integer",
+    "targetResourceId": "string",
+    "targetResourceLocation": "string",
+    "error": null
+}
+```
+
+<!-- uuid: 20fd7863-9545-40d4-ae8f-fee2d115a690
+2015-10-25 14:57:30 UTC -->
+<!--
+{
+  "type": "#page.annotation",
+  "description": "teams async operation resource",
+  "keywords": "",
+  "section": "documentation",
+  "tocPath": "",
+  "suppressions": []
+}
+-->
+
+

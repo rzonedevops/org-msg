@@ -1,0 +1,8 @@
+[submodule "submodules/vipr"]
+	path = submodules/vipr
+	url = https://github.com/microsoft/vipr
+	branch = master
+[submodule "apidoctor"]
+	path = apidoctor
+	url = https://github.com/OneDrive/apidoctor.git
+	branch = master

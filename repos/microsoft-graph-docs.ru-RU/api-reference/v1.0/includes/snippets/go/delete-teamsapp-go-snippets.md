@@ -1,0 +1,19 @@
+---
+description: Автоматически созданный файл. НЕ ИЗМЕНЯТЬ
+ms.openlocfilehash: 156bced3cee2ccc1db70619073ecbe666ac54c05
+ms.sourcegitcommit: 30d1f0d898b6e4488d1938251fba143370119241
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 05/11/2022
+ms.locfileid: "65341581"
+---
+```go
+
+//THE GO SDK IS IN PREVIEW. NON-PRODUCTION USE ONLY
+graphClient := msgraphsdk.NewGraphServiceClient(requestAdapter)
+
+teamsAppId := "teamsApp-id"
+graphClient.AppCatalogs().TeamsAppsById(&teamsAppId).Delete()
+
+
+```

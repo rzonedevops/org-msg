@@ -1,0 +1,19 @@
+---
+description: Автоматически созданный файл. НЕ ИЗМЕНЯТЬ
+ms.openlocfilehash: 0f86833f21a7fcbe34ede67e17f3ba513942807a
+ms.sourcegitcommit: 30d1f0d898b6e4488d1938251fba143370119241
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 05/11/2022
+ms.locfileid: "65343334"
+---
+```go
+
+//THE GO SDK IS IN PREVIEW. NON-PRODUCTION USE ONLY
+graphClient := msgraphsdk.NewGraphServiceClient(requestAdapter)
+
+driveItemId := "driveItem-id"
+graphClient.Drive().ItemsById(&driveItemId).Delete()
+
+
+```

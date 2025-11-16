@@ -1,0 +1,195 @@
+name: msgraph_cli_$(CLI_VERSION)
+
+stages:
+- stage: BuildPackages
+  displayName: 'Build Packages'
+  jobs:
+  - job: BuildMSIPackage
+    displayName: "Build MSI Package"
+    pool:
+      vmImage: 'windows-2019'
+    strategy:
+      matrix:
+        Python37:
+          python.version: '3.7'
+    steps:
+      - task: UsePythonVersion@0
+        displayName: 'Use Python $(python.version)'
+        inputs:
+          versionSpec: '$(python.version)'
+
+      - script: |
+          python -m pip install --upgrade pip
+          pip install wheel
+        displayName: 'Upgrade pip and install dependencies'
+
+      # Enables long paths so that the CLI can build successfully
+      - task: PowerShell@2
+        inputs:
+          targetType: inline
+          script: New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force
+
+      - task: CmdLine@2
+        condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+        displayName: 'Build msgraph-cli'
+        inputs:
+          script: |
+            python setup.py sdist bdist_wheel
+            cd build_scripts/windows/scripts
+            build.cmd
+
+      - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
+        condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+        displayName: 'ESRP DLL CodeSigning (Microsoft.Graph.Core)'
+        inputs:
+          ConnectedServiceName: 'microsoftgraph ESRP CodeSign DLL and NuGet (AKV)'
+          FolderPath: 'build_scripts/windows/out/'
+          Pattern: '*.msi'
+          signConfigType: inlineSignParams
+          inlineOperation: |
+            [
+              {
+                  "keyCode": "CP-230012",
+                  "operationSetCode": "SigntoolSign",
+                  "parameters": [
+                      {
+                          "parameterName": "OpusName",
+                          "parameterValue": "Microsoft"
+                      },
+                      {
+                          "parameterName": "OpusInfo",
+                          "parameterValue": "http://www.microsoft.com"
+                      },
+                      {
+                          "parameterName": "FileDigest",
+                          "parameterValue": "/fd \"SHA256\""
+                      },
+                      {
+                          "parameterName": "PageHash",
+                          "parameterValue": "/NPH"
+                      },
+                      {
+                          "parameterName": "TimeStamp",
+                          "parameterValue": "/tr \"http://rfc3161.gtm.corp.microsoft.com/TSS/HttpTspServer\" /td sha256"
+                      }
+                  ],
+                  "toolName": "sign",
+                  "toolVersion": "1.0"
+              },
+              {
+                  "keyCode": "CP-230012",
+                  "operationSetCode": "SigntoolVerify",
+                  "parameters": [],
+                  "toolName": "sign",
+                  "toolVersion": "1.0"
+              }
+            ]
+          SessionTimeout: 20
+
+      - task: PublishPipelineArtifact@1
+        condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+        displayName: 'Publish msgraph-cli artifact'
+        inputs:
+          TargetPath: 'build_scripts/windows/out/'
+          ArtifactName: msgraph_msi
+
+
+  # - job: BuildDebianPackage
+  #   displayName: "Build Debian Package"
+  #   pool:
+  #     vmImage: 'ubuntu-18.04'
+  #     strategy:
+  #       matrix:
+  #         Python37:
+  #           python.version: '3.7'
+  #   steps:
+  #     - task: UsePythonVersion@0
+  #       displayName: 'Use Python $(python.version)'
+
+  #     - script: |
+  #         python -m pip install --upgrade pip
+  #         sudo pip install wheel
+  #       displayName: 'Upgrade pip and install dependencies'
+
+  #     - bash: |
+  #         docker build --target build-env -f ./build_scripts/debian/Dockerfile -t microsoft/msgraph-cli:ubuntu-builder .
+  #         docker run --name debian microsoft/msgraph-cli:ubuntu-builder
+
+  #         mkdir -p debian/out/
+
+  #         docker cp debian:/msgraph-cli_all.deb ./debian/out/
+  #       displayName: 'Build docker image'
+  #       condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/dev'))
+
+  #     - task: PublishPipelineArtifact@1
+  #       condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/dev'))
+  #       displayName: 'Publish msgraph-cli debian artifact'
+  #       inputs:
+  #         TargetPath: 'debian/out'
+  #         ArtifactName: msgraph_deb
+
+
+
+
+- stage: ReleaseToGithub
+  jobs:
+    - job: ReleaseToGithub
+      condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+      displayName: "Release to GitHub"
+      pool:
+        vmImage: 'ubuntu-18.04'
+      steps:
+        - task: DownloadPipelineArtifact@2
+          inputs:
+            source: current
+
+        - bash: |
+            export CLI_VERSION=$(cat msgraph/cli/core/__init__.py | grep __version__ | awk -F'=' '{print $2}')
+          displayName: 'Create CLI_VERSION variable'
+
+
+        - task: GitHubRelease@0
+          inputs:
+            title: $(CLI_VERSION)
+            gitHubConnection: 'ddyett'
+            repositoryName: 'microsoftgraph/msgraph-cli'
+            tagSource: 'manual'
+            tag: $(CLI_VERSION)
+            assets: |
+              $(Pipeline.Workspace)/msgraph_msi/*.msi
+              $(Pipeline.Workspace)/msgraph_deb/*.deb
+
+
+
+- stage: BuildHomebrewFormula
+  jobs:
+    - job: BuildHomebrewFormula
+      condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+      displayName: "Generate HomebrewFormula"
+      pool:
+        vmImage: 'ubuntu-18.04'
+        strategy:
+          matrix:
+            Python37:
+              python.version: '3.7'
+      steps:
+        - task: UsePythonVersion@0
+          displayName: 'Use Python $(python.version)'
+
+        - bash: |
+            python -m pip install --upgrade pip
+            pip install -r build_scripts/homebrew/requirements.txt
+            pip install .
+          displayName: 'Upgrade pip and install dependencies'
+
+        - bash: |
+            export GITHUB_RELEASE_TAR='https://codeload.github.com/microsoftgraph/msgraph-cli/tar.gz/refs/tags/$(CLI_VERSION)'
+            python build_scripts/homebrew/generate_formula.py
+
+          displayName: "Generate homebrew formula"
+
+        - task: PublishPipelineArtifact@1
+          displayName: 'Publish msgraph-cli debian artifact'
+          inputs:
+            TargetPath: './msgraph-cli.rb'
+            ArtifactName: homebrew_formula

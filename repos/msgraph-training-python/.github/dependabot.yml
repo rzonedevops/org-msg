@@ -1,0 +1,10 @@
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/user-auth/graphtutorial"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "pip"
+    directory: "/app-auth/graphapponlytutorial"
+    schedule:
+      interval: "weekly"

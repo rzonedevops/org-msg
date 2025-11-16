@@ -1,0 +1,22 @@
+---
+description: Автоматически созданный файл. НЕ ИЗМЕНЯТЬ
+ms.openlocfilehash: fe783fd5d241b27dc27343bba39435204ecbfa4858d7b7b4c34f10c4447b1669
+ms.sourcegitcommit: 986c33b848fa22a153f28437738953532b78c051
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 08/05/2021
+ms.locfileid: "57252854"
+---
+```javascript
+
+const options = {
+    authProvider,
+};
+
+const client = Client.init(options);
+
+let childFolders = await client.api('/me/mailFolders/AAMkAGVmMDEzM/childFolders?includeHiddenFolders=true')
+    .version('beta')
+    .get();
+
+```

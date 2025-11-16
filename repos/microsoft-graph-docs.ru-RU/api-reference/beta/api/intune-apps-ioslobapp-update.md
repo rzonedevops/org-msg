@@ -1,0 +1,219 @@
+---
+title: Update iosLobApp
+description: Обновление свойств объекта iosLobApp.
+author: dougeby
+localization_priority: Normal
+ms.prod: intune
+doc_type: apiPageType
+ms.openlocfilehash: 4fd8381c829c94f7df5b435cef6bb71006205f6e
+ms.sourcegitcommit: 0076eb6abb89be3dca3575631924a74a5202be30
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 04/03/2022
+ms.locfileid: "64630403"
+---
+# <a name="update-ioslobapp"></a>Update iosLobApp
+
+Пространство имен: microsoft.graph
+
+> **Важно:** Microsoft Graph API в /бета-версии могут изменяться; использование продукции не поддерживается.
+
+> **Примечание.** API Microsoft Graph для Intune требует наличия [активной лицензии Intune](https://go.microsoft.com/fwlink/?linkid=839381) для клиента.
+
+Обновление свойств объекта [iosLobApp](../resources/intune-apps-ioslobapp.md).
+
+## <a name="prerequisites"></a>Необходимые разрешения
+Для вызова этого API требуется одно из указанных ниже разрешений. Дополнительные сведения, включая сведения о том, как выбрать разрешения, см. в статье [Разрешения](/graph/permissions-reference).
+
+|Тип разрешения|Разрешения (в порядке повышения привилегий)|
+|:---|:---|
+|Делегированные (рабочая или учебная учетная запись)|DeviceManagementApps.ReadWrite.All|
+|Делегированные (личная учетная запись Майкрософт)|Не поддерживается.|
+|Для приложений|DeviceManagementApps.ReadWrite.All|
+
+## <a name="http-request"></a>HTTP-запрос
+<!-- {
+  "blockType": "ignored"
+}
+-->
+``` http
+PATCH /deviceAppManagement/mobileApps/{mobileAppId}
+PATCH /deviceAppManagement/mobileApps/{mobileAppId}/userStatuses/{userAppInstallStatusId}/app
+PATCH /deviceAppManagement/mobileApps/{mobileAppId}/deviceStatuses/{mobileAppInstallStatusId}/app
+```
+
+## <a name="request-headers"></a>Заголовки запроса
+|Заголовок|Значение|
+|:---|:---|
+|Authorization|Bearer &lt;token&gt;. Обязательный.|
+|Accept|application/json|
+
+## <a name="request-body"></a>Текст запроса
+В теле запроса добавьте представление объекта [iosLobApp](../resources/intune-apps-ioslobapp.md) в формате JSON.
+
+Ниже показаны свойства, которые необходимо указывать при создании объекта [iosLobApp](../resources/intune-apps-ioslobapp.md).
+
+|Свойство|Тип|Описание|
+|:---|:---|:---|
+|id|Строка|Ключ объекта. Наследуется от [mobileApp](../resources/intune-shared-mobileapp.md).|
+|displayName|Строка|Название приложения, которое предоставил или импортировал администратор. Наследуется от [mobileApp](../resources/intune-shared-mobileapp.md).|
+|description|Строка|Описание приложения. Наследуется от [mobileApp](../resources/intune-shared-mobileapp.md).|
+|publisher|String|Издатель приложения. Наследуется от [mobileApp](../resources/intune-shared-mobileapp.md).|
+|largeIcon|[mimeContent](../resources/intune-shared-mimecontent.md)|Представляет большой значок, который отображается в сведениях о приложении, используется для отправки значка. Наследуется от [mobileApp](../resources/intune-shared-mobileapp.md).|
+|createdDateTime|DateTimeOffset|Дата и время создания приложения. Наследуется от [mobileApp](../resources/intune-shared-mobileapp.md).|
+|lastModifiedDateTime|DateTimeOffset|Дата и время последнего изменения приложения. Наследуется от [mobileApp](../resources/intune-shared-mobileapp.md).|
+|isFeatured|Boolean|Значение, которое показывает, отмечено ли приложение как подобранное администратором. Наследуется от объекта [mobileApp](../resources/intune-shared-mobileapp.md).|
+|privacyInformationUrl|String|URL-адрес заявления о конфиденциальности. Наследуется от [mobileApp](../resources/intune-shared-mobileapp.md).|
+|informationUrl|String|URL-адрес страницы с дополнительными сведениями. Наследуется от [mobileApp](../resources/intune-shared-mobileapp.md).|
+|owner|String|Владелец приложения. Наследуется от [mobileApp](../resources/intune-shared-mobileapp.md).|
+|developer|String|Разработчик приложения. Наследуется от [mobileApp](../resources/intune-shared-mobileapp.md).|
+|notes|String|Заметки для приложения. Наследуется от [mobileApp](../resources/intune-shared-mobileapp.md).|
+|uploadState|Int32|Состояние загрузки. Возможные значения: 0 - `Not Ready`, 1 - `Ready`, 2 - `Processing`. Наследуется от [mobileApp](../resources/intune-shared-mobileapp.md).|
+|publishingState|[mobileAppPublishingState](../resources/intune-apps-mobileapppublishingstate.md)|Состояние публикации для приложения. Приложение невозможно назначить, если оно не опубликовано. Унаследовано от [mobileApp](../resources/intune-shared-mobileapp.md). Возможные значения: `notPublished`, `processing`, `published`.|
+|isAssigned|Boolean|Значение, указывающее, назначено ли приложению по крайней мере одна группа. Наследуется от [mobileApp](../resources/intune-shared-mobileapp.md).|
+|roleScopeTagIds|Коллекция String|Список ids тегов области для этого мобильного приложения. Наследуется от [mobileApp](../resources/intune-shared-mobileapp.md).|
+|dependentAppCount|Int32|Общее число зависимостей, которые имеет детское приложение. Наследуется от [mobileApp](../resources/intune-shared-mobileapp.md).|
+|supersedingAppCount|Int32|Общее число приложений, которые это приложение прямо или косвенно перемежает. Наследуется от [mobileApp](../resources/intune-shared-mobileapp.md).|
+|supersededAppCount|Int32|Общее число приложений, которые это приложение прямо или косвенно вымежает. Наследуется от [mobileApp](../resources/intune-shared-mobileapp.md).|
+|committedContentVersion|String|Внутренняя версия подтвержденного содержимого. Наследуется от [mobileLobApp](../resources/intune-apps-mobilelobapp.md).|
+|fileName|String|Имя основного файла бизнес-приложения. Наследуется от [mobileLobApp](../resources/intune-apps-mobilelobapp.md).|
+|size|Int64|Общий размер, включая все отправленные файлы. Наследуется от [mobileLobApp](../resources/intune-apps-mobilelobapp.md).|
+|bundleId|String|Имя удостоверения.|
+|applicableDeviceType|[iosDeviceType](../resources/intune-apps-iosdevicetype.md)|Архитектура iOS, которая поддерживается этим приложением.|
+|minimumSupportedOperatingSystem|[iosMinimumOperatingSystem](../resources/intune-apps-iosminimumoperatingsystem.md)|Значение, которое представляет минимальную применимую версию операционной системы.|
+|expirationDateTime|DateTimeOffset|Срок действия.|
+|versionNumber|String|Номер версии бизнес-приложения для iOS.|
+|buildNumber|String|Номер сборки бизнес-приложения для iOS.|
+|identityVersion|String|Версия удостоверения.|
+
+
+
+## <a name="response"></a>Ответ
+В случае успешного выполнения этот метод возвращает код ответа `200 OK` и обновленный объект [iosLobApp](../resources/intune-apps-ioslobapp.md) в теле ответа.
+
+## <a name="example"></a>Пример
+
+### <a name="request"></a>Запрос
+Ниже приведен пример запроса.
+``` http
+PATCH https://graph.microsoft.com/beta/deviceAppManagement/mobileApps/{mobileAppId}
+Content-type: application/json
+Content-length: 1508
+
+{
+  "@odata.type": "#microsoft.graph.iosLobApp",
+  "displayName": "Display Name value",
+  "description": "Description value",
+  "publisher": "Publisher value",
+  "largeIcon": {
+    "@odata.type": "microsoft.graph.mimeContent",
+    "type": "Type value",
+    "value": "dmFsdWU="
+  },
+  "isFeatured": true,
+  "privacyInformationUrl": "https://example.com/privacyInformationUrl/",
+  "informationUrl": "https://example.com/informationUrl/",
+  "owner": "Owner value",
+  "developer": "Developer value",
+  "notes": "Notes value",
+  "uploadState": 11,
+  "publishingState": "processing",
+  "isAssigned": true,
+  "roleScopeTagIds": [
+    "Role Scope Tag Ids value"
+  ],
+  "dependentAppCount": 1,
+  "supersedingAppCount": 3,
+  "supersededAppCount": 2,
+  "committedContentVersion": "Committed Content Version value",
+  "fileName": "File Name value",
+  "size": 4,
+  "bundleId": "Bundle Id value",
+  "applicableDeviceType": {
+    "@odata.type": "microsoft.graph.iosDeviceType",
+    "iPad": true,
+    "iPhoneAndIPod": true
+  },
+  "minimumSupportedOperatingSystem": {
+    "@odata.type": "microsoft.graph.iosMinimumOperatingSystem",
+    "v8_0": true,
+    "v9_0": true,
+    "v10_0": true,
+    "v11_0": true,
+    "v12_0": true,
+    "v13_0": true,
+    "v14_0": true,
+    "v15_0": true
+  },
+  "expirationDateTime": "2016-12-31T23:57:57.2481234-08:00",
+  "versionNumber": "Version Number value",
+  "buildNumber": "Build Number value",
+  "identityVersion": "Identity Version value"
+}
+```
+
+### <a name="response"></a>Отклик
+Ниже приведен пример отклика. Примечание. Объект отклика, показанный здесь, может быть усечен для краткости. При фактическом вызове будут возвращены все свойства.
+``` http
+HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 1680
+
+{
+  "@odata.type": "#microsoft.graph.iosLobApp",
+  "id": "b34052ea-52ea-b340-ea52-40b3ea5240b3",
+  "displayName": "Display Name value",
+  "description": "Description value",
+  "publisher": "Publisher value",
+  "largeIcon": {
+    "@odata.type": "microsoft.graph.mimeContent",
+    "type": "Type value",
+    "value": "dmFsdWU="
+  },
+  "createdDateTime": "2017-01-01T00:02:43.5775965-08:00",
+  "lastModifiedDateTime": "2017-01-01T00:00:35.1329464-08:00",
+  "isFeatured": true,
+  "privacyInformationUrl": "https://example.com/privacyInformationUrl/",
+  "informationUrl": "https://example.com/informationUrl/",
+  "owner": "Owner value",
+  "developer": "Developer value",
+  "notes": "Notes value",
+  "uploadState": 11,
+  "publishingState": "processing",
+  "isAssigned": true,
+  "roleScopeTagIds": [
+    "Role Scope Tag Ids value"
+  ],
+  "dependentAppCount": 1,
+  "supersedingAppCount": 3,
+  "supersededAppCount": 2,
+  "committedContentVersion": "Committed Content Version value",
+  "fileName": "File Name value",
+  "size": 4,
+  "bundleId": "Bundle Id value",
+  "applicableDeviceType": {
+    "@odata.type": "microsoft.graph.iosDeviceType",
+    "iPad": true,
+    "iPhoneAndIPod": true
+  },
+  "minimumSupportedOperatingSystem": {
+    "@odata.type": "microsoft.graph.iosMinimumOperatingSystem",
+    "v8_0": true,
+    "v9_0": true,
+    "v10_0": true,
+    "v11_0": true,
+    "v12_0": true,
+    "v13_0": true,
+    "v14_0": true,
+    "v15_0": true
+  },
+  "expirationDateTime": "2016-12-31T23:57:57.2481234-08:00",
+  "versionNumber": "Version Number value",
+  "buildNumber": "Build Number value",
+  "identityVersion": "Identity Version value"
+}
+```
+
+
+
+

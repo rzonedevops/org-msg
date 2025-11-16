@@ -1,0 +1,20 @@
+{
+  "logAnalyticsCustomerId": "",
+  "logAnalyticsPrimarySharedKey": "",
+  "ConnectionStrings:JobsContext": "",
+  "ConnectionStrings:JobsContextReadOnly": "",
+  "resetJobs": "",
+  "daysToAddForReset": "",
+  "distributeJobs": "",
+  "defaultRuntime": "",
+  "startTimeDelayMinutes": "",
+  "delayBetweenSyncsSeconds": "",
+  "getRunTimeFromLogs": "",
+  "runTimeMetric": "",
+  "runTimeQuery": "",
+  "runTimeRangeInDays": "",
+  "workspaceId": "",
+  "APPINSIGHTS_INSTRUMENTATIONKEY": "",
+  "sqlDatabaseConnectionString": "",
+  "replicaSqlServerConnectionString": ""
+}

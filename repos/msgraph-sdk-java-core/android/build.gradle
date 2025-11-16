@@ -1,0 +1,69 @@
+buildscript {
+    repositories {
+        google()
+        gradlePluginPortal()
+    }
+
+    dependencies {
+        classpath "com.gradle:gradle-enterprise-gradle-plugin:3.19.2"
+        classpath "com.android.tools.build:gradle:8.13.0"
+        classpath "com.github.ben-manes:gradle-versions-plugin:0.52.0"
+    }
+}
+
+repositories {
+    google()
+    gradlePluginPortal()
+    mavenCentral()
+}
+
+apply plugin: "com.android.library"
+apply plugin: "com.github.ben-manes.versions"
+
+android {
+    namespace "com.microsoft.graph"
+
+    compileSdkVersion 36
+
+    defaultConfig {
+        versionCode 1
+        versionName "1.0"
+        minSdkVersion 26
+        targetSdkVersion 36
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lint {
+        baseline = file("lint-baseline.xml")
+    }
+
+    lintOptions {
+        textOutput "stdout"
+        checkAllWarnings true
+        warningsAsErrors true
+        lintConfig file("lint.xml")
+    }
+
+    sourceSets {
+        main {
+            java.srcDirs = ['../src/main/java']
+            res.srcDirs = ['../src/main/java']
+            manifest.srcFile 'AndroidManifest.xml'
+        }
+        androidTest {
+            setRoot '../src/test'
+        }
+    }
+}
+
+apply from: "../gradle/dependencies.gradle"

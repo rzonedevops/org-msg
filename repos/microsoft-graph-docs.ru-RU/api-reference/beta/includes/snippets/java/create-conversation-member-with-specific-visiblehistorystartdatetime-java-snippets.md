@@ -1,0 +1,25 @@
+---
+description: Автоматически созданный файл. НЕ ИЗМЕНЯТЬ
+ms.openlocfilehash: f4001da3f77a1c187ec1c192062b4d605c6d62b63affa0b700eb3967380b6080
+ms.sourcegitcommit: 986c33b848fa22a153f28437738953532b78c051
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 08/05/2021
+ms.locfileid: "57053294"
+---
+```java
+
+GraphServiceClient graphClient = GraphServiceClient.builder().authenticationProvider( authProvider ).buildClient();
+
+AadUserConversationMember conversationMember = new AadUserConversationMember();
+conversationMember.additionalDataManager().put("user@odata.bind", new JsonPrimitive("https://graph.microsoft.com/beta/users/8b081ef6-4792-4def-b2c9-c363a1bf41d5"));
+conversationMember.visibleHistoryStartDateTime = OffsetDateTimeSerializer.deserialize("2019-04-18T23:51:43.255Z");
+LinkedList<String> rolesList = new LinkedList<String>();
+rolesList.add("owner");
+conversationMember.roles = rolesList;
+
+graphClient.chats("19:cf66807577b149cca1b7af0c32eec122@thread.v2").members()
+    .buildRequest()
+    .post(conversationMember);
+
+```

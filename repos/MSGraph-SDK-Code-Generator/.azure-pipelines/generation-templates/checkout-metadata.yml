@@ -1,0 +1,6 @@
+steps:
+- checkout: msgraph-metadata
+  displayName: checkout metadata
+  fetchDepth: 1
+  persistCredentials: true
+  submodules: recursive

@@ -1,0 +1,175 @@
+# Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
+# contains an end to end validation pipeline using C# compilation tests for staging beta metadata
+
+# capture-metadata.yml will result in the capture and cleaning of the metadata
+# with the artifacts posted to GitHub.
+
+parameters:
+- name: 'endpoint'
+  type: string
+  default: "v1.0"
+- name: 'inputMetadata'
+  type: string
+  default: $(rawMetadataFileV1)
+- name: 'outputPath'
+  type: string
+  default: $(System.ArtifactsDirectory)
+- name: 'cleanMetadataFile'
+  type: string
+  default: $(cleanMetadataFileV1)
+- name: 'cleanMetadataFolder'
+  type: string
+- name: 'cleanMetadataFileWithAnnotations'
+  type: string
+  default: $(cleanMetadataFileWithAnnotationsV1)
+- name: 'metadataTypeSpecAnnotationsSource'
+  type: string
+  default: $(metadataTypeSpecAnnotationsSource)
+- name: 'metadataTypeSpecAnnotationsOutputDir'
+  type: string
+  default: 'tsp-output'
+- name: metadataAnnotationsCopyScriptPath
+  type: string
+  default: '/../scripts/copy-annotations-to-csdl.ps1'
+
+steps:
+
+# We only need the scripts
+- checkout: self
+  displayName: checkout generator
+  fetchDepth: 1
+  persistCredentials: true
+
+- checkout: microsoft-graph-docs
+  displayName: checkout graph docs
+  fetchDepth: 1
+  persistCredentials: true
+
+- template: /.azure-pipelines/generation-templates/checkout-metadata.yml@self
+- template: /.azure-pipelines/generation-templates/set-user-config.yml@self
+
+# required for TypeSpec
+- task: UseNode@1
+  inputs:
+    version: '22.x'
+    checkLatest: true
+
+- pwsh: 'npm install -g @typespec/compiler typescript'
+  displayName: 'install TypeSpec and TypeScript globally'
+
+- pwsh: 'npm ci'
+  displayName: 'install TypeSpec dependencies'
+  workingDirectory: '$(metadataTypeSpecAnnotationsSource)'
+
+- pwsh: 'tsp compile .'
+  displayName: 'compile TypeSpec annotations'
+  workingDirectory: '$(metadataTypeSpecAnnotationsSource)'
+
+# Results in a raw metadata file written to microsoftgraph/msgraph-metadata if there are changes.
+# An error will cancel this step if there are no changes.
+- pwsh: '$(scriptsDirectory)/download-diff-metadata.ps1'
+  displayName: 'diff and publish ${{ parameters.endpoint }} metadata'
+  env:
+    errorOnNoChange: 1
+    endpointVersion: ${{ parameters.endpoint }}
+    targetBranch: 'master'
+    inputMetadataFile: ${{ parameters.inputMetadata }}
+  enabled: true
+
+# required for typewriter
+- template: /.azure-pipelines/generation-templates/use-dotnet-sdk.yml@self
+  parameters:
+    version: '8.x'
+- pwsh: '$(scriptsDirectory)/run-typewriter-clean-metadata.ps1'
+  env:
+    OutputPath: ${{ parameters.outputPath }}
+    InputMetadataFile: ${{ parameters.inputMetadata }}
+    TypewriterExecutable: $(typewriterExecutable)
+    TypewriterDirectory: $(typewriterDirectory)
+    DocsDirectory: $(docsDirectory)
+    GenerationMode: 'TransformWithDocs'
+    Transform: $(transformScript)
+    endpointVersion: ${{ parameters.endpoint }}
+  displayName: 'run Typewriter to clean ${{ parameters.endpoint }} metadata'
+
+- pwsh: '. $(metadataTypeSpecAnnotationsSource)/$Env:ScriptPath -targetCsdlPath "$(Build.SourcesDirectory)/msgraph-metadata/clean_$($Env:Endpoint.Replace(''.'', ''''))_metadata/cleanMetadataWithDescriptions${{ parameters.endpoint }}.xml" -sourceCsdlDirectoryPath "$(metadataTypeSpecAnnotationsSource)/${{ parameters.metadataTypeSpecAnnotationsOutputDir }}"'
+  env:
+    ScriptPath: ${{ parameters.metadataAnnotationsCopyScriptPath }}
+    Endpoint: ${{ parameters.endpoint }}
+  displayName: 'copy TypeSpec annotations to cleaned metadata'
+
+  ## Only run if the previous step was successful
+- pwsh: '$(scriptsDirectory)/run-typewriter-clean-metadata.ps1'
+  env:
+    OutputPath: ${{ parameters.outputPath }}
+    InputMetadataFile: ${{ parameters.inputMetadata }}
+    TypewriterExecutable: $(typewriterExecutable)
+    TypewriterDirectory: $(typewriterDirectory)
+    DocsDirectory: $(docsDirectory)
+    GenerationMode: 'TransformWithDocs'
+    Transform: $(transformScript)
+    endpointVersion: ${{ parameters.endpoint }}
+    RemoveAnnotations: 'false'
+    OutputMetadataFileName: 'cleanMetadataWithDescriptionsAndAnnotations'
+  displayName: 'run Typewriter to clean ${{ parameters.endpoint }} metadata and keep capability annotations'
+
+- pwsh: '. $(metadataTypeSpecAnnotationsSource)/$Env:ScriptPath -targetCsdlPath "$(Build.SourcesDirectory)/msgraph-metadata/clean_$($Env:Endpoint.Replace(''.'', ''''))_metadata/cleanMetadataWithDescriptionsAndAnnotations${{ parameters.endpoint }}.xml" -sourceCsdlDirectoryPath "$(metadataTypeSpecAnnotationsSource)/${{ parameters.metadataTypeSpecAnnotationsOutputDir }}"'
+  env:
+    ScriptPath: ${{ parameters.metadataAnnotationsCopyScriptPath }}
+    Endpoint: ${{ parameters.endpoint }}
+  displayName: 'copy TypeSpec annotations to cleaned metadata'
+
+  ## Only run if the previous step was successful
+- pwsh: '$(scriptsDirectory)/run-typewriter-clean-metadata.ps1'
+  env:
+    OutputPath: ${{ parameters.outputPath }}
+    InputMetadataFile: ${{ parameters.inputMetadata }}
+    TypewriterExecutable: $(typewriterExecutable)
+    TypewriterDirectory: $(typewriterDirectory)
+    DocsDirectory: $(docsDirectory)
+    GenerationMode: 'TransformWithDocs'
+    Transform: $(transformScript)
+    endpointVersion: ${{ parameters.endpoint }}
+    RemoveAnnotations: 'false'
+    AddInnerErrorDescription: 'true'
+    OutputMetadataFileName: 'cleanMetadataWithDescriptionsAndAnnotationsAndErrors'
+  displayName: 'run Typewriter to clean ${{ parameters.endpoint }} metadata and keep capability annotations and include error information'
+
+- pwsh: '. $(metadataTypeSpecAnnotationsSource)/$Env:ScriptPath -targetCsdlPath "$(Build.SourcesDirectory)/msgraph-metadata/clean_$($Env:Endpoint.Replace(''.'', ''''))_metadata/cleanMetadataWithDescriptionsAndAnnotationsAndErrors${{ parameters.endpoint }}.xml" -sourceCsdlDirectoryPath "$(metadataTypeSpecAnnotationsSource)/${{ parameters.metadataTypeSpecAnnotationsOutputDir }}"'
+  env:
+    ScriptPath: ${{ parameters.metadataAnnotationsCopyScriptPath }}
+    Endpoint: ${{ parameters.endpoint }}
+  displayName: 'copy TypeSpec annotations to cleaned metadata'
+
+
+# publish metadata as an artifact
+- task: CopyFiles@2
+  inputs:
+    sourceFolder: ${{ parameters.outputPath }}
+    contents: '**/*'
+    targetFolder: '$(Build.ArtifactStagingDirectory)'
+  displayName: Copy generated metadata
+- template: /.azure-pipelines/generation-templates/use-dotnet-sdk.yml@self
+  parameters:
+    version: '9.x'
+
+- pwsh: dotnet tool install --global Microsoft.OpenApi.Hidi --version 1.6.24
+  displayName: 'Install hidi tool'
+
+# verify that generated metadata is parsable as an Edm model
+- pwsh: $(Build.SourcesDirectory)/msgraph-metadata/scripts/run-metadata-validation.ps1 -repoDirectory "$(Build.SourcesDirectory)/msgraph-metadata/" -version "${{ parameters.endpoint }}"
+  displayName: 'verify whether metadata is parsable as an Edm model'
+
+# clean up extra files
+- pwsh: Remove-Item "$(Build.SourcesDirectory)/msgraph-metadata/transformed_*_metadata.*" -Verbose -Force
+  displayName: 'clean up transformed metadata generated by validation'
+
+# Checkin clean metadata into metadata repo or make it an artifact.
+- pwsh: '$(scriptsDirectory)/git-push-cleanmetadata.ps1'
+  displayName: push clean ${{ parameters.endpoint }} CSDL metadata to msgraph-metadata repo
+  env:
+    CreateOpenAPIPR: False
+    EndpointVersion: ${{ parameters.endpoint }}
+    PublishChanges: $(publishChanges)
+  workingDirectory: '$(Build.SourcesDirectory)/msgraph-metadata'
+  enabled: true

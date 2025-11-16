@@ -1,0 +1,30 @@
+---
+description: Автоматически созданный файл. НЕ ИЗМЕНЯТЬ
+ms.openlocfilehash: 043836f99bea54edd931c15470a3e8a87b4f0049
+ms.sourcegitcommit: 30d1f0d898b6e4488d1938251fba143370119241
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 05/11/2022
+ms.locfileid: "65340506"
+---
+```go
+
+//THE GO SDK IS IN PREVIEW. NON-PRODUCTION USE ONLY
+graphClient := msgraphsdk.NewGraphServiceClient(requestAdapter)
+
+requestParameters := &msgraphsdk.CalendarViewRequestBuilderGetQueryParameters{
+    StartDateTime: "2017-01-01T19:00:00-08:00",
+    EndDateTime: "2017-10-01T19:00:00.00-08:00",
+}
+headers := map[string]string{
+    "Prefer": "outlook.body-content-type="text""
+}
+options := &msgraphsdk.CalendarViewRequestBuilderGetRequestConfiguration{
+    QueryParameters: requestParameters,
+    Headers: headers,
+}
+groupId := "group-id"
+result, err := graphClient.GroupsById(&groupId).CalendarView().GetWithRequestConfigurationAndResponseHandler(options, nil)
+
+
+```

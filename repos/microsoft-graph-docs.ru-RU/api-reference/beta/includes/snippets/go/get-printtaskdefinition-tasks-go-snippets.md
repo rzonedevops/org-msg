@@ -1,0 +1,19 @@
+---
+description: Автоматически созданный файл. НЕ ИЗМЕНЯТЬ
+ms.openlocfilehash: aa8dbaddfe4c6b03de3e86610621e0e897f97fa6
+ms.sourcegitcommit: 30d1f0d898b6e4488d1938251fba143370119241
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 05/11/2022
+ms.locfileid: "65341156"
+---
+```go
+
+//THE GO SDK IS IN PREVIEW. NON-PRODUCTION USE ONLY
+graphClient := msgraphsdk.NewGraphServiceClient(requestAdapter)
+
+printTaskDefinitionId := "printTaskDefinition-id"
+result, err := graphClient.Print().TaskDefinitionsById(&printTaskDefinitionId).Tasks().Get()
+
+
+```

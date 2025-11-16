@@ -1,0 +1,12 @@
+{
+  "cSpell.ignoreWords": [
+    "blazorwasm"
+  ],
+  "cSpell.words": [
+    "appsettings",
+    "dotnetcli",
+    "Msal",
+    "timeformat",
+    "wwwroot"
+  ]
+}

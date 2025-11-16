@@ -1,0 +1,22 @@
+---
+description: Автоматически созданный файл. НЕ ИЗМЕНЯТЬ
+ms.openlocfilehash: cff5b43d861ee17be777ad72bd948dae74fd0ea8fcc2509e109e3cc5e781784a
+ms.sourcegitcommit: 986c33b848fa22a153f28437738953532b78c051
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 08/05/2021
+ms.locfileid: "57190870"
+---
+```javascript
+
+const options = {
+    authProvider,
+};
+
+const client = Client.init(options);
+
+await client.api('/applications/{id}/tokenLifetimePolicies/{id}/$ref')
+    .version('beta')
+    .delete();
+
+```

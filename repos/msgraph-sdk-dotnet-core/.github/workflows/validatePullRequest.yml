@@ -1,0 +1,72 @@
+name: Validate Pull Request
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ 'feature/*', 'main' ]
+  pull_request:
+    branches: [ 'feature/*', 'main' ]
+
+permissions:
+  contents: read #those permissions are required to run the codeql analysis
+  actions: read
+  security-events: write
+  
+jobs:
+  build:
+    name: Build and Test
+    runs-on: windows-latest
+    env:
+      solutionName: Microsoft.Graph.Core.sln
+      relativePath: ./src/Microsoft.Graph.Core
+    steps:
+      - uses: actions/checkout@v4.1.7
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 6.0.x
+
+      - name: Setup JDK for android targets
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'microsoft'
+          java-version: '11'
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: csharp
+
+      - name: Install needed dotnet workloads
+        run: dotnet workload install android macos ios maccatalyst
+     
+      - name: Restore nuget dependencies
+        run: dotnet restore ${{ env.solutionName }}
+
+      - name: Lint the code
+        run: dotnet format --verify-no-changes
+
+      - name: Build
+        run: dotnet build ${{ env.solutionName }} -c Debug /p:UseSharedCompilation=false,IncludeMauiTargets=true
+
+      - name: Test
+        run: dotnet test ${{ env.solutionName }} --no-build --verbosity normal -c Debug /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=opencover
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+
+  validate-trimming:
+    name: Validate Project for Trimming
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4.1.7
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.x
+
+      - name: Validate Trimming warnings
+        run: dotnet publish -c Release -r win-x64 /p:TreatWarningsAsErrors=true /warnaserror -f net9.0
+        working-directory: ./tests/Microsoft.Graph.DotnetCore.Core.Trimming

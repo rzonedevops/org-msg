@@ -1,0 +1,79 @@
+trigger:
+  branches:
+    include:
+    - master
+    - prerelease
+  paths:
+    include:
+    - src/*
+    - test/*
+
+variables:
+- group: Microsoft.Graph.Version
+- name: counterKey
+  value: $[format('{0}.{1}', variables['version_core'], variables['Build.SourceBranchName'])]
+- name: ReleaseCounter
+  value: $[counter(variables['counterKey'], 0)]
+- name: counterKeyPre
+  value: $[format('{0}.{1}', variables['version_pre'], variables['Build.SourceBranchName'])]
+- name: ReleaseCounterPre
+  value: $[counter(variables['counterKeyPre'], 0)]
+
+pool:
+  vmImage: windows-2019
+
+steps:
+- powershell: |
+    Write-Host "##vso[task.setvariable variable=nugetVersion]$($Env:version_pre)-preview$($Env:ReleaseCounterPre)"
+  displayName: 'Set pre-release version' 
+  condition: and(succeeded(), eq(variables['Build.SourceBranchName'], 'prerelease'))
+
+- powershell: |
+    Write-Host "##vso[task.setvariable variable=nugetVersion]$($Env:version_pre)-CI-$($Env:ReleaseCounterPre)"
+  displayName: 'Set CI version' 
+  condition: and(succeeded(), eq(variables['Build.SourceBranchName'], 'dev'))
+
+- powershell: |
+    Write-Host "##vso[task.setvariable variable=nugetVersion]$($Env:version_core).$($Env:ReleaseCounter)"
+  displayName: 'Set release version' 
+  condition: and(succeeded(), eq(variables['Build.SourceBranchName'], 'master'))
+
+- task: knom.vsts-debughelper-tasks.print-env-task.print-env-task@1
+  displayName: 'Inspect Environment Variables'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet test'
+  inputs:
+    command: test
+    configuration: release
+    projects: 'Graph.Community.sln'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet pack'
+  condition: and(succeeded(), ne(variables['Build.SourceBranchName'], 'merge'))
+  inputs:
+    command: pack
+    verbosityPack: 'Normal'
+    configuration: release
+    packagesToPack: '**/Graph.Community.csproj'
+    versioningScheme: byEnvVar
+    versionEnvVar: nugetVersion 
+    buildProperties: Version=$(nugetVersion)
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish artifacts'
+  condition: and(succeeded(), eq(variables['Build.SourceBranchName'], 'dev'))
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'package'
+    publishLocation: 'Container'
+
+- task: NuGetCommand@2
+  condition: and(succeeded(), or(eq(variables['Build.SourceBranchName'], 'prerelease'),eq(variables['Build.SourceBranchName'], 'master')))
+  displayName: 'NuGet push'
+  inputs:
+    command: push
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    nuGetFeedType: external
+    publishFeedCredentials: NuGet
+

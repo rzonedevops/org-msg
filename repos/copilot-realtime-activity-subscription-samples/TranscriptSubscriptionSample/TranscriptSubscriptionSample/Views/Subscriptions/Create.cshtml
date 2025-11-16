@@ -1,0 +1,29 @@
+@model TranscriptSubscriptionSample.Models.CreateSubscriptionViewModel
+
+@{
+    ViewData["Title"] = "Create Subscription";
+}
+
+<h2 class="headerText">Create New Subscription</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group mb-3">
+                <label asp-for="MeetingUrl" class="control-label"></label>
+                <input asp-for="MeetingUrl" class="form-control" placeholder="https://teams.microsoft.com/..." />
+                <span asp-validation-for="MeetingUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

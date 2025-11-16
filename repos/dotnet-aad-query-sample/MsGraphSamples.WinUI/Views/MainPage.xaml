@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page
+    x:Class="MsGraphSamples.WinUI.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:graph="using:Microsoft.Graph.Models"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:MsGraphSamples.WinUI.ViewModels"
+    d:DataContext="{d:DesignInstance Type=vm:MainViewModel}"
+    Loaded="{x:Bind ViewModel.PageLoaded}"
+    mc:Ignorable="d">
+
+    <Page.Resources />
+
+    <Grid Margin="0,28,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <!--  Select  -->
+            <StackPanel
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="6,0"
+                VerticalAlignment="Bottom">
+                <HyperlinkButton
+                    Padding="3"
+                    FontWeight="Bold"
+                    NavigateUri="https://docs.microsoft.com/graph/query-parameters?context=graph%2Fapi%2F1.0#select-parameter">
+                    $select
+                    <ToolTipService.ToolTip>
+                        <TextBlock>
+                            <Run Foreground="Green" Text="// List of properties separated by a comma" />
+                        </TextBlock>
+                    </ToolTipService.ToolTip>
+                </HyperlinkButton>
+                <TextBox Text="{x:Bind ViewModel.Select, Mode=TwoWay}" />
+            </StackPanel>
+
+            <!--  Filter  -->
+            <StackPanel
+                Grid.Row="0"
+                Grid.Column="1"
+                Margin="6,0">
+                <HyperlinkButton
+                    Padding="3"
+                    FontWeight="Bold"
+                    NavigateUri="https://docs.microsoft.com/graph/aad-advanced-queries?tabs=http#support-for-filter-on-properties-of-azure-ad-directory-objects">
+                    $filter
+                    <ToolTipService.ToolTip>
+                        <TextBlock>
+                            <Run Text="property eq 'filterValue'" /><LineBreak />
+                            <Run Text="property ne 'filterValue'" /><LineBreak />
+                            <Run Text="not propertyCollection/any(p:p eq 'filterValue')" /><LineBreak />
+                            <Run Text="startsWith(property, 'filterValue')" /><LineBreak />
+                            <Run Text="endsWith(property, 'filterValue')" />
+                            <Run Foreground="Green" Text=" // Enabled on mail, userPrincipalName and proxyAddresses" />
+                        </TextBlock>
+                    </ToolTipService.ToolTip>
+                </HyperlinkButton>
+                <TextBox Text="{x:Bind ViewModel.Filter, Mode=TwoWay}" />
+            </StackPanel>
+
+            <!--  Entity List  -->
+            <StackPanel
+                Grid.Row="0"
+                Grid.Column="2"
+                Margin="6,0"
+                VerticalAlignment="Bottom">
+
+                <TextBlock Margin="0,3" FontWeight="Bold">
+                    <Run Text="Entities: " />
+                    <Run Text="{x:Bind ViewModel.DirectoryObjects.Count, Mode=OneWay}" />
+                    <Run Text=" / " />
+                    <Run Text="{x:Bind ViewModel.LastCount, Mode=OneWay}" />
+                </TextBlock>
+
+                <ComboBox
+                    HorizontalAlignment="Stretch"
+                    ItemsSource="{x:Bind vm:MainViewModel.Entities}"
+                    SelectedItem="{x:Bind ViewModel.SelectedEntity, Mode=TwoWay}"
+                    ToolTipService.ToolTip="Select Entity" />
+            </StackPanel>
+
+            <!--  Order By  -->
+            <StackPanel
+                Grid.Row="1"
+                Grid.Column="0"
+                Margin="6">
+                <HyperlinkButton
+                    Padding="3"
+                    FontWeight="Bold"
+                    NavigateUri="https://docs.microsoft.com/graph/query-parameters?context=graph%2Fapi%2F1.0#orderby-parameter">
+                    $orderBy
+                    <ToolTipService.ToolTip>
+                        <TextBlock>
+                            <Run Foreground="Green" Text="// Enabled only on few properties, see documentation for details" /><LineBreak />
+                            <Run Text="property [asc|desc]" />
+                        </TextBlock>
+                    </ToolTipService.ToolTip>
+                </HyperlinkButton>
+                <TextBox Text="{x:Bind ViewModel.OrderBy, Mode=TwoWay}" />
+            </StackPanel>
+
+            <!--  Search  -->
+            <StackPanel
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="6">
+                <HyperlinkButton
+                    Padding="3"
+                    FontWeight="Bold"
+                    NavigateUri="https://docs.microsoft.com/graph/search-query-parameter#using-search-on-directory-object-collections">
+                    $search
+                    <ToolTipService.ToolTip>
+                        <TextBlock>
+                            <Run Foreground="Green" Text="// Enabled on displayName and Description" /><LineBreak />
+                            <Run Foreground="Green" Text="// All the other properties will fallback to startsWith filter behavior" /><LineBreak />
+                            <Run Text="&quot;property1:value1&quot; [AND|OR] &quot;property2:value2&quot;" />
+                        </TextBlock>
+                    </ToolTipService.ToolTip>
+                </HyperlinkButton>
+
+                <TextBox Text="{x:Bind ViewModel.Search, Mode=TwoWay}" />
+            </StackPanel>
+
+            <!--  Load Button  -->
+            <Button
+                Grid.Row="1"
+                Grid.Column="2"
+                Height="32"
+                Margin="6"
+                Padding="6,0"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Bottom"
+                Command="{x:Bind ViewModel.LoadCommand}"
+                Content="Load"
+                IsEnabled="{x:Bind ViewModel.IsBusy, Mode=OneWay, Converter={StaticResource BoolNegationConverter}}" />
+
+            <!--  Graph Explorer  -->
+            <TextBox
+                Grid.Row="2"
+                Grid.ColumnSpan="2"
+                Margin="6"
+                GotFocus="TextBox_SelectAll"
+                IsReadOnly="True"
+                Text="{x:Bind ViewModel.LastUrl, Mode=OneWay}" />
+            <Button
+                Grid.Row="3"
+                Grid.Column="2"
+                Margin="6"
+                Padding="6,0"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Command="{x:Bind ViewModel.LaunchGraphExplorerCommand}"
+                Content="Graph Explorer"
+                IsEnabled="{x:Bind ViewModel.IsBusy, Mode=OneWay, Converter={StaticResource BoolNegationConverter}}" />
+        </Grid>
+
+        <!--  Query Results  -->
+        <controls:DataGrid
+            x:Name="DirectoryObjectsGrid"
+            Grid.Row="1"
+            Margin="6"
+            d:DataContext="{d:DesignInstance Type=graph:User}"
+            AutoGenerateColumns="False"
+            DataFetchSize="4"
+            DoubleTapped="{x:Bind ViewModel.DrillDown}"
+            GridLinesVisibility="Horizontal"
+            IncrementalLoadingThreshold="2"
+            IsReadOnly="True"
+            ItemsSource="{x:Bind ViewModel.DirectoryObjects, Mode=OneWay}"
+            SelectedItem="{x:Bind ViewModel.SelectedObject, Mode=TwoWay}"
+            SelectionMode="Single"
+            SizeChanged="DirectoryObjectsGrid_SizeChanged"
+            Sorting="{x:Bind ViewModel.Sort}">
+            <controls:DataGrid.Columns>
+                <controls:DataGridTextColumn Binding="{Binding Id}" Header="id" />
+                <controls:DataGridTextColumn Binding="{Binding DisplayName}" Header="displayName" />
+            </controls:DataGrid.Columns>
+        </controls:DataGrid>
+
+        <Grid Grid.Row="2" Margin="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock
+                Margin="6,0"
+                VerticalAlignment="Center"
+                Text="{x:Bind ViewModel.UserName, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='Hello {0}'}" />
+
+            <Button
+                Grid.Column="1"
+                Margin="6,0"
+                Padding="6,0"
+                Command="{x:Bind ViewModel.LogoutCommand}"
+                Content="Logout" />
+
+            <ProgressBar
+                Grid.Column="2"
+                Margin="6,0"
+                VerticalAlignment="Center"
+                IsIndeterminate="{x:Bind ViewModel.IsIndeterminate, Mode=OneWay}"
+                ShowError="{x:Bind ViewModel.IsError, Mode=OneWay}" />
+
+            <TextBlock
+                Grid.Column="3"
+                Margin="6,0"
+                Text="{x:Bind ViewModel.ElapsedMs, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:N0} ms'}" />
+        </Grid>
+    </Grid>
+</Page>

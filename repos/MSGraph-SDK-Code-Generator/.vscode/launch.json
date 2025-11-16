@@ -1,0 +1,141 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Generate TypeScript beta",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/src/Typewriter/bin/Debug/net8.0/Typewriter.dll",
+      "args": [
+        "-v",
+        "Info",
+        "-m",
+        "${workspaceFolder}/../msgraph-metadata/clean_beta_metadata/cleanMetadataWithDescriptionsbeta.xml",
+        "-g",
+        "Files",
+        "-l",
+        "TypeScript",
+        "-o",
+        "${workspaceFolder}/../generator-output-TypeScript-beta",
+        "-e",
+        "beta",
+        "-p",
+        "typescript.namespacePostfix:beta"
+      ],
+      "cwd": "${workspaceFolder}/src/Typewriter/bin/Debug/net8.0",
+      "console": "internalConsole",
+      "stopAtEntry": false
+    },
+    {
+      "name": "Update Test Data TypeScript beta",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/src/Typewriter/bin/Debug/net8.0/Typewriter.dll",
+      "args": [
+        "-v",
+        "Info",
+        "-m",
+        "${workspaceFolder}/test/Typewriter.Test/Metadata/MetadataWithSubNamespaces.xml",
+        "-g",
+        "Files",
+        "-l",
+        "TypeScript",
+        "-o",
+        "${workspaceFolder}/test/Typewriter.Test/TestDataTypeScriptBeta",
+        "-e",
+        "beta",
+        "-p",
+        "typescript.namespacePostfix:beta"
+      ],
+      "cwd": "${workspaceFolder}/src/Typewriter/bin/Debug/net8.0",
+      "console": "internalConsole",
+      "stopAtEntry": false
+    },
+    {
+      "name": "Generate TypeScript v1.0",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/src/Typewriter/bin/Debug/net8.0/Typewriter.dll",
+      "args": [
+        "-v",
+        "Info",
+        "-m",
+        "${workspaceFolder}/../msgraph-metadata/clean_v10_metadata/cleanMetadataWithDescriptionsv1.0.xml",
+        "-g",
+        "Files",
+        "-l",
+        "TypeScript",
+        "-o",
+        "${workspaceFolder}/../generator-output-TypeScript-v1.0",
+        "-e",
+        "v1.0"
+      ],
+      "cwd": "${workspaceFolder}/src/Typewriter/bin/Debug/net8.0",
+      "console": "internalConsole",
+      "stopAtEntry": false
+    },
+    {
+      "name": "Update Test Data TypeScript v1.0",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/src/Typewriter/bin/Debug/net8.0/Typewriter.dll",
+      "args": [
+        "-v",
+        "Info",
+        "-m",
+        "${workspaceFolder}/test/Typewriter.Test/Metadata/MetadataWithSubNamespaces.xml",
+        "-g",
+        "Files",
+        "-l",
+        "TypeScript",
+        "-o",
+        "${workspaceFolder}/test/Typewriter.Test/TestDataTypeScript",
+        "-e",
+        "v1.0"
+      ],
+      "cwd": "${workspaceFolder}/src/Typewriter/bin/Debug/net8.0",
+      "console": "internalConsole",
+      "stopAtEntry": false
+    },
+    {
+      "name": "v1.0 - transform - keep capability annotations",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/src/Typewriter/bin/Debug/net8.0/Typewriter.dll",
+      "args": [
+        "-v",
+        "Info",
+        "-m",
+        "https://graph.microsoft.com/v1.0/$metadata",
+        "-g",
+        "TransformWithDocs",
+        "-d",
+        "${workspaceFolder}/../microsoft-graph-docs",
+        "-e",
+        "v1.0",
+        "-t",
+        "${workspaceFolder}/../msgraph-metadata/transforms/csdl/preprocess_csdl.xsl",
+        "-o",
+        "withCapa",
+        "-r",
+        "false",
+        "-f",
+        "cleanMetadataWithDescriptionsAndAnnotations"
+      ],
+      "cwd": "${workspaceFolder}/src/Typewriter/bin/Debug/net8.0",
+      "console": "internalConsole",
+      "stopAtEntry": false
+    },
+    {
+      "request": "attach",
+      "type": "coreclr",
+      "processId": "${command:pickProcess}",
+      "name": ".NET Core Attach"
+    }
+  ]
+}

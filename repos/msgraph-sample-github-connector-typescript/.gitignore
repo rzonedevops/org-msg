@@ -1,0 +1,5 @@
+node_modules/
+out/
+.env.*
+simplified-admin/manifest.json
+simplified-admin/*.zip

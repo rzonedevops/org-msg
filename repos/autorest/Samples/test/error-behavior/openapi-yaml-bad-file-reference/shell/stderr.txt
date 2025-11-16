@@ -1,0 +1,5 @@
+   at ...
+  Error: Could not read '/Samples/test/error-behavior/openapi-yaml-bad-file-reference/i-do-not-exist.json'.
+Error: Could not read '/Samples/test/error-behavior/openapi-yaml-bad-file-reference/i-do-not-exist.json'.
+FATAL: Error: Could not read '/Samples/test/error-behavior/openapi-yaml-bad-file-reference/i-do-not-exist.json'.
+FATAL: swagger-document/loader-swagger - FAILED

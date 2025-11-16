@@ -1,0 +1,30 @@
+---
+description: Автоматически созданный файл. НЕ ИЗМЕНЯТЬ
+ms.openlocfilehash: 3558e3a47bb369450b28b78aaed1a4b2820da8d9
+ms.sourcegitcommit: 30d1f0d898b6e4488d1938251fba143370119241
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 05/11/2022
+ms.locfileid: "65343051"
+---
+```go
+
+//THE GO SDK IS IN PREVIEW. NON-PRODUCTION USE ONLY
+graphClient := msgraphsdk.NewGraphServiceClient(requestAdapter)
+
+requestParameters := &msgraphsdk.MeRequestBuilderGetQueryParameters{
+    Expand: "manager($levels=max;$select=id,displayName)",
+    Select: "id,displayName",
+    Count: true,
+}
+headers := map[string]string{
+    "ConsistencyLevel": "eventual"
+}
+options := &msgraphsdk.MeRequestBuilderGetRequestConfiguration{
+    QueryParameters: requestParameters,
+    Headers: headers,
+}
+result, err := graphClient.Me().GetWithRequestConfigurationAndResponseHandler(options, nil)
+
+
+```

@@ -1,0 +1,77 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>Microsoft.OpenApi.OData.Reader.Tests</AssemblyName>
+    <RootNamespace>Microsoft.OpenApi.OData.Reader.Tests</RootNamespace>
+    <TargetFrameworks>net472;netcoreapp2.1</TargetFrameworks>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\tool\35MSSharedLib1024.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>true</DelaySign>
+    <OutputPath Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">..\..\bin\debug\test\</OutputPath>
+    <OutputPath Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">..\..\bin\release\test\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Basic.OpenApi.json" />
+    <None Remove="Resources\Basic.OpenApi.V2.json" />
+    <None Remove="Resources\Basic.OpenApi.yaml" />
+    <None Remove="Resources\Basic.OpenApi.V2.yaml" />
+    <None Remove="Resources\Empty.OpenApi.json" />
+    <None Remove="Resources\Empty.OpenApi.V2.json" />
+    <None Remove="Resources\Empty.OpenApi.yaml" />
+    <None Remove="Resources\Empty.OpenApi.V2.yaml" />
+    <None Remove="Resources\Graph.Beta.OData.xml" />
+    <None Remove="Resources\Multiple.Schema.OData.xml" />
+    <None Remove="Resources\Multiple.Schema.OpenApi.json" />
+    <None Remove="Resources\Multiple.Schema.OpenApi.V2.json" />
+    <None Remove="Resources\Multiple.Schema.OpenApi.yaml" />
+    <None Remove="Resources\Multiple.Schema.OpenApi.V2.yaml" />
+    <None Remove="Resources\TripService.OpenApi.json" />
+    <None Remove="Resources\TripService.OpenApi.V2.json" />
+    <None Remove="Resources\TripService.OpenApi.yaml" />
+    <None Remove="Resources\TripService.OpenApi.V2.yaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Multiple.Schema.OData.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Basic.OpenApi.json" />
+    <EmbeddedResource Include="Resources\Basic.OpenApi.V2.json" />
+    <EmbeddedResource Include="Resources\Basic.OpenApi.yaml" />
+    <EmbeddedResource Include="Resources\Basic.OpenApi.V2.yaml" />
+    <EmbeddedResource Include="Resources\Empty.OpenApi.json" />
+    <EmbeddedResource Include="Resources\Empty.OpenApi.V2.json" />
+    <EmbeddedResource Include="Resources\Empty.OpenApi.yaml" />
+    <EmbeddedResource Include="Resources\Empty.OpenApi.V2.yaml" />
+    <EmbeddedResource Include="Resources\Graph.Beta.OData.xml" />
+    <EmbeddedResource Include="Resources\Multiple.Schema.OpenApi.json" />
+    <EmbeddedResource Include="Resources\Multiple.Schema.OpenApi.V2.json" />
+    <EmbeddedResource Include="Resources\Multiple.Schema.OpenApi.yaml" />
+    <EmbeddedResource Include="Resources\Multiple.Schema.OpenApi.V2.yaml" />
+    <EmbeddedResource Include="Resources\TripService.OData.xml" />
+    <EmbeddedResource Include="Resources\TripService.OpenApi.json" />
+    <EmbeddedResource Include="Resources\TripService.OpenApi.V2.json" />
+    <EmbeddedResource Include="Resources\TripService.OpenApi.yaml" />
+    <EmbeddedResource Include="Resources\TripService.OpenApi.V2.yaml" />
+    <EmbeddedResource Include="Resources\YamlWriterTest.yaml.txt" />
+    <EmbeddedResource Include="Resources\JsonWriterTest.json.txt" />
+    <EmbeddedResource Include="Resources\Contract.OData.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0" />
+    <PackageReference Include="Microsoft.OpenApi" Version="1.2.2" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Microsoft.OpenApi.OData.Reader\Microsoft.OpenApi.OData.Reader.csproj" />
+  </ItemGroup>
+
+</Project>

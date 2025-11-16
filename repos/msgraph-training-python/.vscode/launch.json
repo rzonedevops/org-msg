@@ -1,0 +1,26 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: main",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/user-auth/graphtutorial/main.py",
+            "cwd": "${workspaceFolder}/user-auth/graphtutorial",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Python: main (app-only)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/app-auth/graphapponlytutorial/main.py",
+            "cwd": "${workspaceFolder}/app-auth/graphapponlytutorial",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}

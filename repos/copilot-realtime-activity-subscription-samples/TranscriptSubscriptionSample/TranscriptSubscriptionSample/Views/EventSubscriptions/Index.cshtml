@@ -1,0 +1,55 @@
+@model IEnumerable<TranscriptSubscriptionSample.Models.EventSubscriptionViewModel>
+
+@{
+    ViewData["Title"] = "Event Subscriptions";
+}
+
+<h2 class="headerText">Event Subscriptions</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">
+        <i class="ms-Icon ms-Icon--Add me-2"></i>Create New Event Subscription
+    </a>
+</p>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["Success"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["Error"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Id)</th>
+            <th>@Html.DisplayNameFor(model => model.OrganizerId)</th>
+            <th>@Html.DisplayNameFor(model => model.ExpirationDate)</th>
+            <th>@Html.DisplayNameFor(model => model.CreatedAt)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                <td>@Html.DisplayFor(modelItem => item.OrganizerId)</td>
+                <td>@Html.DisplayFor(modelItem => item.ExpirationDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.CreatedAt)</td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

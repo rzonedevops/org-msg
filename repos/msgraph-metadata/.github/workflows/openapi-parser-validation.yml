@@ -1,0 +1,49 @@
+name: OpenAPI Parser Validation for latest OpenAPI docs
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  list-conversion-settings:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-conversion-settings.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v5
+      - id: set-conversion-settings
+        run: echo "matrix=$(ls conversion-settings/*.json | sed 's/.*\///' | sed 's/\.[^.]*$//' | jq -R -s -c 'split("\n")[:-1]')" >> $GITHUB_OUTPUT
+
+  build:
+    needs: list-conversion-settings
+    strategy:
+      fail-fast: false
+      matrix:
+        version: ["v1.0", "beta"]
+        settings: ${{ fromJson(needs.list-conversion-settings.outputs.matrix) }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v5
+      with:
+        submodules: recursive
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v5.0.0
+      with:
+        dotnet-version: 9.x
+
+    - run: dotnet tool install --global Microsoft.OpenApi.Hidi
+      name: Install  Hidi
+
+    - name: Validate latest OpenAPI docs
+      run: ./scripts/run-openapi-validation.ps1 -repoDirectory "${{ github.workspace }}" -version "${{ matrix.version }}" -platformName "${{ matrix.settings }}"
+      shell: pwsh
+
+    - name: Validate description with redocly
+      uses: fluximus-prime/redocly-cli-github-action@v1
+      with:
+        args: 'lint openapi/${{ matrix.version }}/${{ matrix.settings }}.yaml --skip-rule operation-4xx-response --skip-rule no-server-trailing-slash --skip-rule no-unused-components --skip-rule security-defined --skip-rule info-license-url --skip-rule info-license --skip-rule no-empty-servers --skip-rule operation-summary --skip-rule tag-description --max-problems 1000'

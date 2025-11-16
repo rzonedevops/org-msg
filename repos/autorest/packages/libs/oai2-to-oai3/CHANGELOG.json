@@ -1,0 +1,364 @@
+{
+  "name": "@azure-tools/oai2-to-oai3",
+  "entries": [
+    {
+      "version": "4.8.0",
+      "tag": "@azure-tools/oai2-to-oai3_v4.8.0",
+      "date": "Thu, 16 Nov 2023 16:00:04 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Update dependencies"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@azure-tools/datastore\" from `~4.7.1` to `~4.8.0`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/openapi\" from `~3.5.0` to `~3.6.0`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/json\" from `~1.2.3` to `~1.3.0`"
+          },
+          {
+            "comment": "Updating dependency \"@autorest/test-utils\" from `~0.5.3` to `~0.6.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.7.1",
+      "tag": "@azure-tools/oai2-to-oai3_v4.7.1",
+      "date": "Fri, 26 May 2023 14:12:36 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@azure-tools/openapi\" from `~3.4.1` to `~3.5.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.7.0",
+      "tag": "@azure-tools/oai2-to-oai3_v4.7.0",
+      "date": "Wed, 07 Dec 2022 22:24:34 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Convert final-state-schema ref to oai3 ref in oai3 converter"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update dependencies"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@azure-tools/datastore\" from `~4.7.0` to `~4.7.1`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/openapi\" from `~3.4.0` to `~3.4.1`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/json\" from `~1.2.2` to `~1.2.3`"
+          },
+          {
+            "comment": "Updating dependency \"@autorest/test-utils\" from `~0.5.2` to `~0.5.3`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.6.2",
+      "tag": "@azure-tools/oai2-to-oai3_v4.6.2",
+      "date": "Tue, 19 Jul 2022 15:09:55 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@azure-tools/datastore\" from `~4.6.1` to `~4.7.0`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/openapi\" from `~3.3.0` to `~3.4.0`"
+          },
+          {
+            "comment": "Updating dependency \"@autorest/test-utils\" from `~0.5.1` to `~0.5.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.6.1",
+      "tag": "@azure-tools/oai2-to-oai3_v4.6.1",
+      "date": "Wed, 27 Apr 2022 18:53:11 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix issue with using $ref in responses inserterting $ref in the parent"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.6.0",
+      "tag": "@azure-tools/oai2-to-oai3_v4.6.0",
+      "date": "Tue, 15 Mar 2022 16:00:38 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Make use of openapi workspace"
+          },
+          {
+            "comment": "Extract OpenAPI2 types into @azure-tools/openapi package"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@azure-tools/datastore\" from `~4.6.0` to `~4.6.1`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/openapi\" from `~3.2.3` to `~3.3.0`"
+          },
+          {
+            "comment": "Updating dependency \"@autorest/test-utils\" from `~0.5.0` to `~0.5.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.5.1",
+      "tag": "@azure-tools/oai2-to-oai3_v4.5.1",
+      "date": "Mon, 06 Dec 2021 20:16:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "**Internal** type fix"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.5.0",
+      "tag": "@azure-tools/oai2-to-oai3_v4.5.0",
+      "date": "Fri, 19 Nov 2021 04:23:43 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Copy all extensions on parameters"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@azure-tools/datastore\" from `~4.5.1` to `~4.6.0`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/openapi\" from `~3.2.1` to `~3.2.2`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/json\" from `~1.2.0` to `~1.2.1`"
+          },
+          {
+            "comment": "Updating dependency \"@autorest/test-utils\" from `~0.4.0` to `~0.5.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.4.0",
+      "tag": "@azure-tools/oai2-to-oai3_v4.4.0",
+      "date": "Wed, 08 Sep 2021 15:39:22 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "**Updated** to use new tree source map builder"
+          },
+          {
+            "comment": "Add warning and ignore invalid response examples"
+          },
+          {
+            "comment": "Tweaking request body processing and removed some invalid swagger  processing with `type: file` with non `formData` parmaeter"
+          },
+          {
+            "comment": " **Update** to new path mapping sourcemap functionality"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@azure-tools/datastore\" from `~4.4.0` to `~4.5.0`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/openapi\" from `~3.2.0` to `~3.2.1`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/json\" from `~1.1.0` to `~1.2.0`"
+          },
+          {
+            "comment": "Updating dependency \"@autorest/test-utils\" from `~0.3.0` to `~0.4.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.3.0",
+      "tag": "@azure-tools/oai2-to-oai3_v4.3.0",
+      "date": "Mon, 19 Jul 2021 15:15:42 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Drop support for node 10"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@azure-tools/datastore\" from `~4.3.1` to `~4.4.0`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/openapi\" from `~3.1.3` to `~3.2.0`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/json\" from `~1.0.0` to `~1.1.0`"
+          },
+          {
+            "comment": "Updating dependency \"@autorest/test-utils\" from `~0.2.2` to `~0.3.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.2.281",
+      "tag": "@azure-tools/oai2-to-oai3_v4.2.281",
+      "date": "Fri, 16 Apr 2021 15:18:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Stop merging x-ms-paths into paths"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.2.280",
+      "tag": "@azure-tools/oai2-to-oai3_v4.2.280",
+      "date": "Fri, 09 Apr 2021 19:53:22 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@azure-tools/datastore\" from `~4.2.2` to `~4.3.0`"
+          },
+          {
+            "comment": "Updating dependency \"@autorest/test-utils\" from `~0.2.1` to `~0.2.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.2.279",
+      "tag": "@azure-tools/oai2-to-oai3_v4.2.279",
+      "date": "Thu, 01 Apr 2021 15:46:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "**Fix** enum with $ref inside not being processed"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@azure-tools/datastore\" from `~4.2.1` to `~4.2.2`"
+          },
+          {
+            "comment": "Updating dependency \"@autorest/test-utils\" from `~0.2.0` to `~0.2.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.2.278",
+      "tag": "@azure-tools/oai2-to-oai3_v4.2.278",
+      "date": "Tue, 16 Mar 2021 15:52:56 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump dependencies versions"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@azure-tools/datastore\" from `~4.1.271` to `~4.2.0`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/openapi\" from `~3.1.0` to `~3.1.1`"
+          },
+          {
+            "comment": "Updating dependency \"@autorest/test-utils\" from `~0.1.0` to `~0.2.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.2.277",
+      "tag": "@azure-tools/oai2-to-oai3_v4.2.277",
+      "date": "Fri, 05 Mar 2021 16:31:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "When converting x-ms-parameterized-host parameters to server variables keep format as x-format"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.2.276",
+      "tag": "@azure-tools/oai2-to-oai3_v4.2.276",
+      "date": "Thu, 04 Feb 2021 19:05:18 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Internal: Migrate test framwork mocha -> jest"
+          },
+          {
+            "comment": "Internal code linting fixes"
+          },
+          {
+            "comment": "Internal: Add scenario tests"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@azure-tools/datastore\" from `~4.1.0` to `~4.1.271`"
+          },
+          {
+            "comment": "Updating dependency \"@azure-tools/openapi\" from `~3.0.0` to `~3.1.0`"
+          },
+          {
+            "comment": "Updating dependency \"@autorest/test-utils\" from `~0.0.1` to `~0.1.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.2.0",
+      "date": "Thu, 04 Feb 2021 19:05:18 GMT",
+      "tag": "@azure-tools/oai2-to-oai3_v4.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "**fix**: Fail if a response has no produces defined and no global defined either [PR 144](https://github.com/Azure/perks/pull/144)"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.1.0",
+      "date": "Thu, 04 Feb 2021 19:05:18 GMT",
+      "tag": "@azure-tools/oai2-to-oai3_v4.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "**fix**: Issue with cross-file referneces of body parameters [PR 131](https://github.com/Azure/perks/pull/131)"
+          }
+        ]
+      }
+    }
+  ]
+}

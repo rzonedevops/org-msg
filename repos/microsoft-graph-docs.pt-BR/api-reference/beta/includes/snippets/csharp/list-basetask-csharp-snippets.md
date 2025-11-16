@@ -1,0 +1,18 @@
+---
+description: Arquivo gerado automaticamente. NÃO MODIFICAR
+ms.openlocfilehash: 023fbcf9ce3bfbc6a2506e064e097594940df3bc
+ms.sourcegitcommit: a16b765507093d892022603d521c0ae8043de432
+ms.translationtype: MT
+ms.contentlocale: pt-BR
+ms.lasthandoff: 01/20/2022
+ms.locfileid: "62114151"
+---
+```csharp
+
+GraphServiceClient graphClient = new GraphServiceClient( authProvider );
+
+var tasks = await graphClient.Me.Tasks.Lists["{baseTaskList-id}"].Tasks
+    .Request()
+    .GetAsync();
+
+```

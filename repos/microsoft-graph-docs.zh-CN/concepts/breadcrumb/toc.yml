@@ -1,0 +1,11 @@
+- name: Microsoft Graph
+  tocHref: /graph
+  topicHref: /graph
+  items:
+    - name: 浏览
+      tocHref: /graph/overview
+      topiccHref: /graph/overview
+      items:
+        - name: 使用条款
+          tocHref: /legal/microsoft-apis/terms-of-use
+          topicHref: /legal/microsoft-apis/terms-of-use

@@ -1,0 +1,121 @@
+---
+title: 列出 cloudPcConnections
+description: 获取 cloudPcConnection 对象及其属性的列表。
+author: idwilliams
+ms.localizationpriority: medium
+ms.prod: microsoft-365-lighthouse
+doc_type: apiPageType
+ms.openlocfilehash: f3276abafea107207b4c211a029ccd56b05bf117
+ms.sourcegitcommit: 71186ad44d8d0df15e10b0f89df68d2ef0cf9d14
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 01/12/2022
+ms.locfileid: "61862070"
+---
+# <a name="list-cloudpcconnections"></a>列出 cloudPcConnections
+命名空间：microsoft.graph.managedTenants
+
+[!INCLUDE [beta-disclaimer](../../includes/beta-disclaimer.md)]
+
+获取 [cloudPcConnection](../resources/managedtenants-cloudpcconnection.md) 对象及其属性的列表。
+
+## <a name="permissions"></a>权限
+要调用此 API，需要以下权限之一。要了解详细信息，包括如何选择权限的信息，请参阅[权限](/graph/permissions-reference)。
+
+|权限类型|权限（从最低特权到最高特权）|
+|:---|:---|
+|委派（工作或学校帐户）|CloudPC.Read.All、CloudPC.ReadWrite.All|
+|委派（个人 Microsoft 帐户）|不支持。|
+|应用程序|不支持。|
+
+## <a name="http-request"></a>HTTP 请求
+
+<!-- {
+  "blockType": "ignored"
+}
+-->
+``` http
+GET /tenantRelationships/managedTenants/cloudPcConnections
+```
+
+## <a name="optional-query-parameters"></a>可选的查询参数
+此方法支持 [OData 查询参数](/graph/query-parameters) 来帮助自定义响应，包括 `$apply` `$count` `$filter` `$orderBy` `$select` 、、 `$skip` 和 `$top` 。
+
+## <a name="request-headers"></a>请求标头
+|名称|说明|
+|:---|:---|
+|Authorization|Bearer {token}。必需。|
+
+## <a name="request-body"></a>请求正文
+请勿提供此方法的请求正文。
+
+## <a name="response"></a>响应
+
+如果成功，此方法在响应正文中返回 响应代码和 `200 OK` [cloudPcConnection](../resources/managedtenants-cloudpcconnection.md) 对象集合。
+
+## <a name="examples"></a>示例
+
+### <a name="request"></a>请求
+
+# <a name="http"></a>[HTTP](#tab/http)
+<!-- {
+  "blockType": "request",
+  "name": "list_cloudpcconnection"
+}
+-->
+``` http
+GET https://graph.microsoft.com/beta/tenantRelationships/managedTenants/cloudPcConnections
+```
+# <a name="c"></a>[C#](#tab/csharp)
+[!INCLUDE [sample-code](../includes/snippets/csharp/list-cloudpcconnection-csharp-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+[!INCLUDE [sample-code](../includes/snippets/javascript/list-cloudpcconnection-javascript-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# <a name="objective-c"></a>[Objective-C](#tab/objc)
+[!INCLUDE [sample-code](../includes/snippets/objc/list-cloudpcconnection-objc-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# <a name="java"></a>[Java](#tab/java)
+[!INCLUDE [sample-code](../includes/snippets/java/list-cloudpcconnection-java-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+# <a name="go"></a>[Go](#tab/go)
+[!INCLUDE [sample-code](../includes/snippets/go/list-cloudpcconnection-go-snippets.md)]
+[!INCLUDE [sdk-documentation](../includes/snippets/snippets-sdk-documentation-link.md)]
+
+---
+
+
+
+### <a name="response"></a>响应
+>**注意：** 为了提高可读性，可能缩短了此处显示的响应对象。
+<!-- {
+  "blockType": "response",
+  "truncated": true,
+  "@odata.type": "Collection(microsoft.graph.managedTenants.cloudPcConnection)"
+}
+-->
+``` http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "@odata.context": "https://graph.microsoft.com/beta/$metadata#tenantRelationships/managedTenants/cloudPcConnections",
+  "value": [
+    {
+      "id": "021bd3a9-59c6-4503-b408-c326a98f238f",
+      "lastUpdated": "2021-07-11T18:02:16.6450704Z",
+      "displayName": "RunnerPlus-Az-Connection",
+      "organizationId": "0b9701e1-f1ae-4f15-bd67-f4f591595454",
+      "organizationDisplayName": "Terra Firm",
+      "healthCheckStatus": "Passed",
+      "tenantId": "34298981-4fc8-4974-9486-c8909ed1521b",
+      "tenantDisplayName": "Fourth Coffee",
+      "lastRefreshedDateTime": "2021-07-11T18:02:16.6450704Z"
+    }
+  ]
+}
+```

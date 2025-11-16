@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/microsoftgraph/msgraph-toc-gen/schema/toc.mapping.schema.json",
+  "title": "Microsoft Graph workload mapping schema",
+  "definitions": {
+    "tocNode": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "The name of the TOC node",
+          "type":"string"
+        },
+        "overview": {
+          "description": "The path to an overview topic for this TOC node",
+          "type": "string"
+        },
+        "keywords": {
+          "description": "A list of keywords for this TOC node",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "resources": {
+          "description": "A list of resources to document in this TOC node",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "complexTypes": {
+          "description": "A list of complex types to document in this TOC node",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "childNodes": {
+          "type": "array",
+          "description": "TOC nodes under this node",
+          "items": {
+            "$ref": "#/definitions/tocNode"
+          }
+        },
+        "additionalLinks": {
+          "description": "Additional explicit links to put under this node",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "href": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "shouldSort": {
+          "description": "Indicates whether the sub-nodes of this node should be sorted alphabetically.",
+          "type": "boolean"
+        },
+        "file": {
+          "description": "A path to a JSON file that describes this TOC node.",
+          "type": "string"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "name",
+            "resources"
+          ]
+        },
+        {
+          "required": [
+            "name",
+            "childNodes"
+          ]
+        },
+        {
+          "required": [
+            "name",
+            "additionalLinks"
+          ]
+        },
+        {
+          "required": [
+            "file"
+          ]
+        }
+      ],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "properties": {
+    "tocNodes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/tocNode"
+      }
+    },
+    "resourceOverviews": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "resource": {
+            "type": "string"
+          },
+          "overview": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "resource",
+          "overview"
+        ]
+      }
+    }
+  },
+  "required": [
+    "tocNodes"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,30 @@
+PODS:
+  - MSAL (0.4.2):
+    - MSAL/app-lib (= 0.4.2)
+  - MSAL/app-lib (0.4.2)
+  - PromiseKit (6.4.0):
+    - PromiseKit/CorePromise (= 6.4.0)
+    - PromiseKit/Foundation (= 6.4.0)
+    - PromiseKit/UIKit (= 6.4.0)
+  - PromiseKit/CorePromise (6.4.0)
+  - PromiseKit/Foundation (6.4.0):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (6.4.0):
+    - PromiseKit/CorePromise
+
+DEPENDENCIES:
+  - MSAL (~> 0.4.0)
+  - PromiseKit
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - MSAL
+    - PromiseKit
+
+SPEC CHECKSUMS:
+  MSAL: 2e6bbd12e9629103d92b1f6b1539260ee6d4f82c
+  PromiseKit: ae3616f45d7bb9bf4ff1e91abc9b7a8c48a340e0
+
+PODFILE CHECKSUM: e866a94960d9faebf4f4fea7403fd31a537eea68
+
+COCOAPODS: 1.6.1

@@ -1,0 +1,10 @@
+<nz-spin [nzSpinning]="isSpinning" [nzDelay]="500">
+    <b>Please go to <a href="https://developer.microsoft.com/en-us/graph/graph-explorer">Graph Explorer</a> get a token, then set the token here.</b>
+    <br>
+    <b>It will help you run the demo quickly.</b> <b style="color: red;"> It's only for tests, please follow the guide below, config your authentication.</b>
+    <br>
+    <b>Sample Login Please Refer more details from <a href="https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/msal-angular-v2-samples/angular11-sample-app" target="_blank">MSAL</a></b>
+    <textarea rows="25" nz-input [(ngModel)]="tokenValue"></textarea>
+    <button nz-button nzType="primary" style="margin-top: 5px; margin-right: 10px;" (click)="setToken()">Set MockToken</button>
+    <button nz-button nzType="primary" style="margin-top: 5px;" (click)="getToken()">Sample Login</button>
+</nz-spin>

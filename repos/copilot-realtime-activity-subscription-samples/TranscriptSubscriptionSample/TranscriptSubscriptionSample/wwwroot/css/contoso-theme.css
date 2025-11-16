@@ -1,0 +1,262 @@
+/* Microsoft Brand Colors */
+:root {
+    --ms-blue: #0078d4;
+    --ms-blue-hover: #106ebe;
+    --ms-blue-dark: #005a9e;
+    --ms-gray-130: #605e5c;
+    --ms-gray-120: #797775;
+    --ms-gray-110: #8a8886;
+    --ms-gray-100: #979593;
+    --ms-gray-90: #a19f9d;
+    --ms-gray-80: #b3b0ad;
+    --ms-gray-70: #bebbb8;
+    --ms-gray-60: #c8c6c4;
+    --ms-gray-50: #d2d0ce;
+    --ms-gray-40: #e1dfdd;
+    --ms-gray-30: #edebe9;
+    --ms-gray-20: #f3f2f1;
+    --ms-gray-10: #faf9f8;
+    --ms-white: #ffffff;
+    --ms-orange: #ffb900;
+    --ms-red: #d13438;
+    --ms-green: #107c10;
+    --ms-purple: #5c2d91;
+}
+
+/* Typography */
+body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+    color: var(--ms-gray-130);
+    background-color: var(--ms-gray-10);
+}
+
+/* Navbar Styling */
+.ms-navbar {
+    background-color: var(--ms-white);
+    box-shadow: 0 1.6px 3.6px 0 rgba(0,0,0,.132), 0 0.3px 0.9px 0 rgba(0,0,0,.108);
+    padding: 0;
+}
+
+.navbar-brand {
+    font-weight: 600;
+    color: var(--ms-gray-130) !important;
+    display: flex;
+    align-items: center;
+}
+
+.ms-brand-text {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.ms-nav-link {
+    color: var(--ms-gray-130) !important;
+    font-weight: 400;
+    padding: 1rem 1.5rem !important;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.ms-nav-link:hover {
+    color: var(--ms-blue) !important;
+    background-color: var(--ms-gray-20);
+}
+
+.ms-nav-link.active,
+.navbar-nav .nav-link.active {
+    color: var(--ms-blue) !important;
+    border-bottom-color: var(--ms-blue);
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--ms-blue);
+    border-color: var(--ms-blue);
+    font-weight: 600;
+    padding: 0.5rem 1.5rem;
+}
+
+.btn-primary:hover {
+    background-color: var(--ms-blue-hover);
+    border-color: var(--ms-blue-hover);
+}
+
+.btn-secondary {
+    background-color: var(--ms-white);
+    border-color: var(--ms-gray-110);
+    color: var(--ms-gray-130);
+    font-weight: 600;
+}
+
+.btn-secondary:hover {
+    background-color: var(--ms-gray-20);
+    border-color: var(--ms-gray-110);
+    color: var(--ms-gray-130);
+}
+
+.btn-danger {
+    background-color: var(--ms-red);
+    border-color: var(--ms-red);
+}
+
+.btn-success {
+    background-color: var(--ms-green);
+    border-color: var(--ms-green);
+}
+
+/* Cards */
+.card {
+    border: 1px solid var(--ms-gray-40);
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+
+.card-header {
+    background-color: var(--ms-gray-20);
+    border-bottom: 1px solid var(--ms-gray-40);
+    font-weight: 600;
+}
+
+/* Tables */
+.table {
+    background-color: var(--ms-white);
+}
+
+.table thead th {
+    background-color: var(--ms-gray-20);
+    border-bottom: 1px solid var(--ms-gray-60);
+    font-weight: 600;
+    color: var(--ms-gray-130);
+    padding: 12px;
+}
+
+.table td {
+    padding: 12px;
+    vertical-align: middle;
+}
+
+.table-hover tbody tr:hover {
+    background-color: var(--ms-gray-10);
+}
+
+/* Forms */
+.form-control {
+    border: 1px solid var(--ms-gray-110);
+    border-radius: 2px;
+    padding: 0.5rem 0.75rem;
+}
+
+.form-control:focus {
+    border-color: var(--ms-blue);
+    box-shadow: 0 0 0 1px var(--ms-blue);
+}
+
+/* Badges */
+.badge {
+    font-weight: 600;
+    padding: 0.35em 0.65em;
+    border-radius: 2px;
+}
+
+.bg-success {
+    background-color: var(--ms-green) !important;
+}
+
+.bg-danger {
+    background-color: var(--ms-red) !important;
+}
+
+.bg-primary {
+    background-color: var(--ms-blue) !important;
+}
+
+.bg-secondary {
+    background-color: var(--ms-gray-110) !important;
+}
+
+/* Footer */
+.ms-footer {
+    background-color: var(--ms-gray-20);
+    color: var(--ms-gray-110);
+    padding: 2rem 0;
+    margin-top: 3rem;
+}
+
+.ms-footer a {
+    color: var(--ms-gray-110);
+    text-decoration: none;
+}
+
+.ms-footer a:hover {
+    color: var(--ms-blue);
+    text-decoration: underline;
+}
+
+/* Alerts */
+.alert {
+    border-radius: 2px;
+    border: 1px solid transparent;
+}
+
+.alert-success {
+    background-color: #dff6dd;
+    border-color: #107c10;
+    color: #0e5a0e;
+}
+
+.alert-danger {
+    background-color: #fde7e9;
+    border-color: #d13438;
+    color: #a4262c;
+}
+
+.alert-info {
+    background-color: #e1f5fe;
+    border-color: #0078d4;
+    color: #005a9e;
+}
+
+/* Content spacing */
+main {
+    min-height: calc(100vh - 200px);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--ms-gray-130);
+    font-weight: 600;
+}
+
+/* Transcript styling */
+.transcript-entry {
+    background-color: var(--ms-white);
+    border-left: 3px solid var(--ms-blue);
+    transition: background-color 0.2s ease;
+}
+
+.transcript-entry:hover {
+    background-color: var(--ms-gray-10);
+}
+
+/* Loading spinner */
+.spinner-border {
+    color: var(--ms-blue);
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--ms-gray-20);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--ms-gray-80);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--ms-gray-110);
+}

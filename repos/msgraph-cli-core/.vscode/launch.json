@@ -1,0 +1,170 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            // Use IntelliSense to find out which attributes exist for C# debugging
+            // Use hover for the description of the existing attributes
+            // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
+            "name": "login browser (sample)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build sample",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/src/sample/bin/Debug/net8.0/sample.dll",
+            "args": [
+                "login",
+                "--strategy",
+                "InteractiveBrowser"
+            ],
+            "cwd": "${workspaceFolder}/src/sample",
+            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            // Use IntelliSense to find out which attributes exist for C# debugging
+            // Use hover for the description of the existing attributes
+            // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
+            "name": "login device code (sample)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build sample",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/src/sample/bin/Debug/net8.0/sample.dll",
+            "args": [
+                "login",
+                "--strategy",
+                "DeviceCode"
+            ],
+            "cwd": "${workspaceFolder}/src/sample",
+            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": "login certificate name (sample)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build sample",
+            "program": "${workspaceFolder}/src/sample/bin/Debug/net8.0/sample.dll",
+            "args": [
+                "login",
+                "--strategy",
+                "ClientCertificate",
+                "--tenant-id",
+                "39aafea4-2975-4790-9c07-e616c1c35d99",
+                "--client-id",
+                "e49807f2-94cc-4f59-9e14-be2a37eab7c2",
+                "--certificate-name",
+                "CN=TestCertificate"
+            ],
+            "cwd": "${workspaceFolder}/src/sample",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": "login environment variables (sample)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build sample",
+            "program": "${workspaceFolder}/src/sample/bin/Debug/net8.0/sample.dll",
+            "args": [
+                "login",
+                "--strategy",
+                "Environment",
+                "--tenant-id",
+                "39aafea4-2975-4790-9c07-e616c1c35d99",
+                "--client-id",
+                "e49807f2-94cc-4f59-9e14-be2a37eab7c2"
+            ],
+            "envFile": "${workspaceFolder}/.env.local",
+            "cwd": "${workspaceFolder}/src/sample",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": "login national cloud (sample)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build sample",
+            "program": "${workspaceFolder}/src/sample/bin/Debug/net8.0/sample.dll",
+            "args": [
+                "login",
+                "--environment",
+                "US_GOV"
+            ],
+            "envFile": "${workspaceFolder}/.env.local",
+            "cwd": "${workspaceFolder}/src/sample",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": "users list (sample)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build sample",
+            "program": "${workspaceFolder}/src/sample/bin/Debug/net8.0/sample.dll",
+            "args": [
+                "users",
+                "list",
+                "--debug",
+                "--top",
+                "2",
+                "--headers",
+                "sample=header"
+            ],
+            "envFile": "${workspaceFolder}/.env.local",
+            "cwd": "${workspaceFolder}/src/sample",
+            "console": "integratedTerminal",
+            "stopAtEntry": false,
+            "justMyCode": false
+        },
+        {
+            "name": "me get (sample)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build sample",
+            "program": "${workspaceFolder}/src/sample/bin/Debug/net8.0/sample.dll",
+            "args": [
+                "me",
+                "get",
+                "--debug"
+            ],
+            "cwd": "${workspaceFolder}/src/sample",
+            "console": "integratedTerminal",
+            "stopAtEntry": false
+        },
+        {
+            "name": "logout (sample)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build sample",
+            "program": "${workspaceFolder}/src/sample/bin/Debug/net8.0/sample.dll",
+            "args": [
+                "logout",
+                "--debug"
+            ],
+            "cwd": "${workspaceFolder}/src/sample",
+            "console": "integratedTerminal",
+            "stopAtEntry": false
+        },
+        {
+            "name": "help (sample)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build sample",
+            "program": "${workspaceFolder}/src/sample/bin/Debug/net8.0/sample.dll",
+            "args": [
+                "--help"
+            ],
+            "cwd": "${workspaceFolder}/src/sample",
+            "console": "integratedTerminal",
+            "stopAtEntry": false
+        },
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach"
+        }
+    ]
+}

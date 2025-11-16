@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>ApiDoctor.Validation</id>
+        <version>$version$</version>
+        <title>API Doctor API documentation validation class library</title>
+        <authors>Microsoft</authors>
+        <owners>dspektor@microsoft.com</owners>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Toolkit to enable validation of markdown-based documentation.</description>
+        <releaseNotes>Check http://github.com/onedrive/apidoctor for details.</releaseNotes>
+        <licenseUrl>http://msdn.microsoft.com/en-US/cc300389</licenseUrl>
+        <projectUrl>http://github.com/onedrive/apidoctor</projectUrl>
+        <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+        <dependencies>
+            <group targetFramework="netcore50">
+                <dependency id="Newtonsoft.Json" version="12.0.3" />
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="bin\Release\net5.0\ApiDoctor.Validation.dll" target="lib\netcore50\ApiDoctor.Validation.dll" />
+        <file src="bin\Release\net5.0\MarkdownDeep.dll" target="lib\netcore50\MarkdownDeep.dll" />
+    </files>
+</package>

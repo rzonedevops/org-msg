@@ -1,0 +1,22 @@
+---
+description: Автоматически созданный файл. НЕ ИЗМЕНЯТЬ
+ms.openlocfilehash: ce605f1e1cd97084eb48687ee1c185361c94b1e7
+ms.sourcegitcommit: 9b8abc940a68dac6ee5da105ca29800cb59775f6
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "58516188"
+---
+```javascript
+
+const options = {
+    authProvider,
+};
+
+const client = Client.init(options);
+
+let unifiedRoleEligibilityScheduleInstance = await client.api('/roleManagement/directory/roleEligibilityScheduleInstances/UafX_Qu2SkSYTAJlL-j6HCssmvzcHW1IohFf6Mp3-h9xbmLcN0jrQL5KvCnYihF4-2-e')
+    .version('beta')
+    .get();
+
+```

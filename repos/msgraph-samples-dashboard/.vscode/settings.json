@@ -1,0 +1,19 @@
+{
+  "cSpell.ignoreWords": [
+    "adal",
+    "angularjs",
+    "dependabot",
+    "devx",
+    "fluentui",
+    "g",
+    "msgraph",
+    "msgraphclientsdk",
+    "msgraphcore",
+    "msos",
+    "raph",
+    "xunit"
+  ],
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "dotnet-test-explorer.testProjectPath": "**/*.sln"
+}

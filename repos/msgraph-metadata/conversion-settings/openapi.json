@@ -1,0 +1,25 @@
+{
+  "OpenApiConvertSettings": {
+    "AddEnumDescriptionExtension": true,
+    "AddSingleQuotesForStringParameters": true,
+    "DeclarePathParametersOnPathItem": true,
+    "EnableCount": true,
+    "EnableDerivedTypesReferencesForRequestBody": false,
+    "EnableDerivedTypesReferencesForResponses": false,
+    "EnableDiscriminatorValue": true,
+    "EnableKeyAsSegment": true,
+    "EnableOperationId": true,
+    "EnablePagination": true,
+    "EnableTypeDisambiguationForDefaultValueOfOdataTypeProperty": true,
+    "ErrorResponsesAsDefault": false,
+    "ExpandDerivedTypesNavigationProperties": true,
+    "PrefixEntityTypeNameBeforeKey": true,
+    "ShowLinks": false,
+    "ShowRootPath": false,
+    "TagDepth": 2,
+    "UseSuccessStatusCodeRange": true,
+    "NamespacePrefixToStripForInMethodPaths": "microsoft.graph",
+    "EnableAliasForTypeCastSegments": true,
+    "AddAlternateKeyPaths": true
+  }
+}

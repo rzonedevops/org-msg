@@ -1,0 +1,39 @@
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT license. See LICENSE file in the project root for full license information.
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.microsoft.graphdataconnect</groupId>
+    <artifactId>jgraph</artifactId>
+    <version>1.4.3</version>
+
+    <packaging>pom</packaging>
+
+    <name>${project.artifactId}</name>
+    <description>JGraph api application</description>
+    <inceptionYear>2020</inceptionYear>
+
+    <properties>
+        <jgraph.common.version>1.4.3</jgraph.common.version>
+        <jackson.version>2.10.1</jackson.version>
+        <azure.identity.version>1.1.2</azure.identity.version>
+    </properties>
+
+    <modules>
+        <module>latest-reply-extractor</module>
+        <module>jgraph-common</module>
+        <module>m365-user-to-azure-sql</module>
+        <module>ui</module>
+        <module>core</module>
+        <module>airtable</module>
+        <module>replace-current-search-index</module>
+        <module>cleanup-jgraph</module>
+        <module>update-azure-sql-data-version</module>
+        <module>hr-data</module>
+    </modules>
+
+</project>

@@ -1,0 +1,83 @@
+@model TranscriptSubscriptionSample.Models.SubscriptionDetailsViewModel
+
+@{
+    ViewData["Title"] = "Subscription Details";
+}
+
+<h2 class="headerText">Subscription Details</h2>
+
+<div>
+    <h4>Subscription Information</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MeetingUrl)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MeetingUrl)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd class="col-sm-10">
+            <span class="badge @(Model.Status == SubscriptionStatus.Active ? "bg-success" : Model.Status == SubscriptionStatus.Error ? "bg-danger" : "bg-secondary")">
+                @Html.DisplayFor(model => model.Status)
+            </span>
+        </dd>
+    </dl>
+</div>
+
+<div class="mt-4">
+    <h4>Recent Transcripts</h4>
+    @if (Model.RecentTranscripts != null && Model.RecentTranscripts.Any())
+    {
+        <div class="card">
+            <div class="card-body" style="max-height: 400px; overflow-y: auto;">
+                @foreach (var transcript in Model.RecentTranscripts.Take(20))
+                {
+                    <div class="transcript-entry mb-2 p-2 border-bottom">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <small class="text-muted">@transcript.AudioCaptureTime.ToString("HH:mm:ss")</small>
+                                <strong class="ms-2">@transcript.Speaker.User.DisplayName:</strong>
+                            </div>
+                        </div>
+                        <div class="mt-1">
+                            @transcript.Text
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <p class="text-muted mt-2">Showing latest 20 transcripts. <a asp-action="Transcripts" asp-route-id="@Model.Id">View all transcripts</a></p>
+    }
+    else
+    {
+        <div class="alert alert-info">
+            No transcripts available yet. Transcripts will appear here once the meeting starts.
+        </div>
+    }
+</div>
+
+<div class="mt-3">
+    <a asp-action="Transcripts" asp-route-id="@Model.Id" class="btn btn-info">View All Transcripts</a>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>
+
+@section Scripts {
+    @if (Model.Status == SubscriptionStatus.Active)
+    {
+        <script>
+            // Auto-refresh the page every 10 seconds if subscription is active
+            setTimeout(function() {
+                location.reload();
+            }, 10000);
+        </script>
+    }
+}

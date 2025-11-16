@@ -1,0 +1,113 @@
+---
+title: Создание объекта termsAndConditions
+description: Создание объекта termsAndConditions.
+author: dougeby
+localization_priority: Normal
+ms.prod: intune
+doc_type: apiPageType
+ms.openlocfilehash: 03808323bf8e052bf5c24787855c05d26835aa3d
+ms.sourcegitcommit: 7c1f2df6599638963e28dc89491eafb4b81f4e8e
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 07/12/2022
+ms.locfileid: "66729757"
+---
+# <a name="create-termsandconditions"></a>Создание объекта termsAndConditions
+
+Пространство имен: microsoft.graph
+
+> **Примечание.** API Microsoft Graph для Intune требует наличия [активной лицензии Intune](https://go.microsoft.com/fwlink/?linkid=839381) для клиента.
+
+Создание объекта [termsAndConditions](../resources/intune-companyterms-termsandconditions.md).
+
+## <a name="prerequisites"></a>Предварительные условия
+Для вызова этого API требуется одно из указанных ниже разрешений. Дополнительные сведения, включая сведения о том, как выбрать разрешения, см. в статье [Разрешения](/graph/permissions-reference).
+
+|Тип разрешения|Разрешения (в порядке повышения привилегий)|
+|:---|:---|
+|Делегированные (рабочая или учебная учетная запись)|DeviceManagementServiceConfig.ReadWrite.All|
+|Делегированные (личная учетная запись Майкрософт)|Не поддерживается.|
+|Для приложений|DeviceManagementServiceConfig.ReadWrite.All|
+
+## <a name="http-request"></a>HTTP-запрос
+<!-- {
+  "blockType": "ignored"
+}
+-->
+``` http
+POST /deviceManagement/termsAndConditions
+```
+
+## <a name="request-headers"></a>Заголовки запроса
+|Заголовок|Значение|
+|:---|:---|
+|Authorization|Bearer &lt;token&gt;. Обязательный.|
+|Accept|application/json|
+
+## <a name="request-body"></a>Текст запроса
+В тексте запроса добавьте представление объекта termsAndConditions в формате JSON.
+
+В таблице ниже приведены свойства, которые необходимо указывать при создании объекта termsAndConditions.
+
+|Свойство|Тип|Описание|
+|:---|:---|:---|
+|id|String|Уникальный идентификатор политики использования.|
+|createdDateTime|DateTimeOffset|Дата и время создания объекта.|
+|lastModifiedDateTime|DateTimeOffset|Дата и время последнего изменения объекта.|
+|displayName|String|Имя политики использования, указанное администратором. |
+|description|String|Описание политики использования, указанное администратором.|
+|title|String|Название условий, указанное администратором. Показывается пользователю при запросе на принятие политики использования.|
+|bodyText|String|Основной текст условий, заданный администратором (как правило, сами условия). Показывается пользователю при запросе на принятие политики использования.|
+|acceptanceStatement|String|Указанное администратором объяснение условий. Как правило, пользователю объясняется, с чем связано принятие условий, изложенных в соответствующей политике. Показывается пользователю при запросе на принятие политики использования.|
+|version|Int32|Целое число, указывающее текущую версию условий. Увеличивается, когда администратор вносит изменения в условия и хочет, чтобы пользователи повторно приняли измененную политику.|
+
+
+
+## <a name="response"></a>Отклик
+В случае успешного выполнения этот метод возвращает код отклика `201 Created` и объект [termsAndConditions](../resources/intune-companyterms-termsandconditions.md) в тексте отклика.
+
+## <a name="example"></a>Пример
+
+### <a name="request"></a>Запрос
+Ниже приведен пример запроса.
+``` http
+POST https://graph.microsoft.com/v1.0/deviceManagement/termsAndConditions
+Content-type: application/json
+Content-length: 273
+
+{
+  "@odata.type": "#microsoft.graph.termsAndConditions",
+  "displayName": "Display Name value",
+  "description": "Description value",
+  "title": "Title value",
+  "bodyText": "Body Text value",
+  "acceptanceStatement": "Acceptance Statement value",
+  "version": 7
+}
+```
+
+### <a name="response"></a>Отклик
+Ниже приведен пример отклика. Примечание. Объект отклика, показанный здесь, может быть усечен для краткости. При фактическом вызове будут возвращены все свойства.
+``` http
+HTTP/1.1 201 Created
+Content-Type: application/json
+Content-Length: 445
+
+{
+  "@odata.type": "#microsoft.graph.termsAndConditions",
+  "id": "eefc80cf-80cf-eefc-cf80-fceecf80fcee",
+  "createdDateTime": "2017-01-01T00:02:43.5775965-08:00",
+  "lastModifiedDateTime": "2017-01-01T00:00:35.1329464-08:00",
+  "displayName": "Display Name value",
+  "description": "Description value",
+  "title": "Title value",
+  "bodyText": "Body Text value",
+  "acceptanceStatement": "Acceptance Statement value",
+  "version": 7
+}
+```
+
+
+
+
+

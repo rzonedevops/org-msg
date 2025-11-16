@@ -1,0 +1,40 @@
+{
+  "name": "@microsoft/msgraph-beta-sdk-governanceroledefinitions",
+  "version": "1.0.0-preview.68",
+  "description": "GovernanceRoleDefinitions fluent API for Microsoft Graph",
+  "keywords": [
+    "Microsoft",
+    "Graph",
+    "msgraph",
+    "API",
+    "SDK",
+    "GovernanceRoleDefinitions"
+  ],
+  "author": "Microsoft <graphsdkpub+javascript@microsoft.com>",
+  "license": "MIT",
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/microsoftgraph/msgraph-beta-sdk-typescript.git"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "clean": "rimraf -g **/*.d.ts && rimraf -g **/*.d.ts.map && rimraf -g **/*.js.map && rimraf -g **/*.js && rimraf tsconfig.tsbuildinfo"
+  },
+  "bugs": {
+    "url": "https://github.com/microsoftgraph/msgraph-beta-sdk-typescript/issues"
+  },
+  "homepage": "https://github.com/microsoftgraph/msgraph-beta-sdk-typescript#readme",
+  "types": "index.d.ts",
+  "dependencies": {
+    "@microsoft/msgraph-beta-sdk": "^1.0.0-preview.38",
+    "tslib": "^2.6.2"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  },
+  "type": "module"
+}

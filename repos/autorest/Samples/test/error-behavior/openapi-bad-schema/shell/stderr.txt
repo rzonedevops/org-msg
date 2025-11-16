@@ -1,0 +1,11 @@
+    - /Samples/test/error-behavior/openapi-bad-schema/tiny.yaml ($)
+    - /Samples/test/error-behavior/openapi-bad-schema/tiny.yaml ($)
+    - /Samples/test/error-behavior/openapi-bad-schema/tiny.yaml ($)
+   at ...
+{ Error: [OperationAbortedException] Error occurred. Exiting.
+ERROR: Schema violation: Additional properties not allowed: foo
+ERROR: Schema violation: Data does not match any schemas from 'anyOf'
+ERROR: Schema violation: Data does not match any schemas from 'oneOf'
+FATAL: Error: [OperationAbortedException] Error occurred. Exiting.
+FATAL: swagger-document/individual/schema-validator-swagger - FAILED
+Process() cancelled due to exception : [OperationAbortedException] Error occurred. Exiting.

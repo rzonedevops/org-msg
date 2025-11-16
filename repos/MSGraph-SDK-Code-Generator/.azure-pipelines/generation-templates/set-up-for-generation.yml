@@ -1,0 +1,15 @@
+parameters:
+  - name: cleanMetadataFolder
+    type: string
+
+steps:
+- template: /.azure-pipelines/generation-templates/set-user-config.yml@self
+- template: /.azure-pipelines/generation-templates/use-dotnet-sdk.yml@self
+
+# checkout metadata repo if capture and clean step is skipped
+- checkout: msgraph-metadata
+  displayName: checkout metadata
+  fetchDepth: 1
+  persistCredentials: true
+  submodules: recursive
+  condition: or(eq(variables.skipMetadataCaptureAndClean, true), eq(variables.skipOpenApiCaptureAndClean, true))

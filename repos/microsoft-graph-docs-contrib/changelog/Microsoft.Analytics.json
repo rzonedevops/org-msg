@@ -1,0 +1,74 @@
+{
+  "changelog": [
+    {
+      "ChangeList": [
+        {
+          "Id": "31591e8c-641d-455a-bdea-5b111f39b085",
+          "ApiChange": "Resource",
+          "ChangedApiName": "profile,addresses,anniversaries,awards,certifications,notes,patents,publications",
+          "ChangeType": "Addition",
+          "Description": "Added the following new relationships to the [profile](https://learn.microsoft.com/en-us/graph/api/resources/profile?view=graph-rest-beta) API with associated entities and methods: <ul><li>[addresses](https://learn.microsoft.com/en-us/graph/api/resources/itemAddress?view=graph-rest-beta)</li><li>[anniversaries](https://learn.microsoft.com/en-us/graph/api/resources/personAnniversary?view=graph-rest-beta)</li><li>[awards](https://learn.microsoft.com/en-us/graph/api/resources/personAward?view=graph-rest-beta)</li><li>[certifications](https://learn.microsoft.com/en-us/graph/api/resources/personCertification?view=graph-rest-beta)</li><li>[notes](https://learn.microsoft.com/en-us/graph/api/resources/personAnnotation?view=graph-rest-beta)</li><li>[patents](https://learn.microsoft.com/en-us/graph/api/resources/itemPatent?view=graph-rest-beta)</li><li>[publications](https://learn.microsoft.com/en-us/graph/api/resources/itemPublication?view=graph-rest-beta)</li></ul>",
+          "Target": "profile,addresses,anniversaries,awards,certifications,notes,patents,publications"
+        }
+      ],
+      "Id": "31591e8c-641d-455a-bdea-5b111f39b085",
+      "Cloud": "prd",
+      "Version": "beta",
+      "CreatedDateTime": "2020-08-01T00:00:00",
+      "WorkloadArea": "People and workplace intelligence ",
+      "SubArea": "Profile"
+    },
+    {
+      "ChangeList": [
+        {
+          "Id": "8c224202-825a-4190-9b47-ff758248262d",
+          "ApiChange": "Property",
+          "ChangedApiName": "itemInsights,organizationSettings",
+          "ChangeType": "Addition",
+          "Description": "Added the **itemInsights** navigation property to the **organizationSettings** entity.",
+          "Target": ""
+        },
+        {
+          "Id": "8c224202-825a-4190-9b47-ff758248262d",
+          "ApiChange": "Resource",
+          "ChangedApiName": "itemInsightsSettings",
+          "ChangeType": "Addition",
+          "Description": "Added the **itemInsightsSettings** entity and the following operations: [Get itemInsightSettings](https://learn.microsoft.com/en-us/graph/api/iteminsightssettings-get?view=graph-rest-beta),  [Update itemInsightSettings](https://learn.microsoft.com/en-us/graph/api/iteminsightssettings-update?view=graph-rest-beta)",
+          "Target": "Get itemInsightSettings,Update itemInsightSettings"
+        }
+      ],
+      "Id": "8c224202-825a-4190-9b47-ff758248262d",
+      "Cloud": "prd",
+      "Version": "beta",
+      "CreatedDateTime": "2020-07-01T00:00:00",
+      "WorkloadArea": "People and workplace intelligence ",
+      "SubArea": "Insights"
+    },
+    {
+      "ChangeList": [
+        {
+          "Id": "a9247538-0fcc-463f-8439-cf5a7e86dd19",
+          "ApiChange": "Property",
+          "ChangedApiName": "profileCardProperties",
+          "ChangeType": "Addition",
+          "Description": "Added the **profileCardProperties** navigation property to the [organizationSettings](https://learn.microsoft.com/en-us/graph/api/resources/organizationsettings?view=graph-rest-beta) entity.",
+          "Target": "organizationSettings"
+        },
+        {
+          "Id": "a9247538-0fcc-463f-8439-cf5a7e86dd19",
+          "ApiChange": "Resource",
+          "ChangedApiName": "profileCardProperty",
+          "ChangeType": "Addition",
+          "Description": "Added the **profileCardProperty** entity and the following operations: [List](https://learn.microsoft.com/en-us/graph/api/organizationsettings-list-profilecardproperties),  [Create](https://learn.microsoft.com/en-us/graph/api/organizationsettings-post-profilecardproperties),  [Get](https://learn.microsoft.com/en-us/graph/api/profilecardproperty-get?view=graph-rest-beta),  [Update](https://learn.microsoft.com/en-us/graph/api/profilecardproperty-update?view=graph-rest-beta),  [Delete](https://learn.microsoft.com/en-us/graph/api/profilecardproperty-delete).",
+          "Target": "List,Create,Get,Update,Delete"
+        }
+      ],
+      "Id": "a9247538-0fcc-463f-8439-cf5a7e86dd19",
+      "Cloud": "prd",
+      "Version": "beta",
+      "CreatedDateTime": "2020-07-01T00:00:00",
+      "WorkloadArea": "People and workplace intelligence ",
+      "SubArea": "Profile"
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Library</OutputType>
+        <Version>6.1907.1.0</Version>
+        <Authors>Rajesh Soy, Rohit Ramu</Authors>
+        <Company>Microsoft Corporation</Company>
+        <Product>Microsoft Intune Graph PowerShell Client SDK</Product>
+        <Copyright>Copyright © Microsoft Corporation 2018</Copyright>
+        <AssemblyName>Microsoft.Intune.PowerShellGraphSDK</AssemblyName>
+        <RootNamespace>Microsoft.Intune.PowerShellGraphSDK</RootNamespace>
+        <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+        <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <NoWarn>IDE0037;IDE1006</NoWarn>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <WindowsTargetFramework>net471</WindowsTargetFramework>
+        <Configuration Condition="'$(Configuration)'==''">Release</Configuration>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <PowerShellModuleName>Microsoft.Graph.Intune</PowerShellModuleName>
+        <PowerShellExe Condition=" '$(PowerShellExe)'=='' ">powershell.exe</PowerShellExe>
+        <PowerShellModuleManifestGenerationScript Condition=" '$(PowerShellModuleManifestGenerationScript)'=='' ">$(MSBuildProjectDirectory)\Scripts\generateModuleManifest.ps1</PowerShellModuleManifestGenerationScript>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(OS)' != 'Windows_NT' ">
+        <TargetFramework>netstandard2.0</TargetFramework>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(OS)' == 'Windows_NT' ">
+        <TargetFrameworks>$(WindowsTargetFramework);netstandard2.0</TargetFrameworks>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+        <DebugType>full</DebugType>
+        <DebugSymbols>true</DebugSymbols>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)'=='Release'">
+        <DebugType>none</DebugType>
+        <DebugSymbols>false</DebugSymbols>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.IdentityModel.Clients.ActiveDirectory" Version="5.1.0" />
+        <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+        <PackageReference Include="XmlDoc2CmdletDoc" Version="0.2.12">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <PropertyGroup Condition="'$(TargetFramework)'!='$(WindowsTargetFramework)'">
+        <DefineConstants>NETSTANDARD</DefineConstants>
+    </PropertyGroup>
+    <ItemGroup Condition="'$(TargetFramework)'!='$(WindowsTargetFramework)'">
+        <PackageReference Include="PowerShellStandard.Library" Version="5.1.0" />
+    </ItemGroup>
+
+    <PropertyGroup Condition="'$(TargetFramework)'=='$(WindowsTargetFramework)'">
+        <DefineConstants>NETFRAMEWORK</DefineConstants>
+    </PropertyGroup>
+    <ItemGroup Condition="'$(TargetFramework)'=='$(WindowsTargetFramework)'">
+        <Reference Include="System.Net.Http" />
+        <PackageReference Include="Microsoft.PowerShell.5.ReferenceAssemblies" Version="1.1.0" />
+    </ItemGroup>
+
+    <Target Name="DeleteOutputDirs" BeforeTargets="Compile;PreBuildEvent">
+        <PropertyGroup>
+            <REMOVE_DIRS>$(MSBuildProjectDirectory)\bin\$(Configuration); $(MSBuildProjectDirectory)\obj</REMOVE_DIRS>
+        </PropertyGroup>
+        <ItemGroup>
+            <_REMOVE_DIRS Include="$(REMOVE_DIRS)" />
+        </ItemGroup>
+        <RemoveDir Directories="@(REMOVE_DIRS)" />
+    </Target>
+
+    <Target Name="CopyPowerShellModuleAdditions" AfterTargets="PostBuildEvent">
+        <PropertyGroup>
+            <POWERSHELL_EXTRAS>$(MSBuildProjectDirectory)\PowerShellModuleAdditions</POWERSHELL_EXTRAS>
+        </PropertyGroup>
+        <ItemGroup>
+            <_POWERSHELL_EXTRAS Include="$(POWERSHELL_EXTRAS)\**\*" />
+        </ItemGroup>
+        <Copy SourceFiles="@(_POWERSHELL_EXTRAS)" DestinationFolder="$(OutputPath)\%(RecursiveDir)" />
+        <Message Importance="high" Text="PowerShell Module Additions Directory:  $(POWERSHELL_EXTRAS)" />
+        <Message Importance="high" Text="Output Folder:                          $(OutputPath)" />
+        <Message Importance="high" Text="Project Directory:                      $(MSBuildProjectDirectory)" />
+        <Message Importance="high" Text="Target Framework:                       $(TargetFramework)" />
+        <Message Importance="high" Text="OS:                                     $(OS)" />
+    </Target>
+
+    <Target Name="GeneratePowerShellModuleManifest" AfterTargets="CopyPowerShellModuleAdditions">
+        <Exec Command="$(PowerShellExe) -NonInteractive -ExecutionPolicy Unrestricted -Command &quot;&amp; { $(PowerShellModuleManifestGenerationScript) -ModuleName &apos;$(PowerShellModuleName)&apos; -OutputDirectory &apos;$(OutputPath)&apos; -MainModuleRelativePath &apos;$(AssemblyName).dll&apos; }&quot;" />
+    </Target>
+
+</Project>

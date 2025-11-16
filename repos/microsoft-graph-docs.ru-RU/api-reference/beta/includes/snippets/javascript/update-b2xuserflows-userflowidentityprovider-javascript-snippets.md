@@ -1,0 +1,27 @@
+---
+description: Автоматически созданный файл. НЕ ИЗМЕНЯТЬ
+ms.openlocfilehash: d77a7751b27c1c642c4004fee01f6a94856028f9
+ms.sourcegitcommit: 0116750a01323bc9bedd192d4a780edbe7ce0fdc
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "58369171"
+---
+```javascript
+
+const options = {
+    authProvider,
+};
+
+const client = Client.init(options);
+
+const userFlowIdentityProviders = {
+  '@odata.id': 'https://graph.microsoft.com/beta/identity/identityProviders/B2X_1_Test',
+  '@odata.type': '#microsoft.graph.identityProvider'
+};
+
+await client.api('/identity/b2xUserFlows/B2X_1_Test/userflowIdentityProviders/$ref')
+    .version('beta')
+    .update(userFlowIdentityProviders);
+
+```

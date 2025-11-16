@@ -1,0 +1,21 @@
+{
+    "sourceModule" : "AzureADPreview",
+    "moduleName" : "Microsoft.Entra.Beta",
+    "newPrefix" : "EntraBeta",
+    "typePrefix" : "Microsoft.Open.",
+    "destinationModuleName" : [
+      "Microsoft.Graph.Beta.DirectoryObjects",
+      "Microsoft.Graph.Beta.Users",
+      "Microsoft.Graph.Beta.Users.Actions",
+      "Microsoft.Graph.Beta.Groups", 
+      "Microsoft.Graph.Beta.Identity.DirectoryManagement", 
+      "Microsoft.Graph.Beta.Identity.Governance", 
+      "Microsoft.Graph.Beta.Identity.SignIns",
+      "Microsoft.Graph.Beta.Applications",
+      "Microsoft.Graph.Beta.Reports"
+    ],
+    "destinationModuleVersion": "2.25.0",
+    "sourceModulePrefix" : ["AzureADMS","AzureAD"],
+    "destinationPrefix" : ["MgBeta"],
+    "loadMessage": ""
+  }
