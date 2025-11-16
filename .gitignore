@@ -1,0 +1,7 @@
+# Ignore cloned repositories to avoid nested git repos
+repos/
+
+# Ignore common temp files
+*.tmp
+*.log
+.DS_Store

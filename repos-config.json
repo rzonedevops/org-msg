@@ -1,0 +1,26 @@
+{
+  "source_org": "microsoftgraph",
+  "target_org": "rzonedevops/org-msg",
+  "repos": [
+    {
+      "name": "msgraph-sdk-dotnet",
+      "description": "Microsoft Graph .NET SDK"
+    },
+    {
+      "name": "msgraph-sdk-javascript",
+      "description": "Microsoft Graph JavaScript SDK"
+    },
+    {
+      "name": "msgraph-sdk-python",
+      "description": "Microsoft Graph Python SDK"
+    },
+    {
+      "name": "msgraph-sdk-java",
+      "description": "Microsoft Graph Java SDK"
+    },
+    {
+      "name": "msgraph-sdk-php",
+      "description": "Microsoft Graph PHP SDK"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+name: Sync Microsoft Graph Repos
+
+on:
+  schedule:
+    # Run daily at 00:00 UTC
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+    # Allow manual trigger
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq
+      
+      - name: Sync repositories
+        run: |
+          chmod +x sync-repos.sh
+          ./sync-repos.sh
+      
+      - name: Display sync summary
+        run: |
+          echo "Synced repositories:"
+          ls -la repos/ || echo "No repos directory found"
